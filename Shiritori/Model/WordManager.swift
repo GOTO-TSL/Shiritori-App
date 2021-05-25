@@ -61,11 +61,11 @@ struct WordManager {
                 
                 if let safeData = data {
                     if let judge = self.judgeData(safeData) {
+                        print(judge)
                         self.delegate?.didUpdateJudgement(self, judge: judge)
                     }
                 }
             }
-            
             task.resume()
         }
     }

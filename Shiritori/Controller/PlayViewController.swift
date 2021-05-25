@@ -17,8 +17,9 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var SecondView: UIView!
     @IBOutlet weak var ThiredView: UIView!
     
-    let imagedata = ImageData()
+    let imagedata = ImageManager()
     var wordManager = WordManager()
+    var shiritoriManager = ShiritoriManager()
     var gamescore: Int = -10
     var timer = Timer()
     var timerCount = 0
@@ -36,27 +37,16 @@ class PlayViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardDidHideNotification, object: nil)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+        
     }
 
     //ボタンが押されたときに実行される処理
     @IBAction func AnswerPressed(_ sender: UIButton) {
-        let wordInitial = TextField.text?[TextField.text!.startIndex]
-        if TextField.text == "" {
-            TextField.placeholder = "Wirte Something!"
-        } else if TextField.text?.count == 1 {
-            TextField.text = ""
-            TextField.placeholder = "Enter at least 2 characters"
-        } else {
-            if wordEnd == wordInitial {
-                wordManager.judgeWord(InputWord: TextField.text!)
-                TextField.placeholder = ""
-            } else {
-                TextField.text = ""
-                TextField.placeholder = "Shiritori Please!"
-                self.gamescore -= 10
-            }
+        if shiritoriManager.Shiritori(textField: TextField, endOfWord: wordEnd) {
+            wordManager.judgeWord(InputWord: TextField.text!)
         }
-
     }
     
     //キーボードが出てきたら呼ばれる処理
@@ -78,11 +68,18 @@ class PlayViewController: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if self.view.frame.origin.y != 0 {
             self.view.frame.origin.y = 0
-            self.ThiredView.frame.origin.y -= 230
-            self.SecondView.frame.origin.y -= 280
-            self.TopView.frame.origin.y -= 360
+            self.ThiredView.frame.origin.y -= 120
+            self.SecondView.frame.origin.y -= 200
+            self.TopView.frame.origin.y -= 280
         }
     }
+    
+    //キーボード以外の場所が押されたとき呼ばれる処理
+    @objc func dismissKeyboard() {
+            self.view.endEditing(true)
+        }
+    
+    
     
     @objc func TimerCount() {
         TimeBar.progress = 1.0 - Float(bomberCount)/60
@@ -97,10 +94,25 @@ class PlayViewController: UIViewController {
                 self.wordManager.featchWord(InputWord: alphabet[Int.random(in: 0...25)])
             case 2..<22:
                 CenterImage.image = imagedata.bombImage[0]
+                UIView.animate(withDuration: 1.5, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+                    self.CenterImage.center.x += 10
+                }) { _ in
+                    self.CenterImage.center.x -= 10
+                }
             case 6..<42:
                 CenterImage.image = imagedata.bombImage[1]
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+                    self.CenterImage.center.x += 15
+                }) { _ in
+                    self.CenterImage.center.x -= 15
+                }
             case 11..<62:
                 CenterImage.image = imagedata.bombImage[2]
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+                    self.CenterImage.center.x += 20
+                }) { _ in
+                    self.CenterImage.center.x -= 20
+                }
             case 62:
                 timer.invalidate()
                 timerCount = 0

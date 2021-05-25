@@ -8,7 +8,11 @@
 import Foundation
 import UIKit
 
-struct ImageData {
+struct ImageManager {
     let countImage = [#imageLiteral(resourceName: "3"), #imageLiteral(resourceName: "2"), #imageLiteral(resourceName: "1"), #imageLiteral(resourceName: "START")]
     let bombImage = [#imageLiteral(resourceName: "bomb1"), #imageLiteral(resourceName: "bomb2"), #imageLiteral(resourceName: "bomb3")]
+    
+    func ImageChange() {
+        
+    }
 }
