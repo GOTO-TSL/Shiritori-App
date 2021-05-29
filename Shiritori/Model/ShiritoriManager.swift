@@ -10,7 +10,7 @@ import UIKit
 
 struct ShiritoriManager {
     
-    mutating func Shiritori(textField: UITextField?, endOfWord: Character) -> Bool {
+    mutating func Shiritori(textField: UITextField?, endCharacter: Character) -> Bool {
         if let safetf = textField {
             if safetf.text != "" {
                 let initialString = safetf.text?[safetf.text!.startIndex]
@@ -20,7 +20,7 @@ struct ShiritoriManager {
                     safetf.placeholder = "Enter at least 2 characters"
                     return false
                 } else {
-                    if endOfWord == initialString {
+                    if endCharacter == initialString {
                         safetf.placeholder = ""
                         return true
                     } else {
