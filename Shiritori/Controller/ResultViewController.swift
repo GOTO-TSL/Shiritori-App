@@ -12,6 +12,9 @@ class ResultViewController: UIViewController {
     var score: Int?
     
     @IBOutlet weak var ScoreLabel: UILabel!
+    @IBOutlet weak var leftImage: UIImageView!
+    @IBOutlet weak var rightImage: UIImageView!
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()

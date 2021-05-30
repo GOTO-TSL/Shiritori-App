@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct ShiritoriManager {
+struct GameLogic {
     
     mutating func Shiritori(textField: UITextField?, endCharacter: Character) -> Bool {
         if let safetf = textField {

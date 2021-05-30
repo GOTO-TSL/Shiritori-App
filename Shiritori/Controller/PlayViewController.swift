@@ -13,26 +13,32 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var TimeBar: UIProgressView!
     @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var FaceImage: UIImageView!
+    @IBOutlet weak var LifeImage: UIStackView!
+    
     
     
     
     var wordManager = WordManager()
-    var shiritoriManager = ShiritoriManager()
-    var gamescore: Int = -10
+    var shiritoriManager = GameLogic()
+    var imageManager = ImageManager()
+    var gamescore: Int = 0
     var charaEnd: Character = "a"
     var playmode: String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let imageManager = TimerManager(commentLabel: WordLabel, timeBar: TimeBar)
+        let timerManager = TimerManager(commentLabel: WordLabel, timeBar: TimeBar)
         navigationController?.setNavigationBarHidden(true, animated: false)
         wordManager.delegate = self
         TextField.delegate = self
-        imageManager.countdownTimer()
+        
+        imageManager.changeFace(face: FaceImage, mode: playmode!, feeling: "normal")
+        
+        timerManager.countdownTimer()
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.countDownTime)) {
             self.wordManager.featchWord(InputWord: K.alphabet[Int.random(in: 0...25)])
-            imageManager.gameTimer()
+            timerManager.gameTimer()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.playTime+K.Timer.countDownTime+3)) {
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
@@ -47,6 +53,8 @@ class PlayViewController: UIViewController {
     @IBAction func AnswerPressed(_ sender: UIButton) {
         if shiritoriManager.Shiritori(textField: TextField, endCharacter: charaEnd) {
             wordManager.judgeWord(InputWord: TextField.text!)
+        } else {
+            imageManager.changeFace(face: FaceImage, mode: playmode!, feeling: "confuse")
         }
     }
     
@@ -94,10 +102,13 @@ extension PlayViewController: WordManagerDelegate {
         DispatchQueue.main.async {
             if judge {
                 self.wordManager.featchWord(InputWord: self.TextField.text!)
+                self.imageManager.changeFace(face: self.FaceImage, mode: self.playmode!, feeling: "laugh")
                 self.gamescore += 10
+                self.imageManager.changeFriendShip(heartStack: self.LifeImage, gamescore: self.gamescore, mode: self.playmode!)
             } else {
                 self.TextField.text = ""
                 self.TextField.placeholder = "Invalid word!"
+                self.imageManager.changeFace(face: self.FaceImage, mode: self.playmode!, feeling: "confuse")
                 self.gamescore -= 10
             }
         }

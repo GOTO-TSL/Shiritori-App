@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020E7F09265D2C600090F761 /* ShiritoriManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* ShiritoriManager.swift */; };
+		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		0283557B263F9306008B6845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557A263F9306008B6845 /* AppDelegate.swift */; };
 		0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557C263F9306008B6845 /* SceneDelegate.swift */; };
 		0283557F263F9306008B6845 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557E263F9306008B6845 /* PlayViewController.swift */; };
@@ -22,10 +22,11 @@
 		0289A82526418BC400023D0E /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82426418BC400023D0E /* WordData.swift */; };
 		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
+		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020E7F08265D2C600090F761 /* ShiritoriManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiritoriManager.swift; sourceTree = "<group>"; };
+		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		02835577263F9306008B6845 /* Shiritori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiritori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283557A263F9306008B6845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0283557C263F9306008B6845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +43,7 @@
 		0289A82426418BC400023D0E /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
+		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,8 @@
 				0289A82026413DA600023D0E /* TimerManager.swift */,
 				0289A822264186C300023D0E /* WordManager.swift */,
 				0289A82426418BC400023D0E /* WordData.swift */,
-				020E7F08265D2C600090F761 /* ShiritoriManager.swift */,
+				020E7F08265D2C600090F761 /* GameLogic.swift */,
+				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,7 +194,7 @@
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0289A823264186C300023D0E /* WordManager.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
-				020E7F09265D2C600090F761 /* ShiritoriManager.swift in Sources */,
+				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
@@ -200,6 +203,7 @@
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
 				0289A82526418BC400023D0E /* WordData.swift in Sources */,
+				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
