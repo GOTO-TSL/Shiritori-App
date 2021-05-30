@@ -19,11 +19,9 @@ class PlayViewController: UIViewController {
     var wordManager = WordManager()
     var shiritoriManager = ShiritoriManager()
     var gamescore: Int = -10
-    var timer = Timer()
-    var timerCount = 0
-    var bomberCount = 0
     var charaEnd: Character = "a"
-    let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    var playmode: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +29,17 @@ class PlayViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         wordManager.delegate = self
         TextField.delegate = self
-        imageManager.countdown()
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.playTime + K.Timer.countDownTime+3)) {
-            self.performSegue(withIdentifier: "toResult", sender: nil)
+        imageManager.countdownTimer()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.countDownTime)) {
+            self.wordManager.featchWord(InputWord: K.alphabet[Int.random(in: 0...25)])
+            imageManager.gameTimer()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.playTime+K.Timer.countDownTime+3)) {
+            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
         }
 
-//        self.wordManager.featchWord(InputWord: alphabet[Int.random(in: 0...25)])
+
+
         
     }
 
@@ -48,7 +51,7 @@ class PlayViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toResult" {
+        if segue.identifier == K.SegueID.toresult {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.score = gamescore
         }
@@ -86,12 +89,11 @@ extension PlayViewController: WordManagerDelegate {
         }
     }
     
-    func didUpdateJudgement(_ wordManager: WordManager, judge: Bool) {
+    func didJudgement(_ wordManager: WordManager, judge: Bool) {
         print("judgement get")
         DispatchQueue.main.async {
             if judge {
                 self.wordManager.featchWord(InputWord: self.TextField.text!)
-//                self.FaceImage.image = self.imageManager.FaceImage[1]
                 self.gamescore += 10
             } else {
                 self.TextField.text = ""

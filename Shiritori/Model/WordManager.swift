@@ -9,23 +9,22 @@ import Foundation
 
 protocol WordManagerDelegate {
     func didUpdateWord(_ wordManager: WordManager, word: String)
-    func didUpdateJudgement(_ wordManager: WordManager, judge: Bool)
+    func didJudgement(_ wordManager: WordManager, judge: Bool)
     func didFailWithError(error: Error)
 }
 
 struct WordManager {
     let wordURL = "https://api.datamuse.com/words?max=20&sp="
-    
+    var isShiritori = false
     var delegate: WordManagerDelegate?
     
-    mutating func judgeWord(InputWord: String) {
+    func judgeWord(InputWord: String) {
         let urlString = "\(wordURL)\(InputWord)"
         performJudgeRequest(with: urlString)
     }
     
     func featchWord(InputWord: String) {
         let initial = InputWord[InputWord.index(before: InputWord.endIndex)]
-        print(initial)
         let urlString = "\(wordURL)\(initial)*"
         performRequest(with: urlString)
     }
@@ -61,8 +60,7 @@ struct WordManager {
                 
                 if let safeData = data {
                     if let judge = self.judgeData(safeData) {
-                        print(judge)
-                        self.delegate?.didUpdateJudgement(self, judge: judge)
+                        self.delegate?.didJudgement(self, judge: judge)
                     }
                 }
             }
