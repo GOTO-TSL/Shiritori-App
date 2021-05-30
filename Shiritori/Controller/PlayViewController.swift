@@ -15,7 +15,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var FaceImage: UIImageView!
     
     
-    let imageManager = ImageManager()
+    
     var wordManager = WordManager()
     var shiritoriManager = ShiritoriManager()
     var gamescore: Int = -10
@@ -27,11 +27,16 @@ class PlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let imageManager = TimerManager(commentLabel: WordLabel, timeBar: TimeBar)
         navigationController?.setNavigationBarHidden(true, animated: false)
         wordManager.delegate = self
         TextField.delegate = self
-        self.wordManager.featchWord(InputWord: alphabet[Int.random(in: 0...25)])
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.TimerCount), userInfo: nil, repeats: true)
+        imageManager.countdown()
+        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.playTime + K.Timer.countDownTime+3)) {
+            self.performSegue(withIdentifier: "toResult", sender: nil)
+        }
+
+//        self.wordManager.featchWord(InputWord: alphabet[Int.random(in: 0...25)])
         
     }
 
@@ -39,36 +44,6 @@ class PlayViewController: UIViewController {
     @IBAction func AnswerPressed(_ sender: UIButton) {
         if shiritoriManager.Shiritori(textField: TextField, endCharacter: charaEnd) {
             wordManager.judgeWord(InputWord: TextField.text!)
-        }
-    }
-    
-    
-    
-    @objc func TimerCount() {
-        TimeBar.progress = 1.0 - Float(bomberCount)/60
-        timerCount += 1
-        if timerCount == 4 {
-            self.WordLabel.text = "対戦ヨロシク！"
-        } else if timerCount > 4 {
-            bomberCount = timerCount - 4
-            switch bomberCount {
-            case 1:
-                FaceImage.image = imageManager.FaceImage[0]
-            case 2..<22:
-                FaceImage.image = imageManager.FaceImage[0]
-            case 6..<42:
-                FaceImage.image = imageManager.FaceImage[1]
-            case 11..<62:
-                FaceImage.image = imageManager.FaceImage[2]
-            case 62:
-                timer.invalidate()
-                timerCount = 0
-                self.performSegue(withIdentifier: "toResult", sender: nil)
-            default:
-                FaceImage.image = imageManager.FaceImage[0]
-            }
-        } else {
-            FaceImage.image = imageManager.FaceImage[timerCount-1]
         }
     }
     
@@ -116,7 +91,7 @@ extension PlayViewController: WordManagerDelegate {
         DispatchQueue.main.async {
             if judge {
                 self.wordManager.featchWord(InputWord: self.TextField.text!)
-                self.FaceImage.image = self.imageManager.FaceImage[1]
+//                self.FaceImage.image = self.imageManager.FaceImage[1]
                 self.gamescore += 10
             } else {
                 self.TextField.text = ""
