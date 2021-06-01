@@ -21,13 +21,13 @@ class PlayViewController: UIViewController {
     var wordManager = WordManager()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
+    var timerManager = TimerManager()
     var charaEnd: Character = "a"
     var playmode: String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let timerManager = TimerManager(commentLabel: WordLabel, timeBar: TimeBar)
         
         //navigationBarを非表示
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -37,34 +37,22 @@ class PlayViewController: UIViewController {
         
         //delegateの宣言
         wordManager.delegate = self
+        timerManager.delegate = self
+        gameLogic.delegate = self
+        imageManager.delegate = self
         TextField.delegate = self
         
         //難易度によって相手の顔を変更
-        imageManager.changeFace(face: FaceImage, mode: playmode!, feeling: "normal")
+        imageManager.changeFace(mode: playmode!, feeling: "normal")
         
-        //タイマー処理関係
-        timerManager.countdownTimer()
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.countDownTime)) {
-            self.wordManager.featchWord(InputWord: K.alphabet[Int.random(in: 0...25)])
-            timerManager.gameTimer()
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + Double(K.Timer.playTime+K.Timer.countDownTime+3)) {
-            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
-        }
+        //タイマー処理
+        timerManager.gameTimer()
         
     }
 
     //ボタンが押されたときに実行される処理
     @IBAction func AnswerPressed(_ sender: UIButton) {
-        if gameLogic.Shiritori(textField: TextField, endCharacter: charaEnd) {
-            wordManager.judgeWord(InputWord: TextField.text!)
-        } else {
-            imageManager.changeFace(face: FaceImage, mode: playmode!, feeling: "confuse")
-            self.gameLogic.subPoint()
-            self.imageManager.changeFriendShip(heartStack: self.FriendShipImage,
-                                               gamescore: self.gameLogic.gamescore,
-                                               mode: self.playmode!)
-        }
+        gameLogic.applyRule(textField: TextField, endCharacter: charaEnd)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,28 +99,103 @@ extension PlayViewController: WordManagerDelegate {
         DispatchQueue.main.async {
             if judge {
                 self.wordManager.featchWord(InputWord: self.TextField.text!)
-                self.imageManager.changeFace(face: self.FaceImage,
-                                             mode: self.playmode!,
-                                             feeling: "laugh")
+                self.imageManager.changeFace(mode: self.playmode!, feeling: "laugh")
                 self.gameLogic.addPoint()
-                self.imageManager.changeFriendShip(heartStack: self.FriendShipImage,
-                                                   gamescore: self.gameLogic.gamescore,
-                                                   mode: self.playmode!)
+                self.imageManager.changeFriendShip(gamescore: self.gameLogic.gamescore, mode: self.playmode!)
             } else {
                 self.TextField.text = ""
                 self.TextField.placeholder = "Invalid word!"
-                self.imageManager.changeFace(face: self.FaceImage,
-                                             mode: self.playmode!,
-                                             feeling: "confuse")
+                self.imageManager.changeFace(mode: self.playmode!, feeling: "confuse")
                 self.gameLogic.subPoint()
-                self.imageManager.changeFriendShip(heartStack: self.FriendShipImage,
-                                                   gamescore: self.gameLogic.gamescore,
-                                                   mode: self.playmode!)
+                self.imageManager.changeFriendShip(gamescore: self.gameLogic.gamescore, mode: self.playmode!)
             }
         }
     }
     
     func didFailWithError(error: Error) {
         print(error)
+    }
+}
+
+//MARK: - GameLogicDelegate
+extension PlayViewController: GameLogicDelegate {
+    func shiritoriSucessed() {
+        DispatchQueue.main.async {
+            self.wordManager.judgeWord(InputWord: self.TextField.text!)
+        }
+    }
+    
+    func shiritoriFailed() {
+        DispatchQueue.main.async {
+            self.imageManager.changeFace(mode: self.playmode!, feeling: "confuse")
+            self.gameLogic.subPoint()
+            self.imageManager.changeFriendShip(gamescore: self.gameLogic.gamescore, mode: self.playmode!)
+        }
+    }
+}
+
+//MARK: - TimerManagerDelegate
+extension PlayViewController: TimerManagerDelegate {
+    func didUpdateComment(comment: String) {
+        DispatchQueue.main.async {
+            self.WordLabel.text = comment
+        }
+    }
+    
+    func didUpdateTimeBar(timeNow: Float) {
+        DispatchQueue.main.async {
+            self.TimeBar.progress = timeNow
+        }
+    }
+    
+    func gameStart() {
+        DispatchQueue.main.async {
+            self.wordManager.featchWord(InputWord: K.alphabet[Int.random(in: 0...24)])
+        }
+    }
+    
+    func gotoNextView() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
+        }
+    }
+}
+
+//MARK: - ImageManagerDelegate
+extension PlayViewController: ImageManagerDelegate {
+    
+    func didUpdateFace(mode: String, index: Int) {
+        DispatchQueue.main.async {
+            if mode == "EASY" {
+                self.FaceImage.image = K.Images.easyFace[index]
+            } else if mode == "NORMAL" {
+                self.FaceImage.image = K.Images.normalFace[index]
+            } else {
+                self.FaceImage.image = K.Images.hardFace[index]
+            }            
+        }
+    }
+    
+    func didUpdateHeart(end: Int) {
+        DispatchQueue.main.async {
+            if let hearts = self.FriendShipImage.arrangedSubviews as? [UIStackView] {
+                if let heart = hearts[0].arrangedSubviews as? [UIImageView] {
+                    for i in 0...4 {
+                        heart[i].image = K.Images.hearts[0]
+                    }
+                    if end >= 0 {
+                        for i in 0...end {
+                            heart[i].image = K.Images.hearts[2]
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func gotoResultView() {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
+        }
     }
 }

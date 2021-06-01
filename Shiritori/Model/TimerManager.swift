@@ -8,62 +8,52 @@
 import Foundation
 import UIKit
 
+protocol TimerManagerDelegate {
+    func didUpdateTimeBar(timeNow: Float)
+    func didUpdateComment(comment: String)
+    func gameStart()
+    func gotoNextView()
+}
+
 class TimerManager {
-    let commentLabel: UILabel
-    let timeBar: UIProgressView
+    var delegate: TimerManagerDelegate?
     var timer = Timer()
     var timerCount = 0
-    
-    init(commentLabel: UILabel, timeBar: UIProgressView) {
-        self.commentLabel = commentLabel
-        self.timeBar = timeBar
-    }
-    
-    func countdownTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.startCount), userInfo: nil, repeats: true)
-    }
     
     func gameTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.gameCount), userInfo: nil, repeats: true)
     }
-    
-    @objc func startCount() {
-        timerCount += 1
-        if timerCount != K.Timer.countDownTime {
-            self.commentLabel.text = "\(K.Timer.countDownTime - timerCount)"
-        } else {
-            self.commentLabel.text = "START!"
-            timerCount = 0
-            timer.invalidate()
-        }
-    }
-    
+
     @objc func gameCount() {
         timerCount += 1
-        self.timeBar.progress = 1.0 - Float(timerCount)/Float(K.Timer.playTime+1)
-        
-        if timerCount == K.Timer.playTime + 1 {
-            self.commentLabel.text = "Time's Up!"
-            timerCount = 0
+        switch timerCount {
+        case 1..<K.Timer.countDownTime:
+            let countNow = "\(K.Timer.countDownTime - timerCount)"
+            self.delegate?.didUpdateComment(comment: countNow)
+            
+        case K.Timer.countDownTime:
+            let countNow = "START!"
+            self.delegate?.didUpdateComment(comment: countNow)
+
+        case (K.Timer.countDownTime+1):
+            self.delegate?.gameStart()
+            
+        case (K.Timer.countDownTime+2)..<(K.Timer.playTime+K.Timer.countDownTime+3):
+            let timeNow = 1.0 - Float(timerCount - K.Timer.countDownTime-1)/Float(K.Timer.playTime+1)
+            self.delegate?.didUpdateTimeBar(timeNow: timeNow)
+            
+        case K.Timer.playTime+K.Timer.countDownTime+3:
+            let countNow = "Time's Up!"
+            self.delegate?.didUpdateComment(comment: countNow)
+            
+        case K.Timer.playTime+K.Timer.countDownTime+4:
             timer.invalidate()
+            self.delegate?.gotoNextView()
+            
+        default:
+            let countNow = "..."
+            self.delegate?.didUpdateComment(comment: countNow)
         }
     }
-    
-//    @objc func changeComment() {
-//        timerCount += 1
-//        switch timerCount {
-//        case 1..<K.Timer.countDownTime:
-//            self.commentLabel.text = "\(K.Timer.countDownTime - timerCount)"
-//        case K.Timer.countDownTime:
-//            self.commentLabel.text = "START!"
-//        case (K.Timer.countDownTime)...(K.Timer.playTime+K.Timer.countDownTime+1):
-//            self.timeBar.progress = 1.0 - Float(timerCount - K.Timer.countDownTime)/Float(K.Timer.playTime+1)
-//        case K.Timer.playTime+K.Timer.countDownTime+2:
-//            self.commentLabel.text = "Time's Up!"
-//            timer.invalidate()
-//        default:
-//            self.commentLabel.text = "..."
-//        }
-//    }
 }
 

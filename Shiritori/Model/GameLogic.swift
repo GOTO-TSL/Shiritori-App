@@ -8,10 +8,17 @@
 import Foundation
 import UIKit
 
+protocol GameLogicDelegate {
+    func shiritoriSucessed()
+    func shiritoriFailed()
+}
+
+
 struct GameLogic {
     var gamescore: Int = 0
+    var delegate: GameLogicDelegate?
     
-    func Shiritori(textField: UITextField?, endCharacter: Character) -> Bool {
+    func applyRule(textField: UITextField?, endCharacter: Character) {
         if let safetf = textField {
             if safetf.text != "" {
                 let initialString = safetf.text?[safetf.text!.startIndex]
@@ -19,23 +26,23 @@ struct GameLogic {
                 if safetf.text?.count == 1 {
                     safetf.text = ""
                     safetf.placeholder = "Enter at least 2 characters"
-                    return false
+                    self.delegate?.shiritoriFailed()
                 } else {
                     if endCharacter == initialString {
                         safetf.placeholder = ""
-                        return true
+                        self.delegate?.shiritoriSucessed()
                     } else {
                         safetf.text = ""
                         safetf.placeholder = "Shiritori Please!"
-                        return false
+                        self.delegate?.shiritoriFailed()
                     }
                 }
             } else {
                 textField?.placeholder = "Wirte Something!"
-                return false
+                self.delegate?.shiritoriFailed()
             }
         } else {
-            return false
+            self.delegate?.shiritoriFailed()
         }
     }
     
@@ -44,7 +51,7 @@ struct GameLogic {
     }
     
     mutating func subPoint() {
-        if self.gamescore < 0 {
+        if self.gamescore <= 0 {
             self.gamescore = 0
         } else {
             self.gamescore -= 10
