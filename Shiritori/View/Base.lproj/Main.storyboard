@@ -217,8 +217,8 @@
                                                             <constraint firstAttribute="width" constant="125" id="tuZ-5y-Xkg"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="bqy-7Z-a7q">
-                                                        <rect key="frame" x="133" y="0.0" width="270" height="193"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="bqy-7Z-a7q">
+                                                        <rect key="frame" x="133" y="0.0" width="270" height="235"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speechballoon" translatesAutoresizingMaskIntoConstraints="NO" id="JMN-qN-DOa">
                                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="135"/>
@@ -226,44 +226,89 @@
                                                                     <constraint firstAttribute="height" constant="135" id="tad-y8-C3z"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIC-Ev-Zdx">
-                                                                <rect key="frame" x="0.0" y="143" width="250" height="50"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="t2K-Rb-T0u">
+                                                                <rect key="frame" x="10" y="135" width="250" height="100"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="Rip-ft-lnf">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="50" id="OrM-BI-XWA"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="UrE-bW-amA"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="0K5-5r-k0F">
-                                                                        <rect key="frame" x="50" y="0.0" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="50" id="lRp-ae-8hR"/>
-                                                                            <constraint firstAttribute="width" constant="50" id="ldq-Ff-9dJ"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="D6A-kq-aci">
-                                                                        <rect key="frame" x="100" y="0.0" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="50" id="4re-aO-jDU"/>
-                                                                            <constraint firstAttribute="width" constant="50" id="sux-SR-3nU"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="lGV-JY-Zpq">
-                                                                        <rect key="frame" x="150" y="0.0" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="50" id="JgP-hq-1pj"/>
-                                                                            <constraint firstAttribute="height" constant="50" id="YUM-59-EMk"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="U1U-Q5-97v">
-                                                                        <rect key="frame" x="200" y="0.0" width="50" height="50"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="50" id="FU6-Jj-dLj"/>
-                                                                            <constraint firstAttribute="width" constant="50" id="V6Y-mQ-1mI"/>
-                                                                        </constraints>
-                                                                    </imageView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAq-ko-yBe">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="50"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="8Cy-fn-m6d">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="lgA-SN-det"/>
+                                                                                    <constraint firstAttribute="height" constant="50" id="nj3-sp-j6O"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="acD-Nd-K5A">
+                                                                                <rect key="frame" x="50" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="3oE-EP-fM4"/>
+                                                                                    <constraint firstAttribute="height" constant="50" id="hwX-86-5sf"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="B5h-Yu-X5W">
+                                                                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="4XL-BV-1Bk"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="frn-Sk-N1D"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="YlO-EF-bb2">
+                                                                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="U7j-N0-cTW"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="syo-gF-LgB"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="c4Y-Ne-ptK">
+                                                                                <rect key="frame" x="200" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="7Q2-7E-R3q"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="fDM-LD-xZR"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIC-Ev-Zdx">
+                                                                        <rect key="frame" x="0.0" y="50" width="250" height="50"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="Rip-ft-lnf">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="OrM-BI-XWA"/>
+                                                                                    <constraint firstAttribute="height" constant="50" id="UrE-bW-amA"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="0K5-5r-k0F">
+                                                                                <rect key="frame" x="50" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="lRp-ae-8hR"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="ldq-Ff-9dJ"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="D6A-kq-aci">
+                                                                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="4re-aO-jDU"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="sux-SR-3nU"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="lGV-JY-Zpq">
+                                                                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="50" id="JgP-hq-1pj"/>
+                                                                                    <constraint firstAttribute="height" constant="50" id="YUM-59-EMk"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankheart" translatesAutoresizingMaskIntoConstraints="NO" id="U1U-Q5-97v">
+                                                                                <rect key="frame" x="200" y="0.0" width="50" height="50"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="50" id="FU6-Jj-dLj"/>
+                                                                                    <constraint firstAttribute="width" constant="50" id="V6Y-mQ-1mI"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
@@ -354,7 +399,7 @@
                     <navigationItem key="navigationItem" id="OpL-3b-SNm"/>
                     <connections>
                         <outlet property="FaceImage" destination="y7e-yS-ZwK" id="TCX-6q-QWj"/>
-                        <outlet property="LifeImage" destination="dIC-Ev-Zdx" id="5xU-NC-YSw"/>
+                        <outlet property="FriendShipImage" destination="t2K-Rb-T0u" id="3T6-Kh-gGY"/>
                         <outlet property="TextField" destination="ZvR-Y8-uEL" id="gk5-mZ-OeO"/>
                         <outlet property="TimeBar" destination="O6f-nY-tkt" id="zt8-7u-3gl"/>
                         <outlet property="WordLabel" destination="Ruj-rW-0TM" id="cFD-9F-308"/>

@@ -39,8 +39,31 @@ struct ImageManager {
     func changeFriendShip(heartStack: UIStackView, gamescore: Int, mode: String) {
         if mode == "EASY" {
             let index = gamescore/10 - 1
-            let easylife = heartStack.arrangedSubviews[index] as! UIImageView
-            easylife.image = self.lifeImages[2]
+            print("gamescore:\(gamescore), index:\(index)")
+            if gamescore < 50 && gamescore > 0 {
+                for i in 0...4 {
+                    if let easylife = heartStack.arrangedSubviews[i] as? UIImageView {
+                        easylife.image = self.lifeImages[0]
+                    }
+                }
+                for i in 0...index {
+                    if let easylife = heartStack.arrangedSubviews[i] as? UIImageView {
+                        easylife.image = self.lifeImages[2]
+                    }
+                }
+            } else if gamescore >= 50 {
+                for i in 0...4 {
+                    if let easylife = heartStack.arrangedSubviews[i] as? UIImageView {
+                        easylife.image = self.lifeImages[2]
+                    }
+                }
+            } else {
+                for i in 0...4 {
+                    if let easylife = heartStack.arrangedSubviews[i] as? UIImageView {
+                        easylife.image = self.lifeImages[0]
+                    }
+                }
+            }
         }
     }
 }
