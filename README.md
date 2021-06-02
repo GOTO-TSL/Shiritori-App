@@ -1,1 +1,1 @@
-# WordBomberApp
+# ShiritoriApp
