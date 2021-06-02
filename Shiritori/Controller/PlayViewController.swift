@@ -176,16 +176,25 @@ extension PlayViewController: ImageManagerDelegate {
         }
     }
     
-    func didUpdateHeart(end: Int) {
+    func didUpdateHeart(end: Int, row: Int, isHalf: Bool) {
         DispatchQueue.main.async {
             if let hearts = self.FriendShipImage.arrangedSubviews as? [UIStackView] {
-                if let heart = hearts[0].arrangedSubviews as? [UIImageView] {
+                if let heart = hearts[row].arrangedSubviews as? [UIImageView] {
                     for i in 0...4 {
                         heart[i].image = K.Images.hearts[0]
                     }
-                    if end >= 0 {
-                        for i in 0...end {
-                            heart[i].image = K.Images.hearts[2]
+                    if isHalf {
+                        if end >= 0 {
+                            for i in 0..<end {
+                                heart[i].image = K.Images.hearts[2]
+                            }
+                            heart[end].image = K.Images.hearts[1]
+                        }
+                    } else {
+                        if end >= 0 {
+                            for i in 0...end {
+                                heart[i].image = K.Images.hearts[2]
+                            }
                         }
                     }
                 }
@@ -196,6 +205,7 @@ extension PlayViewController: ImageManagerDelegate {
     func gotoResultView() {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
+            self.timerManager.timer.invalidate()
         }
     }
 }
