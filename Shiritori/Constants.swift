@@ -19,7 +19,7 @@ struct K {
         static let toplay = "toPlay"
     }
     struct Timer {
-        static let playTime: Int = 100
+        static let playTime: Int = 5
         static let countDownTime: Int = 4
     }
     
@@ -28,9 +28,9 @@ struct K {
         static let normalFace = [#imageLiteral(resourceName: "normal1"), #imageLiteral(resourceName: "smile1"), #imageLiteral(resourceName: "confuse1")]
         static let hardFace = [#imageLiteral(resourceName: "normal3"), #imageLiteral(resourceName: "smile3"), #imageLiteral(resourceName: "confuse3")]
         static let hearts = [#imageLiteral(resourceName: "blankheart"), #imageLiteral(resourceName: "halfblankheart"), #imageLiteral(resourceName: "heart")]
-        static let happyEnd = [#imageLiteral(resourceName: "happyEndRight2"), #imageLiteral(resourceName: "happyEndRight1"), #imageLiteral(resourceName: "happyEndRight3")]
-        static let badEnd = [#imageLiteral(resourceName: "badEndRight2"), #imageLiteral(resourceName: "badEndRight1"), #imageLiteral(resourceName: "badEndRight3")]
+        static let ending = [[#imageLiteral(resourceName: "happyEndRight2"), #imageLiteral(resourceName: "badEndRight2")], [#imageLiteral(resourceName: "happyEndRight1"), #imageLiteral(resourceName: "badEndRight1")], [#imageLiteral(resourceName: "happyEndRight3"), #imageLiteral(resourceName: "badEndRight3")]]
         static let playerEnd = [#imageLiteral(resourceName: "happyEndLeft"), #imageLiteral(resourceName: "badEndLeft")]
+        static let Stars = [#imageLiteral(resourceName: "brankstar"), #imageLiteral(resourceName: "fillstar")]
     }
 
 }

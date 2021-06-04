@@ -10,6 +10,7 @@ import UIKit
 
 protocol ImageManagerDelegate {
     func didUpdateFace(mode: String, index: Int)
+    func didUpdateResult(isHappy: Bool, modeIndex: Int)
     func didUpdateHeart(end: Int, row: Int, isHalf: Bool)
     func gotoResultView()
 }
@@ -92,6 +93,28 @@ struct ImageManager {
                 self.delegate?.didUpdateHeart(end: -1, row: 0, isHalf: false)
                 self.delegate?.didUpdateHeart(end: -1, row: 1, isHalf: false)
                 
+            }
+        }
+    }
+    
+    func changeResultImage(gamescore: Int, mode: String) {
+        if mode == "EASY" {
+            if gamescore >= 50 {
+                self.delegate?.didUpdateResult(isHappy: true, modeIndex: 0)
+            } else {
+                self.delegate?.didUpdateResult(isHappy: false, modeIndex: 0)
+            }
+        } else if mode == "NORMAL" {
+            if gamescore >= 100 {
+                self.delegate?.didUpdateResult(isHappy: true, modeIndex: 1)
+            } else {
+                self.delegate?.didUpdateResult(isHappy: false, modeIndex: 1)
+            }
+        } else {
+            if gamescore >= 200 {
+                self.delegate?.didUpdateResult(isHappy: true, modeIndex: 2)
+            } else {
+                self.delegate?.didUpdateResult(isHappy: false, modeIndex: 2)
             }
         }
     }

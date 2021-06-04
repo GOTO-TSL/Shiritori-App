@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "exprosion.png",
+      "filename" : "fillstar.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "exprosion@2x.png",
+      "filename" : "fillstar@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "exprosion@3x.png",
+      "filename" : "fillstar@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

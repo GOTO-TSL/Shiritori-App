@@ -337,6 +337,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="5" id="QxD-s2-cgf"/>
                                                 </constraints>
+                                                <color key="progressTintColor" red="0.096421383319999998" green="0.35152691600000002" blue="0.86007469889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </progressView>
                                         </subviews>
                                         <constraints>
@@ -561,25 +562,45 @@ Enter a one-letter word.</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-XN-s3a">
                                         <rect key="frame" x="0.0" y="606" width="414" height="202"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3Q-5V-EV2">
-                                                <rect key="frame" x="147" y="76" width="120" height="50"/>
-                                                <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="Eze-SW-Mwg"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="yx3-wM-liW"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="HOME">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <segue destination="e0k-dn-jUn" kind="show" id="waf-8B-ZHb"/>
-                                                </connections>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Apa-V9-zZx">
+                                                <rect key="frame" x="147" y="42" width="120" height="118"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAq-0Q-RTa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                        <color key="backgroundColor" red="0.98348480459999998" green="0.21323210000000001" blue="0.24982997779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="loN-Ai-hyw"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="tRI-Z3-PuX"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="WORDS">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="3l4-EJ-y84" kind="show" id="Ft5-yt-Apj"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3Q-5V-EV2">
+                                                        <rect key="frame" x="0.0" y="68" width="120" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Eze-SW-Mwg"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="yx3-wM-liW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="HOME">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <segue destination="e0k-dn-jUn" kind="show" id="waf-8B-ZHb"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="i3Q-5V-EV2" firstAttribute="centerY" secondItem="cgO-XN-s3a" secondAttribute="centerY" id="6Ff-Qf-Gsd"/>
-                                            <constraint firstItem="i3Q-5V-EV2" firstAttribute="centerX" secondItem="cgO-XN-s3a" secondAttribute="centerX" id="dYW-p1-Cj2"/>
+                                            <constraint firstItem="Apa-V9-zZx" firstAttribute="centerX" secondItem="cgO-XN-s3a" secondAttribute="centerX" id="aRh-be-fAp"/>
+                                            <constraint firstItem="Apa-V9-zZx" firstAttribute="centerY" secondItem="cgO-XN-s3a" secondAttribute="centerY" id="g3C-vN-z90"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -609,6 +630,36 @@ Enter a one-letter word.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-XD-IQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1713.0434782608697" y="137.94642857142856"/>
+        </scene>
+        <!--Word Rist View Controller-->
+        <scene sceneID="Xlb-tW-M0G">
+            <objects>
+                <viewController id="3l4-EJ-y84" customClass="WordRistViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yAr-BU-qpI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rFc-nv-D2p">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <color key="backgroundColor" red="0.93261355160000003" green="0.92267578839999997" blue="0.86664468049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="qaw-lw-dMa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rFc-nv-D2p" firstAttribute="top" secondItem="qaw-lw-dMa" secondAttribute="top" id="9zk-2A-Kol"/>
+                            <constraint firstItem="rFc-nv-D2p" firstAttribute="leading" secondItem="qaw-lw-dMa" secondAttribute="leading" id="Fni-so-PJo"/>
+                            <constraint firstItem="rFc-nv-D2p" firstAttribute="trailing" secondItem="qaw-lw-dMa" secondAttribute="trailing" id="NB3-bc-iZD"/>
+                            <constraint firstItem="rFc-nv-D2p" firstAttribute="bottom" secondItem="qaw-lw-dMa" secondAttribute="bottom" id="vyS-XL-YGh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="rFc-nv-D2p" id="PEI-qv-Aye"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfb-Tl-39F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2566.666666666667" y="142.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eWx-Jk-dRx">

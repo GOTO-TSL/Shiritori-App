@@ -59,6 +59,7 @@ class PlayViewController: UIViewController {
         if segue.identifier == K.SegueID.toresult {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.score = self.gameLogic.gamescore
+            destinationVC.playmode = self.playmode
         }
     }
     
@@ -163,6 +164,9 @@ extension PlayViewController: TimerManagerDelegate {
 
 //MARK: - ImageManagerDelegate
 extension PlayViewController: ImageManagerDelegate {
+    func didUpdateResult(isHappy: Bool, modeIndex: Int) {
+        //do nothing
+    }
     
     func didUpdateFace(mode: String, index: Int) {
         DispatchQueue.main.async {
