@@ -16,10 +16,11 @@ struct K {
     
     struct SegueID {
         static let toresult = "toResult"
+        static let towordlist = "toWordRist"
         static let toplay = "toPlay"
     }
     struct Timer {
-        static let playTime: Int = 5
+        static let playTime: Int = 60
         static let countDownTime: Int = 4
     }
     

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WordRist {
-    let word: String
-    let meaning: String
+class Word: Codable {
+    var word: String = ""
+    var mean: String = ""
 }

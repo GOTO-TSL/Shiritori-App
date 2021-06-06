@@ -16,7 +16,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var FriendShipImage: UIStackView!
     
     
-    
+    var wordArray = [Word]()
     
     var wordManager = WordManager()
     var gameLogic = GameLogic()
@@ -24,10 +24,12 @@ class PlayViewController: UIViewController {
     var timerManager = TimerManager()
     var charaEnd: Character = "a"
     var playmode: String?
-
+    
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Words.plist")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(dataFilePath!)
         
         //navigationBarを非表示
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -60,9 +62,22 @@ class PlayViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.score = self.gameLogic.gamescore
             destinationVC.playmode = self.playmode
+            destinationVC.wordArray = self.wordArray
         }
     }
     
+    func saveWord() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            let data = try encoder.encode(wordArray)
+            try data.write(to: dataFilePath!)
+            
+        } catch {
+            print("Error encording word array, \(error)")
+            
+        }
+    }
 }
 
 //MARK: - UITextFieldDelegate
@@ -89,6 +104,10 @@ extension PlayViewController: WordManagerDelegate {
     func didUpdateWord(_ wordManager: WordManager, word: String) {
         DispatchQueue.main.async {
             print("word get")
+            let newWord = Word()
+            newWord.word = word
+            self.wordArray.append(newWord)
+            self.saveWord()
             self.WordLabel.text = word
             self.charaEnd = word[word.index(before: word.endIndex)]
             self.TextField.text = ""
@@ -99,6 +118,13 @@ extension PlayViewController: WordManagerDelegate {
         print("judgement get")
         DispatchQueue.main.async {
             if judge {
+                let newWord = Word()
+                if let word = self.TextField.text {
+                    newWord.word = word
+                }
+                self.wordArray.append(newWord)
+                self.saveWord()
+                
                 self.wordManager.featchWord(InputWord: self.TextField.text!)
                 self.imageManager.changeFace(mode: self.playmode!, feeling: "laugh")
                 self.gameLogic.addPoint()

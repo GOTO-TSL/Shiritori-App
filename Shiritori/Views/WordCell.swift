@@ -24,7 +24,7 @@ class WordCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func likePressed(_ sender: UIButton) {
-        flg ? likeButton.setImage(K.Images.Stars[1], for: .normal) : likeButton.setImage(K.Images.Stars[0], for: .normal)
+        flg ? likeButton.setImage(K.Images.Stars[0], for: .normal) : likeButton.setImage(K.Images.Stars[1], for: .normal)
         flg = flg ? false : true
     }
     

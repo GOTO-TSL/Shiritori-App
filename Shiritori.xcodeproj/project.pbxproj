@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		02524322266936C10005FB76 /* WordRistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordRistViewController.swift */; };
-		02524324266936ED0005FB76 /* WordRist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524323266936ED0005FB76 /* WordRist.swift */; };
+		02524324266936ED0005FB76 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524323266936ED0005FB76 /* Word.swift */; };
 		02524329266940D20005FB76 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524327266940D20005FB76 /* WordCell.swift */; };
 		0252432A266940D20005FB76 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02524328266940D20005FB76 /* WordCell.xib */; };
 		0283557B263F9306008B6845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557A263F9306008B6845 /* AppDelegate.swift */; };
@@ -32,7 +32,7 @@
 /* Begin PBXFileReference section */
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordRistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRistViewController.swift; sourceTree = "<group>"; };
-		02524323266936ED0005FB76 /* WordRist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRist.swift; sourceTree = "<group>"; };
+		02524323266936ED0005FB76 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		02524327266940D20005FB76 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		02524328266940D20005FB76 /* WordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
 		02835577263F9306008B6845 /* Shiritori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiritori.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +105,7 @@
 				0289A82426418BC400023D0E /* WordData.swift */,
 				020E7F08265D2C600090F761 /* GameLogic.swift */,
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
-				02524323266936ED0005FB76 /* WordRist.swift */,
+				02524323266936ED0005FB76 /* Word.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
 				0289A82526418BC400023D0E /* WordData.swift in Sources */,
-				02524324266936ED0005FB76 /* WordRist.swift in Sources */,
+				02524324266936ED0005FB76 /* Word.swift in Sources */,
 				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
