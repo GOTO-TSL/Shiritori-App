@@ -11,7 +11,7 @@ class WordCell: UITableViewCell {
 
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    var flg = 0
+    var flg = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,13 +24,8 @@ class WordCell: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func likePressed(_ sender: UIButton) {
-        if flg == 0 {
-            likeButton.setImage(K.Images.Stars[1], for: .normal)
-            flg += 1
-        } else {
-            likeButton.setImage(K.Images.Stars[0], for: .normal)
-            flg -= 1
-        }
+        flg ? likeButton.setImage(K.Images.Stars[1], for: .normal) : likeButton.setImage(K.Images.Stars[0], for: .normal)
+        flg = flg ? false : true
     }
     
 }

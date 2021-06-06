@@ -86,9 +86,9 @@
 			children = (
 				0283557A263F9306008B6845 /* AppDelegate.swift */,
 				0283557C263F9306008B6845 /* SceneDelegate.swift */,
-				0283558E263F935F008B6845 /* Model */,
-				02835590263F9380008B6845 /* View */,
-				02835591263F938C008B6845 /* Controller */,
+				0283558E263F935F008B6845 /* Models */,
+				02835590263F9380008B6845 /* Views */,
+				02835591263F938C008B6845 /* Controllers */,
 				02835583263F9307008B6845 /* Assets.xcassets */,
 				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 				02835588263F9307008B6845 /* Info.plist */,
@@ -97,7 +97,7 @@
 			path = Shiritori;
 			sourceTree = "<group>";
 		};
-		0283558E263F935F008B6845 /* Model */ = {
+		0283558E263F935F008B6845 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0289A82026413DA600023D0E /* TimerManager.swift */,
@@ -107,20 +107,20 @@
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
 				02524323266936ED0005FB76 /* WordRist.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		02835590263F9380008B6845 /* View */ = {
+		02835590263F9380008B6845 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				02835580263F9306008B6845 /* Main.storyboard */,
 				02524327266940D20005FB76 /* WordCell.swift */,
 				02524328266940D20005FB76 /* WordCell.xib */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		02835591263F938C008B6845 /* Controller */ = {
+		02835591263F938C008B6845 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				0283557E263F9306008B6845 /* PlayViewController.swift */,
@@ -130,7 +130,7 @@
 				02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */,
 				02524321266936C10005FB76 /* WordRistViewController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
