@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class PlayViewController: UIViewController {
 
@@ -17,7 +18,6 @@ class PlayViewController: UIViewController {
     
     
     var wordArray = [Word]()
-    
     var wordManager = WordManager()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
@@ -25,11 +25,10 @@ class PlayViewController: UIViewController {
     var charaEnd: Character = "a"
     var playmode: String?
     
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Words.plist")
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(dataFilePath!)
         
         //navigationBarを非表示
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -62,16 +61,12 @@ class PlayViewController: UIViewController {
             let destinationVC = segue.destination as! ResultViewController
             destinationVC.score = self.gameLogic.gamescore
             destinationVC.playmode = self.playmode
-            destinationVC.wordArray = self.wordArray
         }
     }
     
     func saveWord() {
-        let encoder = PropertyListEncoder()
-        
         do {
-            let data = try encoder.encode(wordArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
             
         } catch {
             print("Error encording word array, \(error)")

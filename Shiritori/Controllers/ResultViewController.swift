@@ -11,7 +11,6 @@ class ResultViewController: UIViewController {
     
     var score: Int?
     var playmode: String?
-    var wordArray: [Word]?
     var imageManager = ImageManager()
     
     @IBOutlet weak var ScoreLabel: UILabel!
@@ -28,13 +27,6 @@ class ResultViewController: UIViewController {
         ScoreLabel.text = "SCORE: \(score ?? 0)"
         imageManager.changeResultImage(gamescore: score!, mode: playmode!)
         
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.SegueID.towordlist {
-            let destinationVC = segue.destination as! WordRistViewController
-            destinationVC.wordArray = self.wordArray
-        }
     }
 
 }

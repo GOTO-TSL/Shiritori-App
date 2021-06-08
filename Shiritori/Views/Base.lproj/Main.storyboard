@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75O-1S-Lm4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-191" y="-596"/>
+            <point key="canvasLocation" x="770" y="138"/>
         </scene>
         <!--Play View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -409,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="923.1884057971015" y="-250.44642857142856"/>
+            <point key="canvasLocation" x="1822" y="161"/>
         </scene>
         <!--Rule View Controller-->
         <scene sceneID="wvJ-Fr-v9I">
@@ -489,7 +489,7 @@ Enter a one-letter word.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhH-dB-EKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-487" y="893"/>
+            <point key="canvasLocation" x="-284" y="895"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="cW8-aw-XwD">
@@ -629,12 +629,11 @@ Enter a one-letter word.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-XD-IQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1713.0434782608697" y="137.94642857142856"/>
+            <point key="canvasLocation" x="2849" y="138"/>
         </scene>
         <!--Word Rist View Controller-->
         <scene sceneID="Xlb-tW-M0G">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tfb-Tl-39F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="3l4-EJ-y84" customClass="WordRistViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yAr-BU-qpI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -658,8 +657,9 @@ Enter a one-letter word.</string>
                         <outlet property="tableView" destination="rFc-nv-D2p" id="PEI-qv-Aye"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tfb-Tl-39F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566.666666666667" y="142.63392857142856"/>
+            <point key="canvasLocation" x="3746" y="138"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eWx-Jk-dRx">
