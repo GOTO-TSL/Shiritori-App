@@ -20,7 +20,7 @@ struct K {
         static let toplay = "toPlay"
     }
     struct Timer {
-        static let playTime: Int = 60
+        static let playTime: Int = 10
         static let countDownTime: Int = 4
     }
     

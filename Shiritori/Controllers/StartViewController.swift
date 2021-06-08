@@ -12,6 +12,7 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
 
 }

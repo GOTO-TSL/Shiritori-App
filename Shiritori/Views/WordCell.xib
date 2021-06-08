@@ -46,9 +46,6 @@
                                             <constraint firstAttribute="height" constant="30" id="YeJ-ZX-KU2"/>
                                         </constraints>
                                         <state key="normal" image="brankstar"/>
-                                        <connections>
-                                            <action selector="likePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1CY-vY-aT8"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93261355160000003" green="0.92267578839999997" blue="0.86664468049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

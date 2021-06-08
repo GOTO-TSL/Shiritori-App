@@ -69,7 +69,7 @@ class PlayViewController: UIViewController {
             try context.save()
             
         } catch {
-            print("Error encording word array, \(error)")
+            print("Error saving word array, \(error)")
             
         }
     }
@@ -99,8 +99,9 @@ extension PlayViewController: WordManagerDelegate {
     func didUpdateWord(_ wordManager: WordManager, word: String) {
         DispatchQueue.main.async {
             print("word get")
-            let newWord = Word()
+            let newWord = Word(context: self.context)
             newWord.word = word
+            newWord.like = false
             self.wordArray.append(newWord)
             self.saveWord()
             self.WordLabel.text = word
@@ -113,9 +114,10 @@ extension PlayViewController: WordManagerDelegate {
         print("judgement get")
         DispatchQueue.main.async {
             if judge {
-                let newWord = Word()
+                let newWord = Word(context: self.context)
                 if let word = self.TextField.text {
                     newWord.word = word
+                    newWord.like = false
                 }
                 self.wordArray.append(newWord)
                 self.saveWord()

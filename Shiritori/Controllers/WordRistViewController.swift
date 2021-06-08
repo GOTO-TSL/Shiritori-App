@@ -20,11 +20,22 @@ class WordRistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
         
         tableView.register(UINib(nibName: "WordCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
         loadWord()
 
+    }
+    
+    func saveWord() {
+        do {
+            try context.save()
+            
+        } catch {
+            print("Error saving word array, \(error)")
+            
+        }
     }
     
     func loadWord(with request: NSFetchRequest<Word> = Word.fetchRequest()) {
@@ -47,7 +58,10 @@ extension WordRistViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! WordCell
-        cell.textLabel?.text = wordArray[indexPath.row].word
+        let words = wordArray[indexPath.row]
+        
+        cell.wordLabel.text = words.word
+        words.like ? cell.likeButton.setImage(K.Images.Stars[1], for: .normal) : cell.likeButton.setImage(K.Images.Stars[0], for: .normal)
         
         return cell
     }
@@ -58,6 +72,9 @@ extension WordRistViewController: UITableViewDataSource {
 //MARK: - TableView Delegate Methods
 extension WordRistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        wordArray[indexPath.row].like = !wordArray[indexPath.row].like
         tableView.reloadData()
+        saveWord()
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
