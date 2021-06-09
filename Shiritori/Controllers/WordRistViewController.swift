@@ -63,7 +63,7 @@ extension WordRistViewController: UITableViewDataSource {
         let words = wordArray[indexPath.row]
         
         cell.wordLabel.text = words.word
-        words.like ? cell.likeButton.setImage(K.Images.Stars[1], for: .normal) : cell.likeButton.setImage(K.Images.Stars[0], for: .normal)
+        words.like ? (cell.starImage.image = K.Images.Stars[1]) : (cell.starImage.image = K.Images.Stars[0])
         
         return cell
     }

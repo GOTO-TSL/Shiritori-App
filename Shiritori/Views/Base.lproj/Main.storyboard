@@ -13,20 +13,20 @@
             <objects>
                 <viewController id="e0k-dn-jUn" customClass="StartViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PvH-ck-ImR">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="sBF-Xb-6c2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-9Z-k5w">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auz-ad-pBL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="256.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OGC-Gn-Ar8">
-                                                <rect key="frame" x="108" y="102.5" width="198" height="63.5"/>
+                                                <rect key="frame" x="108" y="96.5" width="198" height="63.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SHIRITORI" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvq-UG-nZW">
                                                         <rect key="frame" x="9" y="0.0" width="180.5" height="43"/>
@@ -49,10 +49,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seO-h5-gkG">
-                                        <rect key="frame" x="0.0" y="270" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="258.5" width="414" height="257"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
-                                                <rect key="frame" x="72" y="-1" width="270" height="270"/>
+                                                <rect key="frame" x="72" y="-6.5" width="270" height="270"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -61,10 +61,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWd-GL-Ult">
-                                        <rect key="frame" x="0.0" y="540" width="414" height="268"/>
+                                        <rect key="frame" x="0.0" y="517.5" width="414" height="256.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFk-BK-b8n">
-                                                <rect key="frame" x="132" y="51.5" width="150" height="45"/>
+                                                <rect key="frame" x="132" y="45.5" width="150" height="45"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="MV0-ah-Nso"/>
@@ -78,7 +78,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-V0-ZsB">
-                                                <rect key="frame" x="132" y="159" width="150" height="50"/>
+                                                <rect key="frame" x="132" y="153" width="150" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hty-NY-RG4" userLabel="helpButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -141,12 +141,17 @@
             <objects>
                 <tableViewController id="jJT-kJ-1vG" customClass="MyWordViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QIQ-oL-Ivh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="M89-IL-98R">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MyWordCell" id="OZP-bs-1fQ">
-                                <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="68.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OZP-bs-1fQ" id="59x-5D-u2c">
                                     <rect key="frame" x="0.0" y="0.0" width="384.5" height="43.5"/>
@@ -159,25 +164,31 @@
                             <outlet property="delegate" destination="jJT-kJ-1vG" id="uJA-ZE-ZFP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YHl-Ui-eCG"/>
+                    <navigationItem key="navigationItem" id="YHl-Ui-eCG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="E57-ob-CXh">
+                            <connections>
+                                <action selector="removePressed:" destination="jJT-kJ-1vG" id="LJK-Qf-fxL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3w-aZ-eK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="536" y="895"/>
+            <point key="canvasLocation" x="534.78260869565224" y="894.64285714285711"/>
         </scene>
         <!--Select Game View Controller-->
         <scene sceneID="CWz-CK-4jM">
             <objects>
                 <viewController id="S1X-48-eHe" customClass="SelectGameViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zoT-YR-S0K">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="uWj-S8-Emv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="115" translatesAutoresizingMaskIntoConstraints="NO" id="7Bg-Ds-yah">
-                                <rect key="frame" x="145.5" y="234" width="123" height="374"/>
+                                <rect key="frame" x="145.5" y="261" width="123" height="374"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxs-Be-vhS">
                                         <rect key="frame" x="0.0" y="0.0" width="73" height="48"/>
@@ -240,20 +251,20 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PlayViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="50T-7M-Pww">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hc2-zj-Pfh">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Xl-WW-OFm" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="338"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="304"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="B2h-aT-FeU">
-                                                <rect key="frame" x="5.5" y="34" width="403" height="270"/>
+                                                <rect key="frame" x="5.5" y="17" width="403" height="270"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="normal1" translatesAutoresizingMaskIntoConstraints="NO" id="y7e-yS-ZwK">
                                                         <rect key="frame" x="0.0" y="0.0" width="125" height="270"/>
@@ -360,7 +371,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ruj-rW-0TM">
-                                                <rect key="frame" x="256.5" y="70" width="41" height="48"/>
+                                                <rect key="frame" x="256.5" y="53" width="41" height="48"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -374,7 +385,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIm-jG-0ul" userLabel="MiddleView">
-                                        <rect key="frame" x="0.0" y="348" width="414" height="50"/>
+                                        <rect key="frame" x="0.0" y="314" width="414" height="50"/>
                                         <subviews>
                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="O6f-nY-tkt">
                                                 <rect key="frame" x="30" y="22.5" width="354" height="5"/>
@@ -392,7 +403,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m5I-J9-XPg" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="408" width="414" height="400"/>
+                                        <rect key="frame" x="0.0" y="374" width="414" height="400"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XyD-JD-Y4D">
                                                 <rect key="frame" x="57" y="35" width="300" height="30"/>
@@ -460,14 +471,14 @@
             <objects>
                 <viewController id="xaP-vD-bZQ" customClass="RuleViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TS5-YX-uaf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfB-Ev-Hgs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="H5h-0i-8GW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X91-4t-xhc">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -486,10 +497,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2K3-iU-CXm">
-                                        <rect key="frame" x="0.0" y="100" width="414" height="708"/>
+                                        <rect key="frame" x="0.0" y="100" width="414" height="674"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bp-Pg-HuI">
-                                                <rect key="frame" x="-110" y="84.5" width="634" height="239"/>
+                                                <rect key="frame" x="-110" y="67.5" width="634" height="239"/>
                                                 <string key="text">Score +10
 Enter the word that starts with the last letter of the displayed word.
 
@@ -540,20 +551,20 @@ Enter a one-letter word.</string>
             <objects>
                 <viewController id="da3-aV-zKm" customClass="ResultViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hNJ-ir-6dX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="9aF-3l-11W">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sds-0B-S9V">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfF-sD-7xm">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="202"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="193.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="730-FK-HGo">
-                                                <rect key="frame" x="74.5" y="71" width="265" height="60"/>
+                                                <rect key="frame" x="74.5" y="67" width="265" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -565,10 +576,10 @@ Enter a one-letter word.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMM-LJ-b0R">
-                                        <rect key="frame" x="0.0" y="202" width="414" height="282"/>
+                                        <rect key="frame" x="0.0" y="193.5" width="414" height="270"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bpL-TU-au8">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="282"/>
+                                                <rect key="frame" x="0.0" y="-6" width="414" height="282"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happyEndRight1" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-GC-ggU">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="282"/>
@@ -589,10 +600,10 @@ Enter a one-letter word.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pnM-ds-sLf">
-                                        <rect key="frame" x="0.0" y="484" width="414" height="122"/>
+                                        <rect key="frame" x="0.0" y="463.5" width="414" height="117"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ScoreLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF8-0T-Q4Q">
-                                                <rect key="frame" x="132" y="43" width="150.5" height="36"/>
+                                                <rect key="frame" x="132" y="40.5" width="150.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="30"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -604,10 +615,10 @@ Enter a one-letter word.</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-XN-s3a">
-                                        <rect key="frame" x="0.0" y="606" width="414" height="202"/>
+                                        <rect key="frame" x="0.0" y="580.5" width="414" height="193.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Apa-V9-zZx">
-                                                <rect key="frame" x="147" y="42" width="120" height="118"/>
+                                                <rect key="frame" x="147" y="38" width="120" height="118"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAq-0Q-RTa">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
@@ -680,11 +691,11 @@ Enter a one-letter word.</string>
             <objects>
                 <viewController id="3l4-EJ-y84" customClass="WordRistViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yAr-BU-qpI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rFc-nv-D2p">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="0.93261355160000003" green="0.92267578839999997" blue="0.86664468049999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </tableView>
                         </subviews>
@@ -726,8 +737,7 @@ Enter a one-letter word.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mbp-lE-dVy"/>
-        <segue reference="waf-8B-ZHb"/>
+        <segue reference="6fY-n1-UGX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="270" height="270"/>

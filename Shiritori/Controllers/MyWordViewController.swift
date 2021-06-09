@@ -17,11 +17,13 @@ class MyWordViewController: UITableViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
         loadWord()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print(mywords.count)
         return mywords.count
     }
     
@@ -37,7 +39,30 @@ class MyWordViewController: UITableViewController {
         } catch {
             print("Error loading word from context \(error)")
         }
-        tableView.reloadData()
+    }
+    
+    func saveWord() {
+        do {
+            try context.save()
+            
+        } catch {
+            print("Error saving word array, \(error)")
+            
+        }
     }
 
+    @IBAction func removePressed(_ sender: UIBarButtonItem) {
+        if (tableView.isEditing) {
+            tableView.setEditing(false, animated: true)
+        } else {
+            tableView.setEditing(true, animated: true)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        context.delete(mywords[indexPath.row])
+        saveWord()
+        loadWord()
+        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+    }
 }

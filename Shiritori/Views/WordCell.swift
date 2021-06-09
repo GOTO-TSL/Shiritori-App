@@ -10,7 +10,7 @@ import UIKit
 class WordCell: UITableViewCell {
 
     @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var starImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
