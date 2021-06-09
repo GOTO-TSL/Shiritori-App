@@ -18,6 +18,7 @@ class PlayViewController: UIViewController {
     
     
     var wordArray = [Word]()
+    var myWords = [MyWord]()
     var wordManager = WordManager()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()

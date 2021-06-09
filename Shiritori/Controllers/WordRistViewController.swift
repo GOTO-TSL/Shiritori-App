@@ -13,12 +13,14 @@ class WordRistViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var wordArray = [Word]()
+    var mywords = [MyWord]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(false, animated: false)
         tableView.dataSource = self
         tableView.delegate = self
         

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20E241" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MyWord" representedClassName="MyWord" syncable="YES" codeGenerationType="class">
+        <attribute name="mean" attributeType="String"/>
+        <attribute name="myword" attributeType="String"/>
+    </entity>
     <entity name="Word" representedClassName="Word" syncable="YES" codeGenerationType="class">
         <attribute name="like" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="word" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Word" positionX="-54" positionY="-9" width="128" height="59"/>
+        <element name="Word" positionX="-54" positionY="-9" width="128" height="73"/>
+        <element name="MyWord" positionX="-260.509521484375" positionY="-13.38958740234375" width="128" height="73"/>
     </elements>
 </model>

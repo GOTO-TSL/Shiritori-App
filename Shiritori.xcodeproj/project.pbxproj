@@ -27,6 +27,7 @@
 		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
+		02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +133,13 @@
 		02835591263F938C008B6845 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0283557E263F9306008B6845 /* PlayViewController.swift */,
 				0289A81A2641343E00023D0E /* StartViewController.swift */,
+				0283557E263F9306008B6845 /* PlayViewController.swift */,
 				0289A81C2641347600023D0E /* RuleViewController.swift */,
 				0289A81E2641348B00023D0E /* ResultViewController.swift */,
 				02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */,
 				02524321266936C10005FB76 /* WordRistViewController.swift */,
+				02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				02524329266940D20005FB76 /* WordCell.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
+				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,
