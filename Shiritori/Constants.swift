@@ -18,6 +18,7 @@ struct K {
         static let toresult = "toResult"
         static let towordlist = "toWordRist"
         static let toplay = "toPlay"
+        static let toMean = "toMean"
     }
     struct Timer {
         static let playTime: Int = 10

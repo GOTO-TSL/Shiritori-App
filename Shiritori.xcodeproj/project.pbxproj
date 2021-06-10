@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
+		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
 		02524322266936C10005FB76 /* WordRistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordRistViewController.swift */; };
 		02524329266940D20005FB76 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524327266940D20005FB76 /* WordCell.swift */; };
 		0252432A266940D20005FB76 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02524328266940D20005FB76 /* WordCell.xib */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordRistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRistViewController.swift; sourceTree = "<group>"; };
 		02524327266940D20005FB76 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		02524328266940D20005FB76 /* WordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
@@ -134,12 +136,13 @@
 			isa = PBXGroup;
 			children = (
 				0289A81A2641343E00023D0E /* StartViewController.swift */,
-				0283557E263F9306008B6845 /* PlayViewController.swift */,
 				0289A81C2641347600023D0E /* RuleViewController.swift */,
+				0283557E263F9306008B6845 /* PlayViewController.swift */,
 				0289A81E2641348B00023D0E /* ResultViewController.swift */,
 				02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */,
 				02524321266936C10005FB76 /* WordRistViewController.swift */,
 				02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */,
+				022D71922671D84C001AA4B0 /* MeanViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
+				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,

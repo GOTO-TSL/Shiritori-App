@@ -19,6 +19,16 @@ class MyWordViewController: UITableViewController {
         loadWord()
         tableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.SegueID.toMean {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let distinationVC = segue.destination as? MeanViewController
+                distinationVC?.word = mywords[indexPath.row].myword
+                distinationVC?.mean = mywords[indexPath.row].mean
+            }
+        }
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
