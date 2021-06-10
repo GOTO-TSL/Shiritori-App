@@ -7,18 +7,31 @@
 
 import UIKit
 import CoreData
+import GRDB
 
 class StartViewController: UIViewController {
     
     var wordArray = [Word]()
     var myWords = [MyWord]()
+    var wordsource = WordSource()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let path = dir.appending("/ejdict.sqlite3")
+            do {
+                let dbQueue = try DatabaseQueue(path: path)
+                wordsource.featchWord(dbqueue: dbQueue, inputWord: "dd")
+                wordsource.featchMean(dbqueue: dbQueue, word: wordsource.word)
+            } catch {
+                print("Error \(error)")
+            }
+        }
         
         loadWord()
         

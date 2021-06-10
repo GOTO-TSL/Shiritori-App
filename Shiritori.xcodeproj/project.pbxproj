@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
+		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordRistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordRistViewController.swift */; };
 		02524329266940D20005FB76 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524327266940D20005FB76 /* WordCell.swift */; };
 		0252432A266940D20005FB76 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02524328266940D20005FB76 /* WordCell.xib */; };
@@ -23,18 +24,19 @@
 		0289A81D2641347600023D0E /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81C2641347600023D0E /* RuleViewController.swift */; };
 		0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81E2641348B00023D0E /* ResultViewController.swift */; };
 		0289A82126413DA600023D0E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82026413DA600023D0E /* TimerManager.swift */; };
-		0289A823264186C300023D0E /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A822264186C300023D0E /* WordManager.swift */; };
 		0289A82526418BC400023D0E /* WordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82426418BC400023D0E /* WordData.swift */; };
 		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */; };
+		7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
+		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordRistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRistViewController.swift; sourceTree = "<group>"; };
 		02524327266940D20005FB76 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		02524328266940D20005FB76 /* WordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
@@ -50,12 +52,14 @@
 		0289A81C2641347600023D0E /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		0289A81E2641348B00023D0E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0289A82026413DA600023D0E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
-		0289A822264186C300023D0E /* WordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
 		0289A82426418BC400023D0E /* WordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordData.swift; sourceTree = "<group>"; };
 		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
+		07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.debug.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.debug.xcconfig"; sourceTree = "<group>"; };
+		3B8F9BAFA2562C49D283D1EB /* Pods-Shiritori.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.release.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.release.xcconfig"; sourceTree = "<group>"; };
+		6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shiritori.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +87,8 @@
 			children = (
 				02835579263F9306008B6845 /* Shiritori */,
 				02835578263F9306008B6845 /* Products */,
+				ACD21EEBDACDD946BD2D8B6A /* Pods */,
+				E6208DEB36767BD586E43253 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -114,10 +121,10 @@
 			isa = PBXGroup;
 			children = (
 				0289A82026413DA600023D0E /* TimerManager.swift */,
-				0289A822264186C300023D0E /* WordManager.swift */,
 				0289A82426418BC400023D0E /* WordData.swift */,
 				020E7F08265D2C600090F761 /* GameLogic.swift */,
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
+				023375742672407E00C59023 /* WordSource.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -147,6 +154,23 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		ACD21EEBDACDD946BD2D8B6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */,
+				3B8F9BAFA2562C49D283D1EB /* Pods-Shiritori.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E6208DEB36767BD586E43253 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0283558B263F9307008B6845 /* Build configuration list for PBXNativeTarget "Shiritori" */;
 			buildPhases = (
+				AFC518EB3ED275389FDCD391 /* [CP] Check Pods Manifest.lock */,
 				02835573263F9306008B6845 /* Sources */,
 				02835574263F9306008B6845 /* Frameworks */,
 				02835575263F9306008B6845 /* Resources */,
+				0CD7A26A117C783802444C11 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,13 +239,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CD7A26A117C783802444C11 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shiritori/Pods-Shiritori-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shiritori/Pods-Shiritori-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shiritori/Pods-Shiritori-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFC518EB3ED275389FDCD391 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shiritori-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		02835573263F9306008B6845 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
-				0289A823264186C300023D0E /* WordManager.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */,
@@ -228,6 +295,7 @@
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
+				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
@@ -379,6 +447,7 @@
 		};
 		0283558C263F9307008B6845 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = MyColor;
@@ -398,6 +467,7 @@
 		};
 		0283558D263F9307008B6845 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B8F9BAFA2562C49D283D1EB /* Pods-Shiritori.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = MyColor;

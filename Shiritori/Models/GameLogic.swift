@@ -15,7 +15,7 @@ protocol GameLogicDelegate {
 
 
 struct GameLogic {
-    var gamescore: Int = 0
+    var gamescore: Int = -10
     var delegate: GameLogicDelegate?
     
     func applyRule(textField: UITextField?, endCharacter: Character) {

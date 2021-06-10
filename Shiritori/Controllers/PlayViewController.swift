@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GRDB
 import CoreData
 
 class PlayViewController: UIViewController {
@@ -19,12 +20,13 @@ class PlayViewController: UIViewController {
     
     var wordArray = [Word]()
     var myWords = [MyWord]()
-    var wordManager = WordManager()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
     var timerManager = TimerManager()
+    var wordSource = WordSource()
     var charaEnd: Character = "a"
     var playmode: String?
+    var dbQueue = DatabaseQueue()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -38,11 +40,20 @@ class PlayViewController: UIViewController {
         gameLogic.heartVisible(stackView: FriendShipImage, mode: playmode!)
         
         //delegateの宣言
-        wordManager.delegate = self
         timerManager.delegate = self
         gameLogic.delegate = self
         imageManager.delegate = self
+        wordSource.delegate = self
         TextField.delegate = self
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let path = dir.appending("/ejdict.sqlite3")
+            do {
+                dbQueue = try DatabaseQueue(path: path)
+            } catch {
+                print("Error \(error)")
+            }
+        }
         
         //難易度によって相手の顔を変更
         imageManager.changeFace(mode: playmode!, feeling: "normal")
@@ -95,38 +106,39 @@ extension PlayViewController: UITextFieldDelegate {
     
 }
 
-//MARK: - WordManagerDelegate
-extension PlayViewController: WordManagerDelegate {
-    func didUpdateWord(_ wordManager: WordManager, word: String) {
+//MARK: - WordSourceDelegate
+extension PlayViewController: WordSourceDelegate {
+    func updateMean(_ wordSource: WordSource, mean: String) {
+        //do nothing
+    }
+    func addPlayerWord() {
         DispatchQueue.main.async {
-            print("word get")
             let newWord = Word(context: self.context)
-            newWord.word = word
-            newWord.like = false
+            if let word = self.TextField.text {
+                newWord.word = word
+                newWord.like = false
+            }
             self.wordArray.append(newWord)
             self.saveWord()
-            self.WordLabel.text = word
-            self.charaEnd = word[word.index(before: word.endIndex)]
-            self.TextField.text = ""
         }
+
     }
     
-    func didJudgement(_ wordManager: WordManager, judge: Bool) {
-        print("judgement get")
+    func updateWord(_ wordSource: WordSource, word: String) {
         DispatchQueue.main.async {
-            if judge {
+            print("word get")
+            if word.count > 0 {
                 let newWord = Word(context: self.context)
-                if let word = self.TextField.text {
-                    newWord.word = word
-                    newWord.like = false
-                }
+                newWord.word = word
+                newWord.like = false
                 self.wordArray.append(newWord)
                 self.saveWord()
-                
-                self.wordManager.featchWord(InputWord: self.TextField.text!)
+                self.WordLabel.text = word
+                self.charaEnd = word[word.index(before: word.endIndex)]
                 self.imageManager.changeFace(mode: self.playmode!, feeling: "laugh")
                 self.gameLogic.addPoint()
                 self.imageManager.changeFriendShip(gamescore: self.gameLogic.gamescore, mode: self.playmode!)
+                self.TextField.text = ""
             } else {
                 self.TextField.text = ""
                 self.TextField.placeholder = "Invalid word!"
@@ -134,19 +146,15 @@ extension PlayViewController: WordManagerDelegate {
                 self.gameLogic.subPoint()
                 self.imageManager.changeFriendShip(gamescore: self.gameLogic.gamescore, mode: self.playmode!)
             }
+
         }
     }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
 }
-
 //MARK: - GameLogicDelegate
 extension PlayViewController: GameLogicDelegate {
     func shiritoriSucessed() {
         DispatchQueue.main.async {
-            self.wordManager.judgeWord(InputWord: self.TextField.text!)
+            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: self.TextField.text!)
         }
     }
     
@@ -175,7 +183,7 @@ extension PlayViewController: TimerManagerDelegate {
     
     func gameStart() {
         DispatchQueue.main.async {
-            self.wordManager.featchWord(InputWord: K.alphabet[Int.random(in: 0...24)])
+            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: K.alphabet[Int.random(in: 0...24)])
         }
     }
     
