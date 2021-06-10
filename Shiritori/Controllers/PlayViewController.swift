@@ -108,9 +108,6 @@ extension PlayViewController: UITextFieldDelegate {
 
 //MARK: - WordSourceDelegate
 extension PlayViewController: WordSourceDelegate {
-    func updateMean(_ wordSource: WordSource, mean: String) {
-        //do nothing
-    }
     func addPlayerWord() {
         DispatchQueue.main.async {
             let newWord = Word(context: self.context)

@@ -10,18 +10,14 @@ import GRDB
 
 protocol WordSourceDelegate {
     func updateWord(_ wordSource: WordSource, word: String)
-    func updateMean(_ wordSource: WordSource, mean: String)
     func addPlayerWord()
 }
 
 struct WordSource {
-    var word: String = ""
-    var mean: String = ""
-    var id: String = ""
     
     var delegate: WordSourceDelegate?
     
-    mutating func featchWord(dbqueue: DatabaseQueue, inputWord: String) {
+    func featchWord(dbqueue: DatabaseQueue, inputWord: String) {
         //ゲームスタート時に呼ばれるランダムなワードを取ってくる処理
         if inputWord.count == 1 {
             do {
@@ -61,19 +57,20 @@ struct WordSource {
         }
     }
     
-    mutating func featchMean(dbqueue: DatabaseQueue, word: String) {
+    func featchMean(dbqueue: DatabaseQueue, word: String) -> String {
+        var result = ""
         do {
             try dbqueue.read { db in
                 // Fetch database rows
                 guard let rows = try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(word)'") else {
-                    self.delegate?.updateMean(self, mean: "")
                     return
                 }
                 let mean: String = rows["mean"]
-                self.delegate?.updateMean(self, mean: mean)
+                result = mean
             }
         } catch {
             print("Error \(error)")
         }
+        return result
     }
 }

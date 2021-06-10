@@ -13,7 +13,8 @@ class StartViewController: UIViewController {
     
     var wordArray = [Word]()
     var myWords = [MyWord]()
-    var wordsource = WordSource()
+    var wordSource = WordSource()
+    var dbQueue = DatabaseQueue()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
@@ -25,9 +26,7 @@ class StartViewController: UIViewController {
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let path = dir.appending("/ejdict.sqlite3")
             do {
-                let dbQueue = try DatabaseQueue(path: path)
-                wordsource.featchWord(dbqueue: dbQueue, inputWord: "dd")
-                wordsource.featchMean(dbqueue: dbQueue, word: wordsource.word)
+                dbQueue = try DatabaseQueue(path: path)
             } catch {
                 print("Error \(error)")
             }
@@ -39,7 +38,7 @@ class StartViewController: UIViewController {
             if word.like {
                 let newMyWord = MyWord(context: context)
                 newMyWord.myword = word.word
-                newMyWord.mean = ""
+                newMyWord.mean = wordSource.featchMean(dbqueue: dbQueue, word: newMyWord.myword!)
                 myWords.append(newMyWord)
                 context.delete(word)
                 saveWord()
@@ -49,7 +48,7 @@ class StartViewController: UIViewController {
             }
         }
     }
-    
+    //MARK: - Data Manipulation Methods
     func saveWord() {
         do {
             try context.save()
