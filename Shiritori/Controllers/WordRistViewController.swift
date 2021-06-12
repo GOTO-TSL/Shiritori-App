@@ -24,7 +24,7 @@ class WordRistViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: "WordCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.register(UINib(nibName: "WordListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
         loadWord()
 
@@ -59,11 +59,11 @@ extension WordRistViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! WordCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! WordListCell
         let words = wordArray[indexPath.row]
         
-        cell.wordLabel.text = words.word
-        words.like ? (cell.starImage.image = K.Images.Stars[1]) : (cell.starImage.image = K.Images.Stars[0])
+        cell.WordLabel.text = words.word
+        cell.StarImage.image = wordArray[indexPath.row].like ? K.Images.Stars[1] : K.Images.Stars[0]
         
         return cell
     }

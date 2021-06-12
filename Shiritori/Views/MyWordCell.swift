@@ -1,16 +1,15 @@
 //
-//  WordCell.swift
+//  MyWordCell.swift
 //  Shiritori
 //
-//  Created by 後藤孝輔 on 2021/06/04.
+//  Created by 後藤孝輔 on 2021/06/12.
 //
 
 import UIKit
 
-class WordCell: UITableViewCell {
+class MyWordCell: UITableViewCell {
 
-    @IBOutlet weak var wordLabel: UILabel!
-    @IBOutlet weak var starImage: UIImageView!
+    @IBOutlet weak var MyWordLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

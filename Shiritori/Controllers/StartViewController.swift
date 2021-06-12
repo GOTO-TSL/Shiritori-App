@@ -11,6 +11,7 @@ import GRDB
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var PlayButton: UIButton!
     var wordArray = [Word]()
     var myWords = [MyWord]()
     var wordSource = WordSource()
@@ -22,6 +23,7 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        PlayButton.layer.cornerRadius = 5.0
         
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let path = dir.appending("/ejdict.sqlite3")

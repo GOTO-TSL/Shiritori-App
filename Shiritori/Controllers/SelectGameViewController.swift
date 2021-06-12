@@ -9,9 +9,16 @@ import UIKit
 
 class SelectGameViewController: UIViewController {
     var mode = ""
-
+    
+    @IBOutlet weak var EasyButton: UIButton!
+    @IBOutlet weak var NormalButton: UIButton!
+    @IBOutlet weak var HardButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        EasyButton.layer.cornerRadius = 20.0
+        NormalButton.layer.cornerRadius = 20.0
+        HardButton.layer.cornerRadius = 20.0
     }
     
     @IBAction func modeSelected(_ sender: UIButton) {

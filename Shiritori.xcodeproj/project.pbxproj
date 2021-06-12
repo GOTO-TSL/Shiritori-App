@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020B51C426739050005871D2 /* WordListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B51C226739050005871D2 /* WordListCell.swift */; };
+		020B51C526739050005871D2 /* WordListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020B51C326739050005871D2 /* WordListCell.xib */; };
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
+		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
+		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordRistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordRistViewController.swift */; };
-		02524329266940D20005FB76 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524327266940D20005FB76 /* WordCell.swift */; };
-		0252432A266940D20005FB76 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02524328266940D20005FB76 /* WordCell.xib */; };
 		0283557B263F9306008B6845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557A263F9306008B6845 /* AppDelegate.swift */; };
 		0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557C263F9306008B6845 /* SceneDelegate.swift */; };
 		0283557F263F9306008B6845 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557E263F9306008B6845 /* PlayViewController.swift */; };
@@ -32,13 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020B51C226739050005871D2 /* WordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCell.swift; sourceTree = "<group>"; };
+		020B51C326739050005871D2 /* WordListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordListCell.xib; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
+		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
+		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordRistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRistViewController.swift; sourceTree = "<group>"; };
-		02524327266940D20005FB76 /* WordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
-		02524328266940D20005FB76 /* WordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
 		02835577263F9306008B6845 /* Shiritori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiritori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283557A263F9306008B6845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0283557C263F9306008B6845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,8 +134,10 @@
 			isa = PBXGroup;
 			children = (
 				02835580263F9306008B6845 /* Main.storyboard */,
-				02524327266940D20005FB76 /* WordCell.swift */,
-				02524328266940D20005FB76 /* WordCell.xib */,
+				020B51C226739050005871D2 /* WordListCell.swift */,
+				020B51C326739050005871D2 /* WordListCell.xib */,
+				02331E082674B37100FABF0B /* MyWordCell.swift */,
+				02331E092674B37100FABF0B /* MyWordCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,8 +233,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */,
 				02835587263F9307008B6845 /* LaunchScreen.storyboard in Resources */,
-				0252432A266940D20005FB76 /* WordCell.xib in Resources */,
+				020B51C526739050005871D2 /* WordListCell.xib in Resources */,
 				02835584263F9307008B6845 /* Assets.xcassets in Resources */,
 				02835582263F9306008B6845 /* Main.storyboard in Resources */,
 			);
@@ -283,17 +290,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020B51C426739050005871D2 /* WordListCell.swift in Sources */,
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */,
 				02524322266936C10005FB76 /* WordRistViewController.swift in Sources */,
-				02524329266940D20005FB76 /* WordCell.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
+				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,

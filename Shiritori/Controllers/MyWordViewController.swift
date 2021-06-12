@@ -16,6 +16,7 @@ class MyWordViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(false, animated: false)
+        tableView.register(UINib(nibName: "MyWordCell", bundle: nil), forCellReuseIdentifier: "MyWordCell")
         loadWord()
         tableView.reloadData()
     }
@@ -36,8 +37,8 @@ class MyWordViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyWordCell", for: indexPath)
-        cell.textLabel?.text = mywords[indexPath.row].myword
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyWordCell", for: indexPath) as! MyWordCell
+        cell.MyWordLabel.text = mywords[indexPath.row].myword
         return cell
     }
     
@@ -57,6 +58,10 @@ class MyWordViewController: UITableViewController {
             print("Error saving word array, \(error)")
             
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toMean", sender: nil)
     }
 
     @IBAction func removePressed(_ sender: UIBarButtonItem) {

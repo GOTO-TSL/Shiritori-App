@@ -13,18 +13,20 @@ class ResultViewController: UIViewController {
     var playmode: String?
     var imageManager = ImageManager()
     
-    @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet weak var WordsButton: UIButton!
+    @IBOutlet weak var HomeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        WordsButton.layer.cornerRadius = 5.0
+        HomeButton.layer.cornerRadius = 5.0
+        
         imageManager.delegate = self
-        
-        
-        ScoreLabel.text = "SCORE: \(score ?? 0)"
         imageManager.changeResultImage(gamescore: score!, mode: playmode!)
         
     }
