@@ -10,6 +10,7 @@
 		020B51C426739050005871D2 /* WordListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B51C226739050005871D2 /* WordListCell.swift */; };
 		020B51C526739050005871D2 /* WordListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020B51C326739050005871D2 /* WordListCell.xib */; };
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
+		020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 020F1A682675E67900FD85F0 /* ejdict.sqlite3 */; };
 		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
@@ -37,6 +38,7 @@
 		020B51C226739050005871D2 /* WordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCell.swift; sourceTree = "<group>"; };
 		020B51C326739050005871D2 /* WordListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordListCell.xib; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/Practice/Shiritori-App/Shiritori/ejdict.sqlite3"; sourceTree = "<absolute>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		020F1A6A2675E68F00FD85F0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				020F1A682675E67900FD85F0 /* ejdict.sqlite3 */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		02193A89266FB6AA003E459E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		02835579263F9306008B6845 /* Shiritori */ = {
 			isa = PBXGroup;
 			children = (
+				020F1A6A2675E68F00FD85F0 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
 				0283557A263F9306008B6845 /* AppDelegate.swift */,
 				0283557C263F9306008B6845 /* SceneDelegate.swift */,
@@ -233,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */,
 				02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */,
 				02835587263F9307008B6845 /* LaunchScreen.storyboard in Resources */,
 				020B51C526739050005871D2 /* WordListCell.xib in Resources */,
