@@ -9,7 +9,7 @@
 
 しりとりが成功するとハートゲージがたまり，満タンになるとゲームクリアとなります
 ## DEMO
-![ShiritoriAppDemo](https://user-images.githubusercontent.com/84612341/121770401-14dc7780-cba4-11eb-8ee0-6f155eab9a77.gif)
+<!-- ![ShiritoriAppDemo](https://user-images.githubusercontent.com/84612341/121770401-14dc7780-cba4-11eb-8ee0-6f155eab9a77.gif) -->
 
  
 ## Features
