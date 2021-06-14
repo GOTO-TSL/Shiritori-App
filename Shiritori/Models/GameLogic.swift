@@ -18,6 +18,7 @@ struct GameLogic {
     var gamescore: Int = -10
     var delegate: GameLogicDelegate?
     
+    //しりとりのルールに則っているか判定する
     func applyRule(textField: UITextField?, endCharacter: Character) {
         if let safetf = textField {
             if safetf.text != "" {
@@ -46,6 +47,7 @@ struct GameLogic {
         }
     }
     
+    //ゲームスコアの計算
     mutating func addPoint() {
         self.gamescore += 10
     }
@@ -58,6 +60,7 @@ struct GameLogic {
         }
     }
     
+    //EASYモードだけハートを一列だけにする
     func heartVisible(stackView: UIStackView, mode: String) {
         if mode == "EASY" {
             if let view = stackView.arrangedSubviews as? [UIStackView] {

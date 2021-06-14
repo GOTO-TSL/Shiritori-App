@@ -141,7 +141,7 @@
             </objects>
             <point key="canvasLocation" x="-284.05797101449275" y="137.94642857142856"/>
         </scene>
-        <!--My Word View Controller-->
+        <!--MyWords-->
         <scene sceneID="6wd-cz-qEK">
             <objects>
                 <tableViewController id="jJT-kJ-1vG" customClass="MyWordViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
@@ -155,7 +155,7 @@
                             <outlet property="delegate" destination="jJT-kJ-1vG" id="uJA-ZE-ZFP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="YHl-Ui-eCG">
+                    <navigationItem key="navigationItem" title="MyWords" id="YHl-Ui-eCG">
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="E57-ob-CXh">
                             <connections>
                                 <action selector="removePressed:" destination="jJT-kJ-1vG" id="LJK-Qf-fxL"/>
@@ -170,7 +170,7 @@
             </objects>
             <point key="canvasLocation" x="534.78260869565224" y="894.64285714285711"/>
         </scene>
-        <!--Mean View Controller-->
+        <!--Dictionary-->
         <scene sceneID="0Uo-6t-Mf1">
             <objects>
                 <viewController id="AvL-Vv-VHw" customClass="MeanViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
@@ -233,7 +233,7 @@
                             <constraint firstItem="D4v-qK-r2B" firstAttribute="top" secondItem="0nD-dW-Jr2" secondAttribute="top" id="tIy-Q8-lU3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="TNp-cR-Yxu"/>
+                    <navigationItem key="navigationItem" title="Dictionary" id="TNp-cR-Yxu"/>
                     <connections>
                         <outlet property="meanLabel" destination="jzO-MA-7JY" id="hCf-43-WfK"/>
                         <outlet property="myWordLabel" destination="XtN-sa-cub" id="Lmy-fc-CEj"/>
@@ -373,6 +373,7 @@
                                             <imageReference key="image" image="arrowshape.turn.up.left.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
                                         <connections>
+                                            <action selector="QuitPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c60-Nx-t0m"/>
                                             <segue destination="S1X-48-eHe" kind="show" id="UHQ-gs-QV4"/>
                                         </connections>
                                     </button>
@@ -545,7 +546,7 @@
             </objects>
             <point key="canvasLocation" x="1821.7391304347827" y="160.71428571428569"/>
         </scene>
-        <!--Rule View Controller-->
+        <!--Rule-->
         <scene sceneID="wvJ-Fr-v9I">
             <objects>
                 <viewController id="xaP-vD-bZQ" customClass="RuleViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
@@ -611,7 +612,7 @@
                             <constraint firstItem="6dc-Bh-1hB" firstAttribute="bottom" secondItem="tfB-Ev-Hgs" secondAttribute="bottom" id="tzF-34-duw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tGr-P2-O2M"/>
+                    <navigationItem key="navigationItem" title="Rule" id="tGr-P2-O2M"/>
                     <connections>
                         <outlet property="ExpLabel" destination="0bp-Pg-HuI" id="HYD-a0-Kda"/>
                     </connections>
@@ -744,10 +745,10 @@
             </objects>
             <point key="canvasLocation" x="2849" y="138"/>
         </scene>
-        <!--Word Rist View Controller-->
+        <!--WordList-->
         <scene sceneID="Xlb-tW-M0G">
             <objects>
-                <viewController id="3l4-EJ-y84" customClass="WordRistViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WordList" title="WordList" id="3l4-EJ-y84" customClass="WordListViewController" customModule="Shiritori" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yAr-BU-qpI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -766,7 +767,7 @@
                             <constraint firstItem="rFc-nv-D2p" firstAttribute="top" secondItem="qaw-lw-dMa" secondAttribute="top" id="y1B-vV-8ah"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="z86-nO-Fca"/>
+                    <navigationItem key="navigationItem" title="Words Used" id="z86-nO-Fca"/>
                     <connections>
                         <outlet property="tableView" destination="rFc-nv-D2p" id="PEI-qv-Aye"/>
                     </connections>

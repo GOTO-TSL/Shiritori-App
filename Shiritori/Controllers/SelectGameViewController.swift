@@ -21,11 +21,18 @@ class SelectGameViewController: UIViewController {
         HardButton.layer.cornerRadius = 20.0
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    //モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
         mode = sender.currentTitle!
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
     }
     
+    //PlayViewControllerへの値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.SegueID.toplay {
             let destinationVC = segue.destination as! PlayViewController

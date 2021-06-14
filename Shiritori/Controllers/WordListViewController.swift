@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class WordRistViewController: UIViewController {
+class WordListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -20,16 +20,22 @@ class WordRistViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(false, animated: false)
         tableView.dataSource = self
         tableView.delegate = self
         
+        //カスタムセルを有効化
         tableView.register(UINib(nibName: "WordListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         
         loadWord()
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    //MARK: - Database Management Methods
     func saveWord() {
         do {
             try context.save()
@@ -53,7 +59,7 @@ class WordRistViewController: UIViewController {
 }
 
 //MARK: - TableView DataSource Methods
-extension WordRistViewController: UITableViewDataSource {
+extension WordListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return wordArray.count
     }
@@ -72,7 +78,7 @@ extension WordRistViewController: UITableViewDataSource {
 }
 
 //MARK: - TableView Delegate Methods
-extension WordRistViewController: UITableViewDelegate {
+extension WordListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         wordArray[indexPath.row].like = !wordArray[indexPath.row].like
         tableView.reloadData()

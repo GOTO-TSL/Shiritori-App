@@ -21,7 +21,6 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
         
         WordsButton.layer.cornerRadius = 5.0
         HomeButton.layer.cornerRadius = 5.0
@@ -29,6 +28,12 @@ class ResultViewController: UIViewController {
         imageManager.delegate = self
         imageManager.changeResultImage(gamescore: score!, mode: playmode!)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
 }

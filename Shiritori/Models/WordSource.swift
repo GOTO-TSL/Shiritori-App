@@ -57,6 +57,7 @@ struct WordSource {
         }
     }
     
+    //英単語の意味をとってっくる処理
     func featchMean(dbqueue: DatabaseQueue, word: String) -> String {
         var result = ""
         do {

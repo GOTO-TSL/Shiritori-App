@@ -18,13 +18,15 @@ protocol ImageManagerDelegate {
 struct ImageManager {
     
     var delegate: ImageManagerDelegate?
-
+    
+    //ゲーム開始時に難易度に応じて顔画像を変更
     func changeFace(mode: String, feeling: String) {
         if let k = K.feeling[feeling] {
             self.delegate?.didUpdateFace(mode: mode, index: k)
         }
     }
     
+    //ゲームスコアに対応してハート画像を変更
     func changeFriendShip(gamescore: Int, mode: String) {
         if mode == "EASY" {
             let index = gamescore/10 - 1
@@ -97,6 +99,7 @@ struct ImageManager {
         }
     }
     
+    //ゲームの結果に応じてresult画面の画像を変更
     func changeResultImage(gamescore: Int, mode: String) {
         if mode == "EASY" {
             if gamescore >= 50 {

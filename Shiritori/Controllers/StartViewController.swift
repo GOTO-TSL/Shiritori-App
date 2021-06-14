@@ -21,11 +21,9 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.setNavigationBarHidden(true, animated: false)
 //        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
-        
-        createDatabase()
+        //データベースのパスを取得しデータベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let path = dir.appending("/ejdict.sqlite3")
             do {
@@ -35,8 +33,10 @@ class StartViewController: UIViewController {
             }
         }
         
+        createDatabase()
         loadWord()
         
+        //単語リストに単語を追加
         for word in wordArray {
             if word.like {
                 let newMyWord = MyWord(context: context)
@@ -51,6 +51,13 @@ class StartViewController: UIViewController {
             }
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //ナビゲーションバーを非表示
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
     //MARK: - Data Manipulation Methods
     func saveWord() {
         do {

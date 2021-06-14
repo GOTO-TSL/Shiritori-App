@@ -32,10 +32,6 @@ class PlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //navigationBarを非表示
-        navigationController?.setNavigationBarHidden(true, animated: false)
-        
         //難易度によってハートを非表示
         gameLogic.heartVisible(stackView: FriendShipImage, mode: playmode!)
         
@@ -46,6 +42,7 @@ class PlayViewController: UIViewController {
         wordSource.delegate = self
         TextField.delegate = self
         
+        //データベースのパスを取得し，データベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let path = dir.appending("/ejdict.sqlite3")
             do {
@@ -54,13 +51,17 @@ class PlayViewController: UIViewController {
                 print("Error \(error)")
             }
         }
-        
         //難易度によって相手の顔を変更
         imageManager.changeFace(mode: playmode!, feeling: "normal")
-        
         //タイマー処理
         timerManager.gameTimer()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //navigationBarを非表示
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     //ボタンが押されたときに実行される処理
@@ -68,6 +69,7 @@ class PlayViewController: UIViewController {
         gameLogic.applyRule(textField: TextField, endCharacter: charaEnd)
     }
     
+    //ResultViewControllerへの値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.SegueID.toresult {
             let destinationVC = segue.destination as! ResultViewController
@@ -75,6 +77,11 @@ class PlayViewController: UIViewController {
             destinationVC.playmode = self.playmode
         }
     }
+    
+    @IBAction func QuitPressed(_ sender: UIButton) {
+        timerManager.stopTimer()
+    }
+    
     
     func saveWord() {
         do {

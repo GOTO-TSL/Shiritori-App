@@ -16,7 +16,7 @@
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
-		02524322266936C10005FB76 /* WordRistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordRistViewController.swift */; };
+		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
 		0283557B263F9306008B6845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557A263F9306008B6845 /* AppDelegate.swift */; };
 		0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557C263F9306008B6845 /* SceneDelegate.swift */; };
 		0283557F263F9306008B6845 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557E263F9306008B6845 /* PlayViewController.swift */; };
@@ -44,7 +44,7 @@
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
-		02524321266936C10005FB76 /* WordRistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRistViewController.swift; sourceTree = "<group>"; };
+		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		02835577263F9306008B6845 /* Shiritori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiritori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283557A263F9306008B6845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0283557C263F9306008B6845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,10 +158,10 @@
 			children = (
 				0289A81A2641343E00023D0E /* StartViewController.swift */,
 				0289A81C2641347600023D0E /* RuleViewController.swift */,
+				02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */,
 				0283557E263F9306008B6845 /* PlayViewController.swift */,
 				0289A81E2641348B00023D0E /* ResultViewController.swift */,
-				02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */,
-				02524321266936C10005FB76 /* WordRistViewController.swift */,
+				02524321266936C10005FB76 /* WordListViewController.swift */,
 				02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */,
 				022D71922671D84C001AA4B0 /* MeanViewController.swift */,
 			);
@@ -307,7 +307,7 @@
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */,
-				02524322266936C10005FB76 /* WordRistViewController.swift in Sources */,
+				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,

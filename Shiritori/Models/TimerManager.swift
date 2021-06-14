@@ -20,6 +20,7 @@ class TimerManager {
     var timer = Timer()
     var timerCount = 0
     
+    //ゲームの開始から終了までカウントするタイマー
     func gameTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.gameCount), userInfo: nil, repeats: true)
     }
@@ -54,6 +55,10 @@ class TimerManager {
             let countNow = "..."
             self.delegate?.didUpdateComment(comment: countNow)
         }
+    }
+    
+    func stopTimer() {
+        timer.invalidate()
     }
 }
 
