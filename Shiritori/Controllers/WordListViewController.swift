@@ -22,7 +22,7 @@ class WordListViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
+    
         //カスタムセルを有効化
         tableView.register(UINib(nibName: "WordListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
         

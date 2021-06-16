@@ -26,7 +26,10 @@ class ResultViewController: UIViewController {
         HomeButton.layer.cornerRadius = 5.0
         
         imageManager.delegate = self
-        imageManager.changeResultImage(gamescore: score!, mode: playmode!)
+        
+        guard let gamescore = score else { return }
+        guard let mode = playmode else { return }
+        imageManager.changeResultImage(gamescore: gamescore, mode: mode)
         
     }
     

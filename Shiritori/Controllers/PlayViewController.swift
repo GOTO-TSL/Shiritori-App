@@ -11,12 +11,12 @@ import CoreData
 
 class PlayViewController: UIViewController {
 
+    @IBOutlet weak var modeLabel: UILabel!
     @IBOutlet weak var WordLabel: UILabel!
     @IBOutlet weak var TimeBar: UIProgressView!
     @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var FaceImage: UIImageView!
     @IBOutlet weak var FriendShipImage: UIStackView!
-    
     
     var wordArray = [Word]()
     var myWords = [MyWord]()
@@ -32,13 +32,16 @@ class PlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let mode = playmode else { return }
         //難易度によってハートを非表示
-        gameLogic.heartVisible(stackView: FriendShipImage, mode: playmode!)
+        gameLogic.heartVisible(stackView: FriendShipImage, mode: mode)
+        changeModeLabel(mode: mode)
         
         //delegateの宣言
-        timerManager.delegate = self
         gameLogic.delegate = self
         imageManager.delegate = self
+        timerManager.delegate = self
         wordSource.delegate = self
         TextField.delegate = self
         
@@ -62,6 +65,15 @@ class PlayViewController: UIViewController {
         super.viewWillAppear(animated)
         //navigationBarを非表示
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+            //キーボードを自動的に表示
+            self.TextField.keyboardType = .alphabet
+            self.TextField.becomeFirstResponder()
+            
     }
 
     //ボタンが押されたときに実行される処理
@@ -72,16 +84,36 @@ class PlayViewController: UIViewController {
     //ResultViewControllerへの値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.SegueID.toresult {
-            let destinationVC = segue.destination as! ResultViewController
-            destinationVC.score = self.gameLogic.gamescore
-            destinationVC.playmode = self.playmode
+            
+            let storyboard: UIStoryboard = self.storyboard!
+            let navi: UINavigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+            let ResultVC = navi.viewControllers[0] as! ResultViewController
+            ResultVC.score = self.gameLogic.gamescore
+            ResultVC.playmode = self.playmode
+//            let destinationVC = segue.destination as! ResultViewController
+//            destinationVC.score = self.gameLogic.gamescore
+//            destinationVC.playmode = self.playmode
         }
     }
     
     @IBAction func QuitPressed(_ sender: UIButton) {
+        self.TextField.resignFirstResponder()
         timerManager.stopTimer()
     }
     
+    func changeModeLabel(mode: String) {
+        if mode == "EASY" {
+            modeLabel.text = mode
+            modeLabel.backgroundColor = .systemGreen
+        } else if mode == "NORMAL" {
+            modeLabel.text = mode
+            modeLabel.backgroundColor = .systemBlue
+        } else {
+            modeLabel.text = mode
+            modeLabel.backgroundColor = .systemPink
+        }
+    }
+
     
     func saveWord() {
         do {
@@ -193,6 +225,7 @@ extension PlayViewController: TimerManagerDelegate {
     
     func gotoNextView() {
         DispatchQueue.main.async {
+//            self.present(navi, animated: true, completion: nil)
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
         }
     }
@@ -244,6 +277,13 @@ extension PlayViewController: ImageManagerDelegate {
     
     func gotoResultView() {
         DispatchQueue.main.async {
+//            let storyboard: UIStoryboard = self.storyboard!
+//            let navi: UINavigationController = storyboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
+//            let ResultVC = navi.viewControllers[0] as! ResultViewController
+//            ResultVC.score = self.gameLogic.gamescore
+//            ResultVC.playmode = self.playmode
+//
+//            self.present(navi, animated: true, completion: nil)
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
             self.timerManager.timer.invalidate()
         }

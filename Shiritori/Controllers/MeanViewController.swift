@@ -19,7 +19,21 @@ class MeanViewController: UIViewController {
         super.viewDidLoad()
         
         myWordLabel.text = word
-        meanLabel.text = mean
+        meanLabel.text = stringReshape(for: mean)
+    }
+    
+    func stringReshape(for string: String?) -> String {
+        guard let str = string else { return "" }
+        if str.contains("/") {
+            let stringArray = str.split(separator: "/")
+            var newstring = ""
+            for word in stringArray {
+                newstring += ("\n" + word)
+            }
+            return newstring
+        } else {
+            return str
+        }
     }
     
 

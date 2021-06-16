@@ -54,7 +54,7 @@ class StartViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //ナビゲーションバーを非表示
+
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
