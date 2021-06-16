@@ -23,12 +23,12 @@
 ## Installation
 
 ### CocoaPods
-Podfile:
+<!-- Podfile:
 ```bash
 pod 'GRDB.swift'
-```
+``` -->
 ### Swift Package Manager
-https://github.com/groue/GRDB.swift.git
+<!-- https://github.com/groue/GRDB.swift.git -->
  
 ## Usage
  
