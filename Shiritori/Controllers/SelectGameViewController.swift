@@ -18,6 +18,8 @@ class SelectGameViewController: UIViewController {
     @IBOutlet weak var normalFace: UIImageView!
     @IBOutlet weak var hardFace: UIImageView!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,17 +41,11 @@ class SelectGameViewController: UIViewController {
     //モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
         mode = sender.currentTitle!
+        defaults.set(mode, forKey: "playmode")
         changeHeroID(mode: mode)
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
     }
     
-    //PlayViewControllerへの値渡し
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.SegueID.toplay {
-            let destinationVC = segue.destination as! PlayViewController
-            destinationVC.playmode = mode
-        }
-    }
     
     func changeHeroID(mode: String) {
         if mode == "EASY" {

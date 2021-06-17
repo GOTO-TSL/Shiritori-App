@@ -15,8 +15,8 @@ protocol GameLogicDelegate {
 
 
 struct GameLogic {
-    var gamescore: Int = -10
     var delegate: GameLogicDelegate?
+    let defaults = UserDefaults.standard
     
     //しりとりのルールに則っているか判定する
     func applyRule(textField: UITextField?, endCharacter: Character) {
@@ -49,14 +49,18 @@ struct GameLogic {
     
     //ゲームスコアの計算
     mutating func addPoint() {
-        self.gamescore += 10
+        let newScore = defaults.integer(forKey: "score") + 10
+        defaults.set(newScore, forKey: "score")
     }
     
     mutating func subPoint() {
-        if self.gamescore <= 0 {
-            self.gamescore = 0
+        var currentScore = defaults.integer(forKey: "score")
+        if currentScore <= 0 {
+            currentScore = 0
+            defaults.set(currentScore, forKey: "score")
         } else {
-            self.gamescore -= 10
+            let newScore = currentScore - 10
+            defaults.set(newScore, forKey: "score")
         }
     }
     

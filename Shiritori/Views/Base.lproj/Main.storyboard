@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="59e-li-N38">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e0k-dn-jUn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-9Z-k5w">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="auz-ad-pBL">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="256.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="271.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OGC-Gn-Ar8">
-                                                <rect key="frame" x="66" y="90" width="282" height="76.5"/>
+                                                <rect key="frame" x="66" y="97.5" width="282" height="76.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="英単語しりとり" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvq-UG-nZW">
                                                         <rect key="frame" x="0.0" y="0.0" width="282" height="48"/>
@@ -47,10 +47,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seO-h5-gkG">
-                                        <rect key="frame" x="0.0" y="258.5" width="414" height="257"/>
+                                        <rect key="frame" x="0.0" y="273.5" width="414" height="271"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
-                                                <rect key="frame" x="72" y="-6.5" width="270" height="270"/>
+                                                <rect key="frame" x="72" y="0.5" width="270" height="270"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -59,10 +59,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWd-GL-Ult">
-                                        <rect key="frame" x="0.0" y="517.5" width="414" height="256.5"/>
+                                        <rect key="frame" x="0.0" y="546.5" width="414" height="271.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TFk-BK-b8n">
-                                                <rect key="frame" x="107" y="38" width="200" height="60"/>
+                                                <rect key="frame" x="107" y="46" width="200" height="60"/>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="60" id="MV0-ah-Nso"/>
@@ -80,7 +80,7 @@
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-V0-ZsB">
-                                                <rect key="frame" x="132" y="153" width="150" height="50"/>
+                                                <rect key="frame" x="132" y="161" width="150" height="50"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hty-NY-RG4" userLabel="helpButton">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -92,7 +92,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="xaP-vD-bZQ" kind="show" id="O5N-g3-WGs"/>
+                                                            <segue destination="Hxp-TR-Sq8" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="O5N-g3-WGs"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-mh-8Zd" userLabel="wordListButton">
@@ -102,7 +102,7 @@
                                                         </constraints>
                                                         <state key="normal" image="listicon"/>
                                                         <connections>
-                                                            <segue destination="jJT-kJ-1vG" kind="show" id="jLP-dM-Eli"/>
+                                                            <segue destination="Ohr-Em-Lfq" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="jLP-dM-Eli"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -155,6 +155,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MyWords" id="YHl-Ui-eCG">
+                        <barButtonItem key="leftBarButtonItem" title="back" image="arrowshape.turn.up.backward.fill" catalog="system" id="ga0-EJ-WHi">
+                            <connections>
+                                <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="ceV-nw-QTe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="trash" id="E57-ob-CXh">
                             <connections>
                                 <action selector="removePressed:" destination="jJT-kJ-1vG" id="LJK-Qf-fxL"/>
@@ -167,7 +172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3w-aZ-eK7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="493" y="887"/>
+            <point key="canvasLocation" x="2313.04347826087" y="886.60714285714278"/>
         </scene>
         <!--Dictionary-->
         <scene sceneID="0Uo-6t-Mf1">
@@ -233,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LG1-Gt-PDd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="887"/>
+            <point key="canvasLocation" x="3091.304347826087" y="886.60714285714278"/>
         </scene>
         <!--Select Game View Controller-->
         <scene sceneID="CWz-CK-4jM">
@@ -392,7 +397,7 @@
                                     <imageReference key="image" image="house.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                 </state>
                                 <connections>
-                                    <segue destination="59e-li-N38" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Pw9-Wq-iIl"/>
+                                    <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="tO2-sB-ptH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -627,7 +632,7 @@
                         <outlet property="TimeBar" destination="O6f-nY-tkt" id="zt8-7u-3gl"/>
                         <outlet property="WordLabel" destination="Ruj-rW-0TM" id="cFD-9F-308"/>
                         <outlet property="modeLabel" destination="Vc4-WS-gTY" id="oyB-zA-Fcp"/>
-                        <segue destination="Dfe-TN-wz9" kind="presentation" identifier="toResult" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="y64-BX-8Wf"/>
+                        <segue destination="da3-aV-zKm" kind="presentation" identifier="toResult" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="trG-CC-Rg8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -693,14 +698,20 @@
                             <constraint firstItem="6dc-Bh-1hB" firstAttribute="trailing" secondItem="H5h-0i-8GW" secondAttribute="trailing" id="hpt-Qp-CnW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Rule" id="tGr-P2-O2M"/>
+                    <navigationItem key="navigationItem" title="Rule" id="tGr-P2-O2M">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.backward.fill" catalog="system" id="2GA-Qb-nSA">
+                            <connections>
+                                <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="wm4-IA-Vdj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="ExpLabel" destination="0bp-Pg-HuI" id="HYD-a0-Kda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhH-dB-EKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-522" y="895"/>
+            <point key="canvasLocation" x="386.95652173913044" y="894.64285714285711"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="cW8-aw-XwD">
@@ -711,13 +722,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="sds-0B-S9V">
-                                <rect key="frame" x="5" y="98" width="404" height="754"/>
+                                <rect key="frame" x="5" y="54" width="404" height="798"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AfF-sD-7xm" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="404" height="251.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="404" height="266"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="730-FK-HGo">
-                                                <rect key="frame" x="97" y="127" width="210" height="57"/>
+                                                <rect key="frame" x="97" y="134.5" width="210" height="57"/>
                                                 <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -729,16 +740,16 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMM-LJ-b0R" userLabel="MiddleView">
-                                        <rect key="frame" x="0.0" y="251.5" width="404" height="251"/>
+                                        <rect key="frame" x="0.0" y="266" width="404" height="266"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bpL-TU-au8">
-                                                <rect key="frame" x="10" y="0.0" width="384" height="251"/>
+                                                <rect key="frame" x="10" y="0.0" width="384" height="266"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happyEndRight1" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-GC-ggU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="251"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="192" height="266"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happyEndLeft" translatesAutoresizingMaskIntoConstraints="NO" id="kGq-4f-eds">
-                                                        <rect key="frame" x="192" y="0.0" width="192" height="251"/>
+                                                        <rect key="frame" x="192" y="0.0" width="192" height="266"/>
                                                     </imageView>
                                                 </subviews>
                                             </stackView>
@@ -751,10 +762,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-XN-s3a" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="502.5" width="404" height="251.5"/>
+                                        <rect key="frame" x="0.0" y="532" width="404" height="266"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="Apa-V9-zZx">
-                                                <rect key="frame" x="102" y="47" width="200" height="158"/>
+                                                <rect key="frame" x="102" y="54" width="200" height="158"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TAq-0Q-RTa">
                                                         <rect key="frame" x="0.0" y="0.0" width="200" height="70"/>
@@ -768,7 +779,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <segue destination="3l4-EJ-y84" kind="show" id="voS-AG-aUu"/>
+                                                            <segue destination="buY-Lv-XCc" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="voS-AG-aUu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i3Q-5V-EV2">
@@ -783,7 +794,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="hero_unwindToRootViewController" destination="da3-aV-zKm" eventType="touchUpInside" id="4Fb-rv-e7F"/>
+                                                            <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xKv-EY-u8v"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -810,9 +821,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="JXX-e1-INW"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="HomeButton" destination="i3Q-5V-EV2" id="lBd-gH-sK6"/>
                         <outlet property="WordsButton" destination="TAq-0Q-RTa" id="zgm-kn-f5W"/>
@@ -823,7 +831,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-XD-IQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4668.115942028986" y="137.94642857142856"/>
+            <point key="canvasLocation" x="3736" y="153"/>
         </scene>
         <!--WordList-->
         <scene sceneID="Xlb-tW-M0G">
@@ -847,7 +855,13 @@
                             <constraint firstItem="rFc-nv-D2p" firstAttribute="top" secondItem="qaw-lw-dMa" secondAttribute="top" id="pVR-mc-cLW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Words Used" id="z86-nO-Fca"/>
+                    <navigationItem key="navigationItem" title="Words Used" id="z86-nO-Fca">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrowshape.turn.up.backward.fill" catalog="system" id="CMt-tm-cFe">
+                            <connections>
+                                <segue destination="da3-aV-zKm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="PQN-3t-9GR"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -857,56 +871,73 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfb-Tl-39F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5572.4637681159429" y="137.94642857142856"/>
+            <point key="canvasLocation" x="5623.188405797102" y="152.67857142857142"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="lWR-bF-n0j">
+        <scene sceneID="uQX-mr-V77">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="59e-li-N38" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ohr-Em-Lfq" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dYJ-Xi-GeA">
+                    <navigationItem key="navigationItem" id="pLF-l7-bzG"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M67-gv-acl">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="e0k-dn-jUn" kind="relationship" relationship="rootViewController" id="fJb-NQ-lsh"/>
+                        <segue destination="jJT-kJ-1vG" kind="relationship" relationship="rootViewController" id="0SU-Z9-K25"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dDh-k4-ZKN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vLK-er-Sn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-284.05797101449275" y="137.94642857142856"/>
+            <point key="canvasLocation" x="1402.8985507246377" y="886.60714285714278"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="BHP-s8-weP">
+        <scene sceneID="oN9-1q-jGI">
             <objects>
-                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Dfe-TN-wz9" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hxp-TR-Sq8" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="lQe-Hp-j7h"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AlK-Iu-xUI">
+                    <navigationItem key="navigationItem" id="dmO-vH-nFQ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fz4-As-qLq">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
-                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="da3-aV-zKm" kind="relationship" relationship="rootViewController" id="m3d-6U-ODc"/>
+                        <segue destination="xaP-vD-bZQ" kind="relationship" relationship="rootViewController" id="nyL-jf-76n"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NVZ-nh-90n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ooG-BG-lxQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3757.971014492754" y="137.94642857142856"/>
+            <point key="canvasLocation" x="-523.1884057971015" y="894.64285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Eic-YZ-OS4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="buY-Lv-XCc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jQP-7t-yk4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3l4-EJ-y84" kind="relationship" relationship="rootViewController" id="BsO-JI-WyB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DIy-6j-rmi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4713.04347826087" y="152.67857142857142"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="voS-AG-aUu"/>
+        <segue reference="PQN-3t-9GR"/>
         <segue reference="UHQ-gs-QV4"/>
+        <segue reference="xKv-EY-u8v"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="brankheart" width="270" height="270"/>
         <image name="friends" width="270" height="270"/>

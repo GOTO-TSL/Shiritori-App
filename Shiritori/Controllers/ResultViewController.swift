@@ -9,9 +9,8 @@ import UIKit
 
 class ResultViewController: UIViewController {
     
-    var score: Int?
-    var playmode: String?
     var imageManager = ImageManager()
+    let defaults = UserDefaults.standard
     
     @IBOutlet weak var leftImage: UIImageView!
     @IBOutlet weak var rightImage: UIImageView!
@@ -26,10 +25,10 @@ class ResultViewController: UIViewController {
         HomeButton.layer.cornerRadius = 5.0
         
         imageManager.delegate = self
+        let score = defaults.integer(forKey: "score")
+        guard let mode = defaults.string(forKey: "playmode") else { return }
         
-        guard let gamescore = score else { return }
-        guard let mode = playmode else { return }
-        imageManager.changeResultImage(gamescore: gamescore, mode: mode)
+        imageManager.changeResultImage(gamescore: score, mode: mode)
         
     }
     

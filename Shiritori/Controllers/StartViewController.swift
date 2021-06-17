@@ -36,6 +36,16 @@ class StartViewController: UIViewController {
         createDatabase()
         loadWord()
         
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         //単語リストに単語を追加
         for word in wordArray {
             if word.like {
@@ -50,12 +60,6 @@ class StartViewController: UIViewController {
                 saveWord()
             }
         }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //MARK: - Data Manipulation Methods

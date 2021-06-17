@@ -21,7 +21,7 @@ struct K {
         static let toMean = "toMean"
     }
     struct Timer {
-        static let playTime: Int = 1
+        static let playTime: Int = 60
         static let countDownTime: Int = 4
     }
     
