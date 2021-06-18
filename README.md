@@ -19,6 +19,7 @@
 ## Requirement
  
 * GRDB 5.8.0
+* Hero 1.6.1
  
 ## Installation
 
