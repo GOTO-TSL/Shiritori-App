@@ -17,6 +17,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var FaceImage: UIImageView!
     @IBOutlet weak var FriendShipImage: UIStackView!
+    @IBOutlet weak var modeView: UIView!
     
     var wordArray = [Word]()
     var myWords = [MyWord]()
@@ -37,6 +38,8 @@ class PlayViewController: UIViewController {
         
         guard let mode = defaults.string(forKey: "playmode") else { return }
         defaults.set(-10, forKey: "score")
+        
+        modeView.layer.cornerRadius = 5.0
         //難易度によってハートを非表示
         gameLogic.heartVisible(stackView: FriendShipImage, mode: mode)
         changeModeLabel(mode: mode)
@@ -96,12 +99,15 @@ class PlayViewController: UIViewController {
         if mode == "EASY" {
             modeLabel.text = mode
             modeLabel.backgroundColor = .systemGreen
+            modeView.backgroundColor = .systemGreen
         } else if mode == "NORMAL" {
             modeLabel.text = mode
             modeLabel.backgroundColor = .systemBlue
+            modeView.backgroundColor = .systemBlue
         } else {
             modeLabel.text = mode
             modeLabel.backgroundColor = .systemPink
+            modeView.backgroundColor = .systemPink
         }
     }
 
