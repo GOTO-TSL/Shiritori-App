@@ -21,7 +21,8 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        createDatabase()
+        //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
         //データベースのパスを取得しデータベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
@@ -33,7 +34,6 @@ class StartViewController: UIViewController {
             }
         }
         
-        createDatabase()
         loadWord()
         
        
