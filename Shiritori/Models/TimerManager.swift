@@ -17,19 +17,19 @@ protocol TimerManagerDelegate {
 
 class TimerManager {
     var delegate: TimerManagerDelegate?
-    var timer = Timer()
-    var timerCount = 0
+    var mainTimer = Timer()
+    var mainTimerCount = 0
     
     //ゲームの開始から終了までカウントするタイマー
     func gameTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.gameCount), userInfo: nil, repeats: true)
+        mainTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.gameCount), userInfo: nil, repeats: true)
     }
 
     @objc func gameCount() {
-        timerCount += 1
-        switch timerCount {
+        mainTimerCount += 1
+        switch mainTimerCount {
         case 1..<K.Timer.countDownTime:
-            let countNow = "\(K.Timer.countDownTime - timerCount)"
+            let countNow = "\(K.Timer.countDownTime - mainTimerCount)"
             self.delegate?.didUpdateComment(comment: countNow)
             
         case K.Timer.countDownTime:
@@ -40,7 +40,7 @@ class TimerManager {
             self.delegate?.gameStart()
             
         case (K.Timer.countDownTime+2)..<(K.Timer.playTime+K.Timer.countDownTime+3):
-            let timeNow = 1.0 - Float(timerCount - K.Timer.countDownTime-1)/Float(K.Timer.playTime+1)
+            let timeNow = 1.0 - Float(mainTimerCount - K.Timer.countDownTime-1)/Float(K.Timer.playTime+1)
             self.delegate?.didUpdateTimeBar(timeNow: timeNow)
             
         case K.Timer.playTime+K.Timer.countDownTime+3:
@@ -48,7 +48,7 @@ class TimerManager {
             self.delegate?.didUpdateComment(comment: countNow)
             
         case K.Timer.playTime+K.Timer.countDownTime+4:
-            timer.invalidate()
+            mainTimer.invalidate()
             self.delegate?.gotoNextView()
             
         default:
@@ -58,7 +58,7 @@ class TimerManager {
     }
     
     func stopTimer() {
-        timer.invalidate()
+        mainTimer.invalidate()
     }
 }
 

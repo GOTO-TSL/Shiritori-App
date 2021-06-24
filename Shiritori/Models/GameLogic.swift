@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 protocol GameLogicDelegate {
     func shiritoriSucessed()
@@ -17,6 +18,7 @@ protocol GameLogicDelegate {
 
 
 struct GameLogic {
+    var wordArray = [Word]()
     var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard
     
@@ -31,13 +33,30 @@ struct GameLogic {
                 self.delegate?.shiritoriFailed(comment: "Enter at least 2 characters")
             } else {
                 if endCharacter == initialString {
-                    self.delegate?.shiritoriSucessed()
+                    if checkUsedWord(word: text) {
+                        self.delegate?.shiritoriSucessed()
+                    } else {
+                        self.delegate?.shiritoriFailed(comment: "Used Word!")
+                    }
                 } else {
                     self.delegate?.shiritoriFailed(comment: "Shiritori Please")
                 }
             }
         } else {
             self.delegate?.shiritoriFailed(comment: "Write Something")
+        }
+    }
+    
+    func checkUsedWord(word: String) -> Bool {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
+        let predicate = NSPredicate(format: "%K = %@", "word", "\(word)")
+        fetchRequest.predicate = predicate
+        let fetchData = try! context.fetch(fetchRequest)
+        if(!fetchData.isEmpty) {
+            return false
+        } else {
+            return true
         }
     }
     

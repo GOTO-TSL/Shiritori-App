@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "helpicon.png",
+      "filename" : "NORMAL2.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "helpicon@2x.png",
+      "filename" : "NORMAL2@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "helpicon@3x.png",
+      "filename" : "NORMAL2@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -17,6 +17,7 @@
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
+		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
 		0283557B263F9306008B6845 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557A263F9306008B6845 /* AppDelegate.swift */; };
 		0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557C263F9306008B6845 /* SceneDelegate.swift */; };
 		0283557F263F9306008B6845 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0283557E263F9306008B6845 /* PlayViewController.swift */; };
@@ -45,6 +46,7 @@
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
+		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
 		02835577263F9306008B6845 /* Shiritori.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shiritori.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0283557A263F9306008B6845 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0283557C263F9306008B6845 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,14 @@
 			path = DataModel;
 			sourceTree = "<group>";
 		};
+		025AE9F82680F30E0039DF56 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		0283556E263F9306008B6845 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		02835579263F9306008B6845 /* Shiritori */ = {
 			isa = PBXGroup;
 			children = (
+				025AE9F82680F30E0039DF56 /* fonts */,
 				020F1A6A2675E68F00FD85F0 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
 				0283557A263F9306008B6845 /* AppDelegate.swift */,
@@ -249,6 +260,7 @@
 				02835587263F9307008B6845 /* LaunchScreen.storyboard in Resources */,
 				020B51C526739050005871D2 /* WordListCell.xib in Resources */,
 				02835584263F9307008B6845 /* Assets.xcassets in Resources */,
+				025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */,
 				02835582263F9306008B6845 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

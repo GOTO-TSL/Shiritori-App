@@ -18,14 +18,13 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var FaceImage: UIImageView!
     @IBOutlet weak var FriendShipImage: UIStackView!
     @IBOutlet weak var modeView: UIView!
+    @IBOutlet weak var HitPointBar: UIProgressView!
     
     var wordArray = [Word]()
-    var myWords = [MyWord]()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
     var timerManager = TimerManager()
     var wordSource = WordSource()
-    var charaEnd: Character = "a"
     var dbQueue = DatabaseQueue()
     let defaults = UserDefaults.standard
     
@@ -37,16 +36,16 @@ class PlayViewController: UIViewController {
         super.viewDidLoad()
         
         guard let mode = defaults.string(forKey: "playmode") else { return }
-        defaults.set(-10, forKey: "score")
+        defaults.set(0, forKey: "score")
+        defaults.set("aaaa", forKey: "currentWord")
         
         modeView.layer.cornerRadius = 5.0
-        //難易度によってハートを非表示
-        gameLogic.heartVisible(stackView: FriendShipImage, mode: mode)
+        //モードによってviewやlabelなどを変更
         changeModeLabel(mode: mode)
+        FaceImage.image = K.Images.enemy[mode]
         
         //delegateの宣言
         gameLogic.delegate = self
-        imageManager.delegate = self
         timerManager.delegate = self
         wordSource.delegate = self
         TextField.delegate = self
@@ -61,8 +60,8 @@ class PlayViewController: UIViewController {
             }
         }
         //難易度によって相手の顔を変更
-        imageManager.changeFace(mode: mode, feeling: "normal")
-        //タイマー処理
+        //imageManager.changeFace(mode: mode, feeling: "normal")
+        //ゲーム開始のタイマースタート
         timerManager.gameTimer()
         
     }
@@ -87,7 +86,8 @@ class PlayViewController: UIViewController {
 
     //ボタンが押されたときに実行される処理
     @IBAction func AnswerPressed(_ sender: UIButton) {
-        gameLogic.applyRule(textField: TextField, endCharacter: charaEnd)
+        guard let userInput = TextField.text else { return }
+        gameLogic.applyRule(for: userInput)
     }
     
     @IBAction func QuitPressed(_ sender: UIButton) {
@@ -96,23 +96,18 @@ class PlayViewController: UIViewController {
     }
     
     func changeModeLabel(mode: String) {
-        if mode == "EASY" {
-            modeLabel.text = mode
-            modeLabel.backgroundColor = .systemGreen
-            modeView.backgroundColor = .systemGreen
-        } else if mode == "NORMAL" {
-            modeLabel.text = mode
-            modeLabel.backgroundColor = .systemBlue
-            modeView.backgroundColor = .systemBlue
-        } else {
-            modeLabel.text = mode
-            modeLabel.backgroundColor = .systemPink
-            modeView.backgroundColor = .systemPink
-        }
+        modeLabel.text = mode
+        modeLabel.backgroundColor = K.modeColor[mode]
+        modeView.backgroundColor = K.modeColor[mode]
     }
 
     
-    func saveWord() {
+    func saveWord(word: String) {
+        let newWord = Word(context: context)
+        newWord.word = word
+        newWord.like = false
+        wordArray.append(newWord)
+        
         do {
             try context.save()
             
@@ -144,67 +139,83 @@ extension PlayViewController: UITextFieldDelegate {
 
 //MARK: - WordSourceDelegate
 extension PlayViewController: WordSourceDelegate {
+    func invalidWord() {
+        DispatchQueue.main.async {
+            self.WordLabel.text = "Invalid Word!"
+            self.gameLogic.subGamePoint()
+            self.TextField.text = ""
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            guard let current = self.defaults.string(forKey: "currentWord") else { return }
+            self.WordLabel.text = current
+        }
+    }
+    
     func addPlayerWord() {
         DispatchQueue.main.async {
-            let newWord = Word(context: self.context)
             if let word = self.TextField.text {
-                newWord.word = word
-                newWord.like = false
+                self.saveWord(word: word)
             }
-            self.wordArray.append(newWord)
-            self.saveWord()
         }
 
     }
     
-    func updateWord(_ wordSource: WordSource, word: String) {
+    func updateFirst(word: String) {
         DispatchQueue.main.async {
-            print("word get")
-            guard let mode = self.defaults.string(forKey: "playmode") else { return }
-
-            if word.count > 0 {
-                let newWord = Word(context: self.context)
-                newWord.word = word
-                newWord.like = false
-                self.wordArray.append(newWord)
-                self.saveWord()
-                self.gameLogic.addPoint()
-                self.WordLabel.text = word
-                self.charaEnd = word[word.index(before: word.endIndex)]
-                self.imageManager.changeFace(mode: mode, feeling: "laugh")
-                
-                let score = self.defaults.integer(forKey: "score")
-                self.imageManager.changeFriendShip(gamescore: score, mode: mode)
-                self.TextField.text = ""
-                
-            } else {
-                self.gameLogic.subPoint()
-                self.TextField.text = ""
-                self.TextField.placeholder = "Invalid word!"
-                self.imageManager.changeFace(mode: mode, feeling: "confuse")
-                
-                let score = self.defaults.integer(forKey: "score")
-                self.imageManager.changeFriendShip(gamescore: score, mode: mode)
-            }
-
+            self.saveWord(word: word)
+            self.WordLabel.text = word
+            self.defaults.set(word, forKey: "currentWord")
+            
+        }
+    }
+    
+    func updateWord(word: String) {
+        DispatchQueue.main.async {
+            
+            self.saveWord(word: word)
+            self.WordLabel.text = word
+            self.defaults.set(word, forKey: "currentWord")
+            self.gameLogic.addGamePoint()
+            self.TextField.text = ""
+            
         }
     }
 }
 //MARK: - GameLogicDelegate
 extension PlayViewController: GameLogicDelegate {
-    func shiritoriSucessed() {
+    func updateHitPoint(score: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
-            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: self.TextField.text!)
+            self.HitPointBar.progress = 1.0 - Float(score) / Float(scoreLimit)
         }
     }
     
-    func shiritoriFailed() {
-        guard let mode = defaults.string(forKey: "playmode") else { return }
+    func shiritoriSucessed() {
         DispatchQueue.main.async {
-            self.imageManager.changeFace(mode: mode, feeling: "confuse")
-            self.gameLogic.subPoint()
-            let score = self.defaults.integer(forKey: "score")
-            self.imageManager.changeFriendShip(gamescore: score, mode: mode)
+            guard let text = self.TextField.text else { return }
+            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: text)
+        }
+    }
+    
+    func shiritoriFailed(comment: String) {
+        DispatchQueue.main.async {
+            self.gameLogic.subGamePoint()
+            self.WordLabel.text = comment
+            self.TextField.text = ""
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            guard let current = self.defaults.string(forKey: "currentWord") else { return }
+            self.WordLabel.text = current
+        }
+    }
+    
+    func gotoResultView() {
+        DispatchQueue.main.async {
+            self.WordLabel.text = "やられた～"
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
+            self.timerManager.mainTimer.invalidate()
         }
     }
 }
@@ -225,7 +236,9 @@ extension PlayViewController: TimerManagerDelegate {
     
     func gameStart() {
         DispatchQueue.main.async {
-            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: K.alphabet[Int.random(in: 0...24)])
+            guard let mode = self.defaults.string(forKey: "playmode") else { return }
+            self.wordSource.featchFirstWord(dbqueue: self.dbQueue)
+            self.imageManager.imageAnimation(for: self.FaceImage, mode: mode)
         }
     }
     
@@ -236,52 +249,3 @@ extension PlayViewController: TimerManagerDelegate {
     }
 }
 
-//MARK: - ImageManagerDelegate
-extension PlayViewController: ImageManagerDelegate {
-    func didUpdateResult(isHappy: Bool, modeIndex: Int) {
-        //do nothing
-    }
-    
-    func didUpdateFace(mode: String, index: Int) {
-        DispatchQueue.main.async {
-            if mode == "EASY" {
-                self.FaceImage.image = K.Images.easyFace[index]
-            } else if mode == "NORMAL" {
-                self.FaceImage.image = K.Images.normalFace[index]
-            } else {
-                self.FaceImage.image = K.Images.hardFace[index]
-            }            
-        }
-    }
-    
-    func didUpdateHeart(end: Int, row: Int, isHalf: Bool) {
-        DispatchQueue.main.async {
-            if let hearts = self.FriendShipImage.arrangedSubviews as? [UIStackView] {
-                if let heart = hearts[row].arrangedSubviews as? [UIImageView] {
-                    for i in 0...4 {
-                        heart[i].image = K.Images.hearts[0]
-                    }
-                    if isHalf {
-                        if end >= 0 {
-                            for i in 0..<end {
-                                heart[i].image = K.Images.hearts[2]
-                            }
-                            heart[end].image = K.Images.hearts[1]
-                        }
-                    } else {
-                        if end >= 0 {
-                            for i in 0...end {
-                                heart[i].image = K.Images.hearts[2]
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func gotoResultView() {
-            self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
-            self.timerManager.timer.invalidate()
-    }
-}

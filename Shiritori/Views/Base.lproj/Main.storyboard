@@ -29,16 +29,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="272.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OGC-Gn-Ar8">
-                                                <rect key="frame" x="67" y="70" width="280" height="87"/>
+                                                <rect key="frame" x="67" y="70" width="280" height="70.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="英単語しりとり" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yvq-UG-nZW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="58"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="47"/>
                                                         <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="40"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="~Can You Make Friends?~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foc-CS-Iyr">
-                                                        <rect key="frame" x="25" y="58" width="230" height="29"/>
+                                                        <rect key="frame" x="21.5" y="47" width="237.5" height="23.5"/>
                                                         <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -54,7 +54,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seO-h5-gkG" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="272.5" width="414" height="273"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="friends" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
                                                 <rect key="frame" x="70" y="0.0" width="274" height="273"/>
                                             </imageView>
                                         </subviews>
@@ -95,7 +95,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="Gsq-hp-jM4"/>
                                                             <constraint firstAttribute="width" constant="50" id="pnd-8d-zvl"/>
                                                         </constraints>
-                                                        <state key="normal" image="helpicon">
+                                                        <state key="normal" image="helpicon-1.png (3)">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
@@ -107,7 +107,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Rwd-Bc-6hv"/>
                                                         </constraints>
-                                                        <state key="normal" image="listicon"/>
+                                                        <state key="normal" image="helpicon-1.png (4)"/>
                                                         <connections>
                                                             <segue destination="Ohr-Em-Lfq" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="jLP-dM-Eli"/>
                                                         </connections>
@@ -189,13 +189,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtN-sa-cub">
-                                <rect key="frame" x="167" y="158" width="80" height="58"/>
+                                <rect key="frame" x="160" y="158" width="94.5" height="47"/>
                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mean" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jzO-MA-7JY">
-                                <rect key="frame" x="30" y="246" width="354" height="43.5"/>
+                                <rect key="frame" x="30" y="235" width="354" height="35"/>
                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -236,7 +236,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MODE SELECT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faN-3r-jxy">
-                                                <rect key="frame" x="63.5" y="17.5" width="247.5" height="65.5"/>
+                                                <rect key="frame" x="30.5" y="24" width="313" height="52.5"/>
                                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="45"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -355,7 +355,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhM-24-0Wg">
-                                <rect key="frame" x="50" y="762" width="65.5" height="40"/>
+                                <rect key="frame" x="50" y="762" width="83.5" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pf1-6x-iNC"/>
                                 </constraints>
@@ -433,7 +433,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QkK-5E-D76">
-                                        <rect key="frame" x="144" y="57" width="250" height="170"/>
+                                        <rect key="frame" x="144" y="57" width="250" height="220"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agK-QL-Kos" userLabel="SpeakView">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="150"/>
@@ -459,13 +459,32 @@
                                                     <constraint firstItem="Ruj-rW-0TM" firstAttribute="centerY" secondItem="agK-QL-Kos" secondAttribute="centerY" id="xx8-Ig-SKq"/>
                                                 </constraints>
                                             </view>
-                                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-5U-NdO">
-                                                <rect key="frame" x="0.0" y="150" width="250" height="20"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-bz-zpQ">
+                                                <rect key="frame" x="0.0" y="150" width="250" height="70"/>
+                                                <subviews>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-5U-NdO">
+                                                        <rect key="frame" x="7" y="33" width="236" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="ks1-EW-CbZ"/>
+                                                        </constraints>
+                                                        <color key="progressTintColor" red="0.30196078430000001" green="0.86666666670000003" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </progressView>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hitpointgage-1.png (1)" translatesAutoresizingMaskIntoConstraints="NO" id="60d-z8-5xt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="70"/>
+                                                    </imageView>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="ks1-EW-CbZ"/>
+                                                    <constraint firstItem="60d-z8-5xt" firstAttribute="leading" secondItem="9Xp-bz-zpQ" secondAttribute="leading" id="Pw6-cV-Cfw"/>
+                                                    <constraint firstAttribute="height" constant="70" id="WId-tk-lmA"/>
+                                                    <constraint firstItem="AD8-5U-NdO" firstAttribute="top" secondItem="9Xp-bz-zpQ" secondAttribute="top" constant="33" id="dUM-bG-S38"/>
+                                                    <constraint firstAttribute="trailing" secondItem="60d-z8-5xt" secondAttribute="trailing" id="eYc-G2-fA3"/>
+                                                    <constraint firstAttribute="bottom" secondItem="AD8-5U-NdO" secondAttribute="bottom" constant="17" id="hOH-2n-tQ2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="60d-z8-5xt" secondAttribute="bottom" id="kdB-ea-VlN"/>
+                                                    <constraint firstItem="60d-z8-5xt" firstAttribute="top" secondItem="9Xp-bz-zpQ" secondAttribute="top" id="pe0-s6-bpO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="AD8-5U-NdO" secondAttribute="trailing" constant="7" id="vcN-qN-lxO"/>
+                                                    <constraint firstItem="AD8-5U-NdO" firstAttribute="leading" secondItem="9Xp-bz-zpQ" secondAttribute="leading" constant="7" id="wKV-9G-Upt"/>
                                                 </constraints>
-                                                <color key="progressTintColor" red="0.30196078430000001" green="0.86666666670000003" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                            </progressView>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K9T-qr-mTd" userLabel="modeView">
@@ -588,13 +607,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOW TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SoF-3c-hX3">
-                                <rect key="frame" x="83.5" y="158" width="247.5" height="65.5"/>
+                                <rect key="frame" x="55.5" y="158" width="303" height="52.5"/>
                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="45"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0bp-Pg-HuI">
-                                <rect key="frame" x="30" y="253.5" width="354" height="217.5"/>
+                                <rect key="frame" x="30" y="240.5" width="354" height="175"/>
                                 <string key="text">しりとりが成功するとハートがたまります
 
 60秒以内にハートが全部貯まるとクリアです</string>
@@ -643,7 +662,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="404" height="266"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="730-FK-HGo">
-                                                <rect key="frame" x="112" y="70" width="180" height="58"/>
+                                                <rect key="frame" x="100" y="70" width="204" height="47"/>
                                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="40"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -856,12 +875,12 @@
         <image name="NORMAL0" width="96" height="96"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
-        <image name="friends" width="270" height="270"/>
         <image name="happyEndLeft" width="270" height="270"/>
         <image name="happyEndRight1" width="270" height="270"/>
-        <image name="helpicon" width="270" height="270"/>
+        <image name="helpicon-1.png (3)" width="96" height="96"/>
+        <image name="helpicon-1.png (4)" width="96" height="96"/>
+        <image name="hitpointgage-1.png (1)" width="240" height="53"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="listicon" width="270" height="270"/>
         <image name="speechbaloon" width="250" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
