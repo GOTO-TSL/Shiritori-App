@@ -16,7 +16,7 @@ class MyWordViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //カスタムセルの追加
-        tableView.register(UINib(nibName: "MyWordCell", bundle: nil), forCellReuseIdentifier: "MyWordCell")
+        tableView.register(UINib(nibName: K.NibName.mywordCell, bundle: nil), forCellReuseIdentifier: K.CellID.mywordCell)
         loadWord()
         tableView.reloadData()
     }
@@ -44,14 +44,14 @@ class MyWordViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyWordCell", for: indexPath) as! MyWordCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.CellID.mywordCell, for: indexPath) as! MyWordCell
         cell.MyWordLabel.text = mywords[indexPath.row].myword
         return cell
     }
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toMean", sender: nil)
+        performSegue(withIdentifier: K.SegueID.toMean, sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

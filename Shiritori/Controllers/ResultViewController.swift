@@ -25,8 +25,8 @@ class ResultViewController: UIViewController {
         HomeButton.layer.cornerRadius = 5.0
         
         imageManager.delegate = self
-        let score = defaults.integer(forKey: "score")
-        guard let mode = defaults.string(forKey: "playmode") else { return }
+        let score = defaults.integer(forKey: K.UserDefaultKeys.score)
+        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         
         imageManager.changeResultImage(gamescore: score, mode: mode)
         
@@ -52,11 +52,11 @@ extension ResultViewController: ImageManagerDelegate {
     func didUpdateResult(isHappy: Bool, modeIndex: Int) {
         DispatchQueue.main.async {
             if isHappy {
-                self.resultLabel.text = "Became friends!"
+                self.resultLabel.text = K.Texts.winText
                 self.leftImage.image = K.Images.ending[modeIndex][0]
                 self.rightImage.image = K.Images.playerEnd[0]
             } else {
-                self.resultLabel.text = "Couldn't be friends."
+                self.resultLabel.text = K.Texts.loseText
                 self.leftImage.image = K.Images.ending[modeIndex][1]
                 self.rightImage.image = K.Images.playerEnd[1]
             }

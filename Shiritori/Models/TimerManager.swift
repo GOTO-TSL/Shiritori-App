@@ -33,7 +33,7 @@ class TimerManager {
             self.delegate?.didUpdateComment(comment: countNow)
             
         case K.Timer.countDownTime:
-            let countNow = "START!"
+            let countNow = K.Comments.start
             self.delegate?.didUpdateComment(comment: countNow)
 
         case (K.Timer.countDownTime+1):
@@ -44,7 +44,7 @@ class TimerManager {
             self.delegate?.didUpdateTimeBar(timeNow: timeNow)
             
         case K.Timer.playTime+K.Timer.countDownTime+3:
-            let countNow = "Time's Up!"
+            let countNow = K.Comments.end
             self.delegate?.didUpdateComment(comment: countNow)
             
         case K.Timer.playTime+K.Timer.countDownTime+4:
@@ -52,7 +52,7 @@ class TimerManager {
             self.delegate?.gotoNextView()
             
         default:
-            let countNow = "..."
+            let countNow = K.Comments.wait
             self.delegate?.didUpdateComment(comment: countNow)
         }
     }

@@ -11,6 +11,8 @@ import GRDB
 
 class StartViewController: UIViewController {
     
+    @IBOutlet weak var MainTitle: UILabel!
+    @IBOutlet weak var SubTitle: UILabel!
     @IBOutlet weak var PlayButton: UIButton!
     var wordArray = [Word]()
     var myWords = [MyWord]()
@@ -21,12 +23,16 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        MainTitle.text = K.Texts.mainTitle
+        SubTitle.text = K.Texts.subTitle
+        
         createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
         //データベースのパスを取得しデータベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            let path = dir.appending("/ejdict.sqlite3")
+            let path = dir.appending(K.DataBase.path)
             do {
                 dbQueue = try DatabaseQueue(path: path)
             } catch {
@@ -87,11 +93,11 @@ class StartViewController: UIViewController {
     func createDatabase(){
         let fileManager = FileManager.default
         guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let finalDatabaseURL = documentsUrl.appendingPathComponent("ejdict.sqlite3")
+        let finalDatabaseURL = documentsUrl.appendingPathComponent(K.DataBase.name)
         do {
             if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
 //                print("DB does not exist in documents folder")
-                if let dbFilePath = Bundle.main.path(forResource: "ejdict", ofType: "sqlite3") {
+                if let dbFilePath = Bundle.main.path(forResource: K.DataBase.fore, ofType: K.DataBase.back) {
                     try fileManager.copyItem(atPath: dbFilePath, toPath: finalDatabaseURL.path)
                 } else {
 //                    print("Uh oh - foo.db is not in the app bundle")

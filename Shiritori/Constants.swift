@@ -12,9 +12,68 @@ struct K {
     
     static let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
-    static let feeling = ["normal": 0, "laugh": 1, "confuse": 2]
-    static let scoreLimit = ["EASY": 50, "NORMAL": 100, "HARD": 200]
+    static let scoreLimit = ["EASY": 60, "NORMAL": 100, "HARD": 200]
     static let modeColor: [String: UIColor] = ["EASY": .systemGreen, "NORMAL": .systemBlue, "HARD": .systemPink]
+    
+    struct CellID {
+        static let wordListCell = "ReusableCell"
+        static let mywordCell = "MyWordCell"
+    }
+    
+    struct NibName {
+        static let wordCell = "WordListCell"
+        static let mywordCell = "MyWordCell"
+    }
+
+    
+    struct Mode {
+        static let easy = "EASY"
+        static let normal = "NORMAL"
+        static let hard = "HARD"
+    }
+    
+    struct Texts {
+        static let mainTitle = "英単語しりとり"
+        static let subTitle = "~Let's defeat the monster with Shiritori~"
+        static let rule = """
+            しりとりをすることで敵に攻撃することができます．\n60秒以内敵を倒すことができたらクリアです．\n
+            しりとりのルール\n・敵の繰り出す最後の文字から始まる英単語をであること\n・二文字以上の単語であること\n・辞書にある単語であること
+            """
+        static let winText = "You Win!"
+        static let loseText = "You Lose..."
+    }
+    
+    struct Comments {
+        static let lose = "やられた～"
+        static let invalid = "Invalid Word!"
+        static let single = "Enter at least 2 characters"
+        static let used = "Used Word!"
+        static let noShiritori = "Shiritori Please"
+        static let empty = "Write Something"
+        static let start = "START!"
+        static let end = "Time's Up!"
+        static let wait = "..."
+    }
+
+    struct DataBase {
+        static let path = "/ejdict.sqlite3"
+        static let name = "ejdict.sqlite3"
+        static let fore = "ejdict"
+        static let back = "sqlite3"
+        static let word = "word"
+        static let mean = "mean"
+    }
+    
+    struct UserDefaultKeys {
+        static let mode = "mode"
+        static let currentWord = "currentWord"
+        static let score = "score"
+    }
+
+    struct HeroID {
+        static let mode = "mode"
+        static let enemy = "enemy"
+    }
 
     struct SegueID {
         static let toresult = "toResult"

@@ -18,13 +18,13 @@ struct ImageManager {
     
     //ゲームの結果に応じてresult画面の画像を変更
     func changeResultImage(gamescore: Int, mode: String) {
-        if mode == "EASY" {
+        if mode == K.Mode.easy {
             if gamescore >= 50 {
                 self.delegate?.didUpdateResult(isHappy: true, modeIndex: 0)
             } else {
                 self.delegate?.didUpdateResult(isHappy: false, modeIndex: 0)
             }
-        } else if mode == "NORMAL" {
+        } else if mode == K.Mode.normal {
             if gamescore >= 100 {
                 self.delegate?.didUpdateResult(isHappy: true, modeIndex: 1)
             } else {

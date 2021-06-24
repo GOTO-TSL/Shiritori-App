@@ -24,33 +24,33 @@ struct GameLogic {
     
     //しりとりのルールに則っているか判定する
     func applyRule(for text: String) {
-        guard let currentWord = defaults.string(forKey: "currentWord") else { return }
+        guard let currentWord = defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
         let endCharacter = currentWord[currentWord.index(before: currentWord.endIndex)]
         if text != "" {
             let initialString = text[text.startIndex]
             
             if text.count == 1 {
-                self.delegate?.shiritoriFailed(comment: "Enter at least 2 characters")
+                self.delegate?.shiritoriFailed(comment: K.Comments.single)
             } else {
                 if endCharacter == initialString {
                     if checkUsedWord(word: text) {
                         self.delegate?.shiritoriSucessed()
                     } else {
-                        self.delegate?.shiritoriFailed(comment: "Used Word!")
+                        self.delegate?.shiritoriFailed(comment: K.Comments.used)
                     }
                 } else {
-                    self.delegate?.shiritoriFailed(comment: "Shiritori Please")
+                    self.delegate?.shiritoriFailed(comment: K.Comments.noShiritori)
                 }
             }
         } else {
-            self.delegate?.shiritoriFailed(comment: "Write Something")
+            self.delegate?.shiritoriFailed(comment: K.Comments.empty)
         }
     }
     
     func checkUsedWord(word: String) -> Bool {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
-        let predicate = NSPredicate(format: "%K = %@", "word", "\(word)")
+        let predicate = NSPredicate(format: "%K = %@", K.DataBase.word, "\(word)")
         fetchRequest.predicate = predicate
         let fetchData = try! context.fetch(fetchRequest)
         if(!fetchData.isEmpty) {
@@ -61,11 +61,11 @@ struct GameLogic {
     }
     
     func addGamePoint() {
-        let currentScore = defaults.integer(forKey: "score")
-        guard let mode = defaults.string(forKey: "playmode") else { return }
+        let currentScore = defaults.integer(forKey: K.UserDefaultKeys.score)
+        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         
         let newScore = currentScore + 10
-        defaults.set(newScore, forKey: "score")
+        defaults.set(newScore, forKey: K.UserDefaultKeys.score)
         
         guard let scoreLimit = K.scoreLimit[mode] else { return }
         if newScore == scoreLimit {
@@ -79,17 +79,17 @@ struct GameLogic {
     
     func subGamePoint() {
         
-        var currentScore = defaults.integer(forKey: "score")
-        guard let mode = defaults.string(forKey: "playmode") else { return }
+        var currentScore = defaults.integer(forKey: K.UserDefaultKeys.score)
+        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         guard let scoreLimit = K.scoreLimit[mode] else { return }
         
         if currentScore <= 0 {
             currentScore = 0
-            defaults.set(currentScore, forKey: "score")
+            defaults.set(currentScore, forKey: K.UserDefaultKeys.score)
             self.delegate?.updateHitPoint(score: currentScore, scoreLimit: scoreLimit)
         } else {
             let newScore = currentScore - 10
-            defaults.set(newScore, forKey: "score")
+            defaults.set(newScore, forKey: K.UserDefaultKeys.score)
             self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
         }
     }

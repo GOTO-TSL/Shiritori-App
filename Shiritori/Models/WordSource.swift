@@ -28,7 +28,7 @@ struct WordSource {
                     self.delegate?.updateFirst(word: "")
                     return
                 }
-                let word: String = rows["word"]
+                let word: String = rows[K.DataBase.word]
                 self.delegate?.updateFirst(word: word)
             }
         } catch {
@@ -50,7 +50,7 @@ struct WordSource {
                     self.delegate?.invalidWord()
                     return
                 }
-                let word: String = rows["word"]
+                let word: String = rows[K.DataBase.word]
                 self.delegate?.updateWord(word: word)
                 
             }
@@ -68,7 +68,7 @@ struct WordSource {
                 guard let rows = try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(word)'") else {
                     return
                 }
-                let mean: String = rows["mean"]
+                let mean: String = rows[K.DataBase.mean]
                 result = mean
             }
         } catch {

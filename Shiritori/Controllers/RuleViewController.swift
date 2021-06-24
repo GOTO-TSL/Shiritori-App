@@ -9,10 +9,12 @@ import UIKit
 
 class RuleViewController: UIViewController {
 
-    @IBOutlet weak var ExpLabel: UILabel!
+    @IBOutlet weak var RuleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        RuleLabel.text = K.Texts.rule
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -24,7 +24,7 @@ class WordListViewController: UIViewController {
         tableView.delegate = self
     
         //カスタムセルを有効化
-        tableView.register(UINib(nibName: "WordListCell", bundle: nil), forCellReuseIdentifier: "ReusableCell")
+        tableView.register(UINib(nibName: K.NibName.wordCell, bundle: nil), forCellReuseIdentifier: K.CellID.wordListCell)
         
         loadWord()
 
@@ -65,7 +65,7 @@ extension WordListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath) as! WordListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.CellID.wordListCell, for: indexPath) as! WordListCell
         let words = wordArray[indexPath.row]
         
         cell.WordLabel.text = words.word

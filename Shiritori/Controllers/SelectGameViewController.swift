@@ -9,7 +9,6 @@ import UIKit
 import Hero
 
 class SelectGameViewController: UIViewController {
-    var mode = ""
     
     @IBOutlet weak var easyView: UIView!
     @IBOutlet weak var normalView: UIView!
@@ -40,24 +39,24 @@ class SelectGameViewController: UIViewController {
     
     //モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
-        mode = sender.currentTitle!
-        defaults.set(mode, forKey: "playmode")
+        guard let mode = sender.currentTitle else { return }
+        defaults.set(mode, forKey: K.UserDefaultKeys.mode)
         changeHeroID(mode: mode)
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
     }
     
     
     func changeHeroID(mode: String) {
-        if mode == "EASY" {
-            easyView.heroID = "mode"
-            easyFace.heroID = "face"
+        if mode == K.Mode.easy {
+            easyView.heroID = K.HeroID.mode
+            easyFace.heroID = K.HeroID.enemy
             
-        } else if mode == "NORMAL" {
-            normalView.heroID = "mode"
-            normalFace.heroID = "face"
+        } else if mode == K.Mode.normal {
+            normalView.heroID = K.HeroID.mode
+            normalFace.heroID = K.HeroID.enemy
         } else {
-            hardView.heroID = "mode"
-            hardFace.heroID = "face"
+            hardView.heroID = K.HeroID.mode
+            hardFace.heroID = K.HeroID.enemy
         }
     }
 

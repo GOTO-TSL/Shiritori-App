@@ -35,9 +35,9 @@ class PlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let mode = defaults.string(forKey: "playmode") else { return }
-        defaults.set(0, forKey: "score")
-        defaults.set("aaaa", forKey: "currentWord")
+        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
+        defaults.set(0, forKey: K.UserDefaultKeys.score)
+        defaults.set("aaaa", forKey: K.UserDefaultKeys.currentWord)
         
         modeView.layer.cornerRadius = 5.0
         //モードによってviewやlabelなどを変更
@@ -52,7 +52,7 @@ class PlayViewController: UIViewController {
         
         //データベースのパスを取得し，データベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            let path = dir.appending("/ejdict.sqlite3")
+            let path = dir.appending(K.DataBase.path)
             do {
                 dbQueue = try DatabaseQueue(path: path)
             } catch {
@@ -141,12 +141,12 @@ extension PlayViewController: UITextFieldDelegate {
 extension PlayViewController: WordSourceDelegate {
     func invalidWord() {
         DispatchQueue.main.async {
-            self.WordLabel.text = "Invalid Word!"
+            self.WordLabel.text = K.Comments.invalid
             self.gameLogic.subGamePoint()
             self.TextField.text = ""
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            guard let current = self.defaults.string(forKey: "currentWord") else { return }
+            guard let current = self.defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
             self.WordLabel.text = current
         }
     }
@@ -164,7 +164,7 @@ extension PlayViewController: WordSourceDelegate {
         DispatchQueue.main.async {
             self.saveWord(word: word)
             self.WordLabel.text = word
-            self.defaults.set(word, forKey: "currentWord")
+            self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
             
         }
     }
@@ -174,7 +174,7 @@ extension PlayViewController: WordSourceDelegate {
             
             self.saveWord(word: word)
             self.WordLabel.text = word
-            self.defaults.set(word, forKey: "currentWord")
+            self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
             self.gameLogic.addGamePoint()
             self.TextField.text = ""
             
@@ -186,6 +186,16 @@ extension PlayViewController: GameLogicDelegate {
     func updateHitPoint(score: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
             self.HitPointBar.progress = 1.0 - Float(score) / Float(scoreLimit)
+            switch self.HitPointBar.progress {
+            case 0.6...1.0:
+                self.HitPointBar.progressTintColor = .green
+            case 0.26...0.5:
+                self.HitPointBar.progressTintColor = .systemYellow
+            case 0.0...0.25:
+                self.HitPointBar.progressTintColor = .systemRed
+            default:
+                self.HitPointBar.progressTintColor = .systemGreen
+            }
         }
     }
     
@@ -204,14 +214,14 @@ extension PlayViewController: GameLogicDelegate {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            guard let current = self.defaults.string(forKey: "currentWord") else { return }
+            guard let current = self.defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
             self.WordLabel.text = current
         }
     }
     
     func gotoResultView() {
         DispatchQueue.main.async {
-            self.WordLabel.text = "やられた～"
+            self.WordLabel.text = K.Comments.lose
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
@@ -236,7 +246,7 @@ extension PlayViewController: TimerManagerDelegate {
     
     func gameStart() {
         DispatchQueue.main.async {
-            guard let mode = self.defaults.string(forKey: "playmode") else { return }
+            guard let mode = self.defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
             self.wordSource.featchFirstWord(dbqueue: self.dbQueue)
             self.imageManager.imageAnimation(for: self.FaceImage, mode: mode)
         }
