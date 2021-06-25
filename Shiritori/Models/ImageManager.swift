@@ -39,8 +39,32 @@ struct ImageManager {
         }
     }
     
-    func imageAnimation(for imageView: UIImageView, mode: String) {
+    func mainAnimation(for imageView: UIImageView, mode: String) {
         imageView.animationImages = animationImages(for: mode)
+        imageView.animationDuration = 1.0
+        imageView.animationRepeatCount = 0
+        imageView.image = imageView.animationImages?.first
+        imageView.startAnimating()
+    }
+    
+    func damageAnimation(for imageView: UIImageView, mode: String) {
+        imageView.animationImages = animationImages(for: "\(mode)damage")
+        imageView.animationDuration = 0.2
+        imageView.animationRepeatCount = 0
+        imageView.image = imageView.animationImages?.first
+        imageView.startAnimating()
+    }
+    
+    func healAnimation(for imageView: UIImageView, mode: String) {
+        imageView.animationImages = animationImages(for: "\(mode)heal")
+        imageView.animationDuration = 0.5
+        imageView.animationRepeatCount = 0
+        imageView.image = imageView.animationImages?.first
+        imageView.startAnimating()
+    }
+    
+    func downAnimation(for imageView: UIImageView, mode: String) {
+        imageView.animationImages = animationImages(for: "\(mode)down")
         imageView.animationDuration = 1.0
         imageView.animationRepeatCount = 0
         imageView.image = imageView.animationImages?.first

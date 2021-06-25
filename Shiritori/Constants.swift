@@ -46,7 +46,7 @@ struct K {
     struct Comments {
         static let lose = "やられた～"
         static let invalid = "Invalid Word!"
-        static let single = "Enter at least 2 characters"
+        static let single = "thank you!"
         static let used = "Used Word!"
         static let noShiritori = "Shiritori Please"
         static let empty = "Write Something"
@@ -88,6 +88,7 @@ struct K {
     
     struct Images {
         static let enemy = ["EASY": #imageLiteral(resourceName: "EASY0"), "NORMAL": #imageLiteral(resourceName: "NORMAL0"), "HARD": #imageLiteral(resourceName: "HARD0")]
+        static let down = ["EASY": #imageLiteral(resourceName: "EASYlose"), "NORMAL": #imageLiteral(resourceName: "NORMALlose"), "HARD": #imageLiteral(resourceName: "HARDlose")]
         static let ending = [[#imageLiteral(resourceName: "happyEndRight2"), #imageLiteral(resourceName: "badEndRight2")], [#imageLiteral(resourceName: "happyEndRight1"), #imageLiteral(resourceName: "badEndRight1")], [#imageLiteral(resourceName: "happyEndRight3"), #imageLiteral(resourceName: "badEndRight3")]]
         static let playerEnd = [#imageLiteral(resourceName: "happyEndLeft"), #imageLiteral(resourceName: "badEndLeft")]
         static let Stars = [#imageLiteral(resourceName: "brankstar"), #imageLiteral(resourceName: "fillstar")]
