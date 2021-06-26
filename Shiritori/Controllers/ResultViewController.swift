@@ -12,8 +12,7 @@ class ResultViewController: UIViewController {
     var imageManager = ImageManager()
     let defaults = UserDefaults.standard
     
-    @IBOutlet weak var leftImage: UIImageView!
-    @IBOutlet weak var rightImage: UIImageView!
+    @IBOutlet weak var resultImage: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var WordsButton: UIButton!
     @IBOutlet weak var HomeButton: UIButton!
@@ -24,11 +23,10 @@ class ResultViewController: UIViewController {
         WordsButton.layer.cornerRadius = 5.0
         HomeButton.layer.cornerRadius = 5.0
         
-        imageManager.delegate = self
-        let score = defaults.integer(forKey: K.UserDefaultKeys.score)
         guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
+        let score = defaults.integer(forKey: K.UserDefaultKeys.score)
+        changeResult(score: score, mode: mode)
         
-        imageManager.changeResultImage(gamescore: score, mode: mode)
         
     }
     
@@ -37,37 +35,22 @@ class ResultViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
-}
-
-extension ResultViewController: ImageManagerDelegate {
-    func didUpdateFace(mode: String, index: Int) {
-        //do nothing
-    }
     
-    func didUpdateHeart(end: Int, row: Int, isHalf: Bool) {
-        //do nothing
-    }
-    
-    func didUpdateResult(isHappy: Bool, modeIndex: Int) {
-        DispatchQueue.main.async {
-            if isHappy {
-                self.resultLabel.text = K.Texts.winText
-                self.leftImage.image = K.Images.ending[modeIndex][0]
-                self.rightImage.image = K.Images.playerEnd[0]
-            } else {
-                self.resultLabel.text = K.Texts.loseText
-                self.leftImage.image = K.Images.ending[modeIndex][1]
-                self.rightImage.image = K.Images.playerEnd[1]
-            }
+    func changeResult(score: Int, mode: String) {
+        if K.scoreLimit[mode] == score {
+            self.imageManager.imageAnimation(for: resultImage,
+                                             mode: "",
+                                             action: K.animationAction.win,
+                                             duration: 1.0)
+            self.resultLabel.text = K.Texts.winText
+        } else {
+            self.imageManager.imageAnimation(for: resultImage,
+                                             mode: mode,
+                                             action: K.animationAction.lose,
+                                             duration: 1.0)
+            self.resultLabel.text = K.Texts.loseText
         }
     }
-    
-    func gotoResultView() {
-        //do nothing
-    }
-    
-    
 }
 
 

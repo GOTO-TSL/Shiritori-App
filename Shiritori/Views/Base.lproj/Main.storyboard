@@ -54,8 +54,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="seO-h5-gkG" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="272.5" width="414" height="273"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="door" translatesAutoresizingMaskIntoConstraints="NO" id="Cwn-ZB-ttO">
                                                 <rect key="frame" x="70" y="0.0" width="274" height="273"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="play"/>
+                                                </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -79,9 +82,6 @@
                                                 <state key="normal" title="PLAY">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="play"/>
-                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <segue destination="S1X-48-eHe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="mbp-lE-dVy"/>
                                                 </connections>
@@ -678,23 +678,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMM-LJ-b0R" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="266" width="404" height="266"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bpL-TU-au8">
-                                                <rect key="frame" x="15" y="0.0" width="374" height="266"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happyEndRight1" translatesAutoresizingMaskIntoConstraints="NO" id="Wf9-GC-ggU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187" height="266"/>
-                                                    </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happyEndLeft" translatesAutoresizingMaskIntoConstraints="NO" id="kGq-4f-eds">
-                                                        <rect key="frame" x="187" y="0.0" width="187" height="266"/>
-                                                    </imageView>
-                                                </subviews>
-                                            </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="win0" translatesAutoresizingMaskIntoConstraints="NO" id="Tgp-mc-H4r">
+                                                <rect key="frame" x="70" y="0.0" width="264" height="266"/>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="bpL-TU-au8" secondAttribute="bottom" id="0ZK-x8-HqL"/>
-                                            <constraint firstItem="bpL-TU-au8" firstAttribute="top" secondItem="JMM-LJ-b0R" secondAttribute="top" id="Bbd-85-SgY"/>
-                                            <constraint firstAttribute="trailing" secondItem="bpL-TU-au8" secondAttribute="trailing" constant="15" id="Npk-KR-yMN"/>
-                                            <constraint firstItem="bpL-TU-au8" firstAttribute="leading" secondItem="JMM-LJ-b0R" secondAttribute="leading" constant="15" id="XN1-55-AIb"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tgp-mc-H4r" secondAttribute="trailing" constant="70" id="KIY-IR-ljE"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tgp-mc-H4r" secondAttribute="bottom" id="MRG-Mz-ZGx"/>
+                                            <constraint firstItem="Tgp-mc-H4r" firstAttribute="top" secondItem="JMM-LJ-b0R" secondAttribute="top" id="RaO-4A-0qd"/>
+                                            <constraint firstItem="Tgp-mc-H4r" firstAttribute="leading" secondItem="JMM-LJ-b0R" secondAttribute="leading" constant="70" id="hcu-Ss-6ni"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgO-XN-s3a" userLabel="BottomView">
@@ -760,9 +752,8 @@
                     <connections>
                         <outlet property="HomeButton" destination="i3Q-5V-EV2" id="lBd-gH-sK6"/>
                         <outlet property="WordsButton" destination="TAq-0Q-RTa" id="zgm-kn-f5W"/>
-                        <outlet property="leftImage" destination="Wf9-GC-ggU" id="HTf-sf-K7J"/>
+                        <outlet property="resultImage" destination="Tgp-mc-H4r" id="vOS-8o-BhV"/>
                         <outlet property="resultLabel" destination="730-FK-HGo" id="cBV-cI-0PH"/>
-                        <outlet property="rightImage" destination="kGq-4f-eds" id="TKM-O5-CZ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-XD-IQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -869,7 +860,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="trG-CC-Rg8"/>
         <segue reference="mbp-lE-dVy"/>
-        <segue reference="ceV-nw-QTe"/>
+        <segue reference="xKv-EY-u8v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
@@ -877,13 +868,13 @@
         <image name="NORMAL0" width="96" height="96"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
-        <image name="happyEndLeft" width="270" height="270"/>
-        <image name="happyEndRight1" width="270" height="270"/>
+        <image name="door" width="96" height="96"/>
         <image name="helpicon-1.png (3)" width="96" height="96"/>
         <image name="helpicon-1.png (4)" width="96" height="96"/>
         <image name="hitpointgage-1.png (1)" width="240" height="53"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="speechbaloon" width="250" height="115"/>
+        <image name="win0" width="96" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

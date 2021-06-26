@@ -140,13 +140,18 @@ extension PlayViewController: WordSourceDelegate {
     //辞書にない単語が入力されたときの処理
     func invalidWord() {
         DispatchQueue.main.async {
-            self.imageManager.healAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE, action: K.animationAction.heal,
+                                             duration: 0.5)
             self.WordLabel.text = K.Comments.invalid
             self.gameLogic.subGamePoint()
             self.TextField.text = ""
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.imageManager.mainAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: "",
+                                             duration: 1.0)
             guard let current = self.defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
             self.WordLabel.text = current
         }
@@ -201,21 +206,30 @@ extension PlayViewController: GameLogicDelegate {
     func shiritoriSucessed() {
         DispatchQueue.main.async {
             //ダメージを受けるアニメーション
-            self.imageManager.damageAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.damage,
+                                             duration: 0.2)
             
             guard let text = self.TextField.text else { return }
             self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: text)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             //メインアニメーションの再開
-            self.imageManager.mainAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.main,
+                                             duration: 1.0)
         }
     }
     //しりとりのルールに当てはまらなかった場合の処理
     func shiritoriFailed(comment: String) {
         DispatchQueue.main.async {
             //回復するアニメーション
-            self.imageManager.healAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.heal,
+                                             duration: 0.5)
             
             self.gameLogic.subGamePoint()
             self.WordLabel.text = comment
@@ -224,7 +238,10 @@ extension PlayViewController: GameLogicDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             //メインアニメーションの再開
-            self.imageManager.mainAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.main,
+                                             duration: 1.0)
             
             guard let current = self.defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
             self.WordLabel.text = current
@@ -234,7 +251,10 @@ extension PlayViewController: GameLogicDelegate {
     //敵を倒したときに呼ばれる処理
     func gotoResultView() {
         DispatchQueue.main.async {
-            self.imageManager.downAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.down,
+                                             duration: 1.0)
             self.WordLabel.text = K.Comments.lose
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
@@ -261,7 +281,10 @@ extension PlayViewController: TimerManagerDelegate {
     func gameStart() {
         DispatchQueue.main.async {
             self.wordSource.featchFirstWord(dbqueue: self.dbQueue)
-            self.imageManager.mainAnimation(for: self.FaceImage, mode: self.MODE)
+            self.imageManager.imageAnimation(for: self.FaceImage,
+                                             mode: self.MODE,
+                                             action: K.animationAction.main,
+                                             duration: 1.0)
         }
     }
     //制限時間に達したときに呼ばれる処理

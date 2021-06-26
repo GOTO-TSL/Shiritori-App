@@ -88,10 +88,16 @@ struct K {
     
     struct Images {
         static let enemy = ["EASY": #imageLiteral(resourceName: "EASY0"), "NORMAL": #imageLiteral(resourceName: "NORMAL0"), "HARD": #imageLiteral(resourceName: "HARD0")]
-        static let down = ["EASY": #imageLiteral(resourceName: "EASYlose"), "NORMAL": #imageLiteral(resourceName: "NORMALlose"), "HARD": #imageLiteral(resourceName: "HARDlose")]
-        static let ending = [[#imageLiteral(resourceName: "happyEndRight2"), #imageLiteral(resourceName: "badEndRight2")], [#imageLiteral(resourceName: "happyEndRight1"), #imageLiteral(resourceName: "badEndRight1")], [#imageLiteral(resourceName: "happyEndRight3"), #imageLiteral(resourceName: "badEndRight3")]]
-        static let playerEnd = [#imageLiteral(resourceName: "happyEndLeft"), #imageLiteral(resourceName: "badEndLeft")]
         static let Stars = [#imageLiteral(resourceName: "brankstar"), #imageLiteral(resourceName: "fillstar")]
+    }
+    
+    struct animationAction {
+        static let main = ""
+        static let damage = "damage"
+        static let heal = "heal"
+        static let down = "down"
+        static let win = "win"
+        static let lose = "lose"
     }
 
 }
