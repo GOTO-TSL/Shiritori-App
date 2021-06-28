@@ -18,6 +18,8 @@ class SelectGameViewController: UIViewController {
     @IBOutlet weak var hardFace: UIImageView!
     
     let defaults = UserDefaults.standard
+    var pushPlayer = SoundPlayer()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +41,15 @@ class SelectGameViewController: UIViewController {
     
     //モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
+        //オープニングの停止，ボタンの効果音再生
+        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
+        appDelegate.opPlayer.stopSound()
+        //選んだモードのViewにHeroIDを設定
         guard let mode = sender.currentTitle else { return }
         defaults.set(mode, forKey: K.UserDefaultKeys.mode)
         changeHeroID(mode: mode)
+        //PlayVCに画面遷移
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
     }
     

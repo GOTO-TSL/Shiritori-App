@@ -14,18 +14,29 @@ class StartViewController: UIViewController {
     @IBOutlet weak var MainTitle: UILabel!
     @IBOutlet weak var SubTitle: UILabel!
     @IBOutlet weak var PlayButton: UIButton!
+    @IBOutlet weak var SoundButton: UIButton!
+    
+    var opPlayer = SoundPlayer()
+    var pushPlayer = SoundPlayer()
     var wordArray = [Word]()
     var myWords = [MyWord]()
     var wordSource = WordSource()
     var dbQueue = DatabaseQueue()
+    var isMute = false
+    let defaults = UserDefaults.standard
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         MainTitle.text = K.Texts.mainTitle
         SubTitle.text = K.Texts.subTitle
+        
+        let ismute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        isMute = ismute
+        isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
         
         createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -66,6 +77,22 @@ class StartViewController: UIViewController {
                 saveWord()
             }
         }
+    }
+    @IBAction func soundPressed(_ sender: UIButton) {
+        //ミュート変数の値を変更
+        isMute = isMute ? false : true
+        //ミュートかどうかで画像を変更
+        isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
+        
+        appDelegate.opPlayer.muteSound(isMute: isMute)
+        defaults.set(isMute, forKey: K.UserDefaultKeys.isMute)
+    }
+    
+    @IBAction func otherButtonPressed(_ sender: UIButton) {
+        pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
+    }
+    @IBAction func playButtonPressed(_ sender: UIButton) {
+        pushPlayer.playSound(name: K.Sounds.push,  isMute: isMute)
     }
     
     //MARK: - Data Manipulation Methods

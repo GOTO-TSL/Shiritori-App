@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "helpicon-1.png (3).png",
+      "filename" : "musicON.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "helpicon-1.png (3)@2x.png",
+      "filename" : "musicON@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "helpicon-1.png (3)@3x.png",
+      "filename" : "musicON@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

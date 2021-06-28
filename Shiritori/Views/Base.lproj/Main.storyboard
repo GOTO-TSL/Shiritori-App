@@ -83,32 +83,45 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="playButtonPressed:" destination="e0k-dn-jUn" eventType="touchUpInside" id="Y1W-QO-qKf"/>
                                                     <segue destination="S1X-48-eHe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="mbp-lE-dVy"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="OYi-V0-ZsB">
-                                                <rect key="frame" x="132" y="172.5" width="150" height="50"/>
+                                                <rect key="frame" x="82" y="172.5" width="250" height="50"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hty-NY-RG4" userLabel="helpButton">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-12-vBr">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Tgh-Ho-ueD"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="musicON"/>
+                                                        <connections>
+                                                            <action selector="soundPressed:" destination="e0k-dn-jUn" eventType="touchUpInside" id="d9R-Gz-xtK"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hty-NY-RG4" userLabel="helpButton">
+                                                        <rect key="frame" x="100" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Gsq-hp-jM4"/>
                                                             <constraint firstAttribute="width" constant="50" id="pnd-8d-zvl"/>
                                                         </constraints>
-                                                        <state key="normal" image="helpicon-1.png (3)">
+                                                        <state key="normal" image="help">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="otherButtonPressed:" destination="e0k-dn-jUn" eventType="touchUpInside" id="toF-hR-gu7"/>
                                                             <segue destination="Hxp-TR-Sq8" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="O5N-g3-WGs"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZa-mh-8Zd" userLabel="wordListButton">
-                                                        <rect key="frame" x="100" y="0.0" width="50" height="50"/>
+                                                        <rect key="frame" x="200" y="0.0" width="50" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Rwd-Bc-6hv"/>
                                                         </constraints>
-                                                        <state key="normal" image="helpicon-1.png (4)"/>
+                                                        <state key="normal" image="wordlist"/>
                                                         <connections>
+                                                            <action selector="otherButtonPressed:" destination="e0k-dn-jUn" eventType="touchUpInside" id="7r1-Sp-Iig"/>
                                                             <segue destination="Ohr-Em-Lfq" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="jLP-dM-Eli"/>
                                                         </connections>
                                                     </button>
@@ -141,6 +154,7 @@
                     <connections>
                         <outlet property="MainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
                         <outlet property="PlayButton" destination="TFk-BK-b8n" id="mHD-c5-Pj3"/>
+                        <outlet property="SoundButton" destination="T8Y-12-vBr" id="r7R-4Z-rAj"/>
                         <outlet property="SubTitle" destination="Foc-CS-Iyr" id="Aky-Y0-1Wc"/>
                     </connections>
                 </viewController>
@@ -722,6 +736,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="homePressed:" destination="da3-aV-zKm" eventType="touchUpInside" id="6Sv-Ka-TzM"/>
                                                             <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="xKv-EY-u8v"/>
                                                         </connections>
                                                     </button>
@@ -869,12 +884,13 @@
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="door" width="96" height="96"/>
-        <image name="helpicon-1.png (3)" width="96" height="96"/>
-        <image name="helpicon-1.png (4)" width="96" height="96"/>
+        <image name="help" width="300" height="300"/>
         <image name="hitpointgage-1.png (1)" width="240" height="53"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="musicON" width="300" height="300"/>
         <image name="speechbaloon" width="250" height="115"/>
         <image name="win0" width="96" height="96"/>
+        <image name="wordlist" width="300" height="300"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

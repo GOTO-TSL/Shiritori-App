@@ -11,6 +11,7 @@ class ResultViewController: UIViewController {
     
     var imageManager = ImageManager()
     let defaults = UserDefaults.standard
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var resultImage: UIImageView!
     @IBOutlet weak var resultLabel: UILabel!
@@ -35,6 +36,12 @@ class ResultViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    @IBAction func homePressed(_ sender: UIButton) {
+        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        appDelegate.opPlayer.playSound(name: K.Sounds.op, isMute: isMute, loop: -1)
+    }
+    
     
     func changeResult(score: Int, mode: String) {
         if K.scoreLimit[mode] == score {

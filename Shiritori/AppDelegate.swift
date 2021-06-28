@@ -7,11 +7,17 @@
 
 import UIKit
 import CoreData
+import AVFoundation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let defaults = UserDefaults.standard
+    var opPlayer = SoundPlayer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        defaults.set(false, forKey: K.UserDefaultKeys.isMute)
+        opPlayer.playSound(name: K.Sounds.op, isMute: false, loop: -1)
         // Override point for customization after application launch.
         return true
     }
@@ -19,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
+    
+    
     
     // MARK: - Core Data stack
 

@@ -68,6 +68,7 @@ struct K {
         static let mode = "mode"
         static let currentWord = "currentWord"
         static let score = "score"
+        static let isMute = "isMute"
     }
 
     struct HeroID {
@@ -89,6 +90,7 @@ struct K {
     struct Images {
         static let enemy = ["EASY": #imageLiteral(resourceName: "EASY0"), "NORMAL": #imageLiteral(resourceName: "NORMAL0"), "HARD": #imageLiteral(resourceName: "HARD0")]
         static let Stars = [#imageLiteral(resourceName: "brankstar"), #imageLiteral(resourceName: "fillstar")]
+        static let Sounds = [#imageLiteral(resourceName: "musicON"), #imageLiteral(resourceName: "musicOFF")]
     }
     
     struct animationAction {
@@ -98,6 +100,14 @@ struct K {
         static let down = "down"
         static let win = "win"
         static let lose = "lose"
+    }
+    
+    struct Sounds {
+        static let op = "opening"
+        static let push = "push"
+        static let battle = "battle"
+        static let heal = "heal"
+        static let damage = "damage"
     }
 
 }

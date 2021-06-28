@@ -8,6 +8,7 @@
 import UIKit
 import GRDB
 import CoreData
+import AVFoundation
 
 class PlayViewController: UIViewController {
 
@@ -16,7 +17,6 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var TimeBar: UIProgressView!
     @IBOutlet weak var TextField: UITextField!
     @IBOutlet weak var FaceImage: UIImageView!
-    @IBOutlet weak var FriendShipImage: UIStackView!
     @IBOutlet weak var modeView: UIView!
     @IBOutlet weak var HitPointBar: UIProgressView!
     
@@ -26,8 +26,11 @@ class PlayViewController: UIViewController {
     var timerManager = TimerManager()
     var wordSource = WordSource()
     var dbQueue = DatabaseQueue()
+    var actionPlayer = SoundPlayer()
+    var bgmPlayer = SoundPlayer()
     let defaults = UserDefaults.standard
     var MODE = ""
+    var isMute = false
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -36,8 +39,15 @@ class PlayViewController: UIViewController {
         
         guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         MODE = mode
+        let ismute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        isMute = ismute
+        //スコアの初期設定
         defaults.set(0, forKey: K.UserDefaultKeys.score)
         defaults.set("aaaa", forKey: K.UserDefaultKeys.currentWord)
+        
+        
+        //戦闘BGMを再生
+        bgmPlayer.playSound(name: "battle", isMute: isMute, loop: -1)
         
         modeView.layer.cornerRadius = 5.0
         //モードによってviewやlabelなどを変更
@@ -59,8 +69,6 @@ class PlayViewController: UIViewController {
                 print("Error \(error)")
             }
         }
-        //ゲーム開始のタイマースタート
-        timerManager.gameTimer()
         
     }
     
@@ -72,6 +80,8 @@ class PlayViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //ゲーム開始のタイマースタート
+        timerManager.gameTimer()
         //キーボードを自動的に表示
         self.TextField.keyboardType = .alphabet
         self.TextField.becomeFirstResponder()
@@ -82,17 +92,18 @@ class PlayViewController: UIViewController {
         self.TextField.resignFirstResponder()
     }
 
-    //ボタンが押されたときに実行される処理
+    //ボタンが押されたときに実行される処理，ユーザーの入力にしりとりのルールを適用させる
     @IBAction func AnswerPressed(_ sender: UIButton) {
         guard let userInput = TextField.text else { return }
         gameLogic.applyRule(for: userInput)
     }
-    
+    //QUITボタンが押されたときの処理，前のVCに戻り，タイマーと音楽を止める
     @IBAction func QuitPressed(_ sender: UIButton) {
         self.TextField.resignFirstResponder()
+        bgmPlayer.stopSound()
         timerManager.stopTimer()
     }
-    
+    //左上のモードViewのテキストと色を変更
     func changeModeLabel(mode: String) {
         modeLabel.text = mode
         modeLabel.backgroundColor = K.modeColor[mode]
@@ -115,7 +126,6 @@ class PlayViewController: UIViewController {
         }
     }
 }
-
 //MARK: - UITextFieldDelegate
 extension PlayViewController: UITextFieldDelegate {
     
@@ -143,6 +153,7 @@ extension PlayViewController: WordSourceDelegate {
             self.imageManager.imageAnimation(for: self.FaceImage,
                                              mode: self.MODE, action: K.animationAction.heal,
                                              duration: 0.5)
+            self.actionPlayer.playSound(name: K.Sounds.heal, isMute: self.isMute)
             self.WordLabel.text = K.Comments.invalid
             self.gameLogic.subGamePoint()
             self.TextField.text = ""
@@ -205,6 +216,8 @@ extension PlayViewController: GameLogicDelegate {
     //しりとりのルールに当てはまった場合の処理
     func shiritoriSucessed() {
         DispatchQueue.main.async {
+            //ダメージを受ける効果音を再生
+            self.actionPlayer.playSound(name: K.Sounds.damage, isMute: self.isMute)
             //ダメージを受けるアニメーション
             self.imageManager.imageAnimation(for: self.FaceImage,
                                              mode: self.MODE,
@@ -225,6 +238,8 @@ extension PlayViewController: GameLogicDelegate {
     //しりとりのルールに当てはまらなかった場合の処理
     func shiritoriFailed(comment: String) {
         DispatchQueue.main.async {
+            //回復する効果音を再生
+            self.actionPlayer.playSound(name: K.Sounds.heal, isMute: self.isMute)
             //回復するアニメーション
             self.imageManager.imageAnimation(for: self.FaceImage,
                                              mode: self.MODE,
@@ -259,6 +274,7 @@ extension PlayViewController: GameLogicDelegate {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
+            self.bgmPlayer.stopSound()
             self.timerManager.mainTimer.invalidate()
         }
     }
@@ -290,6 +306,7 @@ extension PlayViewController: TimerManagerDelegate {
     //制限時間に達したときに呼ばれる処理
     func gotoNextView() {
         DispatchQueue.main.async {
+            self.bgmPlayer.stopSound()
             self.performSegue(withIdentifier: K.SegueID.toresult, sender: nil)
         }
     }

@@ -22,4 +22,5 @@ class RuleViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
+    
 }
