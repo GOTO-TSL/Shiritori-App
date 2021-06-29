@@ -32,6 +32,7 @@ class PlayViewController: UIViewController {
     var MODE = ""
     var isMute = false
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -101,6 +102,7 @@ class PlayViewController: UIViewController {
     @IBAction func QuitPressed(_ sender: UIButton) {
         self.TextField.resignFirstResponder()
         bgmPlayer.stopSound()
+        appDelegate.opPlayer.playSound(name: K.Sounds.op, isMute: isMute, loop: -1)
         timerManager.stopTimer()
     }
     //左上のモードViewのテキストと色を変更

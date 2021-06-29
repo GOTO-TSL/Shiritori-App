@@ -721,6 +721,7 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
+                                                            <action selector="wordsPressed:" destination="da3-aV-zKm" eventType="touchUpInside" id="nMC-N5-dsk"/>
                                                             <segue destination="buY-Lv-XCc" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="voS-AG-aUu"/>
                                                         </connections>
                                                     </button>

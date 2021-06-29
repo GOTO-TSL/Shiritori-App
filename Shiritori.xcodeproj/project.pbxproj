@@ -38,6 +38,8 @@
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */; };
+		02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FC268B56DC00118BD8 /* lose.mp3 */; };
+		02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FD268B56DC00118BD8 /* win.mp3 */; };
 		7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,8 @@
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
+		02FA25FC268B56DC00118BD8 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
+		02FA25FD268B56DC00118BD8 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.debug.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.debug.xcconfig"; sourceTree = "<group>"; };
 		3B8F9BAFA2562C49D283D1EB /* Pods-Shiritori.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.release.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.release.xcconfig"; sourceTree = "<group>"; };
 		6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shiritori.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +123,8 @@
 		02818B1F2687695A000A40C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				02FA25FC268B56DC00118BD8 /* lose.mp3 */,
+				02FA25FD268B56DC00118BD8 /* win.mp3 */,
 				02818B2526876D47000A40C2 /* battle.mp3 */,
 				02818B2426876D47000A40C2 /* opening.mp3 */,
 				02818B2626876D47000A40C2 /* push.mp3 */,
@@ -290,9 +296,11 @@
 				02835587263F9307008B6845 /* LaunchScreen.storyboard in Resources */,
 				020B51C526739050005871D2 /* WordListCell.xib in Resources */,
 				02835584263F9307008B6845 /* Assets.xcassets in Resources */,
+				02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */,
 				025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */,
 				02835582263F9306008B6845 /* Main.storyboard in Resources */,
 				02818B2726876D48000A40C2 /* opening.mp3 in Resources */,
+				02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

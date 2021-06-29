@@ -10,6 +10,8 @@ import UIKit
 class ResultViewController: UIViewController {
     
     var imageManager = ImageManager()
+    var pushPlayer = SoundPlayer()
+    var edPlayer = SoundPlayer()
     let defaults = UserDefaults.standard
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -37,24 +39,34 @@ class ResultViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    @IBAction func wordsPressed(_ sender: UIButton) {
+        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
+
+    }
+    
     @IBAction func homePressed(_ sender: UIButton) {
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
         appDelegate.opPlayer.playSound(name: K.Sounds.op, isMute: isMute, loop: -1)
     }
     
     
     func changeResult(score: Int, mode: String) {
+        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         if K.scoreLimit[mode] == score {
             self.imageManager.imageAnimation(for: resultImage,
                                              mode: "",
                                              action: K.animationAction.win,
                                              duration: 1.0)
+            self.edPlayer.playSound(name: K.Sounds.win, isMute: isMute)
             self.resultLabel.text = K.Texts.winText
         } else {
             self.imageManager.imageAnimation(for: resultImage,
                                              mode: mode,
                                              action: K.animationAction.lose,
                                              duration: 1.0)
+            self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
             self.resultLabel.text = K.Texts.loseText
         }
     }

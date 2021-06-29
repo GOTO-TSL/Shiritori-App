@@ -108,6 +108,8 @@ struct K {
         static let battle = "battle"
         static let heal = "heal"
         static let damage = "damage"
+        static let win = "win"
+        static let lose = "lose"
     }
 
 }
