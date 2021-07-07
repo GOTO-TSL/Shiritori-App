@@ -16,17 +16,23 @@ class SelectGameViewController: UIViewController {
     @IBOutlet weak var easyFace: UIImageView!
     @IBOutlet weak var normalFace: UIImageView!
     @IBOutlet weak var hardFace: UIImageView!
+    @IBOutlet weak var normalHideView: UIView!
+    @IBOutlet weak var hardHideView: UIView!
     
     let defaults = UserDefaults.standard
     var pushPlayer = SoundPlayer()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let EASYview = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        openModeLock()
         easyView.layer.cornerRadius = 20.0
         normalView.layer.cornerRadius = 20.0
         hardView.layer.cornerRadius = 20.0
+        normalHideView.layer.cornerRadius = 20.0
+        hardHideView.layer.cornerRadius = 20.0
         
         easyFace.layer.cornerRadius = 40.0
         normalFace.layer.cornerRadius = 40.0
@@ -51,6 +57,19 @@ class SelectGameViewController: UIViewController {
         changeHeroID(mode: mode)
         //PlayVCに画面遷移
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
+    }
+    //モードのロックを解除する
+    func openModeLock() {
+        let modeLock = defaults.integer(forKey: K.ModeLock)
+        if modeLock == 2 {
+            normalHideView.removeFromSuperview()
+            normalFace.image = K.Images.enemy[K.Mode.normal]
+        } else if modeLock == 3 {
+            normalHideView.removeFromSuperview()
+            hardHideView.removeFromSuperview()
+            normalFace.image = K.Images.enemy[K.Mode.normal]
+            hardFace.image = K.Images.enemy[K.Mode.hard]
+        }
     }
     
     

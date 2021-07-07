@@ -47,7 +47,7 @@
 		020B51C226739050005871D2 /* WordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCell.swift; sourceTree = "<group>"; };
 		020B51C326739050005871D2 /* WordListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordListCell.xib; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
-		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/Practice/Shiritori-App/Shiritori/ejdict.sqlite3"; sourceTree = "<absolute>"; };
+		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/iOSAppDevelopment/Shiritori-App/Shiritori/Data/ejdict.sqlite3"; sourceTree = "<absolute>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };

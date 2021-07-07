@@ -302,7 +302,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLn-c6-bzC">
                                                 <rect key="frame" x="0.0" y="169.5" width="374" height="149"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NORMAL0" translatesAutoresizingMaskIntoConstraints="NO" id="a48-QC-AmK">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="a48-QC-AmK">
                                                         <rect key="frame" x="10" y="34.5" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="3L1-md-ZmS"/>
@@ -320,21 +320,29 @@
                                                             <action selector="modeSelected:" destination="S1X-48-eHe" eventType="touchUpInside" id="0LF-LC-QrR"/>
                                                         </connections>
                                                     </button>
+                                                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6C-ju-cPS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="149"/>
+                                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                 <constraints>
                                                     <constraint firstItem="a48-QC-AmK" firstAttribute="leading" secondItem="mLn-c6-bzC" secondAttribute="leading" constant="10" id="9a8-XI-EhG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="k6C-ju-cPS" secondAttribute="bottom" id="BKT-dN-hWW"/>
                                                     <constraint firstItem="a48-QC-AmK" firstAttribute="centerY" secondItem="mLn-c6-bzC" secondAttribute="centerY" id="DgS-Nc-3vl"/>
+                                                    <constraint firstItem="k6C-ju-cPS" firstAttribute="leading" secondItem="mLn-c6-bzC" secondAttribute="leading" id="FGd-e9-b6b"/>
                                                     <constraint firstItem="W0u-VT-4Ct" firstAttribute="leading" secondItem="a48-QC-AmK" secondAttribute="trailing" id="UGv-gi-PHx"/>
                                                     <constraint firstItem="W0u-VT-4Ct" firstAttribute="top" secondItem="mLn-c6-bzC" secondAttribute="top" constant="10" id="UuW-tP-dOc"/>
+                                                    <constraint firstItem="k6C-ju-cPS" firstAttribute="top" secondItem="mLn-c6-bzC" secondAttribute="top" id="dpV-Lj-mtO"/>
                                                     <constraint firstAttribute="trailing" secondItem="W0u-VT-4Ct" secondAttribute="trailing" constant="10" id="hiC-Rq-VUE"/>
                                                     <constraint firstAttribute="bottom" secondItem="W0u-VT-4Ct" secondAttribute="bottom" constant="10" id="tpY-Up-3Xh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="k6C-ju-cPS" secondAttribute="trailing" id="vbd-3w-N7m"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA0-mV-fKQ">
                                                 <rect key="frame" x="0.0" y="338.5" width="374" height="149.5"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HARD0" translatesAutoresizingMaskIntoConstraints="NO" id="Chz-qG-nB0">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="Chz-qG-nB0">
                                                         <rect key="frame" x="10" y="35" width="80" height="80"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="80" id="jwt-1z-ZkA"/>
@@ -352,13 +360,21 @@
                                                             <action selector="modeSelected:" destination="S1X-48-eHe" eventType="touchUpInside" id="JPG-G7-5Y5"/>
                                                         </connections>
                                                     </button>
+                                                    <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MK4-hn-wOy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="149.5"/>
+                                                        <color key="backgroundColor" systemColor="labelColor"/>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98348480459999998" green="0.21323210000000001" blue="0.24982997779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstItem="MK4-hn-wOy" firstAttribute="top" secondItem="lA0-mV-fKQ" secondAttribute="top" id="CPq-Oe-OC1"/>
                                                     <constraint firstAttribute="bottom" secondItem="T89-Ye-I8L" secondAttribute="bottom" constant="10" id="NpB-nw-CZK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="MK4-hn-wOy" secondAttribute="trailing" id="bmT-vd-URh"/>
                                                     <constraint firstItem="T89-Ye-I8L" firstAttribute="leading" secondItem="Chz-qG-nB0" secondAttribute="trailing" id="cEt-sE-TTs"/>
                                                     <constraint firstItem="Chz-qG-nB0" firstAttribute="centerY" secondItem="lA0-mV-fKQ" secondAttribute="centerY" id="kQY-W8-MnP"/>
+                                                    <constraint firstItem="MK4-hn-wOy" firstAttribute="leading" secondItem="lA0-mV-fKQ" secondAttribute="leading" id="m27-G8-oWD"/>
                                                     <constraint firstItem="T89-Ye-I8L" firstAttribute="top" secondItem="lA0-mV-fKQ" secondAttribute="top" constant="10" id="nf2-Rl-oTg"/>
+                                                    <constraint firstAttribute="bottom" secondItem="MK4-hn-wOy" secondAttribute="bottom" id="oKg-R4-b1D"/>
                                                     <constraint firstAttribute="trailing" secondItem="T89-Ye-I8L" secondAttribute="trailing" constant="10" id="sJV-Zb-4oX"/>
                                                     <constraint firstItem="Chz-qG-nB0" firstAttribute="leading" secondItem="lA0-mV-fKQ" secondAttribute="leading" constant="10" id="tbv-Bq-yvC"/>
                                                 </constraints>
@@ -405,8 +421,10 @@
                         <outlet property="easyFace" destination="XzG-ds-OEJ" id="Xo5-V6-PMI"/>
                         <outlet property="easyView" destination="I7e-Sj-66Q" id="NtR-nD-LIr"/>
                         <outlet property="hardFace" destination="Chz-qG-nB0" id="va1-9M-we4"/>
+                        <outlet property="hardHideView" destination="MK4-hn-wOy" id="l9f-la-QTL"/>
                         <outlet property="hardView" destination="lA0-mV-fKQ" id="Ik6-dk-sGG"/>
                         <outlet property="normalFace" destination="a48-QC-AmK" id="r4i-YJ-boO"/>
+                        <outlet property="normalHideView" destination="k6C-ju-cPS" id="tK7-0K-Dpd"/>
                         <outlet property="normalView" destination="mLn-c6-bzC" id="h1k-xl-GqB"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="toPlay" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="qAr-Gy-X6G"/>
                     </connections>
@@ -876,22 +894,24 @@
     <inferredMetricsTieBreakers>
         <segue reference="trG-CC-Rg8"/>
         <segue reference="mbp-lE-dVy"/>
-        <segue reference="xKv-EY-u8v"/>
+        <segue reference="tO2-sB-ptH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
-        <image name="HARD0" width="96" height="96"/>
-        <image name="NORMAL0" width="96" height="96"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="door" width="96" height="96"/>
         <image name="help" width="300" height="300"/>
+        <image name="hide" width="96" height="96"/>
         <image name="hitpointgage-1.png (1)" width="240" height="53"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="musicON" width="300" height="300"/>
         <image name="speechbaloon" width="250" height="115"/>
         <image name="win0" width="96" height="96"/>
         <image name="wordlist" width="300" height="300"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

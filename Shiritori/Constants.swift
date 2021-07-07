@@ -15,6 +15,8 @@ struct K {
     static let scoreLimit = ["EASY": 60, "NORMAL": 100, "HARD": 200]
     static let modeColor: [String: UIColor] = ["EASY": .systemGreen, "NORMAL": .systemBlue, "HARD": .systemPink]
     
+    static let ModeLock = "ModeLock"
+    
     struct CellID {
         static let wordListCell = "ReusableCell"
         static let mywordCell = "MyWordCell"

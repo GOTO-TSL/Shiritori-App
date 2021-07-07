@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    
+    var isFirst = false
     var imageManager = ImageManager()
     var pushPlayer = SoundPlayer()
     var edPlayer = SoundPlayer()
@@ -39,6 +39,15 @@ class ResultViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
+    override func viewDidLayoutSubviews() {
+        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
+        let score = defaults.integer(forKey: K.UserDefaultKeys.score)
+        if !isFirst {
+            isFirst = true
+            changeResultSound(score: score, mode: mode)
+        }
+    }
+    
     @IBAction func wordsPressed(_ sender: UIButton) {
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
@@ -53,21 +62,43 @@ class ResultViewController: UIViewController {
     
     
     func changeResult(score: Int, mode: String) {
-        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        let modeLock = defaults.integer(forKey: K.ModeLock)
+        
         if K.scoreLimit[mode] == score {
             self.imageManager.imageAnimation(for: resultImage,
                                              mode: "",
                                              action: K.animationAction.win,
                                              duration: 1.0)
-            self.edPlayer.playSound(name: K.Sounds.win, isMute: isMute)
             self.resultLabel.text = K.Texts.winText
+            defaults.set(modeOpen(mode: mode, modeLock: modeLock), forKey: K.ModeLock)
         } else {
             self.imageManager.imageAnimation(for: resultImage,
                                              mode: mode,
                                              action: K.animationAction.lose,
                                              duration: 1.0)
-            self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
             self.resultLabel.text = K.Texts.loseText
+        }
+    }
+    
+    func changeResultSound(score: Int, mode: String) {
+        let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
+        
+        if K.scoreLimit[mode] == score {
+            self.edPlayer.playSound(name: K.Sounds.win, isMute: isMute)
+        } else {
+            self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
+        }
+    }
+    
+    func modeOpen(mode: String, modeLock: Int) -> Int {
+        if modeLock != 3 {
+            if mode == "EASY" {
+                return 2
+            } else {
+                return 3
+            }
+        } else {
+            return 3
         }
     }
 }
