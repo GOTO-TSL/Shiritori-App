@@ -60,11 +60,71 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="play"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIN-AM-arx">
+                                                <rect key="frame" x="167" y="193" width="80" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Q4-Ov-F2w" userLabel="NORMAL">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="NORMAL"/>
+                                                        <state key="normal" image="NORMALclear0"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="7SZ-Tx-QAq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4Q4-Ov-F2w" secondAttribute="bottom" id="QmD-7H-2dC"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4Q4-Ov-F2w" secondAttribute="trailing" id="Qwg-1W-V8K"/>
+                                                    <constraint firstItem="4Q4-Ov-F2w" firstAttribute="top" secondItem="bIN-AM-arx" secondAttribute="top" id="QyI-ox-Kt8"/>
+                                                    <constraint firstItem="4Q4-Ov-F2w" firstAttribute="leading" secondItem="bIN-AM-arx" secondAttribute="leading" id="gKt-ww-neK"/>
+                                                    <constraint firstAttribute="width" secondItem="bIN-AM-arx" secondAttribute="height" multiplier="1:1" id="jmm-wv-OjX"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9I0-VF-0FA">
+                                                <rect key="frame" x="252" y="193" width="80" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uke-Hz-Jps" userLabel="HARD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="HARD"/>
+                                                        <state key="normal" image="HARDclear0"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="Fsq-um-g26"/>
+                                                    <constraint firstItem="Uke-Hz-Jps" firstAttribute="leading" secondItem="9I0-VF-0FA" secondAttribute="leading" id="HL0-0W-oqB"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Uke-Hz-Jps" secondAttribute="trailing" id="J5A-Ml-xwe"/>
+                                                    <constraint firstAttribute="width" secondItem="9I0-VF-0FA" secondAttribute="height" multiplier="1:1" id="YB0-y8-sxE"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Uke-Hz-Jps" secondAttribute="bottom" id="f9V-wD-Jmx"/>
+                                                    <constraint firstItem="Uke-Hz-Jps" firstAttribute="top" secondItem="9I0-VF-0FA" secondAttribute="top" id="lHN-LM-pQV"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mU9-vH-s7f">
+                                                <rect key="frame" x="82" y="193" width="80" height="80"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fPr-J1-TaW" userLabel="EASY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="EASY"/>
+                                                        <state key="normal" image="EASYclear0"/>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="fPr-J1-TaW" firstAttribute="top" secondItem="mU9-vH-s7f" secondAttribute="top" id="8YA-nX-9h2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fPr-J1-TaW" secondAttribute="bottom" id="Gtq-DH-J3c"/>
+                                                    <constraint firstAttribute="width" secondItem="mU9-vH-s7f" secondAttribute="height" multiplier="1:1" id="ZD0-eK-xO2"/>
+                                                    <constraint firstItem="fPr-J1-TaW" firstAttribute="leading" secondItem="mU9-vH-s7f" secondAttribute="leading" id="i1A-9a-gKx"/>
+                                                    <constraint firstAttribute="height" constant="80" id="iE4-Bn-jWD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fPr-J1-TaW" secondAttribute="trailing" id="lNc-9r-yYt"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="Cwn-ZB-ttO" firstAttribute="top" secondItem="seO-h5-gkG" secondAttribute="top" id="0Cm-ho-c8U"/>
+                                            <constraint firstItem="bIN-AM-arx" firstAttribute="centerX" secondItem="seO-h5-gkG" secondAttribute="centerX" id="1Wb-yB-cvx"/>
+                                            <constraint firstAttribute="bottom" secondItem="bIN-AM-arx" secondAttribute="bottom" id="HEV-bJ-3MW"/>
                                             <constraint firstAttribute="bottom" secondItem="Cwn-ZB-ttO" secondAttribute="bottom" id="HPp-27-i0E"/>
+                                            <constraint firstItem="9I0-VF-0FA" firstAttribute="leading" secondItem="bIN-AM-arx" secondAttribute="trailing" constant="5" id="KIW-PK-sfp"/>
+                                            <constraint firstAttribute="bottom" secondItem="mU9-vH-s7f" secondAttribute="bottom" id="Ou3-qB-4Sw"/>
                                             <constraint firstItem="Cwn-ZB-ttO" firstAttribute="leading" secondItem="seO-h5-gkG" secondAttribute="leading" constant="70" id="WUn-8n-ncJ"/>
+                                            <constraint firstItem="bIN-AM-arx" firstAttribute="leading" secondItem="mU9-vH-s7f" secondAttribute="trailing" constant="5" id="gro-KO-zlR"/>
+                                            <constraint firstAttribute="bottom" secondItem="9I0-VF-0FA" secondAttribute="bottom" id="h2N-LE-IVa"/>
                                             <constraint firstAttribute="trailing" secondItem="Cwn-ZB-ttO" secondAttribute="trailing" constant="70" id="vIa-nf-KWV"/>
                                         </constraints>
                                     </view>
@@ -152,10 +212,17 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <outlet property="EASYView" destination="mU9-vH-s7f" id="1fP-M7-ZfF"/>
+                        <outlet property="HARDView" destination="9I0-VF-0FA" id="Sdk-Gy-qCR"/>
                         <outlet property="MainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
+                        <outlet property="MiddleView" destination="seO-h5-gkG" id="YLy-fa-q8b"/>
+                        <outlet property="NORMALView" destination="bIN-AM-arx" id="NF7-Tw-7lt"/>
                         <outlet property="PlayButton" destination="TFk-BK-b8n" id="mHD-c5-Pj3"/>
                         <outlet property="SoundButton" destination="T8Y-12-vBr" id="r7R-4Z-rAj"/>
                         <outlet property="SubTitle" destination="Foc-CS-Iyr" id="Aky-Y0-1Wc"/>
+                        <outlet property="easyFigure" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
+                        <outlet property="hardFigure" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
+                        <outlet property="normalFigure" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1G-gE-ZWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -919,13 +986,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qAr-Gy-X6G"/>
         <segue reference="trG-CC-Rg8"/>
-        <segue reference="UHQ-gs-QV4"/>
+        <segue reference="mbp-lE-dVy"/>
         <segue reference="tO2-sB-ptH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
+        <image name="EASYclear0" width="304" height="304"/>
+        <image name="HARDclear0" width="304" height="304"/>
+        <image name="NORMALclear0" width="304" height="304"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="door" width="96" height="96"/>

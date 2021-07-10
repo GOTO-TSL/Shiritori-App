@@ -91,14 +91,14 @@ class ResultViewController: UIViewController {
     }
     
     func modeOpen(mode: String, modeLock: Int) -> Int {
-        if modeLock != 3 {
+        if modeLock < 3 {
             if mode == "EASY" {
                 return 2
             } else {
                 return 3
             }
         } else {
-            return 3
+            return 4
         }
     }
 }

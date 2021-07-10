@@ -12,6 +12,12 @@
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 020F1A682675E67900FD85F0 /* ejdict.sqlite3 */; };
 		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
+		021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCD269992CD001BAADF /* EASY0.mp3 */; };
+		021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCF26999379001BAADF /* EASY1.mp3 */; };
+		021C3CD326999470001BAADF /* NORMAL0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD126999470001BAADF /* NORMAL0.mp3 */; };
+		021C3CD426999470001BAADF /* NORMAL1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD226999470001BAADF /* NORMAL1.mp3 */; };
+		021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD5269994DC001BAADF /* HARD0.mp3 */; };
+		021C3CD8269994DC001BAADF /* HARD1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD6269994DC001BAADF /* HARD1.mp3 */; };
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
@@ -49,6 +55,12 @@
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/iOSAppDevelopment/Shiritori-App/Shiritori/Data/ejdict.sqlite3"; sourceTree = "<absolute>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EASY0.mp3; path = ../../../../../Downloads/EASY0.mp3; sourceTree = "<group>"; };
+		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EASY1.mp3; path = ../../../../../Downloads/EASY1.mp3; sourceTree = "<group>"; };
+		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = NORMAL0.mp3; path = ../../../../../Downloads/NORMAL0.mp3; sourceTree = "<group>"; };
+		021C3CD226999470001BAADF /* NORMAL1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = NORMAL1.mp3; path = ../../../../../Downloads/NORMAL1.mp3; sourceTree = "<group>"; };
+		021C3CD5269994DC001BAADF /* HARD0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = HARD0.mp3; path = ../../../../../Downloads/HARD0.mp3; sourceTree = "<group>"; };
+		021C3CD6269994DC001BAADF /* HARD1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = HARD1.mp3; path = ../../../../../Downloads/HARD1.mp3; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
@@ -123,6 +135,12 @@
 		02818B1F2687695A000A40C2 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				021C3CD5269994DC001BAADF /* HARD0.mp3 */,
+				021C3CD6269994DC001BAADF /* HARD1.mp3 */,
+				021C3CD126999470001BAADF /* NORMAL0.mp3 */,
+				021C3CD226999470001BAADF /* NORMAL1.mp3 */,
+				021C3CCF26999379001BAADF /* EASY1.mp3 */,
+				021C3CCD269992CD001BAADF /* EASY0.mp3 */,
 				02FA25FC268B56DC00118BD8 /* lose.mp3 */,
 				02FA25FD268B56DC00118BD8 /* win.mp3 */,
 				02818B2526876D47000A40C2 /* battle.mp3 */,
@@ -256,6 +274,10 @@
 		0283556F263F9306008B6845 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					easy,
+					normal,
+				);
 				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
@@ -288,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02818B2126876983000A40C2 /* damage.mp3 in Resources */,
+				021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */,
 				020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */,
 				02818B2926876D48000A40C2 /* push.mp3 in Resources */,
 				02818B2326876D2E000A40C2 /* heal.mp3 in Resources */,
@@ -297,9 +320,14 @@
 				020B51C526739050005871D2 /* WordListCell.xib in Resources */,
 				02835584263F9307008B6845 /* Assets.xcassets in Resources */,
 				02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */,
+				021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */,
+				021C3CD426999470001BAADF /* NORMAL1.mp3 in Resources */,
 				025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */,
 				02835582263F9306008B6845 /* Main.storyboard in Resources */,
+				021C3CD8269994DC001BAADF /* HARD1.mp3 in Resources */,
+				021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */,
 				02818B2726876D48000A40C2 /* opening.mp3 in Resources */,
+				021C3CD326999470001BAADF /* NORMAL0.mp3 in Resources */,
 				02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

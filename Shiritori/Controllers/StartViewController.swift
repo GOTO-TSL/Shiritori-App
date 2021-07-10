@@ -16,9 +16,17 @@ class StartViewController: UIViewController {
     @IBOutlet weak var SubTitle: UILabel!
     @IBOutlet weak var PlayButton: UIButton!
     @IBOutlet weak var SoundButton: UIButton!
+    @IBOutlet weak var easyFigure: UIButton!
+    @IBOutlet weak var normalFigure: UIButton!
+    @IBOutlet weak var hardFigure: UIButton!
+    @IBOutlet weak var MiddleView: UIView!
+    @IBOutlet weak var EASYView: UIView!
+    @IBOutlet weak var NORMALView: UIView!
+    @IBOutlet weak var HARDView: UIView!
     
     var opPlayer = SoundPlayer()
     var pushPlayer = SoundPlayer()
+    var figurePlayer = SoundPlayer()
     var wordArray = [Word]()
     var myWords = [MyWord]()
     var wordSource = WordSource()
@@ -32,12 +40,15 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         MainTitle.text = K.Texts.mainTitle
         SubTitle.text = K.Texts.subTitle
         
         let ismute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         isMute = ismute
         isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
+        
+        Figure()
         
         createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
@@ -79,6 +90,29 @@ class StartViewController: UIViewController {
             }
         }
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.easyFigure.addTarget(self, action: #selector(self.tapButton(_ :)), for: .touchDown)
+        self.easyFigure.addTarget(self, action: #selector(self.tapButton2(_ :)), for: .touchUpInside)
+        self.normalFigure.addTarget(self, action: #selector(self.tapButton(_ :)), for: .touchDown)
+        self.normalFigure.addTarget(self, action: #selector(self.tapButton2(_ :)), for: .touchUpInside)
+        self.hardFigure.addTarget(self, action: #selector(self.tapButton(_ :)), for: .touchDown)
+        self.hardFigure.addTarget(self, action: #selector(self.tapButton2(_ :)), for: .touchUpInside)
+    }
+    
+    @objc func tapButton(_ sender: UIButton) {
+        guard let id = sender.accessibilityIdentifier else { print("error"); return }
+        sender.setImage(K.Images.figure[id]?[1], for: .normal)
+        figurePlayer.playSound(name: id+"0")
+    }
+    
+    @objc func tapButton2(_ sender: UIButton) {
+        guard let id = sender.accessibilityIdentifier else { print("error"); return }
+        sender.setImage(K.Images.figure[id]?[0], for: .normal)
+        figurePlayer.playSound(name: id+"1")
+    }
+    
     @IBAction func soundPressed(_ sender: UIButton) {
         //ミュート変数の値を変更
         isMute = isMute ? false : true
@@ -88,6 +122,33 @@ class StartViewController: UIViewController {
         appDelegate.opPlayer.muteSound(isMute: isMute)
         defaults.set(isMute, forKey: K.UserDefaultKeys.isMute)
     }
+    
+    func Figure() {
+        let modeLock = defaults.integer(forKey: K.ModeLock)
+        switch modeLock {
+        case 1:
+            EASYView.isHidden = true
+            NORMALView.isHidden = true
+            HARDView.isHidden = true
+        case 2:
+            EASYView.isHidden = false
+            NORMALView.isHidden = true
+            HARDView.isHidden = true
+        case 3:
+            EASYView.isHidden = false
+            NORMALView.isHidden = false
+            HARDView.isHidden = true
+        case 4:
+            EASYView.isHidden = false
+            NORMALView.isHidden = false
+            HARDView.isHidden = true
+        default:
+            EASYView.isHidden = true
+            NORMALView.isHidden = true
+            HARDView.isHidden = true
+        }
+    }
+    
     
     @IBAction func otherButtonPressed(_ sender: UIButton) {
         pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
