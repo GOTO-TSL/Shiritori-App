@@ -91,7 +91,7 @@ struct K {
     
     struct Images {
         static let enemy = ["EASY": #imageLiteral(resourceName: "EASY0"), "NORMAL": #imageLiteral(resourceName: "NORMAL0"), "HARD": #imageLiteral(resourceName: "HARD0")]
-        static let Stars = [#imageLiteral(resourceName: "brankstar"), #imageLiteral(resourceName: "fillstar")]
+        static let Stars = [#imageLiteral(resourceName: "brank"), #imageLiteral(resourceName: "fill")]
         static let Sounds = [#imageLiteral(resourceName: "musicON"), #imageLiteral(resourceName: "musicOFF")]
     }
     

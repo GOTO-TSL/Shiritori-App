@@ -29,7 +29,8 @@ struct WordSource {
                     return
                 }
                 let word: String = rows[K.DataBase.word]
-                self.delegate?.updateFirst(word: word)
+                let lowWord = word.lowercased()
+                self.delegate?.updateFirst(word: lowWord)
             }
         } catch {
             print("Error \(error)")
@@ -51,7 +52,8 @@ struct WordSource {
                     return
                 }
                 let word: String = rows[K.DataBase.word]
-                self.delegate?.updateWord(word: word)
+                let lowWord = word.lowercased()
+                self.delegate?.updateWord(word: lowWord)
                 
             }
         } catch {
