@@ -215,7 +215,6 @@
                         <outlet property="EASYView" destination="mU9-vH-s7f" id="1fP-M7-ZfF"/>
                         <outlet property="HARDView" destination="9I0-VF-0FA" id="Sdk-Gy-qCR"/>
                         <outlet property="MainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
-                        <outlet property="MiddleView" destination="seO-h5-gkG" id="YLy-fa-q8b"/>
                         <outlet property="NORMALView" destination="bIN-AM-arx" id="NF7-Tw-7lt"/>
                         <outlet property="PlayButton" destination="TFk-BK-b8n" id="mHD-c5-Pj3"/>
                         <outlet property="SoundButton" destination="T8Y-12-vBr" id="r7R-4Z-rAj"/>
@@ -590,8 +589,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xp-bz-zpQ">
                                                 <rect key="frame" x="0.0" y="150" width="250" height="70"/>
                                                 <subviews>
-                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-5U-NdO">
-                                                        <rect key="frame" x="2" y="33" width="246" height="20"/>
+                                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progressViewStyle="bar" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="AD8-5U-NdO">
+                                                        <rect key="frame" x="2" y="33" width="246" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="ks1-EW-CbZ"/>
                                                         </constraints>
@@ -640,17 +639,36 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="heroID" value="mode"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0Q-fh-D3c">
+                                        <rect key="frame" x="40" y="100" width="104" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-Ot-xe9">
+                                                <rect key="frame" x="35.5" y="-1" width="33" height="32"/>
+                                                <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="iy1-Ot-xe9" firstAttribute="centerX" secondItem="E0Q-fh-D3c" secondAttribute="centerX" id="73B-1F-isf"/>
+                                            <constraint firstItem="iy1-Ot-xe9" firstAttribute="centerY" secondItem="E0Q-fh-D3c" secondAttribute="centerY" id="NAS-z8-bTV"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="AJC-MN-MJ6" firstAttribute="top" secondItem="1Xl-WW-OFm" secondAttribute="top" constant="20" id="1H5-gy-Mcf"/>
                                     <constraint firstItem="AJC-MN-MJ6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Xl-WW-OFm" secondAttribute="leading" constant="20" symbolic="YES" id="2Zl-DL-AsH"/>
+                                    <constraint firstItem="QkK-5E-D76" firstAttribute="leading" secondItem="E0Q-fh-D3c" secondAttribute="trailing" id="84n-wd-Tvi"/>
                                     <constraint firstItem="K9T-qr-mTd" firstAttribute="top" secondItem="1Xl-WW-OFm" secondAttribute="top" constant="30" id="EjU-Wc-AqC"/>
                                     <constraint firstAttribute="trailing" secondItem="AJC-MN-MJ6" secondAttribute="trailing" constant="30" id="GzE-mo-8SM"/>
+                                    <constraint firstItem="y7e-yS-ZwK" firstAttribute="top" secondItem="E0Q-fh-D3c" secondAttribute="bottom" id="IgO-Gx-5s6"/>
                                     <constraint firstItem="K9T-qr-mTd" firstAttribute="leading" secondItem="1Xl-WW-OFm" secondAttribute="leading" constant="30" id="JN1-S5-yVP"/>
                                     <constraint firstAttribute="height" constant="300" id="MxD-ct-Nfd"/>
                                     <constraint firstItem="y7e-yS-ZwK" firstAttribute="leading" secondItem="1Xl-WW-OFm" secondAttribute="leading" constant="10" id="Vkk-zI-vyg"/>
                                     <constraint firstItem="QkK-5E-D76" firstAttribute="top" secondItem="AJC-MN-MJ6" secondAttribute="bottom" constant="10" id="XLe-RC-8T2"/>
                                     <constraint firstAttribute="trailing" secondItem="QkK-5E-D76" secondAttribute="trailing" constant="20" id="hRj-r6-y3k"/>
+                                    <constraint firstItem="E0Q-fh-D3c" firstAttribute="top" secondItem="K9T-qr-mTd" secondAttribute="bottom" constant="40" id="hZV-un-5gT"/>
+                                    <constraint firstItem="E0Q-fh-D3c" firstAttribute="leading" secondItem="1Xl-WW-OFm" secondAttribute="leading" constant="40" id="jj6-Ml-wrT"/>
                                     <constraint firstItem="AJC-MN-MJ6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K9T-qr-mTd" secondAttribute="trailing" constant="8" symbolic="YES" id="q6H-4W-6i2"/>
                                     <constraint firstItem="y7e-yS-ZwK" firstAttribute="top" secondItem="K9T-qr-mTd" secondAttribute="bottom" constant="70" id="qSZ-dJ-STl"/>
                                     <constraint firstItem="y7e-yS-ZwK" firstAttribute="top" secondItem="1Xl-WW-OFm" secondAttribute="top" constant="130" id="t9W-Da-shz"/>
@@ -717,6 +735,8 @@
                         <outlet property="TextField" destination="ZvR-Y8-uEL" id="gk5-mZ-OeO"/>
                         <outlet property="TimeBar" destination="O6f-nY-tkt" id="zt8-7u-3gl"/>
                         <outlet property="WordLabel" destination="Ruj-rW-0TM" id="cFD-9F-308"/>
+                        <outlet property="damageLabel" destination="iy1-Ot-xe9" id="WIo-PP-uxm"/>
+                        <outlet property="damageView" destination="E0Q-fh-D3c" id="7cp-xg-zaz"/>
                         <outlet property="modeLabel" destination="Vc4-WS-gTY" id="oyB-zA-Fcp"/>
                         <outlet property="modeView" destination="K9T-qr-mTd" id="0JE-ew-Wy3"/>
                         <segue destination="da3-aV-zKm" kind="presentation" identifier="toResult" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="trG-CC-Rg8"/>

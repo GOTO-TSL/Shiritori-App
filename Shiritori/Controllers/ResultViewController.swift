@@ -63,8 +63,9 @@ class ResultViewController: UIViewController {
     
     func changeResult(score: Int, mode: String) {
         let modeLock = defaults.integer(forKey: K.ModeLock)
+        guard let scoreLimit = K.scoreLimit[mode] else { return }
         
-        if K.scoreLimit[mode] == score {
+        if scoreLimit <= score {
             self.imageManager.imageAnimation(for: resultImage,
                                              mode: "",
                                              action: K.animationAction.win,
@@ -82,10 +83,12 @@ class ResultViewController: UIViewController {
     
     func changeResultSound(score: Int, mode: String) {
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
-        
-        if K.scoreLimit[mode] == score {
+        guard let scoreLimit = K.scoreLimit[mode] else { return }
+        if scoreLimit <= score {
+            print("score: \(score)")
             self.edPlayer.playSound(name: K.Sounds.win, isMute: isMute)
         } else {
+            print("score: \(score)")
             self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
         }
     }

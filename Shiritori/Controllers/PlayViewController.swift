@@ -19,6 +19,8 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var FaceImage: UIImageView!
     @IBOutlet weak var modeView: UIView!
     @IBOutlet weak var HitPointBar: UIProgressView!
+    @IBOutlet weak var damageView: UIView!
+    @IBOutlet weak var damageLabel: UILabel!
     
     var wordArray = [Word]()
     var gameLogic = GameLogic()
@@ -46,6 +48,8 @@ class PlayViewController: UIViewController {
         defaults.set(0, forKey: K.UserDefaultKeys.score)
         defaults.set("aaaa", forKey: K.UserDefaultKeys.currentWord)
         
+        //ダメージを隠す
+        damageView.isHidden = true
         
         //戦闘BGMを再生
         bgmPlayer.playSound(name: "battle", isMute: isMute, loop: -1)
@@ -188,30 +192,47 @@ extension PlayViewController: WordSourceDelegate {
     }
     //敵の単語を更新し，単語を保存
     func updateWord(word: String) {
+        guard let text = TextField.text else { return }
         DispatchQueue.main.async {
             self.saveWord(word: word)
             self.WordLabel.text = word
             self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
-            self.gameLogic.addGamePoint()
+            self.gameLogic.addGamePoint(userWord: text)
             self.TextField.text = ""
         }
     }
 }
 //MARK: - GameLogicDelegate
 extension PlayViewController: GameLogicDelegate {
+    //ダメージラベルの更新
+    func updateDamage(damage: Int) {
+        DispatchQueue.main.async {
+            self.damageView.isHidden = false
+            if damage >= 100 {
+                self.damageLabel.textColor = .red
+                self.damageLabel.text = String(damage)
+            } else {
+                self.damageLabel.textColor = .black
+                self.damageLabel.text = String(damage)
+            }
+            self.imageManager.damageAnimation(for: self.damageView)
+        }
+    }
     //HPゲージの更新
     func updateHitPoint(score: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
-            self.HitPointBar.progress = 1.0 - Float(score) / Float(scoreLimit)
+            let progress = 1.0 - Float(score) / Float(scoreLimit)
+            print("progress: \(progress)")
+            self.HitPointBar.progress = progress
             switch self.HitPointBar.progress {
             case 0.6...1.0:
                 self.HitPointBar.progressTintColor = .green
-            case 0.26...0.5:
+            case 0.26..<0.6:
                 self.HitPointBar.progressTintColor = .systemYellow
-            case 0.0...0.25:
+            case 0.0..<0.26:
                 self.HitPointBar.progressTintColor = .systemRed
             default:
-                self.HitPointBar.progressTintColor = .systemGreen
+                self.HitPointBar.progressTintColor = .green
             }
         }
     }

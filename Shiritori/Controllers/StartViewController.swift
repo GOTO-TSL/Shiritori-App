@@ -19,7 +19,6 @@ class StartViewController: UIViewController {
     @IBOutlet weak var easyFigure: UIButton!
     @IBOutlet weak var normalFigure: UIButton!
     @IBOutlet weak var hardFigure: UIButton!
-    @IBOutlet weak var MiddleView: UIView!
     @IBOutlet weak var EASYView: UIView!
     @IBOutlet weak var NORMALView: UIView!
     @IBOutlet weak var HARDView: UIView!
@@ -141,7 +140,7 @@ class StartViewController: UIViewController {
         case 4:
             EASYView.isHidden = false
             NORMALView.isHidden = false
-            HARDView.isHidden = true
+            HARDView.isHidden = false
         default:
             EASYView.isHidden = true
             NORMALView.isHidden = true

@@ -30,4 +30,14 @@ struct ImageManager {
         return images
     }
     
+    func damageAnimation(for view: UIView) {
+        view.center.y += 30
+        view.alpha = 1.0
+        UIView.animate(withDuration: 1.0) {
+            view.center.y -= 30
+            view.alpha = 0.0
+        }
+        
+    }
+    
 }

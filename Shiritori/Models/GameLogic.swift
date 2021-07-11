@@ -13,6 +13,7 @@ protocol GameLogicDelegate {
     func shiritoriSucessed()
     func shiritoriFailed(comment: String)
     func updateHitPoint(score: Int, scoreLimit: Int)
+    func updateDamage(damage: Int)
     func gotoResultView()
 }
 
@@ -60,19 +61,22 @@ struct GameLogic {
         }
     }
     
-    func addGamePoint() {
+    func addGamePoint(userWord: String) {
         let currentScore = defaults.integer(forKey: K.UserDefaultKeys.score)
         guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         
-        let newScore = currentScore + 10
+        let damage = userWord.count * 10
+        let newScore = currentScore + damage
         defaults.set(newScore, forKey: K.UserDefaultKeys.score)
         
         guard let scoreLimit = K.scoreLimit[mode] else { return }
-        if newScore == scoreLimit {
+        if newScore >= scoreLimit {
             self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
+            self.delegate?.updateDamage(damage: damage)
             self.delegate?.gotoResultView()
         } else {
             self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
+            self.delegate?.updateDamage(damage: damage)
         }
         
     }
