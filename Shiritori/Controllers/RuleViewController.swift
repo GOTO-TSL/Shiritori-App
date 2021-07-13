@@ -13,7 +13,6 @@ class RuleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         RuleLabel.text = K.Texts.rule
     }
     

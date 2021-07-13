@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import UIKit
 import CoreData
+import UIKit
 
 protocol GameLogicDelegate {
     func shiritoriSucessed()

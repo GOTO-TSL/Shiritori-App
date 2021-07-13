@@ -173,15 +173,16 @@
 		02835579263F9306008B6845 /* Shiritori */ = {
 			isa = PBXGroup;
 			children = (
+				0283557A263F9306008B6845 /* AppDelegate.swift */,
+				0283557C263F9306008B6845 /* SceneDelegate.swift */,
 				02818B1F2687695A000A40C2 /* Sounds */,
 				025AE9F82680F30E0039DF56 /* fonts */,
 				020F1A6A2675E68F00FD85F0 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
-				0283557A263F9306008B6845 /* AppDelegate.swift */,
-				0283557C263F9306008B6845 /* SceneDelegate.swift */,
 				0283558E263F935F008B6845 /* Models */,
 				02835590263F9380008B6845 /* Views */,
 				02835591263F938C008B6845 /* Controllers */,
+				02835580263F9306008B6845 /* Main.storyboard */,
 				02835583263F9307008B6845 /* Assets.xcassets */,
 				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 				02835588263F9307008B6845 /* Info.plist */,
@@ -205,7 +206,6 @@
 		02835590263F9380008B6845 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				02835580263F9306008B6845 /* Main.storyboard */,
 				020B51C226739050005871D2 /* WordListCell.swift */,
 				020B51C326739050005871D2 /* WordListCell.xib */,
 				02331E082674B37100FABF0B /* MyWordCell.swift */,

@@ -71,6 +71,7 @@ struct K {
         static let currentWord = "currentWord"
         static let score = "score"
         static let isMute = "isMute"
+        static let firstLaunch = "firstLaunch"
     }
 
     struct HeroID {

@@ -16,11 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var opPlayer = SoundPlayer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        defaults.set(1, forKey: K.ModeLock)
         defaults.set(false, forKey: K.UserDefaultKeys.isMute)
         opPlayer.playSound(name: K.Sounds.op, isMute: false, loop: -1)
         // Override point for customization after application launch.
         return true
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        defaults.set(true, forKey: K.UserDefaultKeys.firstLaunch)
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

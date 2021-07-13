@@ -39,6 +39,10 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if defaults.bool(forKey: K.UserDefaultKeys.firstLaunch) {
+            defaults.set(1, forKey: K.ModeLock)
+            defaults.set(false, forKey: K.UserDefaultKeys.firstLaunch)
+        }
         
         MainTitle.text = K.Texts.mainTitle
         SubTitle.text = K.Texts.subTitle

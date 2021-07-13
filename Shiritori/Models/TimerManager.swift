@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 protocol TimerManagerDelegate {
     func didUpdateTimeBar(timeNow: Float)
