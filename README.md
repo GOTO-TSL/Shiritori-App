@@ -1,35 +1,19 @@
 # ShiritoriApp
 英単語しりとりゲームアプリです</br>
-ゲームモードはEASY,NORMAL,HARDの3つから選択できます</br>
+敵が繰り出してきた英単語にしりとりで返すと敵にダメージを与えることができます．</br>
+敵を倒すとゲームクリアです．</br>
+ゲームで使用した単語を単語帳に保存して確認することができます．
 
 しりとりのルール
-* CPUの繰り出す英単語の最後の文字から始まる英単語を入力すること
+* 敵の繰り出す英単語の最後の文字から始まる英単語を入力すること
 * 2文字以上の単語であること
 * 存在する単語であること</br>
-
-しりとりが成功するとハートゲージがたまり，満タンになるとゲームクリアとなります
-## DEMO
-![ShiritoriDemo](https://user-images.githubusercontent.com/84612341/121810813-31100f80-cc9d-11eb-9278-dc8756363668.gif)
-
- 
-## Features
- 自分の使った英単語，CPUの使った英単語をお気に入り登録することで意味を確認することができます．
 
  
 ## Requirement
  
 * GRDB 5.8.0
 * Hero 1.6.1
- 
-## Installation
-
-### CocoaPods
-<!-- Podfile:
-```bash
-pod 'GRDB.swift'
-``` -->
-### Swift Package Manager
-<!-- https://github.com/groue/GRDB.swift.git -->
  
 ## Usage
  
