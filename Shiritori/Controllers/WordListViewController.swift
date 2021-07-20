@@ -53,7 +53,7 @@ extension WordListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.CellID.wordListCell, for: indexPath) as! WordListCell
         guard let selectedWord = words?[indexPath.row] else { fatalError() }
-        
+        //セルのテキストを設定，お気に入り登録されると星がつくように画像を変更
         cell.WordLabel.text = selectedWord.name
         cell.StarImage.image = selectedWord.isLike ? K.Images.Stars[1] : K.Images.Stars[0]
         
@@ -66,6 +66,7 @@ extension WordListViewController: UITableViewDataSource {
 //MARK: - TableView Delegate Methods
 extension WordListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //タップされたセルをお気に入り状態に変更
         guard let selectedWord = words?[indexPath.row] else { fatalError() }
         do {
             try realm.write {

@@ -38,41 +38,39 @@ class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //初回起動時のみ実行する処理のための値をセット
         if defaults.bool(forKey: K.UserDefaultKeys.firstLaunch) {
             defaults.set(1, forKey: K.ModeLock)
             defaults.set(false, forKey: K.UserDefaultKeys.firstLaunch)
         }
         
+        //タイトルを表示
         MainTitle.text = K.Texts.mainTitle
         SubTitle.text = K.Texts.subTitle
         
+        //BGMをミュートに切り替える処理
         let ismute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         isMute = ismute
         isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
         
         Figure()
+        
         load()
         
         wordSource.createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
-        
-        
        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        //ナビゲーションバーを非表示
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let newWord = Word()
-        newWord.name = "waaa"
-        newWord.isLike = false
-        save(model: newWord)
-        
+        //使用した単語リストのうち，お気に入り登録した単語をマイ単語リストへ移す処理
         guard let words = words else { fatalError() }
         for word in words {
             if word.isLike {
@@ -80,30 +78,13 @@ class StartViewController: UIViewController {
                 newMyWord.name = word.name
                 newMyWord.mean = wordSource.featchMean(word: newMyWord.name)
                 save(model: newMyWord)
+                deleteWord(word: word)
             } else {
-                do {
-                    try realm.write {
-                        realm.delete(word)
-                    }
-                } catch {
-                    print("Error deleting word, \(error)")
-                }
+                deleteWord(word: word)
             }
         }
-        //単語リストに単語を追加
-//        for word in words {
-//            if word.like {
-//                var newMyWord = MyWord()
-//                newMyWord.name = word.name
-//                newMyWord.mean = wordSource.featchMean(word: newMyWord.myword!)
-//                saveWord()
-//            } else {
-//                context.delete(word)
-//                saveWord()
-//            }
-//        }
     }
-    
+    //おまけをタップすると音が出る処理を実行
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.easyFigure.addTarget(self, action: #selector(self.tapButton(_ :)), for: .touchDown)
@@ -125,17 +106,7 @@ class StartViewController: UIViewController {
         sender.setImage(K.Images.figure[id]?[0], for: .normal)
         figurePlayer.playSound(name: id+"1")
     }
-    
-    @IBAction func soundPressed(_ sender: UIButton) {
-        //ミュート変数の値を変更
-        isMute = isMute ? false : true
-        //ミュートかどうかで画像を変更
-        isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
-        
-        appDelegate.opPlayer.muteSound(isMute: isMute)
-        defaults.set(isMute, forKey: K.UserDefaultKeys.isMute)
-    }
-    
+    //ゲームクリアのおまけの表示/非表示
     func Figure() {
         let modeLock = defaults.integer(forKey: K.ModeLock)
         switch modeLock {
@@ -162,14 +133,24 @@ class StartViewController: UIViewController {
         }
     }
     
-    
+    //サウンドボタンが押されたときのBGMの音量変更，画像変更
+    @IBAction func soundPressed(_ sender: UIButton) {
+        //ミュート変数の値を変更
+        isMute = isMute ? false : true
+        //ミュートかどうかで画像を変更
+        isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
+        
+        appDelegate.opPlayer.muteSound(isMute: isMute)
+        defaults.set(isMute, forKey: K.UserDefaultKeys.isMute)
+    }
+    //ボタンタップ時の効果音を設定
     @IBAction func otherButtonPressed(_ sender: UIButton) {
         pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
     }
     @IBAction func playButtonPressed(_ sender: UIButton) {
         pushPlayer.playSound(name: K.Sounds.push,  isMute: isMute)
     }
-    
+    //MARK: - Data Manipulation Methods
     func save(model: Object) {
         do {
             try realm.write {
@@ -185,24 +166,13 @@ class StartViewController: UIViewController {
         myWords = realm.objects(MyWord.self)
     }
     
-    
-    //MARK: - Data Manipulation Methods
-//    func saveWord() {
-//        do {
-//            try context.save()
-//
-//        } catch {
-//            print("Error saving word array, \(error)")
-//
-//        }
-//    }
-//
-//    func loadWord(with request: NSFetchRequest<Word> = Word.fetchRequest()) {
-//        do {
-//            wordArray = try context.fetch(request)
-//        } catch {
-//            print("Error loading word from context \(error)")
-//        }
-//    }
-
+    func deleteWord(word: Object) {
+        do {
+            try realm.write {
+                realm.delete(word)
+            }
+        } catch {
+            print("Error deleting word, \(error)")
+        }
+    }
 }

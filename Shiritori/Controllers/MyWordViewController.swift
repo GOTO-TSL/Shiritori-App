@@ -55,10 +55,12 @@ class MyWordViewController: UITableViewController {
     
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //MeanVCへ移動
         performSegue(withIdentifier: K.SegueID.toMean, sender: nil)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //単語を削除
         guard let deletedWord = myWords?[indexPath.row] else { fatalError() }
         do {
             try realm.write {
@@ -76,7 +78,7 @@ class MyWordViewController: UITableViewController {
         myWords = realm.objects(MyWord.self)
     }
 
-//削除ボタンが押されたときの処理
+    //削除ボタンが押されたときの処理
     @IBAction func removePressed(_ sender: UIBarButtonItem) {
         if (tableView.isEditing) {
             tableView.setEditing(false, animated: true)

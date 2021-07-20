@@ -49,9 +49,11 @@ struct GameLogic {
     }
     
     func isUsed(word: String) -> Bool {
-        //let results = realm.objects(Word.self).filter("name == \(word)")
-        if true {
+        let results = realm.objects(Word.self).filter("name LIKE %@", word)
+        if results.count == 0 {
             return false
+        } else {
+            return true
         }
     }
     

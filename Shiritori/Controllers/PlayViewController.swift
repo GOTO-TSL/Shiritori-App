@@ -236,7 +236,6 @@ extension PlayViewController: GameLogicDelegate {
                                              duration: 0.2)
             
             guard let text = self.TextField.text else { return }
-            print("aaaa")
             self.wordSource.featchWord(inputWord: text)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

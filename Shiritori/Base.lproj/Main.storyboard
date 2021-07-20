@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e0k-dn-jUn">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -243,7 +244,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="MyWords" id="YHl-Ui-eCG">
-                        <barButtonItem key="leftBarButtonItem" title="back" image="arrowshape.turn.up.backward.fill" catalog="system" id="ga0-EJ-WHi">
+                        <barButtonItem key="leftBarButtonItem" title="back" image="arrowshape.turn.up.left.fill" catalog="system" id="ga0-EJ-WHi">
                             <connections>
                                 <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="ceV-nw-QTe"/>
                             </connections>
@@ -781,7 +782,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Rule" id="tGr-P2-O2M">
-                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.backward.fill" catalog="system" id="2GA-Qb-nSA">
+                        <barButtonItem key="leftBarButtonItem" image="arrowshape.turn.up.left.fill" catalog="system" id="2GA-Qb-nSA">
                             <connections>
                                 <segue destination="e0k-dn-jUn" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="partialCurl" id="wm4-IA-Vdj"/>
                             </connections>
@@ -931,7 +932,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Words Used" id="z86-nO-Fca">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrowshape.turn.up.backward.fill" catalog="system" id="CMt-tm-cFe">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrowshape.turn.up.left.fill" catalog="system" id="CMt-tm-cFe">
                             <connections>
                                 <segue destination="da3-aV-zKm" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="PQN-3t-9GR"/>
                             </connections>
@@ -1008,14 +1009,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="trG-CC-Rg8"/>
         <segue reference="mbp-lE-dVy"/>
-        <segue reference="tO2-sB-ptH"/>
+        <segue reference="wm4-IA-Vdj"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
         <image name="EASYclear0" width="304" height="304"/>
         <image name="HARDclear0" width="304" height="304"/>
         <image name="NORMALclear0" width="304" height="304"/>
-        <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
         <image name="door" width="96" height="96"/>
         <image name="help" width="300" height="300"/>
