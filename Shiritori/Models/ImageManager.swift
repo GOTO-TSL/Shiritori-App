@@ -5,7 +5,6 @@
 //  Created by 後藤孝輔 on 2021/05/30.
 //
 
-import Foundation
 import UIKit
 
 

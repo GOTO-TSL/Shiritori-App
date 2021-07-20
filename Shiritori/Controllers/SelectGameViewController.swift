@@ -22,12 +22,11 @@ class SelectGameViewController: UIViewController {
     let defaults = UserDefaults.standard
     var pushPlayer = SoundPlayer()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let EASYview = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        openModeLock()
+        modeUnLock()
         easyView.layer.cornerRadius = 20.0
         normalView.layer.cornerRadius = 20.0
         hardView.layer.cornerRadius = 20.0
@@ -59,7 +58,7 @@ class SelectGameViewController: UIViewController {
         self.performSegue(withIdentifier: K.SegueID.toplay, sender: nil)
     }
     //モードのロックを解除する
-    func openModeLock() {
+    func modeUnLock() {
         let modeLock = defaults.integer(forKey: K.ModeLock)
         if modeLock == 2 {
             normalHideView.removeFromSuperview()

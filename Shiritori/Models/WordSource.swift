@@ -18,11 +18,24 @@ protocol WordSourceDelegate {
 struct WordSource {
     
     var delegate: WordSourceDelegate?
+    var dbQueue: DatabaseQueue?
     
-    func featchFirstWord(dbqueue: DatabaseQueue) {
+    init() {
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let path = dir.appending(K.DataBase.path)
+            do {
+                self.dbQueue = try DatabaseQueue(path: path)
+            } catch {
+                print("Error \(error)")
+            }
+        }
+    }
+    
+    
+    func featchFirstWord() {
         let initialString = K.alphabet[Int.random(in: 0...24)]
         do {
-            try dbqueue.read { db in
+            try dbQueue?.read { db in
                 //Fetch database rows
                 guard let rows = try Row.fetchOne(db, sql:"SELECT * FROM items WHERE word LIKE '\(initialString)%' AND word NOT LIKE '%.' AND LENGTH(word) <= 14 ORDER BY RANDOM()") else {
                     self.delegate?.updateFirst(word: "")
@@ -37,9 +50,9 @@ struct WordSource {
         }
     }
     
-    func featchWord(dbqueue: DatabaseQueue, inputWord: String) { //プレイヤーからの入力にしりとりする単語をランダムに取ってくる処理
+    func featchWord(inputWord: String) { //プレイヤーからの入力にしりとりする単語をランダムに取ってくる処理
         do {
-            try dbqueue.read { db in
+            try dbQueue?.read { db in
                 // Fetch database rows
                 guard (try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(inputWord)' AND word NOT LIKE '%.' AND LENGTH(word) <= 14")) != nil else {
                     self.delegate?.invalidWord()
@@ -62,10 +75,10 @@ struct WordSource {
     }
     
     //英単語の意味をとってっくる処理
-    func featchMean(dbqueue: DatabaseQueue, word: String) -> String {
+    func featchMean(word: String) -> String {
         var result = ""
         do {
-            try dbqueue.read { db in
+            try dbQueue?.read { db in
                 // Fetch database rows
                 guard let rows = try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(word)'") else {
                     return
@@ -78,4 +91,29 @@ struct WordSource {
         }
         return result
     }
+    
+    /*
+     データベースファイルをコピーする処理
+     マスターデータファイルをアプリ実行時のディレクトリにコピーする
+     */
+    func createDatabase(){
+        let fileManager = FileManager.default
+        guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let finalDatabaseURL = documentsUrl.appendingPathComponent(K.DataBase.name)
+        do {
+            if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
+//                print("DB does not exist in documents folder")
+                if let dbFilePath = Bundle.main.path(forResource: K.DataBase.fore, ofType: K.DataBase.back) {
+                    try fileManager.copyItem(atPath: dbFilePath, toPath: finalDatabaseURL.path)
+                } else {
+//                    print("Uh oh - foo.db is not in the app bundle")
+                }
+            } else {
+//                print("Database file found at path: \(finalDatabaseURL.path)")
+            }
+        } catch {
+//            print("Unable to copy foo.db: \(error)")
+        }
+    }
+
 }
