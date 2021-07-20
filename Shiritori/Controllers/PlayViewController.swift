@@ -7,7 +7,7 @@
 
 import UIKit
 import GRDB
-import CoreData
+import RealmSwift
 import AVFoundation
 
 class PlayViewController: UIViewController {
@@ -22,7 +22,6 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var damageView: UIView!
     @IBOutlet weak var damageLabel: UILabel!
     
-    var wordArray = [Word]()
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
     var timerManager = TimerManager()
@@ -33,8 +32,9 @@ class PlayViewController: UIViewController {
     var MODE = ""
     var isMute = false
     
+    let realm = try! Realm()
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,20 +106,20 @@ class PlayViewController: UIViewController {
     }
 
     //単語を保存
-    func saveWord(word: String) {
-        let newWord = Word(context: context)
-        newWord.word = word
-        newWord.like = false
-        wordArray.append(newWord)
+    func save(word: String) {
+        let newWord = Word()
+        newWord.name = word
+        newWord.isLike = false
         
         do {
-            try context.save()
-            
+            try realm.write {
+                realm.add(newWord)
+            }
         } catch {
-            print("Error saving word array, \(error)")
-            
+            print("Error saving word, \(error)")
         }
     }
+
 }
 //MARK: - UITextFieldDelegate
 extension PlayViewController: UITextFieldDelegate {
@@ -166,7 +166,7 @@ extension PlayViewController: WordSourceDelegate {
     func addPlayerWord() {
         DispatchQueue.main.async {
             if let word = self.TextField.text {
-                self.saveWord(word: word)
+                self.save(word: word)
             }
         }
 
@@ -174,7 +174,7 @@ extension PlayViewController: WordSourceDelegate {
     //はじめの１単語目を表示，保存
     func updateFirst(word: String) {
         DispatchQueue.main.async {
-            self.saveWord(word: word)
+            self.save(word: word)
             self.WordLabel.text = word
             self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
         }
@@ -183,7 +183,7 @@ extension PlayViewController: WordSourceDelegate {
     func updateWord(word: String) {
         guard let text = TextField.text else { return }
         DispatchQueue.main.async {
-            self.saveWord(word: word)
+            self.save(word: word)
             self.WordLabel.text = word
             self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
             self.gameLogic.addGamePoint(userWord: text)
@@ -236,6 +236,7 @@ extension PlayViewController: GameLogicDelegate {
                                              duration: 0.2)
             
             guard let text = self.TextField.text else { return }
+            print("aaaa")
             self.wordSource.featchWord(inputWord: text)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

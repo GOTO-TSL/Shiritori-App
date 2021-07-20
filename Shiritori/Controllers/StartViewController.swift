@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 import GRDB
 import AVFoundation
 
@@ -26,13 +26,13 @@ class StartViewController: UIViewController {
     var opPlayer = SoundPlayer()
     var pushPlayer = SoundPlayer()
     var figurePlayer = SoundPlayer()
-    var wordArray = [Word]()
-    var myWords = [MyWord]()
     var wordSource = WordSource()
     var isMute = false
     let defaults = UserDefaults.standard
+    let realm = try! Realm()
+    var words: Results<Word>?
+    var myWords: Results<MyWord>?
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
@@ -51,12 +51,12 @@ class StartViewController: UIViewController {
         isMute ? SoundButton.setImage(K.Images.Sounds[1], for: .normal) : SoundButton.setImage(K.Images.Sounds[0], for: .normal)
         
         Figure()
+        load()
         
         wordSource.createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
         
-        loadWord()
         
        
     }
@@ -68,20 +68,40 @@ class StartViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //単語リストに単語を追加
-        for word in wordArray {
-            if word.like {
-                let newMyWord = MyWord(context: context)
-                newMyWord.myword = word.word
-                newMyWord.mean = wordSource.featchMean(word: newMyWord.myword!)
-                myWords.append(newMyWord)
-                context.delete(word)
-                saveWord()
+        let newWord = Word()
+        newWord.name = "waaa"
+        newWord.isLike = false
+        save(model: newWord)
+        
+        guard let words = words else { fatalError() }
+        for word in words {
+            if word.isLike {
+                let newMyWord = MyWord()
+                newMyWord.name = word.name
+                newMyWord.mean = wordSource.featchMean(word: newMyWord.name)
+                save(model: newMyWord)
             } else {
-                context.delete(word)
-                saveWord()
+                do {
+                    try realm.write {
+                        realm.delete(word)
+                    }
+                } catch {
+                    print("Error deleting word, \(error)")
+                }
             }
         }
+        //単語リストに単語を追加
+//        for word in words {
+//            if word.like {
+//                var newMyWord = MyWord()
+//                newMyWord.name = word.name
+//                newMyWord.mean = wordSource.featchMean(word: newMyWord.myword!)
+//                saveWord()
+//            } else {
+//                context.delete(word)
+//                saveWord()
+//            }
+//        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -150,23 +170,39 @@ class StartViewController: UIViewController {
         pushPlayer.playSound(name: K.Sounds.push,  isMute: isMute)
     }
     
-    //MARK: - Data Manipulation Methods
-    func saveWord() {
+    func save(model: Object) {
         do {
-            try context.save()
-            
+            try realm.write {
+                realm.add(model)
+            }
         } catch {
-            print("Error saving word array, \(error)")
-            
+            print("Error saving word, \(error)")
         }
     }
     
-    func loadWord(with request: NSFetchRequest<Word> = Word.fetchRequest()) {
-        do {
-            wordArray = try context.fetch(request)
-        } catch {
-            print("Error loading word from context \(error)")
-        }
+    func load() {
+        words = realm.objects(Word.self)
+        myWords = realm.objects(MyWord.self)
     }
+    
+    
+    //MARK: - Data Manipulation Methods
+//    func saveWord() {
+//        do {
+//            try context.save()
+//
+//        } catch {
+//            print("Error saving word array, \(error)")
+//
+//        }
+//    }
+//
+//    func loadWord(with request: NSFetchRequest<Word> = Word.fetchRequest()) {
+//        do {
+//            wordArray = try context.fetch(request)
+//        } catch {
+//            print("Error loading word from context \(error)")
+//        }
+//    }
 
 }

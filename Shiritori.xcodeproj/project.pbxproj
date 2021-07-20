@@ -11,7 +11,6 @@
 		020B51C526739050005871D2 /* WordListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020B51C326739050005871D2 /* WordListCell.xib */; };
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
 		020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 020F1A682675E67900FD85F0 /* ejdict.sqlite3 */; };
-		02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */; };
 		021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCD269992CD001BAADF /* EASY0.mp3 */; };
 		021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCF26999379001BAADF /* EASY1.mp3 */; };
 		021C3CD326999470001BAADF /* NORMAL0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD126999470001BAADF /* NORMAL0.mp3 */; };
@@ -24,6 +23,8 @@
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
+		0276936926A704B30041252D /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936826A704B30041252D /* Word.swift */; };
+		0276936B26A7062E0041252D /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936A26A7062E0041252D /* MyWord.swift */; };
 		02818B2126876983000A40C2 /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2026876983000A40C2 /* damage.mp3 */; };
 		02818B2326876D2E000A40C2 /* heal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2226876D2E000A40C2 /* heal.mp3 */; };
 		02818B2726876D48000A40C2 /* opening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2426876D47000A40C2 /* opening.mp3 */; };
@@ -54,7 +55,6 @@
 		020B51C326739050005871D2 /* WordListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordListCell.xib; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/iOSAppDevelopment/Shiritori-App/Shiritori/Data/ejdict.sqlite3"; sourceTree = "<absolute>"; };
-		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY0.mp3; sourceTree = "<group>"; };
 		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY1.mp3; sourceTree = "<group>"; };
 		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL0.mp3; sourceTree = "<group>"; };
@@ -67,6 +67,8 @@
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
+		0276936826A704B30041252D /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
+		0276936A26A7062E0041252D /* MyWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWord.swift; sourceTree = "<group>"; };
 		02818B2026876983000A40C2 /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damage.mp3; sourceTree = "<group>"; };
 		02818B2226876D2E000A40C2 /* heal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heal.mp3; sourceTree = "<group>"; };
 		02818B2426876D47000A40C2 /* opening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = opening.mp3; sourceTree = "<group>"; };
@@ -119,7 +121,8 @@
 		02193A89266FB6AA003E459E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
-				02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */,
+				0276936826A704B30041252D /* Word.swift */,
+				0276936A26A7062E0041252D /* MyWord.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -385,7 +388,6 @@
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
-				02193A8C266FB6CA003E459E /* DataModel.xcdatamodeld in Sources */,
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
@@ -394,11 +396,13 @@
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
+				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
+				0276936926A704B30041252D /* Word.swift in Sources */,
 				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,19 +607,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		02193A8A266FB6CA003E459E /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0283556F263F9306008B6845 /* Project object */;
 }
