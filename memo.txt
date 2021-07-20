@@ -1,1 +1,0 @@
-API: datamuse http://www.datamuse.com/api/
