@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-    var isFirst = false
+    
     var imageManager = ImageManager()
     var pushPlayer = SoundPlayer()
     var edPlayer = SoundPlayer()
@@ -28,6 +28,7 @@ class ResultViewController: UIViewController {
         
         guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         let score = defaults.integer(forKey: K.UserDefaultKeys.score)
+        
         changeResult(score: score, mode: mode)
         
         
@@ -42,25 +43,24 @@ class ResultViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
         let score = defaults.integer(forKey: K.UserDefaultKeys.score)
-        if !isFirst {
-            isFirst = true
-            changeResultSound(score: score, mode: mode)
-        }
+        changeResultSound(score: score, mode: mode)
     }
     
     @IBAction func wordsPressed(_ sender: UIButton) {
+        //ボタンタップ時の効果音を設定
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
 
     }
     
     @IBAction func homePressed(_ sender: UIButton) {
+        //ボタンタップ時の効果音を設定，オープニングを再生
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         pushPlayer.playSound(name: K.Sounds.push, isMute: isMute)
         appDelegate.opPlayer.playSound(name: K.Sounds.op, isMute: isMute, loop: -1)
     }
     
-    
+    //ゲーム結果に応じてResult画面の画像，タイトルテキスト，モードLOCK変数を変更
     func changeResult(score: Int, mode: String) {
         let modeLock = defaults.integer(forKey: K.ModeLock)
         guard let scoreLimit = K.scoreLimit[mode] else { return }
@@ -80,7 +80,7 @@ class ResultViewController: UIViewController {
             self.resultLabel.text = K.Texts.loseText
         }
     }
-    
+    //ゲーム結果に応じてサウンドを変更
     func changeResultSound(score: Int, mode: String) {
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         guard let scoreLimit = K.scoreLimit[mode] else { return }
@@ -90,7 +90,7 @@ class ResultViewController: UIViewController {
             self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
         }
     }
-    
+    //現在のモードのクリア状況に応じて新しいモードを開放するかを決める
     func modeOpen(mode: String, modeLock: Int) -> Int {
         if modeLock < 3 {
             if mode == "EASY" {

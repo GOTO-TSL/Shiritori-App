@@ -6,17 +6,15 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class WordListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var wordArray = [Word]()
-    var mywords = [MyWord]()
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    var words: Results<Word>?
+    var myWords: Results<MyWord>?
+    let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +24,7 @@ class WordListViewController: UIViewController {
         //カスタムセルを有効化
         tableView.register(UINib(nibName: K.NibName.wordCell, bundle: nil), forCellReuseIdentifier: K.CellID.wordListCell)
         
-        loadWord()
+        load()
 
     }
     
@@ -36,22 +34,10 @@ class WordListViewController: UIViewController {
     }
     
     //MARK: - Database Management Methods
-    func saveWord() {
-        do {
-            try context.save()
-            
-        } catch {
-            print("Error saving word array, \(error)")
-            
-        }
-    }
     
-    func loadWord(with request: NSFetchRequest<Word> = Word.fetchRequest()) {
-        do {
-            wordArray = try context.fetch(request)
-        } catch {
-            print("Error loading word from context \(error)")
-        }
+    func load() {
+        
+        words = realm.objects(Word.self)
         
         tableView.reloadData()
     }
@@ -61,15 +47,15 @@ class WordListViewController: UIViewController {
 //MARK: - TableView DataSource Methods
 extension WordListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return wordArray.count
+        return words?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.CellID.wordListCell, for: indexPath) as! WordListCell
-        let words = wordArray[indexPath.row]
-        
-        cell.WordLabel.text = words.word
-        cell.StarImage.image = wordArray[indexPath.row].like ? K.Images.Stars[1] : K.Images.Stars[0]
+        guard let selectedWord = words?[indexPath.row] else { fatalError() }
+        //セルのテキストを設定，お気に入り登録されると星がつくように画像を変更
+        cell.WordLabel.text = selectedWord.name
+        cell.StarImage.image = selectedWord.isLike ? K.Images.Stars[1] : K.Images.Stars[0]
         
         return cell
     }
@@ -80,9 +66,17 @@ extension WordListViewController: UITableViewDataSource {
 //MARK: - TableView Delegate Methods
 extension WordListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        wordArray[indexPath.row].like = !wordArray[indexPath.row].like
+        //タップされたセルをお気に入り状態に変更
+        guard let selectedWord = words?[indexPath.row] else { fatalError() }
+        do {
+            try realm.write {
+                selectedWord.isLike = !selectedWord.isLike
+            }
+        } catch {
+            print("Error updating isLike, \(error)")
+        }
+        
         tableView.reloadData()
-        saveWord()
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

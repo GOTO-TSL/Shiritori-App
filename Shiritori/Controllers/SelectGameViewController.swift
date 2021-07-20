@@ -71,7 +71,7 @@ class SelectGameViewController: UIViewController {
         }
     }
     
-    
+    //選ばれたモードに応じてHeroIDを設定する
     func changeHeroID(mode: String) {
         if mode == K.Mode.easy {
             easyView.heroID = K.HeroID.mode

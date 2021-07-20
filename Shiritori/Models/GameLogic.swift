@@ -6,8 +6,7 @@
 //
 
 import Foundation
-import CoreData
-import UIKit
+import RealmSwift
 
 protocol GameLogicDelegate {
     func shiritoriSucessed()
@@ -19,9 +18,10 @@ protocol GameLogicDelegate {
 
 
 struct GameLogic {
-    var wordArray = [Word]()
+    var words: Results<Word>?
     var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard
+    let realm = try! Realm()
     
     //しりとりのルールに則っているか判定する
     func applyRule(for text: String) {
@@ -34,10 +34,10 @@ struct GameLogic {
                 self.delegate?.shiritoriFailed(comment: K.Comments.single)
             } else {
                 if endCharacter == initialString {
-                    if checkUsedWord(word: text) {
-                        self.delegate?.shiritoriSucessed()
-                    } else {
+                    if isUsed(word: text) {
                         self.delegate?.shiritoriFailed(comment: K.Comments.used)
+                    } else {
+                        self.delegate?.shiritoriSucessed()
                     }
                 } else {
                     self.delegate?.shiritoriFailed(comment: K.Comments.noShiritori)
@@ -48,13 +48,9 @@ struct GameLogic {
         }
     }
     
-    func checkUsedWord(word: String) -> Bool {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Word> = Word.fetchRequest()
-        let predicate = NSPredicate(format: "%K = %@", K.DataBase.word, "\(word)")
-        fetchRequest.predicate = predicate
-        let fetchData = try! context.fetch(fetchRequest)
-        if(!fetchData.isEmpty) {
+    func isUsed(word: String) -> Bool {
+        let results = realm.objects(Word.self).filter("name LIKE %@", word)
+        if results.count == 0 {
             return false
         } else {
             return true

@@ -9,7 +9,7 @@ import UIKit
 
 class MeanViewController: UIViewController {
     
-    var word: String?
+    var name: String?
     var mean: String?
 
     @IBOutlet weak var myWordLabel: UILabel!
@@ -18,7 +18,7 @@ class MeanViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myWordLabel.text = word
+        myWordLabel.text = name
         meanLabel.text = stringReshape(for: mean)
     }
     
