@@ -48,7 +48,7 @@ EASY->NORMAL->HARDの順に難しくなり，　順番に開放されます．</
 ## 使用技術
 * Swift 5.4.2
 * UIKit
-* CoreData 
+* Realm 10.10.0 
 * GRDB 5.8.0
 * Hero 1.6.1
 
