@@ -27,7 +27,6 @@ class PlayViewController: UIViewController {
     var imageManager = ImageManager()
     var timerManager = TimerManager()
     var wordSource = WordSource()
-    var dbQueue = DatabaseQueue()
     var actionPlayer = SoundPlayer()
     var bgmPlayer = SoundPlayer()
     let defaults = UserDefaults.standard
@@ -64,16 +63,6 @@ class PlayViewController: UIViewController {
         timerManager.delegate = self
         wordSource.delegate = self
         TextField.delegate = self
-        
-        //データベースのパスを取得し，データベースキューを設定
-        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            let path = dir.appending(K.DataBase.path)
-            do {
-                dbQueue = try DatabaseQueue(path: path)
-            } catch {
-                print("Error \(error)")
-            }
-        }
         
     }
     
@@ -247,7 +236,7 @@ extension PlayViewController: GameLogicDelegate {
                                              duration: 0.2)
             
             guard let text = self.TextField.text else { return }
-            self.wordSource.featchWord(dbqueue: self.dbQueue, inputWord: text)
+            self.wordSource.featchWord(inputWord: text)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             //メインアニメーションの再開
@@ -318,7 +307,7 @@ extension PlayViewController: TimerManagerDelegate {
     //ゲームスタート時に呼ばれる処理
     func gameStart() {
         DispatchQueue.main.async {
-            self.wordSource.featchFirstWord(dbqueue: self.dbQueue)
+            self.wordSource.featchFirstWord()
             self.imageManager.imageAnimation(for: self.FaceImage,
                                              mode: self.MODE,
                                              action: K.animationAction.main,

@@ -55,12 +55,12 @@
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = ejdict.sqlite3; path = "/Users/kosukegoto/Desktop/iOSAppDevelopment/Shiritori-App/Shiritori/Data/ejdict.sqlite3"; sourceTree = "<absolute>"; };
 		02193A8B266FB6CA003E459E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EASY0.mp3; path = ../../../../../Downloads/EASY0.mp3; sourceTree = "<group>"; };
-		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = EASY1.mp3; path = ../../../../../Downloads/EASY1.mp3; sourceTree = "<group>"; };
-		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = NORMAL0.mp3; path = ../../../../../Downloads/NORMAL0.mp3; sourceTree = "<group>"; };
-		021C3CD226999470001BAADF /* NORMAL1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = NORMAL1.mp3; path = ../../../../../Downloads/NORMAL1.mp3; sourceTree = "<group>"; };
-		021C3CD5269994DC001BAADF /* HARD0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = HARD0.mp3; path = ../../../../../Downloads/HARD0.mp3; sourceTree = "<group>"; };
-		021C3CD6269994DC001BAADF /* HARD1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = HARD1.mp3; path = ../../../../../Downloads/HARD1.mp3; sourceTree = "<group>"; };
+		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY0.mp3; sourceTree = "<group>"; };
+		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY1.mp3; sourceTree = "<group>"; };
+		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL0.mp3; sourceTree = "<group>"; };
+		021C3CD226999470001BAADF /* NORMAL1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL1.mp3; sourceTree = "<group>"; };
+		021C3CD5269994DC001BAADF /* HARD0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD0.mp3; sourceTree = "<group>"; };
+		021C3CD6269994DC001BAADF /* HARD1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD1.mp3; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
@@ -476,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -531,7 +531,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
