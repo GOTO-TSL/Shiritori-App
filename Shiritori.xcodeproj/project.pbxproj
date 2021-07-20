@@ -22,8 +22,7 @@
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
-		025EF86A26A7651100C6F9C7 /* ejdict.sqlite3 in Sources */ = {isa = PBXBuildFile; fileRef = 025EF86926A7651100C6F9C7 /* ejdict.sqlite3 */; };
-		025EF86B26A7666500C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86926A7651100C6F9C7 /* ejdict.sqlite3 */; };
+		025EF86E26A7703800C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */; };
 		0276936926A704B30041252D /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936826A704B30041252D /* Word.swift */; };
 		0276936B26A7062E0041252D /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936A26A7062E0041252D /* MyWord.swift */; };
 		02818B2126876983000A40C2 /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2026876983000A40C2 /* damage.mp3 */; };
@@ -67,7 +66,7 @@
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
-		025EF86926A7651100C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
+		025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
 		0276936826A704B30041252D /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		0276936A26A7062E0041252D /* MyWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWord.swift; sourceTree = "<group>"; };
 		02818B2026876983000A40C2 /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damage.mp3; sourceTree = "<group>"; };
@@ -128,10 +127,10 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		025EF86826A764BD00C6F9C7 /* Data */ = {
+		025EF86C26A76F8F00C6F9C7 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				025EF86926A7651100C6F9C7 /* ejdict.sqlite3 */,
+				025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -181,7 +180,7 @@
 				0283557C263F9306008B6845 /* SceneDelegate.swift */,
 				02818B1F2687695A000A40C2 /* Sounds */,
 				025AE9F82680F30E0039DF56 /* fonts */,
-				025EF86826A764BD00C6F9C7 /* Data */,
+				025EF86C26A76F8F00C6F9C7 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
 				0283558E263F935F008B6845 /* Models */,
 				02835590263F9380008B6845 /* Views */,
@@ -313,7 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025EF86B26A7666500C6F9C7 /* ejdict.sqlite3 in Resources */,
+				025EF86E26A7703800C6F9C7 /* ejdict.sqlite3 in Resources */,
 				02818B2126876983000A40C2 /* damage.mp3 in Resources */,
 				021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */,
 				02818B2926876D48000A40C2 /* push.mp3 in Resources */,
@@ -385,7 +384,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				025EF86A26A7651100C6F9C7 /* ejdict.sqlite3 in Sources */,
 				020B51C426739050005871D2 /* WordListCell.swift in Sources */,
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
