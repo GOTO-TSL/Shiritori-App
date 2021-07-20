@@ -222,7 +222,6 @@ extension PlayViewController: GameLogicDelegate {
     func updateHitPoint(score: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
             let progress = 1.0 - Float(score) / Float(scoreLimit)
-            print("progress: \(progress)")
             self.HitPointBar.progress = progress
             switch self.HitPointBar.progress {
             case 0.6...1.0:

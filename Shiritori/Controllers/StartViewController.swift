@@ -56,6 +56,7 @@ class StartViewController: UIViewController {
         createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
+        
         //データベースのパスを取得しデータベースキューを設定
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             let path = dir.appending(K.DataBase.path)

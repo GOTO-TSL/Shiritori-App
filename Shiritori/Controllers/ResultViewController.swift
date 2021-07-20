@@ -85,10 +85,8 @@ class ResultViewController: UIViewController {
         let isMute = defaults.bool(forKey: K.UserDefaultKeys.isMute)
         guard let scoreLimit = K.scoreLimit[mode] else { return }
         if scoreLimit <= score {
-            print("score: \(score)")
             self.edPlayer.playSound(name: K.Sounds.win, isMute: isMute)
         } else {
-            print("score: \(score)")
             self.edPlayer.playSound(name: K.Sounds.lose, isMute: isMute)
         }
     }
