@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         defaults.set(false, forKey: K.UserDefaultKeys.isMute)
         opPlayer.playSound(name: K.Sounds.op, isMute: false, loop: -1)
         
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        //print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         do {
             _ = try Realm()

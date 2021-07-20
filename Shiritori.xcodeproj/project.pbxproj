@@ -10,7 +10,6 @@
 		020B51C426739050005871D2 /* WordListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020B51C226739050005871D2 /* WordListCell.swift */; };
 		020B51C526739050005871D2 /* WordListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 020B51C326739050005871D2 /* WordListCell.xib */; };
 		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
-		020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 020F1A682675E67900FD85F0 /* ejdict.sqlite3 */; };
 		021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCD269992CD001BAADF /* EASY0.mp3 */; };
 		021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCF26999379001BAADF /* EASY1.mp3 */; };
 		021C3CD326999470001BAADF /* NORMAL0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD126999470001BAADF /* NORMAL0.mp3 */; };
@@ -23,6 +22,7 @@
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
+		025EF86226A758F600C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86126A758F600C6F9C7 /* ejdict.sqlite3 */; };
 		0276936926A704B30041252D /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936826A704B30041252D /* Word.swift */; };
 		0276936B26A7062E0041252D /* MyWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0276936A26A7062E0041252D /* MyWord.swift */; };
 		02818B2126876983000A40C2 /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2026876983000A40C2 /* damage.mp3 */; };
@@ -54,7 +54,6 @@
 		020B51C226739050005871D2 /* WordListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListCell.swift; sourceTree = "<group>"; };
 		020B51C326739050005871D2 /* WordListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordListCell.xib; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
-		020F1A682675E67900FD85F0 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
 		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY0.mp3; sourceTree = "<group>"; };
 		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY1.mp3; sourceTree = "<group>"; };
 		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL0.mp3; sourceTree = "<group>"; };
@@ -67,6 +66,7 @@
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
+		025EF86126A758F600C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
 		0276936826A704B30041252D /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		0276936A26A7062E0041252D /* MyWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWord.swift; sourceTree = "<group>"; };
 		02818B2026876983000A40C2 /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damage.mp3; sourceTree = "<group>"; };
@@ -110,14 +110,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		020F1A6A2675E68F00FD85F0 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				020F1A682675E67900FD85F0 /* ejdict.sqlite3 */,
-			);
-			path = Data;
-			sourceTree = "<group>";
-		};
 		02193A89266FB6AA003E459E /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +125,14 @@
 				025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		025EF86026A758E300C6F9C7 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				025EF86126A758F600C6F9C7 /* ejdict.sqlite3 */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		02818B1F2687695A000A40C2 /* Sounds */ = {
@@ -180,7 +180,7 @@
 				0283557C263F9306008B6845 /* SceneDelegate.swift */,
 				02818B1F2687695A000A40C2 /* Sounds */,
 				025AE9F82680F30E0039DF56 /* fonts */,
-				020F1A6A2675E68F00FD85F0 /* Data */,
+				025EF86026A758E300C6F9C7 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
 				0283558E263F935F008B6845 /* Models */,
 				02835590263F9380008B6845 /* Views */,
@@ -312,9 +312,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				025EF86226A758F600C6F9C7 /* ejdict.sqlite3 in Resources */,
 				02818B2126876983000A40C2 /* damage.mp3 in Resources */,
 				021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */,
-				020F1A692675E67900FD85F0 /* ejdict.sqlite3 in Resources */,
 				02818B2926876D48000A40C2 /* push.mp3 in Resources */,
 				02818B2326876D2E000A40C2 /* heal.mp3 in Resources */,
 				02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */,

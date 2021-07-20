@@ -28,6 +28,7 @@ class PlayViewController: UIViewController {
     var wordSource = WordSource()
     var actionPlayer = SoundPlayer()
     var bgmPlayer = SoundPlayer()
+    var dbQueue = DatabaseQueue()
     let defaults = UserDefaults.standard
     var MODE = ""
     var isMute = false
@@ -57,12 +58,22 @@ class PlayViewController: UIViewController {
         //モードによってviewやlabelなどを変更
         changeModeLabel(mode: mode)
         FaceImage.image = K.Images.enemy[mode]
+        wordSource.createDatabase()
         
         //delegateの宣言
         gameLogic.delegate = self
         timerManager.delegate = self
         wordSource.delegate = self
         TextField.delegate = self
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let path = dir.appending(K.DataBase.path)
+            do {
+                dbQueue = try DatabaseQueue(path: path)
+            } catch {
+                print("Error \(error)")
+            }
+        }
         
     }
     
@@ -236,7 +247,7 @@ extension PlayViewController: GameLogicDelegate {
                                              duration: 0.2)
             
             guard let text = self.TextField.text else { return }
-            self.wordSource.featchWord(inputWord: text)
+            self.wordSource.featchWord(dbq: self.dbQueue, inputWord: text)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             //メインアニメーションの再開
@@ -307,7 +318,7 @@ extension PlayViewController: TimerManagerDelegate {
     //ゲームスタート時に呼ばれる処理
     func gameStart() {
         DispatchQueue.main.async {
-            self.wordSource.featchFirstWord()
+            self.wordSource.featchFirstWord(dbq: self.dbQueue)
             self.imageManager.imageAnimation(for: self.FaceImage,
                                              mode: self.MODE,
                                              action: K.animationAction.main,

@@ -18,24 +18,11 @@ protocol WordSourceDelegate {
 struct WordSource {
     
     var delegate: WordSourceDelegate?
-    var dbQueue: DatabaseQueue?
     
-    init() {
-        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
-            let path = dir.appending(K.DataBase.path)
-            do {
-                self.dbQueue = try DatabaseQueue(path: path)
-            } catch {
-                print("Error \(error)")
-            }
-        }
-    }
-    
-    
-    func featchFirstWord() {
+    func featchFirstWord(dbq: DatabaseQueue) {
         let initialString = K.alphabet[Int.random(in: 0...24)]
         do {
-            try dbQueue?.read { db in
+            try dbq.read { db in
                 //Fetch database rows
                 guard let rows = try Row.fetchOne(db, sql:"SELECT * FROM items WHERE word LIKE '\(initialString)%' AND word NOT LIKE '%.' AND LENGTH(word) <= 14 ORDER BY RANDOM()") else {
                     self.delegate?.updateFirst(word: "")
@@ -50,9 +37,9 @@ struct WordSource {
         }
     }
     
-    func featchWord(inputWord: String) { //プレイヤーからの入力にしりとりする単語をランダムに取ってくる処理
+    func featchWord(dbq: DatabaseQueue, inputWord: String) { //プレイヤーからの入力にしりとりする単語をランダムに取ってくる処理
         do {
-            try dbQueue?.read { db in
+            try dbq.read { db in
                 // Fetch database rows
                 guard (try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(inputWord)' AND word NOT LIKE '%.' AND LENGTH(word) <= 14")) != nil else {
                     self.delegate?.invalidWord()
@@ -75,10 +62,10 @@ struct WordSource {
     }
     
     //英単語の意味をとってっくる処理
-    func featchMean(word: String) -> String {
+    func featchMean(dbq: DatabaseQueue, word: String) -> String {
         var result = ""
         do {
-            try dbQueue?.read { db in
+            try dbq.read { db in
                 // Fetch database rows
                 guard let rows = try Row.fetchOne(db, sql: "SELECT * FROM items WHERE word LIKE '\(word)'") else {
                     return

@@ -32,6 +32,7 @@ class StartViewController: UIViewController {
     let realm = try! Realm()
     var words: Results<Word>?
     var myWords: Results<MyWord>?
+    var dbQueue = DatabaseQueue()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -57,9 +58,18 @@ class StartViewController: UIViewController {
         
         load()
         
-        wordSource.createDatabase()
+        createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
+        
+        if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            let path = dir.appending(K.DataBase.path)
+            do {
+                dbQueue = try DatabaseQueue(path: path)
+            } catch {
+                print("Error \(error)")
+            }
+        }
        
     }
     
@@ -76,7 +86,7 @@ class StartViewController: UIViewController {
             if word.isLike {
                 let newMyWord = MyWord()
                 newMyWord.name = word.name
-                newMyWord.mean = wordSource.featchMean(word: newMyWord.name)
+                newMyWord.mean = wordSource.featchMean(dbq: dbQueue, word: newMyWord.name)
                 save(model: newMyWord)
                 deleteWord(word: word)
             } else {
@@ -173,6 +183,30 @@ class StartViewController: UIViewController {
             }
         } catch {
             print("Error deleting word, \(error)")
+        }
+    }
+    
+    /*
+     データベースファイルをコピーする処理
+     マスターデータファイルをアプリ実行時のディレクトリにコピーする
+     */
+    func createDatabase(){
+        let fileManager = FileManager.default
+        guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
+        let finalDatabaseURL = documentsUrl.appendingPathComponent(K.DataBase.name)
+        do {
+            if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
+//                print("DB does not exist in documents folder")
+                if let dbFilePath = Bundle.main.path(forResource: K.DataBase.fore, ofType: K.DataBase.back) {
+                    try fileManager.copyItem(atPath: dbFilePath, toPath: finalDatabaseURL.path)
+                } else {
+//                   print("Uh oh - foo.db is not in the app bundle")
+                }
+            } else {
+//               print("Database file found at path: \(finalDatabaseURL.path)")
+            }
+        } catch {
+//            print("Unable to copy foo.db: \(error)")
         }
     }
 }
