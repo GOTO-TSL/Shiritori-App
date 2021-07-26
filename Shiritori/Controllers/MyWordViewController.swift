@@ -9,15 +9,14 @@ import UIKit
 import RealmSwift
 
 class MyWordViewController: UITableViewController {
-    
-    var myWords: Results<MyWord>?
-    let realm = try! Realm()
+
+    var dataManager = DataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //カスタムセルの追加
         tableView.register(UINib(nibName: K.NibName.mywordCell, bundle: nil), forCellReuseIdentifier: K.CellID.mywordCell)
-        loadWord()
+        dataManager.loadMyWords()
         tableView.reloadData()
     }
     
@@ -31,7 +30,7 @@ class MyWordViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.SegueID.toMean {
             if let indexPath = tableView.indexPathForSelectedRow {
-                guard let myWord = myWords?[indexPath.row] else { fatalError() }
+                guard let myWord = dataManager.myWords?[indexPath.row] else { fatalError() }
                 let distinationVC = segue.destination as? MeanViewController
                 distinationVC?.name = myWord.name
                 distinationVC?.mean = myWord.mean
@@ -41,13 +40,13 @@ class MyWordViewController: UITableViewController {
 
     // MARK: - TableView DataSource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myWords?.count ?? 1
+        return dataManager.myWords?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.CellID.mywordCell, for: indexPath) as! MyWordCell
         
-        guard let myWord = myWords?[indexPath.row] else { fatalError() }
+        guard let myWord = dataManager.myWords?[indexPath.row] else { fatalError() }
         cell.MyWordLabel.text = myWord.name
         
         return cell
@@ -61,21 +60,10 @@ class MyWordViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //単語を削除
-        guard let deletedWord = myWords?[indexPath.row] else { fatalError() }
-        do {
-            try realm.write {
-                realm.delete(deletedWord)
-            }
-        } catch {
-            print("Error deleted word, \(error)")
-        }
-        loadWord()
+        guard let deletedWord = dataManager.myWords?[indexPath.row] else { fatalError() }
+        dataManager.delete(word: deletedWord)
+        dataManager.loadMyWords()
         tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-    }
-    
-    //MARK: - Database Management Methods
-    func loadWord() {
-        myWords = realm.objects(MyWord.self)
     }
 
     //削除ボタンが押されたときの処理

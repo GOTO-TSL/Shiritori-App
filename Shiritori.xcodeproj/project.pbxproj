@@ -44,6 +44,7 @@
 		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
+		02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3F1E26AF0F99007E4825 /* DataManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */; };
 		02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FC268B56DC00118BD8 /* lose.mp3 */; };
 		02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FD268B56DC00118BD8 /* win.mp3 */; };
@@ -90,6 +91,7 @@
 		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		02CA3F1E26AF0F99007E4825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
 		02FA25FC268B56DC00118BD8 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		02FA25FD268B56DC00118BD8 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
 				023375742672407E00C59023 /* WordSource.swift */,
 				02818B2A26876E30000A40C2 /* SoundPlayer.swift */,
+				02CA3F1E26AF0F99007E4825 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
+				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,

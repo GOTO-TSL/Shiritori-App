@@ -27,11 +27,9 @@ class StartViewController: UIViewController {
     var pushPlayer = SoundPlayer()
     var figurePlayer = SoundPlayer()
     var wordSource = WordSource()
+    var dataManager = DataManager()
     var isMute = false
     let defaults = UserDefaults.standard
-    let realm = try! Realm()
-    var words: Results<Word>?
-    var myWords: Results<MyWord>?
     var dbQueue = DatabaseQueue()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -56,9 +54,10 @@ class StartViewController: UIViewController {
         
         Figure()
         
-        load()
+        dataManager.loadWords()
+        dataManager.loadMyWords()
         
-        createDatabase()
+        wordSource.createDatabase()
         //print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         PlayButton.layer.cornerRadius = 5.0
         
@@ -81,16 +80,16 @@ class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         //使用した単語リストのうち，お気に入り登録した単語をマイ単語リストへ移す処理
-        guard let words = words else { fatalError() }
+        guard let words = dataManager.words else { fatalError() }
         for word in words {
             if word.isLike {
                 let newMyWord = MyWord()
                 newMyWord.name = word.name
                 newMyWord.mean = wordSource.featchMean(dbq: dbQueue, word: newMyWord.name)
-                save(model: newMyWord)
-                deleteWord(word: word)
+                dataManager.save(model: newMyWord)
+                dataManager.delete(word: word)
             } else {
-                deleteWord(word: word)
+                dataManager.delete(word: word)
             }
         }
     }
@@ -159,54 +158,5 @@ class StartViewController: UIViewController {
     }
     @IBAction func playButtonPressed(_ sender: UIButton) {
         pushPlayer.playSound(name: K.Sounds.push,  isMute: isMute)
-    }
-    //MARK: - Data Manipulation Methods
-    func save(model: Object) {
-        do {
-            try realm.write {
-                realm.add(model)
-            }
-        } catch {
-            print("Error saving word, \(error)")
-        }
-    }
-    
-    func load() {
-        words = realm.objects(Word.self)
-        myWords = realm.objects(MyWord.self)
-    }
-    
-    func deleteWord(word: Object) {
-        do {
-            try realm.write {
-                realm.delete(word)
-            }
-        } catch {
-            print("Error deleting word, \(error)")
-        }
-    }
-    
-    /*
-     データベースファイルをコピーする処理
-     マスターデータファイルをアプリ実行時のディレクトリにコピーする
-     */
-    func createDatabase(){
-        let fileManager = FileManager.default
-        guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
-        let finalDatabaseURL = documentsUrl.appendingPathComponent(K.DataBase.name)
-        do {
-            if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
-//                print("DB does not exist in documents folder")
-                if let dbFilePath = Bundle.main.path(forResource: K.DataBase.fore, ofType: K.DataBase.back) {
-                    try fileManager.copyItem(atPath: dbFilePath, toPath: finalDatabaseURL.path)
-                } else {
-//                   print("Uh oh - foo.db is not in the app bundle")
-                }
-            } else {
-//               print("Database file found at path: \(finalDatabaseURL.path)")
-            }
-        } catch {
-//            print("Unable to copy foo.db: \(error)")
-        }
     }
 }

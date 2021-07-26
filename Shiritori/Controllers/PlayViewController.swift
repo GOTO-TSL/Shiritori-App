@@ -26,15 +26,13 @@ class PlayViewController: UIViewController {
     var imageManager = ImageManager()
     var timerManager = TimerManager()
     var wordSource = WordSource()
+    var dataManager = DataManager()
     var actionPlayer = SoundPlayer()
     var bgmPlayer = SoundPlayer()
     var dbQueue = DatabaseQueue()
     let defaults = UserDefaults.standard
     var MODE = ""
     var isMute = false
-    
-    let realm = try! Realm()
-    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
@@ -115,21 +113,21 @@ class PlayViewController: UIViewController {
         modeLabel.backgroundColor = K.modeColor[mode]
         modeView.backgroundColor = K.modeColor[mode]
     }
-
-    //単語を保存
-    func save(word: String) {
-        let newWord = Word()
-        newWord.name = word
-        newWord.isLike = false
-        
-        do {
-            try realm.write {
-                realm.add(newWord)
-            }
-        } catch {
-            print("Error saving word, \(error)")
-        }
-    }
+//
+//    //単語を保存
+//    func save(word: String) {
+//        let newWord = Word()
+//        newWord.name = word
+//        newWord.isLike = false
+//
+//        do {
+//            try realm.write {
+//                realm.add(newWord)
+//            }
+//        } catch {
+//            print("Error saving word, \(error)")
+//        }
+//    }
 
 }
 //MARK: - UITextFieldDelegate
@@ -177,7 +175,7 @@ extension PlayViewController: WordSourceDelegate {
     func addPlayerWord() {
         DispatchQueue.main.async {
             if let word = self.TextField.text {
-                self.save(word: word)
+                self.dataManager.save(word: word)
             }
         }
 
@@ -185,7 +183,7 @@ extension PlayViewController: WordSourceDelegate {
     //はじめの１単語目を表示，保存
     func updateFirst(word: String) {
         DispatchQueue.main.async {
-            self.save(word: word)
+            self.dataManager.save(word: word)
             self.WordLabel.text = word
             self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
         }
@@ -194,7 +192,7 @@ extension PlayViewController: WordSourceDelegate {
     func updateWord(word: String) {
         guard let text = TextField.text else { return }
         DispatchQueue.main.async {
-            self.save(word: word)
+            self.dataManager.save(word: word)
             self.WordLabel.text = word
             self.defaults.set(word, forKey: K.UserDefaultKeys.currentWord)
             self.gameLogic.addGamePoint(userWord: text)
