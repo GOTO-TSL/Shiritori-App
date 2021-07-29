@@ -8,8 +8,7 @@
 import UIKit
 
 class MyWordCell: UITableViewCell {
-
-    @IBOutlet weak var MyWordLabel: UILabel!
+    @IBOutlet weak var myWordLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +20,4 @@ class MyWordCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

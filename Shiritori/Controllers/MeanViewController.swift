@@ -8,7 +8,6 @@
 import UIKit
 
 class MeanViewController: UIViewController {
-    
     var name: String?
     var mean: String?
 
@@ -35,6 +34,4 @@ class MeanViewController: UIViewController {
             return str
         }
     }
-    
-
 }

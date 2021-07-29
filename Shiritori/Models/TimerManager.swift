@@ -7,52 +7,52 @@
 
 import Foundation
 
-protocol TimerManagerDelegate {
-    func didUpdateTimeBar(timeNow: Float)
-    func didUpdateComment(comment: String)
-    func gameStart()
-    func gotoNextView()
+protocol TimerManagerDelegate: AnyObject {
+    func didUpdateTimeBar(_ timerManager: TimerManager, timeNow: Float)
+    func didUpdateComment(_ timerManager: TimerManager, comment: String)
+    func gameStart(_ timerManager: TimerManager)
+    func gotoNextView(_ timerManager: TimerManager)
 }
 
 class TimerManager {
-    var delegate: TimerManagerDelegate?
+    weak var delegate: TimerManagerDelegate?
     var mainTimer = Timer()
     var mainTimerCount = 0
     
-    //ゲームの開始から終了までカウントするタイマー
+    // ゲームの開始から終了までカウントするタイマー
     func gameTimer() {
-        mainTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.gameCount), userInfo: nil, repeats: true)
+        mainTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(gameCount), userInfo: nil, repeats: true)
     }
 
     @objc func gameCount() {
         mainTimerCount += 1
         switch mainTimerCount {
-        case 1..<K.Timer.countDownTime:
-            let countNow = "\(K.Timer.countDownTime - mainTimerCount)"
-            self.delegate?.didUpdateComment(comment: countNow)
+        case 1 ..< Constant.Timer.countDownTime:
+            let countNow = "\(Constant.Timer.countDownTime - mainTimerCount)"
+            delegate?.didUpdateComment(self, comment: countNow)
             
-        case K.Timer.countDownTime:
-            let countNow = K.Comments.start
-            self.delegate?.didUpdateComment(comment: countNow)
+        case Constant.Timer.countDownTime:
+            let countNow = Constant.Comments.start
+            delegate?.didUpdateComment(self, comment: countNow)
 
-        case (K.Timer.countDownTime+1):
-            self.delegate?.gameStart()
+        case Constant.Timer.countDownTime + 1:
+            delegate?.gameStart(self)
             
-        case (K.Timer.countDownTime+2)..<(K.Timer.playTime+K.Timer.countDownTime+3):
-            let timeNow = 1.0 - Float(mainTimerCount - K.Timer.countDownTime-1)/Float(K.Timer.playTime+1)
-            self.delegate?.didUpdateTimeBar(timeNow: timeNow)
+        case (Constant.Timer.countDownTime + 2) ..< (Constant.Timer.playTime + Constant.Timer.countDownTime + 3):
+            let timeNow = 1.0 - Float(mainTimerCount - Constant.Timer.countDownTime - 1) / Float(Constant.Timer.playTime + 1)
+            delegate?.didUpdateTimeBar(self, timeNow: timeNow)
             
-        case K.Timer.playTime+K.Timer.countDownTime+3:
-            let countNow = K.Comments.end
-            self.delegate?.didUpdateComment(comment: countNow)
+        case Constant.Timer.playTime + Constant.Timer.countDownTime + 3:
+            let countNow = Constant.Comments.end
+            delegate?.didUpdateComment(self, comment: countNow)
             
-        case K.Timer.playTime+K.Timer.countDownTime+4:
+        case Constant.Timer.playTime + Constant.Timer.countDownTime + 4:
             mainTimer.invalidate()
-            self.delegate?.gotoNextView()
+            delegate?.gotoNextView(self)
             
         default:
-            let countNow = K.Comments.wait
-            self.delegate?.didUpdateComment(comment: countNow)
+            let countNow = Constant.Comments.wait
+            delegate?.didUpdateComment(self, comment: countNow)
         }
     }
     
@@ -60,4 +60,3 @@ class TimerManager {
         mainTimer.invalidate()
     }
 }
-

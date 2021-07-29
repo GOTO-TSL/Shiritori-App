@@ -8,9 +8,8 @@
 import UIKit
 
 class WordListCell: UITableViewCell {
-
-    @IBOutlet weak var WordLabel: UILabel!
-    @IBOutlet weak var StarImage: UIImageView!
+    @IBOutlet weak var wordLabel: UILabel!
+    @IBOutlet weak var starImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +21,4 @@ class WordListCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

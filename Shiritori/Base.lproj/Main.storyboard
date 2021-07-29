@@ -215,13 +215,13 @@
                     <connections>
                         <outlet property="EASYView" destination="mU9-vH-s7f" id="1fP-M7-ZfF"/>
                         <outlet property="HARDView" destination="9I0-VF-0FA" id="Sdk-Gy-qCR"/>
-                        <outlet property="MainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
                         <outlet property="NORMALView" destination="bIN-AM-arx" id="NF7-Tw-7lt"/>
                         <outlet property="PlayButton" destination="TFk-BK-b8n" id="mHD-c5-Pj3"/>
                         <outlet property="SoundButton" destination="T8Y-12-vBr" id="r7R-4Z-rAj"/>
                         <outlet property="SubTitle" destination="Foc-CS-Iyr" id="Aky-Y0-1Wc"/>
                         <outlet property="easyFigure" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
                         <outlet property="hardFigure" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
+                        <outlet property="mainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
                         <outlet property="normalFigure" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
                     </connections>
                 </viewController>

@@ -4,6 +4,8 @@
 target 'Shiritori' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
+  pod 'SwiftFormat/CLI'
+  pod 'SwiftLint'
   pod 'GRDB.swift'
   pod 'RealmSwift'
   pod 'Hero'

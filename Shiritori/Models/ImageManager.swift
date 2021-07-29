@@ -7,9 +7,7 @@
 
 import UIKit
 
-
 struct ImageManager {
-    
     func imageAnimation(for imageView: UIImageView, mode: String, action: String, duration: Double) {
         imageView.animationImages = animationImages(for: "\(mode)\(action)")
         imageView.animationDuration = duration
@@ -19,12 +17,12 @@ struct ImageManager {
     }
     
     func animationImages(for name: String) -> [UIImage] {
-        var i = 0
+        var count = 0
         var images = [UIImage]()
         
-        while let image = UIImage(named: "\(name)\(i)") {
+        while let image = UIImage(named: "\(name)\(count)") {
             images.append(image)
-            i += 1
+            count += 1
         }
         return images
     }
@@ -36,7 +34,5 @@ struct ImageManager {
             view.center.y -= 30
             view.alpha = 0.0
         }
-        
     }
-    
 }

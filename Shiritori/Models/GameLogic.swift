@@ -6,92 +6,77 @@
 //
 
 import Foundation
-import RealmSwift
 
-protocol GameLogicDelegate {
-    func shiritoriSucessed()
-    func shiritoriFailed(comment: String)
-    func updateHitPoint(score: Int, scoreLimit: Int)
-    func updateDamage(damage: Int)
-    func gotoResultView()
+protocol GameLogicDelegate: AnyObject {
+    func shiritoriSucessed(_ gameLogic: GameLogic)
+    func shiritoriFailed(_ gameLogic: GameLogic, comment: String)
+    func updateHitPoint(_ gameLogic: GameLogic, score: Int, scoreLimit: Int)
+    func updateDamage(_ gameLogic: GameLogic, damage: Int)
+    func gotoResultView(_ gameLogic: GameLogic)
 }
 
-
 struct GameLogic {
-    var words: Results<Word>?
-    var delegate: GameLogicDelegate?
+    var dataManager = DataManager()
+    weak var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard
-    let realm = try! Realm()
     
-    //しりとりのルールに則っているか判定する
+    // しりとりのルールに則っているか判定する
     func applyRule(for text: String) {
-        guard let currentWord = defaults.string(forKey: K.UserDefaultKeys.currentWord) else { return }
+        guard let currentWord = defaults.string(forKey: Constant.UserDefaultKeys.currentWord) else { return }
         let endCharacter = currentWord[currentWord.index(before: currentWord.endIndex)]
         if text != "" {
             let initialString = text[text.startIndex]
             
             if text.count == 1 {
-                self.delegate?.shiritoriFailed(comment: K.Comments.single)
+                delegate?.shiritoriFailed(self, comment: Constant.Comments.single)
             } else {
                 if endCharacter == initialString {
-                    if isUsed(word: text) {
-                        self.delegate?.shiritoriFailed(comment: K.Comments.used)
+                    if dataManager.isUsed(word: text) {
+                        delegate?.shiritoriFailed(self, comment: Constant.Comments.used)
                     } else {
-                        self.delegate?.shiritoriSucessed()
+                        delegate?.shiritoriSucessed(self)
                     }
                 } else {
-                    self.delegate?.shiritoriFailed(comment: K.Comments.noShiritori)
+                    delegate?.shiritoriFailed(self, comment: Constant.Comments.noShiritori)
                 }
             }
         } else {
-            self.delegate?.shiritoriFailed(comment: K.Comments.empty)
-        }
-    }
-    
-    func isUsed(word: String) -> Bool {
-        let results = realm.objects(Word.self).filter("name LIKE %@", word)
-        if results.count == 0 {
-            return false
-        } else {
-            return true
+            delegate?.shiritoriFailed(self, comment: Constant.Comments.empty)
         }
     }
     
     func addGamePoint(userWord: String) {
-        let currentScore = defaults.integer(forKey: K.UserDefaultKeys.score)
-        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
+        let currentScore = defaults.integer(forKey: Constant.UserDefaultKeys.score)
+        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
         
         let damage = userWord.count * 10
         let newScore = currentScore + damage
-        defaults.set(newScore, forKey: K.UserDefaultKeys.score)
+        defaults.set(newScore, forKey: Constant.UserDefaultKeys.score)
         
-        guard let scoreLimit = K.scoreLimit[mode] else { return }
+        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
         if newScore >= scoreLimit {
-            self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
-            self.delegate?.updateDamage(damage: damage)
-            self.delegate?.gotoResultView()
+            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
+            delegate?.updateDamage(self, damage: damage)
+            delegate?.gotoResultView(self)
         } else {
-            self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
-            self.delegate?.updateDamage(damage: damage)
+            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
+            delegate?.updateDamage(self, damage: damage)
         }
-        
     }
     
     func subGamePoint() {
-        
-        var currentScore = defaults.integer(forKey: K.UserDefaultKeys.score)
-        guard let mode = defaults.string(forKey: K.UserDefaultKeys.mode) else { return }
-        guard let scoreLimit = K.scoreLimit[mode] else { return }
+        var currentScore = defaults.integer(forKey: Constant.UserDefaultKeys.score)
+        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
+        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
         
         if currentScore <= 0 {
             currentScore = 0
-            defaults.set(currentScore, forKey: K.UserDefaultKeys.score)
-            self.delegate?.updateHitPoint(score: currentScore, scoreLimit: scoreLimit)
+            defaults.set(currentScore, forKey: Constant.UserDefaultKeys.score)
+            delegate?.updateHitPoint(self, score: currentScore, scoreLimit: scoreLimit)
         } else {
             let newScore = currentScore - 10
-            defaults.set(newScore, forKey: K.UserDefaultKeys.score)
-            self.delegate?.updateHitPoint(score: newScore, scoreLimit: scoreLimit)
+            defaults.set(newScore, forKey: Constant.UserDefaultKeys.score)
+            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
         }
     }
-        
 }

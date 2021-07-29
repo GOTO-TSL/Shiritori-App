@@ -5,8 +5,8 @@
 //  Created by 後藤孝輔 on 2021/06/26.
 //
 
-import Foundation
 import AVFoundation
+import Foundation
 
 class SoundPlayer {
     var audioPlayer: AVAudioPlayer!
@@ -18,15 +18,15 @@ class SoundPlayer {
         }
         
         do {
-            //AVAudioPlayerのインスタンス化
+            // AVAudioPlayerのインスタンス化
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            //AVAudioPlayerのデリゲートをセット
+            // AVAudioPlayerのデリゲートをセット
             audioPlayer.delegate = self as? AVAudioPlayerDelegate
-            //ループ数の指定
+            // ループ数の指定
             audioPlayer.numberOfLoops = loop
-            //音量設定
+            // 音量設定
             audioPlayer.volume = isMute ? 0.0 : 1.0
-            //音楽の再生
+            // 音楽の再生
             audioPlayer.play()
         } catch {
             print("Error\(error)")
@@ -40,5 +40,4 @@ class SoundPlayer {
     func muteSound(isMute: Bool) {
         audioPlayer.volume = isMute ? 0.0 : 1.0
     }
-    
 }

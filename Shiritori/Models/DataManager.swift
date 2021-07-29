@@ -8,15 +8,16 @@
 import RealmSwift
 
 struct DataManager {
-    let realm = try! Realm()
+    let realm = try? Realm()
     
     var words: Results<Word>?
     var myWords: Results<MyWord>?
     
     func save(model: Object) {
+        guard let real = realm else { fatalError() }
         do {
-            try realm.write {
-                realm.add(model)
+            try real.write {
+                real.add(model)
             }
         } catch {
             print("Error saving word, \(error)")
@@ -24,17 +25,20 @@ struct DataManager {
     }
 
     mutating func loadWords() {
-        words = realm.objects(Word.self)
+        guard let real = realm else { fatalError() }
+        words = real.objects(Word.self)
     }
     
     mutating func loadMyWords() {
-        myWords = realm.objects(MyWord.self)
+        guard let real = realm else { fatalError() }
+        myWords = real.objects(MyWord.self)
     }
     
     func delete(word: Object) {
+        guard let real = realm else { fatalError() }
         do {
-            try realm.write {
-                realm.delete(word)
+            try real.write {
+                real.delete(word)
             }
         } catch {
             print("Error deleting word, \(error)")
@@ -46,9 +50,11 @@ struct DataManager {
         newWord.name = word
         newWord.isLike = false
         
+        guard let real = realm else { fatalError() }
+        
         do {
-            try realm.write {
-                realm.add(newWord)
+            try real.write {
+                real.add(newWord)
             }
         } catch {
             print("Error saving word, \(error)")
@@ -56,14 +62,23 @@ struct DataManager {
     }
     
     func changeisLikeValue(for word: Word) {
+        guard let real = realm else { fatalError() }
         do {
-            try realm.write {
+            try real.write {
                 word.isLike = !word.isLike
             }
         } catch {
             print("Error updating isLike, \(error)")
         }
     }
-
     
+    func isUsed(word: String) -> Bool {
+        guard let real = realm else { fatalError() }
+        let results = real.objects(Word.self).filter("name LIKE %@", word)
+        if results.count == 0 {
+            return false
+        } else {
+            return true
+        }
+    }
 }
