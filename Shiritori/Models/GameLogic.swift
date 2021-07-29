@@ -15,7 +15,7 @@ protocol GameLogicDelegate: AnyObject {
     func gotoResultView(_ gameLogic: GameLogic)
 }
 
-struct GameLogic {
+class GameLogic {
     var dataManager = DataManager()
     weak var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard

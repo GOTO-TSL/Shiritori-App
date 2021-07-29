@@ -216,13 +216,13 @@
                         <outlet property="EASYView" destination="mU9-vH-s7f" id="1fP-M7-ZfF"/>
                         <outlet property="HARDView" destination="9I0-VF-0FA" id="Sdk-Gy-qCR"/>
                         <outlet property="NORMALView" destination="bIN-AM-arx" id="NF7-Tw-7lt"/>
-                        <outlet property="PlayButton" destination="TFk-BK-b8n" id="mHD-c5-Pj3"/>
-                        <outlet property="SoundButton" destination="T8Y-12-vBr" id="r7R-4Z-rAj"/>
-                        <outlet property="SubTitle" destination="Foc-CS-Iyr" id="Aky-Y0-1Wc"/>
                         <outlet property="easyFigure" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
                         <outlet property="hardFigure" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
                         <outlet property="mainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
                         <outlet property="normalFigure" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
+                        <outlet property="playButton" destination="TFk-BK-b8n" id="yu1-5w-0vG"/>
+                        <outlet property="soundButton" destination="T8Y-12-vBr" id="EyX-gw-JA3"/>
+                        <outlet property="subTitle" destination="Foc-CS-Iyr" id="efi-sH-S2a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1G-gE-ZWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -546,7 +546,7 @@
                                             <imageReference key="image" image="arrowshape.turn.up.left.fill" catalog="system" symbolScale="large" renderingMode="original"/>
                                         </state>
                                         <connections>
-                                            <action selector="QuitPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c60-Nx-t0m"/>
+                                            <action selector="quitPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ebw-3l-M8Z"/>
                                             <segue destination="S1X-48-eHe" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="UHQ-gs-QV4"/>
                                         </connections>
                                     </button>
@@ -703,7 +703,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="AnswerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bk1-dS-7IA"/>
+                                            <action selector="answerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jj5-4V-GNc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -731,15 +731,15 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="FaceImage" destination="y7e-yS-ZwK" id="TCX-6q-QWj"/>
-                        <outlet property="HitPointBar" destination="AD8-5U-NdO" id="vn2-m7-KMl"/>
-                        <outlet property="TextField" destination="ZvR-Y8-uEL" id="gk5-mZ-OeO"/>
-                        <outlet property="TimeBar" destination="O6f-nY-tkt" id="zt8-7u-3gl"/>
-                        <outlet property="WordLabel" destination="Ruj-rW-0TM" id="cFD-9F-308"/>
                         <outlet property="damageLabel" destination="iy1-Ot-xe9" id="WIo-PP-uxm"/>
                         <outlet property="damageView" destination="E0Q-fh-D3c" id="7cp-xg-zaz"/>
+                        <outlet property="faceImage" destination="y7e-yS-ZwK" id="m4l-d0-q0O"/>
+                        <outlet property="hitPointBar" destination="AD8-5U-NdO" id="2MX-yK-2Se"/>
                         <outlet property="modeLabel" destination="Vc4-WS-gTY" id="oyB-zA-Fcp"/>
                         <outlet property="modeView" destination="K9T-qr-mTd" id="0JE-ew-Wy3"/>
+                        <outlet property="textField" destination="ZvR-Y8-uEL" id="h1u-GC-uvU"/>
+                        <outlet property="timeBar" destination="O6f-nY-tkt" id="cai-tX-U0s"/>
+                        <outlet property="wordLabel" destination="Ruj-rW-0TM" id="2UN-FW-Yxl"/>
                         <segue destination="da3-aV-zKm" kind="presentation" identifier="toResult" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="trG-CC-Rg8"/>
                     </connections>
                 </viewController>
@@ -789,7 +789,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="RuleLabel" destination="0bp-Pg-HuI" id="JXm-zD-TMr"/>
+                        <outlet property="ruleLabel" destination="0bp-Pg-HuI" id="OCb-sr-TxM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhH-dB-EKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -899,10 +899,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="JXX-e1-INW"/>
                     <connections>
-                        <outlet property="HomeButton" destination="i3Q-5V-EV2" id="lBd-gH-sK6"/>
-                        <outlet property="WordsButton" destination="TAq-0Q-RTa" id="zgm-kn-f5W"/>
+                        <outlet property="homeButton" destination="i3Q-5V-EV2" id="M7w-aw-IbZ"/>
                         <outlet property="resultImage" destination="Tgp-mc-H4r" id="vOS-8o-BhV"/>
                         <outlet property="resultLabel" destination="730-FK-HGo" id="cBV-cI-0PH"/>
+                        <outlet property="wordsButton" destination="TAq-0Q-RTa" id="8Bp-5I-lyE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xKX-XD-IQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1007,9 +1007,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="trG-CC-Rg8"/>
-        <segue reference="mbp-lE-dVy"/>
-        <segue reference="wm4-IA-Vdj"/>
+        <segue reference="qAr-Gy-X6G"/>
+        <segue reference="PQN-3t-9GR"/>
+        <segue reference="UHQ-gs-QV4"/>
+        <segue reference="ceV-nw-QTe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
