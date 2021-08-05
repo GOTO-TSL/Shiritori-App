@@ -26,11 +26,11 @@ class SelectGameViewController: UIViewController {
         super.viewDidLoad()
 
         modeUnLock()
-        easyView.layer.cornerRadius = 20.0
-        normalView.layer.cornerRadius = 20.0
-        hardView.layer.cornerRadius = 20.0
-        normalHideView.layer.cornerRadius = 20.0
-        hardHideView.layer.cornerRadius = 20.0
+        easyView.layer.cornerRadius = 10.0
+        normalView.layer.cornerRadius = 10.0
+        hardView.layer.cornerRadius = 10.0
+        normalHideView.layer.cornerRadius = 10.0
+        hardHideView.layer.cornerRadius = 10.0
         
         easyFace.layer.cornerRadius = 40.0
         normalFace.layer.cornerRadius = 40.0

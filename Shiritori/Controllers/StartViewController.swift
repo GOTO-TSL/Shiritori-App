@@ -50,7 +50,7 @@ class StartViewController: UIViewController {
         isMute = ismute
         isMute ? soundButton.setImage(Constant.Images.Sounds[1], for: .normal) : soundButton.setImage(Constant.Images.Sounds[0], for: .normal)
         
-        figure()
+        //figure()
         
         dataManager.loadWords()
         dataManager.loadMyWords()
