@@ -45,7 +45,7 @@ class PlayViewController: UIViewController {
         defaults.set("aaaa", forKey: Constant.UserDefaultKeys.currentWord)
         
         // ダメージを隠す
-        damageView.isHidden = true
+        damageLabel.isHidden = true
         
         // 戦闘BGMを再生
         bgmPlayer.playSound(name: "battle", isMute: isMute, loop: -1)
@@ -192,7 +192,7 @@ extension PlayViewController: GameLogicDelegate {
     // ダメージラベルの更新
     func updateDamage(_ gameLogic: GameLogic, damage: Int) {
         DispatchQueue.main.async {
-            self.damageView.isHidden = false
+            self.damageLabel.isHidden = false
             if damage >= 100 {
                 self.damageLabel.textColor = .red
                 self.damageLabel.text = String(damage)
