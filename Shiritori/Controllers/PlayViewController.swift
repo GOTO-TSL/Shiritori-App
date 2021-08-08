@@ -14,7 +14,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var timeBar: UIProgressView!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var faceImage: UIImageView!
+    @IBOutlet weak var enemyImage: UIImageView!
     @IBOutlet weak var modeView: UIView!
     @IBOutlet weak var hitPointBar: UIProgressView!
     @IBOutlet weak var damageView: UIView!
@@ -53,7 +53,7 @@ class PlayViewController: UIViewController {
         modeView.layer.cornerRadius = 5.0
         // モードによってviewやlabelなどを変更
         changeModeLabel(mode: mode)
-        faceImage.image = Constant.Images.enemy[mode]
+        enemyImage.image = Constant.Images.enemy[mode]
         wordSource.createDatabase()
         
         // delegateの宣言
@@ -137,7 +137,7 @@ extension PlayViewController: WordSourceDelegate {
     // 辞書にない単語が入力されたときの処理
     func invalidWord(_ wordSource: WordSource) {
         DispatchQueue.main.async {
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE, action: Constant.AnimationAction.heal,
                                              duration: 0.5)
             self.actionPlayer.playSound(name: Constant.Sounds.heal, isMute: self.isMute)
@@ -146,7 +146,7 @@ extension PlayViewController: WordSourceDelegate {
             self.textField.text = ""
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: "",
                                              duration: 1.0)
@@ -228,7 +228,7 @@ extension PlayViewController: GameLogicDelegate {
             // ダメージを受ける効果音を再生
             self.actionPlayer.playSound(name: Constant.Sounds.damage, isMute: self.isMute)
             // ダメージを受けるアニメーション
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.damage,
                                              duration: 0.2)
@@ -238,7 +238,7 @@ extension PlayViewController: GameLogicDelegate {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // メインアニメーションの再開
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)
@@ -251,7 +251,7 @@ extension PlayViewController: GameLogicDelegate {
             // 回復する効果音を再生
             self.actionPlayer.playSound(name: Constant.Sounds.heal, isMute: self.isMute)
             // 回復するアニメーション
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.heal,
                                              duration: 0.5)
@@ -263,7 +263,7 @@ extension PlayViewController: GameLogicDelegate {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // メインアニメーションの再開
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)
@@ -276,7 +276,7 @@ extension PlayViewController: GameLogicDelegate {
     // 敵を倒したときに呼ばれる処理
     func gotoResultView(_ gameLogic: GameLogic) {
         DispatchQueue.main.async {
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.down,
                                              duration: 1.0)
@@ -311,7 +311,7 @@ extension PlayViewController: TimerManagerDelegate {
     func gameStart(_ timerManager: TimerManager) {
         DispatchQueue.main.async {
             self.wordSource.featchFirstWord(dbq: self.dbQueue)
-            self.imageManager.imageAnimation(for: self.faceImage,
+            self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.MODE,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)

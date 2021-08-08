@@ -12,9 +12,9 @@ class SelectGameViewController: UIViewController {
     @IBOutlet weak var easyView: UIView!
     @IBOutlet weak var normalView: UIView!
     @IBOutlet weak var hardView: UIView!
-    @IBOutlet weak var easyFace: UIImageView!
-    @IBOutlet weak var normalFace: UIImageView!
-    @IBOutlet weak var hardFace: UIImageView!
+    @IBOutlet weak var easyImage: UIImageView!
+    @IBOutlet weak var normalImage: UIImageView!
+    @IBOutlet weak var hardImage: UIImageView!
     @IBOutlet weak var normalHideView: UIView!
     @IBOutlet weak var hardHideView: UIView!
     
@@ -26,15 +26,11 @@ class SelectGameViewController: UIViewController {
         super.viewDidLoad()
 
         modeUnLock()
-        easyView.layer.cornerRadius = 10.0
-        normalView.layer.cornerRadius = 10.0
-        hardView.layer.cornerRadius = 10.0
-        normalHideView.layer.cornerRadius = 10.0
-        hardHideView.layer.cornerRadius = 10.0
         
-        easyFace.layer.cornerRadius = 40.0
-        normalFace.layer.cornerRadius = 40.0
-        hardFace.layer.cornerRadius = 40.0
+        let modeViews = [easyView, normalView, hardView, normalHideView, hardHideView]
+        let modeImages = [easyImage, normalImage, hardImage]
+        modeViews.forEach { $0?.layer.cornerRadius = 10.0 }
+        modeImages.forEach { $0?.layer.cornerRadius = 40.0 }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,12 +58,12 @@ class SelectGameViewController: UIViewController {
         let modeLock = defaults.integer(forKey: Constant.ModeLock)
         if modeLock == 2 {
             normalHideView.removeFromSuperview()
-            normalFace.image = Constant.Images.enemy[Constant.Mode.normal]
+            normalImage.image = Constant.Images.enemy[Constant.Mode.normal]
         } else if modeLock == 3 {
             normalHideView.removeFromSuperview()
             hardHideView.removeFromSuperview()
-            normalFace.image = Constant.Images.enemy[Constant.Mode.normal]
-            hardFace.image = Constant.Images.enemy[Constant.Mode.hard]
+            normalImage.image = Constant.Images.enemy[Constant.Mode.normal]
+            hardImage.image = Constant.Images.enemy[Constant.Mode.hard]
         }
     }
     
@@ -75,14 +71,14 @@ class SelectGameViewController: UIViewController {
     func changeHeroID(mode: String) {
         if mode == Constant.Mode.easy {
             easyView.heroID = Constant.HeroID.mode
-            easyFace.heroID = Constant.HeroID.enemy
+            easyImage.heroID = Constant.HeroID.enemy
             
         } else if mode == Constant.Mode.normal {
             normalView.heroID = Constant.HeroID.mode
-            normalFace.heroID = Constant.HeroID.enemy
+            normalImage.heroID = Constant.HeroID.enemy
         } else {
             hardView.heroID = Constant.HeroID.mode
-            hardFace.heroID = Constant.HeroID.enemy
+            hardImage.heroID = Constant.HeroID.enemy
         }
     }
 }

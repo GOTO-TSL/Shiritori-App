@@ -8,7 +8,7 @@
 import AVFoundation
 import Foundation
 
-class SoundPlayer {
+final class SoundPlayer {
     var audioPlayer: AVAudioPlayer!
     
     func playSound(name: String, isMute: Bool = false, loop: Int = 0) {

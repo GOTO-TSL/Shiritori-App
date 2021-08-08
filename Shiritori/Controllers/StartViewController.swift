@@ -14,21 +14,18 @@ class StartViewController: UIViewController {
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var soundButton: UIButton!
-    @IBOutlet weak var easyFigure: UIButton!
-    @IBOutlet weak var normalFigure: UIButton!
-    @IBOutlet weak var hardFigure: UIButton!
-    @IBOutlet weak var EASYView: UIView!
-    @IBOutlet weak var NORMALView: UIView!
-    @IBOutlet weak var HARDView: UIView!
+    @IBOutlet weak var easyReward: UIButton!
+    @IBOutlet weak var normalReward: UIButton!
+    @IBOutlet weak var hardReward: UIButton!
     
     var opPlayer = SoundPlayer()
     var pushPlayer = SoundPlayer()
     var figurePlayer = SoundPlayer()
     var wordSource = WordSource()
     var dataManager = DataManager()
-    var isMute = false
     let defaults = UserDefaults.standard
     var dbQueue = DatabaseQueue()
+    private var isMute = false
     
     weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
 
@@ -49,8 +46,6 @@ class StartViewController: UIViewController {
         let ismute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
         isMute = ismute
         isMute ? soundButton.setImage(Constant.Images.Sounds[1], for: .normal) : soundButton.setImage(Constant.Images.Sounds[0], for: .normal)
-        
-        //figure()
         
         dataManager.loadWords()
         dataManager.loadMyWords()
@@ -94,51 +89,28 @@ class StartViewController: UIViewController {
     // おまけをタップすると音が出る処理を実行
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        easyFigure.addTarget(self, action: #selector(tapButton(_:)), for: .touchDown)
-        easyFigure.addTarget(self, action: #selector(tapButton2(_:)), for: .touchUpInside)
-        normalFigure.addTarget(self, action: #selector(tapButton(_:)), for: .touchDown)
-        normalFigure.addTarget(self, action: #selector(tapButton2(_:)), for: .touchUpInside)
-        hardFigure.addTarget(self, action: #selector(tapButton(_:)), for: .touchDown)
-        hardFigure.addTarget(self, action: #selector(tapButton2(_:)), for: .touchUpInside)
+        let figures = [easyReward, normalReward, hardReward]
+        figures.forEach { $0?.addTarget(self, action: #selector(didTouchDown(_:)), for: .touchDown) }
+        figures.forEach { $0?.addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside) }
     }
     
-    @objc func tapButton(_ sender: UIButton) {
+    @objc func didTouchDown(_ sender: UIButton) {
         guard let accessID = sender.accessibilityIdentifier else { print("error"); return }
         sender.setImage(Constant.Images.figure[accessID]?[1], for: .normal)
         figurePlayer.playSound(name: accessID + "0")
     }
     
-    @objc func tapButton2(_ sender: UIButton) {
+    @objc func didTouchUpInside(_ sender: UIButton) {
         guard let accessID = sender.accessibilityIdentifier else { print("error"); return }
         sender.setImage(Constant.Images.figure[accessID]?[0], for: .normal)
         figurePlayer.playSound(name: accessID + "1")
     }
 
     // ゲームクリアのおまけの表示/非表示
-    func figure() {
+    // FIXME: おまけをゲームのクリア状況に応じて表示
+    func showReward() {
         let modeLock = defaults.integer(forKey: Constant.ModeLock)
-        switch modeLock {
-        case 1:
-            EASYView.isHidden = true
-            NORMALView.isHidden = true
-            HARDView.isHidden = true
-        case 2:
-            EASYView.isHidden = false
-            NORMALView.isHidden = true
-            HARDView.isHidden = true
-        case 3:
-            EASYView.isHidden = false
-            NORMALView.isHidden = false
-            HARDView.isHidden = true
-        case 4:
-            EASYView.isHidden = false
-            NORMALView.isHidden = false
-            HARDView.isHidden = false
-        default:
-            EASYView.isHidden = true
-            NORMALView.isHidden = true
-            HARDView.isHidden = true
-        }
+        let buttons = [easyReward, normalReward, hardReward]
     }
     
     // サウンドボタンが押されたときのBGMの音量変更，画像変更

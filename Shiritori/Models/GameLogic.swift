@@ -15,7 +15,7 @@ protocol GameLogicDelegate: AnyObject {
     func gotoResultView(_ gameLogic: GameLogic)
 }
 
-class GameLogic {
+final class GameLogic {
     var dataManager = DataManager()
     weak var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard
@@ -44,7 +44,7 @@ class GameLogic {
             delegate?.shiritoriFailed(self, comment: Constant.Comments.empty)
         }
     }
-    
+
     func addGamePoint(userWord: String) {
         let currentScore = defaults.integer(forKey: Constant.UserDefaultKeys.score)
         guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }

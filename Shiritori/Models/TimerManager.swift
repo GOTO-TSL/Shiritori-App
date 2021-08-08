@@ -14,10 +14,10 @@ protocol TimerManagerDelegate: AnyObject {
     func gotoNextView(_ timerManager: TimerManager)
 }
 
-class TimerManager {
+final class TimerManager {
     weak var delegate: TimerManagerDelegate?
     var mainTimer = Timer()
-    var mainTimerCount = 0
+    private var mainTimerCount = 0
     
     // ゲームの開始から終了までカウントするタイマー
     func gameTimer() {

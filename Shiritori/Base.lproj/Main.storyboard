@@ -204,10 +204,10 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="easyFigure" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
-                        <outlet property="hardFigure" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
+                        <outlet property="easyReward" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
+                        <outlet property="hardReward" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
                         <outlet property="mainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
-                        <outlet property="normalFigure" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
+                        <outlet property="normalReward" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
                         <outlet property="playButton" destination="TFk-BK-b8n" id="yu1-5w-0vG"/>
                         <outlet property="soundButton" destination="T8Y-12-vBr" id="EyX-gw-JA3"/>
                         <outlet property="subTitle" destination="Foc-CS-Iyr" id="efi-sH-S2a"/>
@@ -517,13 +517,13 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="easyFace" destination="XzG-ds-OEJ" id="Xo5-V6-PMI"/>
+                        <outlet property="easyImage" destination="XzG-ds-OEJ" id="Xo5-V6-PMI"/>
                         <outlet property="easyView" destination="I7e-Sj-66Q" id="NtR-nD-LIr"/>
-                        <outlet property="hardFace" destination="Chz-qG-nB0" id="va1-9M-we4"/>
                         <outlet property="hardHideView" destination="MK4-hn-wOy" id="l9f-la-QTL"/>
+                        <outlet property="hardImage" destination="Chz-qG-nB0" id="va1-9M-we4"/>
                         <outlet property="hardView" destination="lA0-mV-fKQ" id="Ik6-dk-sGG"/>
-                        <outlet property="normalFace" destination="a48-QC-AmK" id="r4i-YJ-boO"/>
                         <outlet property="normalHideView" destination="k6C-ju-cPS" id="tK7-0K-Dpd"/>
+                        <outlet property="normalImage" destination="a48-QC-AmK" id="r4i-YJ-boO"/>
                         <outlet property="normalView" destination="mLn-c6-bzC" id="h1k-xl-GqB"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="toPlay" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="qAr-Gy-X6G"/>
                     </connections>
@@ -773,7 +773,7 @@
                     <connections>
                         <outlet property="damageLabel" destination="iy1-Ot-xe9" id="WIo-PP-uxm"/>
                         <outlet property="damageView" destination="E0Q-fh-D3c" id="7cp-xg-zaz"/>
-                        <outlet property="faceImage" destination="y7e-yS-ZwK" id="m4l-d0-q0O"/>
+                        <outlet property="enemyImage" destination="y7e-yS-ZwK" id="m4l-d0-q0O"/>
                         <outlet property="hitPointBar" destination="AD8-5U-NdO" id="2MX-yK-2Se"/>
                         <outlet property="modeLabel" destination="Vc4-WS-gTY" id="oyB-zA-Fcp"/>
                         <outlet property="modeView" destination="K9T-qr-mTd" id="0JE-ew-Wy3"/>
@@ -1040,7 +1040,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="trG-CC-Rg8"/>
-        <segue reference="UHQ-gs-QV4"/>
+        <segue reference="mbp-lE-dVy"/>
         <segue reference="wm4-IA-Vdj"/>
     </inferredMetricsTieBreakers>
     <resources>

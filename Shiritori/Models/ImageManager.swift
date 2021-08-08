@@ -16,7 +16,7 @@ struct ImageManager {
         imageView.startAnimating()
     }
     
-    func animationImages(for name: String) -> [UIImage] {
+    private func animationImages(for name: String) -> [UIImage] {
         var count = 0
         var images = [UIImage]()
         
