@@ -65,10 +65,11 @@ struct Constant {
     }
     
     enum UserDefaultKeys {
-        static let mode = "mode"
         static let currentWord = "currentWord"
-        static let score = "score"
         static let isMute = "isMute"
+        static let isClearEasy = "isClearEasy"
+        static let isClearNormal = "isClearNormal"
+        static let isClearHard = "isClearHard"
         static let firstLaunch = "firstLaunch"
     }
 
@@ -91,9 +92,9 @@ struct Constant {
     
     enum Images {
         static let enemy = ["EASY": #imageLiteral(resourceName: "EASY0"), "NORMAL": #imageLiteral(resourceName: "NORMAL0"), "HARD": #imageLiteral(resourceName: "HARD0")]
-        static let figure = ["EASY": [#imageLiteral(resourceName: "EASYclear0"), #imageLiteral(resourceName: "EASYclear1")], "NORMAL": [#imageLiteral(resourceName: "NORMALclear0"), #imageLiteral(resourceName: "NORMALclear1")], "HARD": [#imageLiteral(resourceName: "HARDclear0"), #imageLiteral(resourceName: "HARDclear1")]]
-        static let Stars = [#imageLiteral(resourceName: "brank"), #imageLiteral(resourceName: "fill")]
-        static let Sounds = [#imageLiteral(resourceName: "musicON"), #imageLiteral(resourceName: "musicOFF")]
+        static let rewards = ["EASY": [#imageLiteral(resourceName: "EASYclear0"), #imageLiteral(resourceName: "EASYclear1")], "NORMAL": [#imageLiteral(resourceName: "NORMALclear0"), #imageLiteral(resourceName: "NORMALclear1")], "HARD": [#imageLiteral(resourceName: "HARDclear0"), #imageLiteral(resourceName: "HARDclear1")]]
+        static let stars = [#imageLiteral(resourceName: "brank"), #imageLiteral(resourceName: "fill")]
+        static let sounds = [#imageLiteral(resourceName: "musicON"), #imageLiteral(resourceName: "musicOFF")]
     }
     
     enum AnimationAction {

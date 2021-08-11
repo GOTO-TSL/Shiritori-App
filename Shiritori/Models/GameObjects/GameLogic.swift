@@ -10,7 +10,7 @@ import Foundation
 protocol GameLogicDelegate: AnyObject {
     func shiritoriSucessed(_ gameLogic: GameLogic)
     func shiritoriFailed(_ gameLogic: GameLogic, comment: String)
-    func updateHitPoint(_ gameLogic: GameLogic, score: Int, scoreLimit: Int)
+    func updateHitPoint(_ gameLogic: GameLogic, hitpoint: Int, scoreLimit: Int)
     func updateDamage(_ gameLogic: GameLogic, damage: Int)
     func gotoResultView(_ gameLogic: GameLogic)
 }
@@ -45,38 +45,32 @@ final class GameLogic {
         }
     }
 
-    func addGamePoint(userWord: String) {
-        let currentScore = defaults.integer(forKey: Constant.UserDefaultKeys.score)
-        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
-        
+    func addGamePoint(enemy: Enemy, userWord: String) {
         let damage = userWord.count * 10
-        let newScore = currentScore + damage
-        defaults.set(newScore, forKey: Constant.UserDefaultKeys.score)
+        enemy.damage = damage
+        let hitpoint = enemy.hitpoint
+        let limit = enemy.limit
         
-        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
-        if newScore >= scoreLimit {
-            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
+        if hitpoint <= 0 {
+            delegate?.updateHitPoint(self, hitpoint: hitpoint, scoreLimit: limit)
             delegate?.updateDamage(self, damage: damage)
             delegate?.gotoResultView(self)
         } else {
-            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
+            delegate?.updateHitPoint(self, hitpoint: hitpoint, scoreLimit: limit)
             delegate?.updateDamage(self, damage: damage)
         }
     }
     
-    func subGamePoint() {
-        var currentScore = defaults.integer(forKey: Constant.UserDefaultKeys.score)
-        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
-        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
+    func subGamePoint(enemy: Enemy) {
+        let hitpoint = enemy.hitpoint
+        let limit = enemy.limit
+        enemy.heal = 10
         
-        if currentScore <= 0 {
-            currentScore = 0
-            defaults.set(currentScore, forKey: Constant.UserDefaultKeys.score)
-            delegate?.updateHitPoint(self, score: currentScore, scoreLimit: scoreLimit)
+        if hitpoint >= limit {
+            enemy.hitpoint = limit
+            delegate?.updateHitPoint(self, hitpoint: hitpoint, scoreLimit: limit)
         } else {
-            let newScore = currentScore - 10
-            defaults.set(newScore, forKey: Constant.UserDefaultKeys.score)
-            delegate?.updateHitPoint(self, score: newScore, scoreLimit: scoreLimit)
+            delegate?.updateHitPoint(self, hitpoint: hitpoint, scoreLimit: limit)
         }
     }
 }

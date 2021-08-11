@@ -20,6 +20,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var damageView: UIView!
     @IBOutlet weak var damageLabel: UILabel!
     
+    var currentMode: String?
     var gameLogic = GameLogic()
     var imageManager = ImageManager()
     var timerManager = TimerManager()
@@ -29,19 +30,19 @@ class PlayViewController: UIViewController {
     var bgmPlayer = SoundPlayer()
     var dbQueue = DatabaseQueue()
     let defaults = UserDefaults.standard
-    var MODE = ""
-    var isMute = false
+    var isMute: Bool = false
+    var enemy = Enemy("")
     weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
-        MODE = mode
+        guard let mode = currentMode else { return }
+        enemy = Enemy(mode)
+        
         let ismute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
         isMute = ismute
         // スコアの初期設定
-        defaults.set(0, forKey: Constant.UserDefaultKeys.score)
         defaults.set("aaaa", forKey: Constant.UserDefaultKeys.currentWord)
         
         // ダメージを隠す
@@ -54,6 +55,7 @@ class PlayViewController: UIViewController {
         // モードによってviewやlabelなどを変更
         changeModeLabel(mode: mode)
         enemyImage.image = Constant.Images.enemy[mode]
+        
         wordSource.createDatabase()
         
         // delegateの宣言
@@ -111,6 +113,14 @@ class PlayViewController: UIViewController {
         modeLabel.backgroundColor = Constant.modeColor[mode]
         modeView.backgroundColor = Constant.modeColor[mode]
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constant.SegueID.toresult {
+            let destinationVC = segue.destination as? ResultViewController
+            destinationVC?.mode = enemy.mode
+            destinationVC?.hitpoint = enemy.hitpoint
+        }
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -138,16 +148,17 @@ extension PlayViewController: WordSourceDelegate {
     func invalidWord(_ wordSource: WordSource) {
         DispatchQueue.main.async {
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE, action: Constant.AnimationAction.heal,
+                                             mode: self.enemy.mode,
+                                             action: Constant.AnimationAction.heal,
                                              duration: 0.5)
             self.actionPlayer.playSound(name: Constant.Sounds.heal, isMute: self.isMute)
             self.wordLabel.text = Constant.Comments.invalid
-            self.gameLogic.subGamePoint()
+            self.gameLogic.subGamePoint(enemy: self.enemy)
             self.textField.text = ""
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: "",
                                              duration: 1.0)
             guard let current = self.defaults.string(forKey: Constant.UserDefaultKeys.currentWord) else { return }
@@ -180,7 +191,7 @@ extension PlayViewController: WordSourceDelegate {
             self.dataManager.save(word: word)
             self.wordLabel.text = word
             self.defaults.set(word, forKey: Constant.UserDefaultKeys.currentWord)
-            self.gameLogic.addGamePoint(userWord: text)
+            self.gameLogic.addGamePoint(enemy: self.enemy, userWord: text)
             self.textField.text = ""
         }
     }
@@ -193,11 +204,11 @@ extension PlayViewController: GameLogicDelegate {
     func updateDamage(_ gameLogic: GameLogic, damage: Int) {
         DispatchQueue.main.async {
             self.damageLabel.isHidden = false
-            if damage >= 100 {
-                self.damageLabel.textColor = .red
+            if damage < 100 {
+                self.damageLabel.textColor = .black
                 self.damageLabel.text = String(damage)
             } else {
-                self.damageLabel.textColor = .black
+                self.damageLabel.textColor = .red
                 self.damageLabel.text = String(damage)
             }
             self.imageManager.damageAnimation(for: self.damageView)
@@ -205,9 +216,9 @@ extension PlayViewController: GameLogicDelegate {
     }
 
     // HPゲージの更新
-    func updateHitPoint(_ gameLogic: GameLogic, score: Int, scoreLimit: Int) {
+    func updateHitPoint(_ gameLogic: GameLogic, hitpoint: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
-            let progress = 1.0 - Float(score) / Float(scoreLimit)
+            let progress = Float(hitpoint) / Float(scoreLimit)
             self.hitPointBar.progress = progress
             switch self.hitPointBar.progress {
             case 0.6 ... 1.0:
@@ -229,7 +240,7 @@ extension PlayViewController: GameLogicDelegate {
             self.actionPlayer.playSound(name: Constant.Sounds.damage, isMute: self.isMute)
             // ダメージを受けるアニメーション
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.damage,
                                              duration: 0.2)
             
@@ -239,7 +250,7 @@ extension PlayViewController: GameLogicDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // メインアニメーションの再開
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)
         }
@@ -252,11 +263,11 @@ extension PlayViewController: GameLogicDelegate {
             self.actionPlayer.playSound(name: Constant.Sounds.heal, isMute: self.isMute)
             // 回復するアニメーション
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.heal,
                                              duration: 0.5)
             
-            self.gameLogic.subGamePoint()
+            self.gameLogic.subGamePoint(enemy: self.enemy)
             self.wordLabel.text = comment
             self.textField.text = ""
         }
@@ -264,7 +275,7 @@ extension PlayViewController: GameLogicDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             // メインアニメーションの再開
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)
             
@@ -277,7 +288,7 @@ extension PlayViewController: GameLogicDelegate {
     func gotoResultView(_ gameLogic: GameLogic) {
         DispatchQueue.main.async {
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.down,
                                              duration: 1.0)
             self.wordLabel.text = Constant.Comments.lose
@@ -312,7 +323,7 @@ extension PlayViewController: TimerManagerDelegate {
         DispatchQueue.main.async {
             self.wordSource.featchFirstWord(dbq: self.dbQueue)
             self.imageManager.imageAnimation(for: self.enemyImage,
-                                             mode: self.MODE,
+                                             mode: self.enemy.mode,
                                              action: Constant.AnimationAction.main,
                                              duration: 1.0)
         }

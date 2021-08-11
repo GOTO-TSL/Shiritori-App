@@ -41,6 +41,7 @@
 		0289A81D2641347600023D0E /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81C2641347600023D0E /* RuleViewController.swift */; };
 		0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81E2641348B00023D0E /* ResultViewController.swift */; };
 		0289A82126413DA600023D0E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82026413DA600023D0E /* TimerManager.swift */; };
+		0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292F2AC26BFDC4D00802867 /* Enemy.swift */; };
 		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
@@ -88,6 +89,7 @@
 		0289A81C2641347600023D0E /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		0289A81E2641348B00023D0E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0289A82026413DA600023D0E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		0292F2AC26BFDC4D00802867 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -199,8 +201,8 @@
 		0283558E263F935F008B6845 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0292F2AE26C015C600802867 /* GameObjects */,
 				0289A82026413DA600023D0E /* TimerManager.swift */,
-				020E7F08265D2C600090F761 /* GameLogic.swift */,
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
 				023375742672407E00C59023 /* WordSource.swift */,
 				02818B2A26876E30000A40C2 /* SoundPlayer.swift */,
@@ -233,6 +235,15 @@
 				022D71922671D84C001AA4B0 /* MeanViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0292F2AE26C015C600802867 /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				020E7F08265D2C600090F761 /* GameLogic.swift */,
+				0292F2AC26BFDC4D00802867 /* Enemy.swift */,
+			);
+			path = GameObjects;
 			sourceTree = "<group>";
 		};
 		ACD21EEBDACDD946BD2D8B6A /* Pods */ = {
@@ -420,6 +431,7 @@
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
+				0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,

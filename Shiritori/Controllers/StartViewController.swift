@@ -35,9 +35,12 @@ class StartViewController: UIViewController {
         // 初回起動時のみ実行する処理のための値をセット
         if defaults.bool(forKey: Constant.UserDefaultKeys.firstLaunch) {
             defaults.set(1, forKey: Constant.ModeLock)
+            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearEasy)
+            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearNormal)
+            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearHard)
             defaults.set(false, forKey: Constant.UserDefaultKeys.firstLaunch)
         }
-        
+
         // タイトルを表示
         mainTitle.text = Constant.Texts.mainTitle
         subTitle.text = Constant.Texts.subTitle
@@ -45,7 +48,9 @@ class StartViewController: UIViewController {
         // BGMをミュートに切り替える処理
         let ismute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
         isMute = ismute
-        isMute ? soundButton.setImage(Constant.Images.Sounds[1], for: .normal) : soundButton.setImage(Constant.Images.Sounds[0], for: .normal)
+        isMute ? soundButton.setImage(Constant.Images.sounds[1], for: .normal) : soundButton.setImage(Constant.Images.sounds[0], for: .normal)
+        
+        showReward()
         
         dataManager.loadWords()
         dataManager.loadMyWords()
@@ -96,21 +101,34 @@ class StartViewController: UIViewController {
     
     @objc func didTouchDown(_ sender: UIButton) {
         guard let accessID = sender.accessibilityIdentifier else { print("error"); return }
-        sender.setImage(Constant.Images.figure[accessID]?[1], for: .normal)
+        sender.setImage(Constant.Images.rewards[accessID]?[1], for: .normal)
         figurePlayer.playSound(name: accessID + "0")
     }
     
     @objc func didTouchUpInside(_ sender: UIButton) {
         guard let accessID = sender.accessibilityIdentifier else { print("error"); return }
-        sender.setImage(Constant.Images.figure[accessID]?[0], for: .normal)
+        sender.setImage(Constant.Images.rewards[accessID]?[0], for: .normal)
         figurePlayer.playSound(name: accessID + "1")
     }
 
     // ゲームクリアのおまけの表示/非表示
-    // FIXME: おまけをゲームのクリア状況に応じて表示
     func showReward() {
-        let modeLock = defaults.integer(forKey: Constant.ModeLock)
-        let buttons = [easyReward, normalReward, hardReward]
+        
+        easyReward.isHidden = true
+        normalReward.isHidden = true
+        hardReward.isHidden = true
+        
+        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearEasy) {
+            easyReward.isHidden = false
+        }
+        
+        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearNormal) {
+            normalReward.isHidden = false
+        }
+        
+        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearHard) {
+            hardReward.isHidden = false
+        }
     }
     
     // サウンドボタンが押されたときのBGMの音量変更，画像変更
@@ -118,7 +136,7 @@ class StartViewController: UIViewController {
         // ミュート変数の値を変更
         isMute = isMute ? false : true
         // ミュートかどうかで画像を変更
-        isMute ? soundButton.setImage(Constant.Images.Sounds[1], for: .normal) : soundButton.setImage(Constant.Images.Sounds[0], for: .normal)
+        isMute ? soundButton.setImage(Constant.Images.sounds[1], for: .normal) : soundButton.setImage(Constant.Images.sounds[0], for: .normal)
         
         guard let appDel = appDelegate else { return }
         appDel.opPlayer.muteSound(isMute: isMute)

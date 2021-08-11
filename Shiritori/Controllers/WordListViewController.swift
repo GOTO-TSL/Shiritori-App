@@ -43,7 +43,7 @@ extension WordListViewController: UITableViewDataSource {
         guard let selectedWord = dataManager.words?[indexPath.row] else { fatalError() }
         // セルのテキストを設定，お気に入り登録されると星がつくように画像を変更
         wordCell.wordLabel.text = selectedWord.name
-        wordCell.starImage.image = selectedWord.isLike ? Constant.Images.Stars[1] : Constant.Images.Stars[0]
+        wordCell.starImage.image = selectedWord.isLike ? Constant.Images.stars[1] : Constant.Images.stars[0]
         
         return wordCell
     }

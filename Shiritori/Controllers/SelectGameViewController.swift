@@ -20,6 +20,7 @@ class SelectGameViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     var pushPlayer = SoundPlayer()
+    var currentMode: String = ""
     weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidLoad() {
@@ -38,6 +39,13 @@ class SelectGameViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constant.SegueID.toplay {
+            let destinationVC = segue.destination as? PlayViewController
+            destinationVC?.currentMode = currentMode
+        }
+    }
+    
     // モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
         // オープニングの停止，ボタンの効果音再生
@@ -47,7 +55,7 @@ class SelectGameViewController: UIViewController {
         appDel.opPlayer.stopSound()
         // 選んだモードのViewにHeroIDを設定
         guard let mode = sender.currentTitle else { return }
-        defaults.set(mode, forKey: Constant.UserDefaultKeys.mode)
+        currentMode = mode
         changeHeroID(mode: mode)
         // PlayVCに画面遷移
         performSegue(withIdentifier: Constant.SegueID.toplay, sender: nil)
@@ -55,11 +63,12 @@ class SelectGameViewController: UIViewController {
 
     // モードのロックを解除する
     func modeUnLock() {
-        let modeLock = defaults.integer(forKey: Constant.ModeLock)
-        if modeLock == 2 {
+        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearEasy) {
             normalHideView.removeFromSuperview()
             normalImage.image = Constant.Images.enemy[Constant.Mode.normal]
-        } else if modeLock == 3 {
+        }
+        
+        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearNormal) {
             normalHideView.removeFromSuperview()
             hardHideView.removeFromSuperview()
             normalImage.image = Constant.Images.enemy[Constant.Mode.normal]

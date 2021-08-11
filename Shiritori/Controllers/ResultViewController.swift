@@ -11,6 +11,8 @@ class ResultViewController: UIViewController {
     var imageManager = ImageManager()
     var pushPlayer = SoundPlayer()
     var edPlayer = SoundPlayer()
+    var mode: String?
+    var hitpoint: Int?
     let defaults = UserDefaults.standard
     weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
@@ -25,10 +27,10 @@ class ResultViewController: UIViewController {
         wordsButton.layer.cornerRadius = 5.0
         homeButton.layer.cornerRadius = 5.0
         
-        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
-        let score = defaults.integer(forKey: Constant.UserDefaultKeys.score)
+        guard let safeMode = mode else { return }
+        guard let safeHP = hitpoint else { return }
         
-        changeResult(score: score, mode: mode)
+        changeResult(hitpoint: safeHP, mode: safeMode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,9 +40,9 @@ class ResultViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        guard let mode = defaults.string(forKey: Constant.UserDefaultKeys.mode) else { return }
-        let score = defaults.integer(forKey: Constant.UserDefaultKeys.score)
-        changeResultSound(score: score, mode: mode)
+        guard let safeMode = mode else { return }
+        guard let safeHP = hitpoint else { return }
+        changeResultSound(hitpoint: safeHP, mode: safeMode)
     }
     
     @IBAction func wordsPressed(_ sender: UIButton) {
@@ -58,17 +60,14 @@ class ResultViewController: UIViewController {
     }
     
     // ゲーム結果に応じてResult画面の画像，タイトルテキスト，モードLOCK変数を変更
-    func changeResult(score: Int, mode: String) {
-        let modeLock = defaults.integer(forKey: Constant.ModeLock)
-        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
-        
-        if scoreLimit <= score {
+    func changeResult(hitpoint: Int, mode: String) {
+        if hitpoint <= 0 {
             imageManager.imageAnimation(for: resultImage,
                                         mode: "",
                                         action: Constant.AnimationAction.win,
                                         duration: 1.0)
+            modeOpen(mode: mode)
             resultLabel.text = Constant.Texts.winText
-            defaults.set(modeOpen(mode: mode, modeLock: modeLock), forKey: Constant.ModeLock)
         } else {
             imageManager.imageAnimation(for: resultImage,
                                         mode: mode,
@@ -79,10 +78,9 @@ class ResultViewController: UIViewController {
     }
 
     // ゲーム結果に応じてサウンドを変更
-    func changeResultSound(score: Int, mode: String) {
+    func changeResultSound(hitpoint: Int, mode: String) {
         let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
-        guard let scoreLimit = Constant.scoreLimit[mode] else { return }
-        if scoreLimit <= score {
+        if hitpoint <= 0 {
             edPlayer.playSound(name: Constant.Sounds.win, isMute: isMute)
         } else {
             edPlayer.playSound(name: Constant.Sounds.lose, isMute: isMute)
@@ -90,15 +88,16 @@ class ResultViewController: UIViewController {
     }
 
     // 現在のモードのクリア状況に応じて新しいモードを開放するかを決める
-    func modeOpen(mode: String, modeLock: Int) -> Int {
-        if modeLock < 3 {
-            if mode == "EASY" {
-                return 2
-            } else {
-                return 3
-            }
-        } else {
-            return 4
+    func modeOpen(mode: String) {
+        switch mode {
+        case "EASY":
+            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearEasy)
+        case "NORMAL":
+            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearNormal)
+        case "HARD":
+            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearHard)
+        default:
+            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearEasy)
         }
     }
 }
