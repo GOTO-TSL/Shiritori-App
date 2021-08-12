@@ -94,9 +94,9 @@ class StartViewController: UIViewController {
     // おまけをタップすると音が出る処理を実行
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let figures = [easyReward, normalReward, hardReward]
-        figures.forEach { $0?.addTarget(self, action: #selector(didTouchDown(_:)), for: .touchDown) }
-        figures.forEach { $0?.addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside) }
+        let rewards = [easyReward, normalReward, hardReward]
+        rewards.forEach { $0?.addTarget(self, action: #selector(didTouchDown(_:)), for: .touchDown) }
+        rewards.forEach { $0?.addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside) }
     }
     
     @objc func didTouchDown(_ sender: UIButton) {
@@ -113,21 +113,12 @@ class StartViewController: UIViewController {
 
     // ゲームクリアのおまけの表示/非表示
     func showReward() {
-        
-        easyReward.isHidden = true
-        normalReward.isHidden = true
-        hardReward.isHidden = true
-        
-        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearEasy) {
-            easyReward.isHidden = false
-        }
-        
-        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearNormal) {
-            normalReward.isHidden = false
-        }
+        let rewards = [easyReward, normalReward, hardReward]
         
         if defaults.bool(forKey: Constant.UserDefaultKeys.isClearHard) {
-            hardReward.isHidden = false
+            rewards.forEach { $0?.isHidden = false }
+        } else {
+            rewards.forEach { $0?.isHidden = true }
         }
     }
     

@@ -204,10 +204,10 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="easyReward" destination="fPr-J1-TaW" id="xBs-hw-nG7"/>
-                        <outlet property="hardReward" destination="Uke-Hz-Jps" id="XTb-ZF-nvJ"/>
+                        <outlet property="easyReward" destination="fPr-J1-TaW" id="2HS-MP-IYT"/>
+                        <outlet property="hardReward" destination="Uke-Hz-Jps" id="u7C-Ns-HU2"/>
                         <outlet property="mainTitle" destination="yvq-UG-nZW" id="fTH-FK-wHw"/>
-                        <outlet property="normalReward" destination="4Q4-Ov-F2w" id="tmn-Ps-vIr"/>
+                        <outlet property="normalReward" destination="4Q4-Ov-F2w" id="qC7-5a-RRh"/>
                         <outlet property="playButton" destination="TFk-BK-b8n" id="yu1-5w-0vG"/>
                         <outlet property="soundButton" destination="T8Y-12-vBr" id="EyX-gw-JA3"/>
                         <outlet property="subTitle" destination="Foc-CS-Iyr" id="efi-sH-S2a"/>
@@ -348,20 +348,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-jP-03f" userLabel="MiddleView">
                                         <rect key="frame" x="0.0" y="204.5" width="414" height="531.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Bg-Ds-yah">
-                                                <rect key="frame" x="15" y="10" width="384" height="511.5"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="7Bg-Ds-yah">
+                                                <rect key="frame" x="15" y="10" width="384" height="512"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7e-Sj-66Q">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7e-Sj-66Q">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="164"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EASY0" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-ds-OEJ">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="EASY0" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-ds-OEJ">
                                                                 <rect key="frame" x="10" y="34" width="96" height="96"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="XzG-ds-OEJ" secondAttribute="height" multiplier="1:1" id="AAk-IK-0AG"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xxs-Be-vhS">
-                                                                <rect key="frame" x="106" y="5" width="273" height="154"/>
+                                                                <rect key="frame" x="106" y="5" width="273" height="85"/>
                                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="50"/>
                                                                 <state key="normal" title="EASY">
@@ -382,17 +382,17 @@
                                                             <constraint firstItem="Xxs-Be-vhS" firstAttribute="leading" secondItem="XzG-ds-OEJ" secondAttribute="trailing" id="vmi-zv-Pn5"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mLn-c6-bzC">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mLn-c6-bzC">
                                                         <rect key="frame" x="0.0" y="174" width="384" height="164"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="a48-QC-AmK">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="a48-QC-AmK">
                                                                 <rect key="frame" x="10" y="34" width="96" height="96"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="a48-QC-AmK" secondAttribute="height" multiplier="1:1" id="4RV-ie-dPb"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W0u-VT-4Ct">
-                                                                <rect key="frame" x="106" y="5" width="273" height="154"/>
+                                                                <rect key="frame" x="106" y="5" width="273" height="85"/>
                                                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="50"/>
                                                                 <state key="normal" title="NORMAL">
@@ -402,7 +402,7 @@
                                                                     <action selector="modeSelected:" destination="S1X-48-eHe" eventType="touchUpInside" id="0LF-LC-QrR"/>
                                                                 </connections>
                                                             </button>
-                                                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6C-ju-cPS">
+                                                            <view alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k6C-ju-cPS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="384" height="164"/>
                                                                 <color key="backgroundColor" systemColor="labelColor"/>
                                                             </view>
@@ -421,17 +421,17 @@
                                                             <constraint firstAttribute="trailing" secondItem="k6C-ju-cPS" secondAttribute="trailing" id="vbd-3w-N7m"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lA0-mV-fKQ">
-                                                        <rect key="frame" x="0.0" y="348" width="384" height="163.5"/>
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lA0-mV-fKQ">
+                                                        <rect key="frame" x="0.0" y="348" width="384" height="164"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="Chz-qG-nB0">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="hide" translatesAutoresizingMaskIntoConstraints="NO" id="Chz-qG-nB0">
                                                                 <rect key="frame" x="10" y="34" width="96" height="96"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="Chz-qG-nB0" secondAttribute="height" multiplier="1:1" id="1aD-cz-dud"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T89-Ye-I8L">
-                                                                <rect key="frame" x="106" y="5" width="273" height="153.5"/>
+                                                                <rect key="frame" x="106" y="5" width="273" height="85"/>
                                                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                                                 <fontDescription key="fontDescription" name="DotGothic16-Regular" family="DotGothic16" pointSize="50"/>
                                                                 <state key="normal" title="HARD">
@@ -441,8 +441,8 @@
                                                                     <action selector="modeSelected:" destination="S1X-48-eHe" eventType="touchUpInside" id="JPG-G7-5Y5"/>
                                                                 </connections>
                                                             </button>
-                                                            <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MK4-hn-wOy">
-                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="163.5"/>
+                                                            <view alpha="0.69999999999999996" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MK4-hn-wOy">
+                                                                <rect key="frame" x="0.0" y="0.0" width="384" height="164"/>
                                                                 <color key="backgroundColor" systemColor="labelColor"/>
                                                             </view>
                                                         </subviews>
@@ -1041,7 +1041,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="trG-CC-Rg8"/>
         <segue reference="mbp-lE-dVy"/>
-        <segue reference="wm4-IA-Vdj"/>
+        <segue reference="tO2-sB-ptH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="EASY0" width="96" height="96"/>
