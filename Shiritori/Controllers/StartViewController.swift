@@ -34,10 +34,9 @@ class StartViewController: UIViewController {
         
         // 初回起動時のみ実行する処理のための値をセット
         if defaults.bool(forKey: Constant.UserDefaultKeys.firstLaunch) {
-            defaults.set(1, forKey: Constant.ModeLock)
-            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearEasy)
-            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearNormal)
-            defaults.set(false, forKey: Constant.UserDefaultKeys.isClearHard)
+            defaults.set(0, forKey: Constant.UserDefaultKeys.isClearEasy)
+            defaults.set(0, forKey: Constant.UserDefaultKeys.isClearNormal)
+            defaults.set(0, forKey: Constant.UserDefaultKeys.isClearHard)
             defaults.set(false, forKey: Constant.UserDefaultKeys.firstLaunch)
         }
 
@@ -76,6 +75,7 @@ class StartViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        showAlert()
         // 使用した単語リストのうち，お気に入り登録した単語をマイ単語リストへ移す処理
         guard let words = dataManager.words else { fatalError() }
         for word in words {
@@ -114,11 +114,36 @@ class StartViewController: UIViewController {
     // ゲームクリアのおまけの表示/非表示
     func showReward() {
         let rewards = [easyReward, normalReward, hardReward]
-        
+
         if defaults.bool(forKey: Constant.UserDefaultKeys.isClearHard) {
             rewards.forEach { $0?.isHidden = false }
         } else {
             rewards.forEach { $0?.isHidden = true }
+        }
+    }
+    
+    //　アラートを表示
+    func showAlert() {
+        if defaults.integer(forKey: Constant.UserDefaultKeys.isClearHard) == 1 {
+            let dialog = UIAlertController(title: "ゲームクリア", message: "おまけで遊んでね", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(dialog, animated: true, completion: nil)
+            defaults.set(2, forKey: Constant.UserDefaultKeys.isClearHard)
+            
+        } else if defaults.integer(forKey: Constant.UserDefaultKeys.isClearNormal) == 1 {
+            let dialog = UIAlertController(title: "モード開放", message: "HARDモードが開放されました", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(dialog, animated: true, completion: nil)
+            defaults.set(2, forKey: Constant.UserDefaultKeys.isClearNormal)
+            
+        } else if defaults.integer(forKey: Constant.UserDefaultKeys.isClearEasy) == 1 {
+            let dialog = UIAlertController(title: "モード開放", message: "NORMALモードが開放されました", preferredStyle: .alert)
+            dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            
+            self.present(dialog, animated: true, completion: nil)
+            defaults.set(2, forKey: Constant.UserDefaultKeys.isClearEasy)
         }
     }
     

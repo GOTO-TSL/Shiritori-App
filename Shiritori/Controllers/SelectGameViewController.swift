@@ -63,12 +63,12 @@ class SelectGameViewController: UIViewController {
 
     // モードのロックを解除する
     func modeUnLock() {
-        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearEasy) {
+        if defaults.integer(forKey: Constant.UserDefaultKeys.isClearEasy) >= 1 {
             normalHideView.removeFromSuperview()
             normalImage.image = Constant.Images.enemy[Constant.Mode.normal]
         }
         
-        if defaults.bool(forKey: Constant.UserDefaultKeys.isClearNormal) {
+        if defaults.integer(forKey: Constant.UserDefaultKeys.isClearNormal) >= 1 {
             normalHideView.removeFromSuperview()
             hardHideView.removeFromSuperview()
             normalImage.image = Constant.Images.enemy[Constant.Mode.normal]

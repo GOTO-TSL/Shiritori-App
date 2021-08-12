@@ -11,8 +11,8 @@ class ResultViewController: UIViewController {
     var imageManager = ImageManager()
     var pushPlayer = SoundPlayer()
     var edPlayer = SoundPlayer()
-    var mode: String?
-    var hitpoint: Int?
+    var mode: String = ""
+    var hitpoint: Int = 0
     let defaults = UserDefaults.standard
     weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
     
@@ -27,10 +27,10 @@ class ResultViewController: UIViewController {
         wordsButton.layer.cornerRadius = 5.0
         homeButton.layer.cornerRadius = 5.0
         
-        guard let safeMode = mode else { return }
-        guard let safeHP = hitpoint else { return }
-        
-        changeResult(hitpoint: safeHP, mode: safeMode)
+        guard let safeMode = defaults.string(forKey: Constant.UserDefaultKeys.currentMode) else { return }
+        mode = safeMode
+        hitpoint = defaults.integer(forKey: Constant.UserDefaultKeys.hitpoint)
+        changeResult(hitpoint: hitpoint, mode: mode)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,9 +40,7 @@ class ResultViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        guard let safeMode = mode else { return }
-        guard let safeHP = hitpoint else { return }
-        changeResultSound(hitpoint: safeHP, mode: safeMode)
+        changeResultSound(hitpoint: hitpoint, mode: mode)
     }
     
     @IBAction func wordsPressed(_ sender: UIButton) {
@@ -91,13 +89,19 @@ class ResultViewController: UIViewController {
     func modeOpen(mode: String) {
         switch mode {
         case "EASY":
-            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearEasy)
+            if defaults.integer(forKey: Constant.UserDefaultKeys.isClearEasy) != 2 {
+                defaults.set(1, forKey: Constant.UserDefaultKeys.isClearEasy)
+            }
         case "NORMAL":
-            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearNormal)
+            if defaults.integer(forKey: Constant.UserDefaultKeys.isClearNormal) != 2 {
+                defaults.set(1, forKey: Constant.UserDefaultKeys.isClearNormal)
+            }
         case "HARD":
-            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearHard)
+            if defaults.integer(forKey: Constant.UserDefaultKeys.isClearHard) != 2 {
+                defaults.set(1, forKey: Constant.UserDefaultKeys.isClearHard)
+            }
         default:
-            defaults.set(true, forKey: Constant.UserDefaultKeys.isClearEasy)
+            defaults.set(1, forKey: Constant.UserDefaultKeys.isClearEasy)
         }
     }
 }

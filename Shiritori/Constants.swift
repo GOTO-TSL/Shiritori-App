@@ -11,10 +11,8 @@ import UIKit
 struct Constant {
     static let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
-    static let scoreLimit = ["EASY": 350, "NORMAL": 500, "HARD": 750]
+    static let scoreLimit = ["EASY": 350, "NORMAL": 600, "HARD": 1000]
     static let modeColor: [String: UIColor] = ["EASY": .systemGreen, "NORMAL": .systemBlue, "HARD": .systemPink]
-    
-    static let ModeLock = "ModeLock"
     
     enum CellID {
         static let wordListCell = "ReusableCell"
@@ -45,11 +43,11 @@ struct Constant {
     
     enum Comments {
         static let lose = "やられた～"
-        static let invalid = "Invalid Word!"
-        static let single = "thank you!"
-        static let used = "Used Word!"
-        static let noShiritori = "Shiritori Please"
-        static let empty = "Write Something"
+        static let invalid = "辞書にない!"
+        static let single = "１文字だよ!"
+        static let used = "使った単語!"
+        static let noShiritori = "しりとりしてね"
+        static let empty = "なにか書いてね"
         static let start = "START!"
         static let end = "Time's Up!"
         static let wait = "..."
@@ -66,11 +64,13 @@ struct Constant {
     
     enum UserDefaultKeys {
         static let currentWord = "currentWord"
+        static let currentMode = "currentMode"
         static let isMute = "isMute"
         static let isClearEasy = "isClearEasy"
         static let isClearNormal = "isClearNormal"
         static let isClearHard = "isClearHard"
         static let firstLaunch = "firstLaunch"
+        static let hitpoint = "hitpoint"
     }
 
     enum HeroID {
@@ -83,6 +83,8 @@ struct Constant {
         static let towordlist = "toWordRist"
         static let toplay = "toPlay"
         static let toMean = "toMean"
+        static let goBackToResult = "goBackToResult"
+        static let toWordList = "toWordList"
     }
 
     enum Timer {

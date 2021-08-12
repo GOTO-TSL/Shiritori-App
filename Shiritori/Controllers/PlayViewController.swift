@@ -98,9 +98,14 @@ class PlayViewController: UIViewController {
         gameLogic.applyRule(for: userInput)
     }
 
-    // QUITボタンが押されたときの処理，前のVCに戻り，タイマーと音楽を止める
+    // QUITボタンが押されたときの処理: 使用した単語のリセット，前のVCに戻る，タイマーと音楽を止める
     @IBAction func quitPressed(_ sender: UIButton) {
+        dataManager.loadWords()
         guard let appDel = appDelegate else { return }
+        guard let words = dataManager.words else { fatalError() }
+        for word in words {
+            dataManager.delete(word: word)
+        }
         textField.resignFirstResponder()
         bgmPlayer.stopSound()
         appDel.opPlayer.playSound(name: Constant.Sounds.opening, isMute: isMute, loop: -1)
@@ -112,14 +117,6 @@ class PlayViewController: UIViewController {
         modeLabel.text = mode
         modeLabel.backgroundColor = Constant.modeColor[mode]
         modeView.backgroundColor = Constant.modeColor[mode]
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == Constant.SegueID.toresult {
-            let destinationVC = segue.destination as? ResultViewController
-            destinationVC?.mode = enemy.mode
-            destinationVC?.hitpoint = enemy.hitpoint
-        }
     }
 }
 
@@ -294,6 +291,8 @@ extension PlayViewController: GameLogicDelegate {
             self.wordLabel.text = Constant.Comments.lose
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.defaults.set(self.enemy.hitpoint, forKey: Constant.UserDefaultKeys.hitpoint)
+            self.defaults.set(self.enemy.mode, forKey: Constant.UserDefaultKeys.currentMode)
             self.performSegue(withIdentifier: Constant.SegueID.toresult, sender: nil)
             self.bgmPlayer.stopSound()
             self.timerManager.mainTimer.invalidate()
@@ -333,6 +332,8 @@ extension PlayViewController: TimerManagerDelegate {
     func gotoNextView(_ timerManager: TimerManager) {
         DispatchQueue.main.async {
             self.bgmPlayer.stopSound()
+            self.defaults.set(self.enemy.hitpoint, forKey: Constant.UserDefaultKeys.hitpoint)
+            self.defaults.set(self.enemy.mode, forKey: Constant.UserDefaultKeys.currentMode)
             self.performSegue(withIdentifier: Constant.SegueID.toresult, sender: nil)
         }
     }
