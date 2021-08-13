@@ -92,13 +92,13 @@ class PlayViewController: UIViewController {
         textField.resignFirstResponder()
     }
 
-    // ボタンが押されたときに実行される処理，ユーザーの入力にしりとりのルールを適用させる
+    /// ボタンが押されたときに実行される処理，ユーザーの入力にしりとりのルールを適用させる
     @IBAction func answerPressed(_ sender: UIButton) {
         guard let userInput = textField.text else { return }
         gameLogic.applyRule(for: userInput)
     }
 
-    // QUITボタンが押されたときの処理: 使用した単語のリセット，前のVCに戻る，タイマーと音楽を止める
+    /// QUITボタンが押されたときの処理: 使用した単語のリセット，前のVCに戻る，タイマーと音楽を止める
     @IBAction func quitPressed(_ sender: UIButton) {
         dataManager.loadWords()
         guard let appDel = appDelegate else { return }
@@ -112,7 +112,8 @@ class PlayViewController: UIViewController {
         timerManager.stopTimer()
     }
 
-    // 左上のモードViewのテキストと色を変更
+    /// 左上のモードViewのテキストと色を変更
+    /// - Parameter mode: 選択中のモード
     func changeModeLabel(mode: String) {
         modeLabel.text = mode
         modeLabel.backgroundColor = Constant.modeColor[mode]
@@ -141,7 +142,7 @@ extension PlayViewController: UITextFieldDelegate {
 // MARK: - WordSourceDelegate
 
 extension PlayViewController: WordSourceDelegate {
-    // 辞書にない単語が入力されたときの処理
+    /// 辞書にない単語が入力されたときの処理
     func invalidWord(_ wordSource: WordSource) {
         DispatchQueue.main.async {
             self.imageManager.imageAnimation(for: self.enemyImage,
@@ -163,7 +164,7 @@ extension PlayViewController: WordSourceDelegate {
         }
     }
 
-    // プレイヤーの入力した単語を保存
+    /// プレイヤーの入力した単語を保存
     func addPlayerWord(_ wordSource: WordSource) {
         DispatchQueue.main.async {
             if let word = self.textField.text {
@@ -172,7 +173,9 @@ extension PlayViewController: WordSourceDelegate {
         }
     }
 
-    // はじめの１単語目を表示，保存
+    /// はじめの１単語目を表示，保存
+    /// - Parameters:
+    ///   - word: ゲームが始まって最初に出てくる単語
     func updateFirst(_ wordSource: WordSource, word: String) {
         DispatchQueue.main.async {
             self.dataManager.save(word: word)
@@ -181,7 +184,8 @@ extension PlayViewController: WordSourceDelegate {
         }
     }
 
-    // 敵の単語を更新し，単語を保存
+    /// 敵の単語を更新し，単語を保存
+    /// - Parameters:
     func updateWord(_ wordSource: WordSource, word: String) {
         guard let text = textField.text else { return }
         DispatchQueue.main.async {
@@ -197,7 +201,11 @@ extension PlayViewController: WordSourceDelegate {
 // MARK: - GameLogicDelegate
 
 extension PlayViewController: GameLogicDelegate {
-    // ダメージラベルの更新
+    
+    /// ダメージラベルの更新
+    /// - Parameters:
+    ///   - gameLogic: gameLogic Model
+    ///   - damage: ダメージ（入力した単語の文字数）
     func updateDamage(_ gameLogic: GameLogic, damage: Int) {
         DispatchQueue.main.async {
             self.damageLabel.isHidden = false
@@ -211,8 +219,12 @@ extension PlayViewController: GameLogicDelegate {
             self.imageManager.damageAnimation(for: self.damageView)
         }
     }
-
-    // HPゲージの更新
+    
+    /// HPゲージの更新
+    /// - Parameters:
+    ///   - gameLogic: gameLogic Model
+    ///   - hitpoint: 敵の現在のHPの値
+    ///   - scoreLimit: 敵のHP満タン時の値
     func updateHitPoint(_ gameLogic: GameLogic, hitpoint: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
             let progress = Float(hitpoint) / Float(scoreLimit)
@@ -230,7 +242,7 @@ extension PlayViewController: GameLogicDelegate {
         }
     }
 
-    // しりとりのルールに当てはまった場合の処理
+    /// しりとりのルールに当てはまった場合の処理
     func shiritoriSucessed(_ gameLogic: GameLogic) {
         DispatchQueue.main.async {
             // ダメージを受ける効果音を再生
@@ -252,8 +264,11 @@ extension PlayViewController: GameLogicDelegate {
                                              duration: 1.0)
         }
     }
-
-    // しりとりのルールに当てはまらなかった場合の処理
+    
+    /// しりとりが失敗したときの処理
+    /// - Parameters:
+    ///   - gameLogic: gameLogic Model
+    ///   - comment: どのルールに当てはまらなかったのか知らせるコメント
     func shiritoriFailed(_ gameLogic: GameLogic, comment: String) {
         DispatchQueue.main.async {
             // 回復する効果音を再生
@@ -281,7 +296,7 @@ extension PlayViewController: GameLogicDelegate {
         }
     }
     
-    // 敵を倒したときに呼ばれる処理
+    /// 敵を倒したときに呼ばれる処理
     func gotoResultView(_ gameLogic: GameLogic) {
         DispatchQueue.main.async {
             self.imageManager.imageAnimation(for: self.enemyImage,
@@ -303,21 +318,28 @@ extension PlayViewController: GameLogicDelegate {
 // MARK: - TimerManagerDelegate
 
 extension PlayViewController: TimerManagerDelegate {
-    // 時間に関するコメントを表示する
+    
+    /// 時間に関するコメントを表示
+    /// - Parameters:
+    ///   - timerManager: timerManager Model
+    ///   - comment: 表示させるコメント
     func didUpdateComment(_ timerManager: TimerManager, comment: String) {
         DispatchQueue.main.async {
             self.wordLabel.text = comment
         }
     }
-
-    // タイマーのゲージを更新
+    
+    /// タイマーゲージの更新
+    /// - Parameters:
+    ///   - timerManager: timerManager Model
+    ///   - timeNow: 現在の経過時間
     func didUpdateTimeBar(_ timerManager: TimerManager, timeNow: Float) {
         DispatchQueue.main.async {
             self.timeBar.progress = timeNow
         }
     }
-
-    // ゲームスタート時に呼ばれる処理
+    
+    /// ゲーム開始時に呼ばれる処理，単語を表示，アニメーションを開始
     func gameStart(_ timerManager: TimerManager) {
         DispatchQueue.main.async {
             self.wordSource.featchFirstWord(dbq: self.dbQueue)
@@ -328,7 +350,7 @@ extension PlayViewController: TimerManagerDelegate {
         }
     }
 
-    // 制限時間に達したときに呼ばれる処理
+    /// 制限時間に達したときに呼ばれる処理, サウンドの停止，次の画面へ移動
     func gotoNextView(_ timerManager: TimerManager) {
         DispatchQueue.main.async {
             self.bgmPlayer.stopSound()

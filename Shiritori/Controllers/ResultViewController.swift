@@ -57,7 +57,11 @@ class ResultViewController: UIViewController {
         appDel.opPlayer.playSound(name: Constant.Sounds.opening, isMute: isMute, loop: -1)
     }
     
-    // ゲーム結果に応じてResult画面の画像，タイトルテキスト，モードLOCK変数を変更
+    
+    /// 結果に応じてタイトルテキストと画像を変更
+    /// - Parameters:
+    ///   - hitpoint: 最終的な敵のHP値
+    ///   - mode: 選択中のモード
     func changeResult(hitpoint: Int, mode: String) {
         if hitpoint <= 0 {
             imageManager.imageAnimation(for: resultImage,
@@ -74,8 +78,11 @@ class ResultViewController: UIViewController {
             resultLabel.text = Constant.Texts.loseText
         }
     }
-
-    // ゲーム結果に応じてサウンドを変更
+    
+    /// 結果に応じてサウンドを変更
+    /// - Parameters:
+    ///   - hitpoint: 最終的な敵のHP値
+    ///   - mode: 選択中のモード
     func changeResultSound(hitpoint: Int, mode: String) {
         let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
         if hitpoint <= 0 {
@@ -85,7 +92,8 @@ class ResultViewController: UIViewController {
         }
     }
 
-    // 現在のモードのクリア状況に応じて新しいモードを開放するかを決める
+    /// モード開放のためのUserDefaultを設定
+    /// - Parameter mode: 選択中のモード
     func modeOpen(mode: String) {
         switch mode {
         case "EASY":

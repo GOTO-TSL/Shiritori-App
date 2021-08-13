@@ -14,16 +14,18 @@ protocol TimerManagerDelegate: AnyObject {
     func gotoNextView(_ timerManager: TimerManager)
 }
 
+/// ゲームの時間を管理するモデル
 final class TimerManager {
     weak var delegate: TimerManagerDelegate?
     var mainTimer = Timer()
     private var mainTimerCount = 0
     
-    // ゲームの開始から終了までカウントするタイマー
+    /// ゲームの開始から終了までカウントするタイマー
     func gameTimer() {
         mainTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(gameCount), userInfo: nil, repeats: true)
     }
-
+    
+    /// ゲームの開始から終了までのタイマー
     @objc func gameCount() {
         mainTimerCount += 1
         switch mainTimerCount {
@@ -56,6 +58,7 @@ final class TimerManager {
         }
     }
     
+    /// タイマーを止める
     func stopTimer() {
         mainTimer.invalidate()
     }

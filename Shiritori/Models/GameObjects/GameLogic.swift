@@ -15,12 +15,14 @@ protocol GameLogicDelegate: AnyObject {
     func gotoResultView(_ gameLogic: GameLogic)
 }
 
+/// しりとりのゲームロジックを担当するモデル
 final class GameLogic {
     var dataManager = DataManager()
     weak var delegate: GameLogicDelegate?
     let defaults = UserDefaults.standard
     
-    // しりとりのルールに則っているか判定する
+    /// しりとりのルールに則っているか判定し，結果に応じて処理を分ける
+    /// - Parameter text: 入力されたテキスト
     func applyRule(for text: String) {
         guard let currentWord = defaults.string(forKey: Constant.UserDefaultKeys.currentWord) else { return }
         let endCharacter = currentWord[currentWord.index(before: currentWord.endIndex)]
@@ -44,7 +46,11 @@ final class GameLogic {
             delegate?.shiritoriFailed(self, comment: Constant.Comments.empty)
         }
     }
-
+    
+    /// 敵にダメージを与える
+    /// - Parameters:
+    ///   - enemy: Enemy Model
+    ///   - userWord: 入力された単語
     func addGamePoint(enemy: Enemy, userWord: String) {
         let damage = userWord.count * 10
         enemy.damage = damage
@@ -61,10 +67,12 @@ final class GameLogic {
         }
     }
     
+    /// 敵が回復する
+    /// - Parameter enemy: Enemy Model
     func subGamePoint(enemy: Enemy) {
         let hitpoint = enemy.hitpoint
         let limit = enemy.limit
-        enemy.heal = 10
+        enemy.heal = 30
         
         if hitpoint >= limit {
             enemy.hitpoint = limit

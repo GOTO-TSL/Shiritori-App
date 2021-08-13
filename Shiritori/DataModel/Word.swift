@@ -4,8 +4,6 @@
 //
 //  Created by 後藤孝輔 on 2021/07/20.
 //
-
-import Foundation
 import RealmSwift
 
 class Word: Object {

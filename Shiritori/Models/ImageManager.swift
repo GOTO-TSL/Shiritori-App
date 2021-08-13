@@ -7,7 +7,15 @@
 
 import UIKit
 
-struct ImageManager {
+/// 画像の変更（アニメーション）を管理するモデル
+final class ImageManager {
+    
+    /// 画像のアニメーションを実効する
+    /// - Parameters:
+    ///   - imageView: 対象の画像
+    ///   - mode: 選択中のモード
+    ///   - action: アニメーションの種類
+    ///   - duration: 動きの速さ
     func imageAnimation(for imageView: UIImageView, mode: String, action: String, duration: Double) {
         imageView.animationImages = animationImages(for: "\(mode)\(action)")
         imageView.animationDuration = duration
@@ -16,6 +24,9 @@ struct ImageManager {
         imageView.startAnimating()
     }
     
+    /// アニメーションに使用する画像を一つにまとめる
+    /// - Parameter name: アニメーションの種類
+    /// - Returns: 画像のリスト
     private func animationImages(for name: String) -> [UIImage] {
         var count = 0
         var images = [UIImage]()
@@ -27,6 +38,8 @@ struct ImageManager {
         return images
     }
     
+    /// ダメージラベルのアニメーション
+    /// - Parameter view: damageView
     func damageAnimation(for view: UIView) {
         view.center.y += 30
         view.alpha = 1.0

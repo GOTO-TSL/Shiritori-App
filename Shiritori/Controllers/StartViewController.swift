@@ -55,7 +55,7 @@ class StartViewController: UIViewController {
         dataManager.loadMyWords()
         
         wordSource.createDatabase()
-        // print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
         playButton.layer.cornerRadius = 5.0
         
         if let dir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
@@ -91,7 +91,7 @@ class StartViewController: UIViewController {
         }
     }
 
-    // おまけをタップすると音が出る処理を実行
+    /// おまけをタップすると音が出る処理
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let rewards = [easyReward, normalReward, hardReward]
@@ -111,7 +111,7 @@ class StartViewController: UIViewController {
         figurePlayer.playSound(name: accessID + "1")
     }
 
-    // ゲームクリアのおまけの表示/非表示
+    /// ゲームクリアのおまけの表示/非表示
     func showReward() {
         let rewards = [easyReward, normalReward, hardReward]
 
@@ -122,7 +122,7 @@ class StartViewController: UIViewController {
         }
     }
     
-    //　アラートを表示
+    ///　アラートを表示
     func showAlert() {
         if defaults.integer(forKey: Constant.UserDefaultKeys.isClearHard) == 1 {
             let dialog = UIAlertController(title: "ゲームクリア", message: "おまけで遊んでね", preferredStyle: .alert)
@@ -147,7 +147,7 @@ class StartViewController: UIViewController {
         }
     }
     
-    // サウンドボタンが押されたときのBGMの音量変更，画像変更
+    /// サウンドボタンが押されたときのBGMの音量変更，画像変更
     @IBAction func soundPressed(_ sender: UIButton) {
         // ミュート変数の値を変更
         isMute = isMute ? false : true
@@ -159,7 +159,7 @@ class StartViewController: UIViewController {
         defaults.set(isMute, forKey: Constant.UserDefaultKeys.isMute)
     }
 
-    // ボタンタップ時の効果音を設定
+    /// ボタンタップ時の効果音を設定
     @IBAction func otherButtonPressed(_ sender: UIButton) {
         pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
     }

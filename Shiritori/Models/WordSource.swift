@@ -15,9 +15,12 @@ protocol WordSourceDelegate: AnyObject {
     func addPlayerWord(_ wordSource: WordSource)
 }
 
+/// 使用する単語を辞書から持ってくる処理を担当するモデル
 struct WordSource {
     weak var delegate: WordSourceDelegate?
     
+    /// 最初の単語を持ってくる処理
+    /// - Parameter dbq: 辞書のデータベースキュー
     func featchFirstWord(dbq: DatabaseQueue) {
         let initialString = Constant.alphabet[Int.random(in: 0 ... 24)]
         do {
@@ -36,7 +39,11 @@ struct WordSource {
         }
     }
     
-    func featchWord(dbq: DatabaseQueue, inputWord: String) { // プレイヤーからの入力にしりとりする単語をランダムに取ってくる処理
+    /// 敵の繰り出す単語を辞書から取得する処理
+    /// - Parameters:
+    ///   - dbq: 辞書データベースキュー
+    ///   - inputWord: 入力された単語
+    func featchWord(dbq: DatabaseQueue, inputWord: String) {
         do {
             try dbq.read { database in
                 // Fetch database rows
@@ -59,7 +66,11 @@ struct WordSource {
         }
     }
     
-    // 英単語の意味をとってっくる処理
+    /// 英単語の意味を辞書から取得する処理
+    /// - Parameters:
+    ///   - dbq: 辞書データベースキュー
+    ///   - word: 英単語
+    /// - Returns: 意味
     func featchMean(dbq: DatabaseQueue, word: String) -> String {
         var result = ""
         do {
@@ -77,10 +88,7 @@ struct WordSource {
         return result
     }
     
-    /*
-     データベースファイルをコピーする処理
-     マスターデータファイルをアプリ実行時のディレクトリにコピーする
-     */
+    /// データベースファイルをコピーする処理，マスターデータファイルをアプリ実行時のディレクトリにコピーする
     func createDatabase() {
         let fileManager = FileManager.default
         guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

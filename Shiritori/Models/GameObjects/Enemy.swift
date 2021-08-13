@@ -6,7 +6,8 @@
 //
 import Foundation
 
-class Enemy {
+/// 敵の情報を管理するモデル
+final class Enemy {
     var mode: String
     var hitpoint: Int
     var limit: Int

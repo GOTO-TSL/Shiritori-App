@@ -46,7 +46,7 @@ class SelectGameViewController: UIViewController {
         }
     }
     
-    // モード選択
+    /// モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
         // オープニングの停止，ボタンの効果音再生
         let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
@@ -61,7 +61,7 @@ class SelectGameViewController: UIViewController {
         performSegue(withIdentifier: Constant.SegueID.toplay, sender: nil)
     }
 
-    // モードのロックを解除する
+    /// モードのロックを解除する
     func modeUnLock() {
         if defaults.integer(forKey: Constant.UserDefaultKeys.isClearEasy) >= 1 {
             normalHideView.removeFromSuperview()
@@ -76,7 +76,8 @@ class SelectGameViewController: UIViewController {
         }
     }
     
-    // 選ばれたモードに応じてHeroIDを設定する
+    /// 選ばれたモードに応じてHeroIDを設定する
+    /// - Parameter mode: モード
     func changeHeroID(mode: String) {
         if mode == Constant.Mode.easy {
             easyView.heroID = Constant.HeroID.mode

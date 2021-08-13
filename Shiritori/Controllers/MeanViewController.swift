@@ -21,6 +21,9 @@ class MeanViewController: UIViewController {
         meanLabel.text = stringReshape(for: mean)
     }
     
+    /// 文字列を見やすいようにフォーマット
+    /// - Parameter string: 対象の文字列
+    /// - Returns: "/"が含まれていたらそこで改行，そうでなければそのまま
     func stringReshape(for string: String?) -> String {
         guard let str = string else { return "" }
         if str.contains("/") {

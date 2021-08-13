@@ -24,7 +24,7 @@ class MyWordViewController: UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    // MeanViewControllerへの値渡し
+    /// MeanViewControllerへの値渡し
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Constant.SegueID.toMean {
             if let indexPath = tableView.indexPathForSelectedRow {
