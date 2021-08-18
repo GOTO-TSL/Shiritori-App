@@ -57,7 +57,6 @@ class ResultViewController: UIViewController {
         appDel.opPlayer.playSound(name: Constant.Sounds.opening, isMute: isMute, loop: -1)
     }
     
-    
     /// 結果に応じてタイトルテキストと画像を変更
     /// - Parameters:
     ///   - hitpoint: 最終的な敵のHP値

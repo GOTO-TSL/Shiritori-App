@@ -11,7 +11,7 @@ import UIKit
 struct Constant {
     static let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
     
-    static let scoreLimit = ["EASY": 350, "NORMAL": 600, "HARD": 1000]
+    static let scoreLimit = ["EASY": 400, "NORMAL": 800, "HARD": 1200]
     static let modeColor: [String: UIColor] = ["EASY": .systemGreen, "NORMAL": .systemBlue, "HARD": .systemPink]
     
     enum CellID {

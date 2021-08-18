@@ -31,7 +31,7 @@ class SelectGameViewController: UIViewController {
         let modeViews = [easyView, normalView, hardView, normalHideView, hardHideView]
         let modeImages = [easyImage, normalImage, hardImage]
         modeViews.forEach { $0?.layer.cornerRadius = 10.0 }
-        modeImages.forEach { $0?.layer.cornerRadius = 40.0 }
+        modeImages.forEach { $0?.layer.cornerRadius = 20.0 }
     }
     
     override func viewWillAppear(_ animated: Bool) {
