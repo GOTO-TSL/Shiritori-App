@@ -31,7 +31,7 @@ final class SoundPlayer {
             // ループ数の指定
             audioPlayer.numberOfLoops = loop
             // 音量設定
-            audioPlayer.volume = isMute ? 0.0 : 1.0
+            audioPlayer.volume = isMute ? 0.0 : 0.5
             // 音楽の再生
             audioPlayer.play()
         } catch {
@@ -47,6 +47,6 @@ final class SoundPlayer {
     /// サウンドの音量を０（ミュート状態にする）
     /// - Parameter isMute: 現在ミュート状態かどうか
     func muteSound(isMute: Bool) {
-        audioPlayer.volume = isMute ? 0.0 : 1.0
+        audioPlayer.volume = isMute ? 0.0 : 0.5
     }
 }
