@@ -49,9 +49,8 @@ class SelectGameViewController: UIViewController {
     /// モード選択
     @IBAction func modeSelected(_ sender: UIButton) {
         // オープニングの停止，ボタンの効果音再生
-        let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
         guard let appDel = appDelegate else { return }
-        pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
+        pushPlayer.playSound(name: Constant.Sounds.push)
         appDel.opPlayer.stopSound()
         // 選んだモードのViewにHeroIDを設定
         guard let mode = sender.currentTitle else { return }

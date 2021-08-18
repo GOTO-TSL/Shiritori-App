@@ -45,15 +45,14 @@ class ResultViewController: UIViewController {
     
     @IBAction func wordsPressed(_ sender: UIButton) {
         // ボタンタップ時の効果音を設定
-        let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
-        pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
+        pushPlayer.playSound(name: Constant.Sounds.push)
     }
     
     @IBAction func homePressed(_ sender: UIButton) {
         guard let appDel = appDelegate else { return }
         // ボタンタップ時の効果音を設定，オープニングを再生
         let isMute = defaults.bool(forKey: Constant.UserDefaultKeys.isMute)
-        pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
+        pushPlayer.playSound(name: Constant.Sounds.push)
         appDel.opPlayer.playSound(name: Constant.Sounds.opening, isMute: isMute, loop: -1)
     }
     

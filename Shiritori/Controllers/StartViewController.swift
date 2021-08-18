@@ -161,10 +161,10 @@ class StartViewController: UIViewController {
 
     /// ボタンタップ時の効果音を設定
     @IBAction func otherButtonPressed(_ sender: UIButton) {
-        pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
+        pushPlayer.playSound(name: Constant.Sounds.push)
     }
 
     @IBAction func playButtonPressed(_ sender: UIButton) {
-        pushPlayer.playSound(name: Constant.Sounds.push, isMute: isMute)
+        pushPlayer.playSound(name: Constant.Sounds.push)
     }
 }
