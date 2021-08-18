@@ -31,6 +31,9 @@ struct WordSource {
                     return
                 }
                 let word: String = rows[Constant.DataBase.word]
+                if !isSafeWord(word) {
+                    self.delegate?.invalidWord(self)
+                }
                 let lowWord = word.lowercased()
                 self.delegate?.updateFirst(self, word: lowWord)
             }
@@ -58,6 +61,9 @@ struct WordSource {
                     return
                 }
                 let word: String = rows[Constant.DataBase.word]
+                if !isSafeWord(word) {
+                    self.delegate?.invalidWord(self)
+                }
                 let lowWord = word.lowercased()
                 self.delegate?.updateWord(self, word: lowWord)
             }
@@ -106,6 +112,15 @@ struct WordSource {
             }
         } catch {
 //            print("Unable to copy foo.db: \(error)")
+        }
+    }
+    
+    private func isSafeWord(_ word: String) -> Bool {
+        let end = word.suffix(1)
+        if Constant.alphabet.contains(String(end)) {
+            return true
+        } else {
+            return false
         }
     }
 }
