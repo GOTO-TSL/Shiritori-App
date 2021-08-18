@@ -34,8 +34,10 @@ struct Constant {
         static let mainTitle = "英単語しりとり"
         static let subTitle = "~Let's defeat the monster with Shiritori~"
         static let rule = """
-        しりとりをすることで敵に攻撃することができます．\n60秒以内敵を倒すことができたらクリアです．\n
-        しりとりのルール\n・敵の繰り出す最後の文字から始まる英単語をであること\n・二文字以上の単語であること\n・辞書にある単語であること
+        しりとりのルール\n・敵の単語の一番最後の文字から始まる英単語を返すこと\n・2文字以上の単語であること\n・辞書にある単語であること\n・同じ単語は使えない
+        \n\n
+        入力する英単語の文字数が与えるダメージになります\n
+        制限時間以内に敵の体力を0にするとゲームクリア！
         """
         static let winText = "You Win!"
         static let loseText = "You Lose..."
