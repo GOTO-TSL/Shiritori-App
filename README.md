@@ -54,7 +54,7 @@ EASY->NORMAL->HARDの順に難しくなり，　順番に開放されます．</
 * GRDB 5.8.0
 * Hero 1.6.1
 
-##　使用した素材
+## 使用した素材
 * 音楽: 魔王魂
 https://maou.audio/rule/
 
