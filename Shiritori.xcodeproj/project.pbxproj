@@ -180,8 +180,7 @@
 		02835579263F9306008B6845 /* Shiritori */ = {
 			isa = PBXGroup;
 			children = (
-				0283557A263F9306008B6845 /* AppDelegate.swift */,
-				0283557C263F9306008B6845 /* SceneDelegate.swift */,
+				02FAB44726FE023F00224779 /* System Files */,
 				02818B1F2687695A000A40C2 /* Sounds */,
 				025AE9F82680F30E0039DF56 /* fonts */,
 				025EF86C26A76F8F00C6F9C7 /* Data */,
@@ -244,6 +243,15 @@
 				0292F2AC26BFDC4D00802867 /* Enemy.swift */,
 			);
 			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		02FAB44726FE023F00224779 /* System Files */ = {
+			isa = PBXGroup;
+			children = (
+				0283557A263F9306008B6845 /* AppDelegate.swift */,
+				0283557C263F9306008B6845 /* SceneDelegate.swift */,
+			);
+			path = "System Files";
 			sourceTree = "<group>";
 		};
 		ACD21EEBDACDD946BD2D8B6A /* Pods */ = {
@@ -587,6 +595,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = MyColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 922MRPX7C6;
 				INFOPLIST_FILE = "$(SRCROOT)/Shiritori/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -607,6 +616,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = MyColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 922MRPX7C6;
 				INFOPLIST_FILE = "$(SRCROOT)/Shiritori/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
