@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         defaults.set(false, forKey: Constant.UserDefaultKeys.isMute)
-        opPlayer.playSound(name: Constant.Sounds.opening, isMute: false, loop: -1)
+        //opPlayer.playSound(name: Constant.Sounds.opening, isMute: false, loop: -1)
         
         return true
     }
