@@ -50,6 +50,9 @@
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
 		02F222452712D03A00A71175 /* Extension-UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* Extension-UIView.swift */; };
 		02F222472712D10B00A71175 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222462712D10B00A71175 /* HomeView.swift */; };
+		02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222492712D43000A71175 /* TopTitleView.swift */; };
+		02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224B2712D45300A71175 /* MiddleButtonView.swift */; };
+		02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224D2712D48C00A71175 /* BottomButtonView.swift */; };
 		02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FC268B56DC00118BD8 /* lose.mp3 */; };
 		02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FD268B56DC00118BD8 /* win.mp3 */; };
 		7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */; };
@@ -101,6 +104,9 @@
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F222442712D03A00A71175 /* Extension-UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIView.swift"; sourceTree = "<group>"; };
 		02F222462712D10B00A71175 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		02F222492712D43000A71175 /* TopTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTitleView.swift; sourceTree = "<group>"; };
+		02F2224B2712D45300A71175 /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
+		02F2224D2712D48C00A71175 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		02FA25FC268B56DC00118BD8 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		02FA25FD268B56DC00118BD8 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.debug.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,12 +200,12 @@
 				0283558E263F935F008B6845 /* Models */,
 				02835590263F9380008B6845 /* Views */,
 				02835591263F938C008B6845 /* Controllers */,
-				02835580263F9306008B6845 /* Main.storyboard */,
-				02835583263F9307008B6845 /* Assets.xcassets */,
-				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 				02F222432712D01300A71175 /* Extensions */,
-				02835588263F9307008B6845 /* Info.plist */,
+				02835583263F9307008B6845 /* Assets.xcassets */,
 				02BDA6FC266358B900628AA3 /* Constants.swift */,
+				02835588263F9307008B6845 /* Info.plist */,
+				02835580263F9306008B6845 /* Main.storyboard */,
+				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 			);
 			path = Shiritori;
 			sourceTree = "<group>";
@@ -266,6 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				02F222462712D10B00A71175 /* HomeView.swift */,
+				02F222492712D43000A71175 /* TopTitleView.swift */,
+				02F2224B2712D45300A71175 /* MiddleButtonView.swift */,
+				02F2224D2712D48C00A71175 /* BottomButtonView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -451,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				020B51C426739050005871D2 /* WordListCell.swift in Sources */,
+				02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */,
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
@@ -458,6 +468,7 @@
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02F222422712CE3700A71175 /* HomeViewController.swift in Sources */,
+				02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
@@ -466,6 +477,7 @@
 				02F222452712D03A00A71175 /* Extension-UIView.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
+				02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
 				0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,

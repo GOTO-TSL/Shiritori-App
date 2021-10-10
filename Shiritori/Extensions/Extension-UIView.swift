@@ -42,7 +42,7 @@ extension UIView {
             widthAnchor.constraint(equalToConstant: width).isActive = true
         }
 
-        if let height = height{
+        if let height = height {
             heightAnchor.constraint(equalToConstant: height).isActive = true
         }
     }
@@ -78,6 +78,6 @@ extension UIView {
 
     func addConstraintsToFillView(_ view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
-        anchor(top: topAnchor, left: view.leftAnchor, bottom: bottomAnchor, right: view.rightAnchor)
+        anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
     }
 }
