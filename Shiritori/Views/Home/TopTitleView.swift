@@ -11,13 +11,17 @@ class TopTitleView: UIView {
     // MARK: - Properties
     let mainTitle: UILabel = {
         let label = UILabel()
-        label.text = Constant.Texts.mainTitle
+        label.font = UIFont(name: "DotGothic16-Regular", size: 40)
+        label.text = Const.Title.main
+        label.textAlignment = .center
         return label
     }()
     
     let subTitle: UILabel = {
         let label = UILabel()
-        label.text = Constant.Texts.subTitle
+        label.font = UIFont(name: "DotGothic16-Regular", size: 15)
+        label.text = Const.Title.sub
+        label.textAlignment = .center
         return label
     }()
     
@@ -31,7 +35,8 @@ class TopTitleView: UIView {
         
         addSubview(stack)
         
-        stack.addConstraintsToFillView(self)
+        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
+                     paddingTop: 70, paddingLeft: 30, paddingBottom: 80, paddingRight: 30)
     }
     
     required init?(coder: NSCoder) {

@@ -19,13 +19,14 @@ class HomeView: UIView {
         let mainStack = UIStackView(arrangedSubviews: [TopTitleView(), MiddleButtonView(), BottomButtonView()])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
-        mainStack.distribution = .fillEqually
+        mainStack.distribution = .fill
         
         addSubview(bgImageView)
         addSubview(mainStack)
         
         bgImageView.addConstraintsToFillView(self)
         mainStack.addConstraintsToFillView(self)
+        mainStack.divide(by: [3, 3, 1], baseHeight: heightAnchor)
     }
     
     required init?(coder: NSCoder) {

@@ -12,6 +12,7 @@ class MiddleButtonView: UIView {
     let playButton: UIButton = {
         let button = UIButton()
         button.setTitle("play", for: .normal)
+        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 35)
         button.setBackgroundImage(UIImage(named: "frame16-7"), for: .normal)
         return button
     }()
@@ -19,6 +20,7 @@ class MiddleButtonView: UIView {
     let wordButton: UIButton = {
         let button = UIButton()
         button.setTitle("word", for: .normal)
+        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 35)
         button.setBackgroundImage(UIImage(named: "frame16-7"), for: .normal)
         return button
     }()
@@ -29,11 +31,13 @@ class MiddleButtonView: UIView {
         let stack = UIStackView(arrangedSubviews: [playButton, wordButton])
         stack.axis = .vertical
         stack.alignment = .fill
-        stack.distribution = .fillEqually
+        stack.distribution = .fill
         
         addSubview(stack)
         
-        stack.addConstraintsToFillView(self)
+        stack.centerX(inView: self, topAnchor: topAnchor, paddingTop: 80)
+        playButton.setDimensions(width: 120, height: 120)
+        wordButton.setDimensions(width: 120, height: 120)
     }
     
     required init?(coder: NSCoder) {

@@ -1,5 +1,5 @@
 //
-//  Extension-UIView.swift
+//  UIView.swift
 //  Shiritori
 //
 //  Created by 後藤孝輔 on 2021/10/10.
@@ -79,5 +79,10 @@ extension UIView {
     func addConstraintsToFillView(_ view: UIView) {
         translatesAutoresizingMaskIntoConstraints = false
         anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
+    }
+    
+    func setAspectRatio(ratio: CGFloat) {
+        translatesAutoresizingMaskIntoConstraints = false
+        widthAnchor.constraint(equalTo: heightAnchor, multiplier: ratio).isActive = true
     }
 }
