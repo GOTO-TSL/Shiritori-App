@@ -44,6 +44,9 @@
 		0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81E2641348B00023D0E /* ResultViewController.swift */; };
 		0289A82126413DA600023D0E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82026413DA600023D0E /* TimerManager.swift */; };
 		0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292F2AC26BFDC4D00802867 /* Enemy.swift */; };
+		029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763B2715D96C000EA6B4 /* ModeSelectView.swift */; };
+		029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763D2715DB22000EA6B4 /* ModeButtonView.swift */; };
+		029A76402715DC92000EA6B4 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763F2715DC92000EA6B4 /* ModeButton.swift */; };
 		02BDA6FD266358B900628AA3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constant.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
@@ -100,6 +103,9 @@
 		0289A81E2641348B00023D0E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0289A82026413DA600023D0E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		0292F2AC26BFDC4D00802867 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
+		029A763B2715D96C000EA6B4 /* ModeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectView.swift; sourceTree = "<group>"; };
+		029A763D2715DB22000EA6B4 /* ModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButtonView.swift; sourceTree = "<group>"; };
+		029A763F2715DC92000EA6B4 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
 		02BDA6FC266358B900628AA3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		02835590263F9380008B6845 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				029A763A2715D945000EA6B4 /* ModeSelect */,
 				02F222482712D11500A71175 /* Home */,
 				020B51C226739050005871D2 /* WordListCell.swift */,
 				020B51C326739050005871D2 /* WordListCell.xib */,
@@ -263,6 +270,16 @@
 				0292F2AC26BFDC4D00802867 /* Enemy.swift */,
 			);
 			path = GameObjects;
+			sourceTree = "<group>";
+		};
+		029A763A2715D945000EA6B4 /* ModeSelect */ = {
+			isa = PBXGroup;
+			children = (
+				029A763B2715D96C000EA6B4 /* ModeSelectView.swift */,
+				029A763D2715DB22000EA6B4 /* ModeButtonView.swift */,
+				029A763F2715DC92000EA6B4 /* ModeButton.swift */,
+			);
+			path = ModeSelect;
 			sourceTree = "<group>";
 		};
 		02F222432712D01300A71175 /* Extensions */ = {
@@ -468,6 +485,7 @@
 				020B51C426739050005871D2 /* WordListCell.swift in Sources */,
 				02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */,
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
+				029A76402715DC92000EA6B4 /* ModeButton.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
@@ -476,6 +494,7 @@
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02F222422712CE3700A71175 /* HomeViewController.swift in Sources */,
+				029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */,
 				02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
@@ -483,6 +502,7 @@
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
 				02F222452712D03A00A71175 /* UIView.swift in Sources */,
+				029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
 				02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */,
