@@ -12,16 +12,16 @@ class MiddleButtonView: UIView {
     let playButton: UIButton = {
         let button = UIButton()
         button.setTitle("play", for: .normal)
-        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 35)
-        button.setBackgroundImage(UIImage(named: "frame16-7"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
+        button.setBackgroundImage(UIImage(named: "frame"), for: .normal)
         return button
     }()
     
     let wordButton: UIButton = {
         let button = UIButton()
         button.setTitle("word", for: .normal)
-        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 35)
-        button.setBackgroundImage(UIImage(named: "frame16-7"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "frame"), for: .normal)
+        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
         return button
     }()
     
@@ -32,12 +32,14 @@ class MiddleButtonView: UIView {
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill
+        stack.spacing = 30
         
         addSubview(stack)
         
-        stack.centerX(inView: self, topAnchor: topAnchor, paddingTop: 80)
-        playButton.setDimensions(width: 120, height: 120)
-        wordButton.setDimensions(width: 120, height: 120)
+        stack.center(inView: self)
+        stack.anchor(width: 140)
+        playButton.setAspectRatio(ratio: 16/7)
+        wordButton.setAspectRatio(ratio: 16/7)
     }
     
     required init?(coder: NSCoder) {

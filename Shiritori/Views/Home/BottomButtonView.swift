@@ -46,7 +46,8 @@ class BottomButtonView: UIView {
         addSubview(stack)
         
         stack.center(inView: self)
-        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 30, paddingLeft: 60, paddingBottom: 30, paddingRight: 60)
+        stack.anchor(height: 50)
+        [soundButton, helpButton, rankingButton].forEach { $0.setAspectRatio(ratio: 1) }
     }
     
     required init?(coder: NSCoder) {

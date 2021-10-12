@@ -35,8 +35,7 @@ class TopTitleView: UIView {
         
         addSubview(stack)
         
-        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
-                     paddingTop: 70, paddingLeft: 30, paddingBottom: 80, paddingRight: 30)
+        stack.center(inView: self)
     }
     
     required init?(coder: NSCoder) {
