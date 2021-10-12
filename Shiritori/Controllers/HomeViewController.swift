@@ -8,11 +8,20 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    
+    var homeView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .red
+        configureUI()
+        
+    }
+    
+    private func configureUI() {
+        homeView = HomeView()
+        view.addSubview(homeView)
+        homeView.addConstraintsToFillView(view)
     }
 
 }

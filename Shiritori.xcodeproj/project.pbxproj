@@ -20,6 +20,8 @@
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
+		02500B992714762D00F3B7E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B982714762D00F3B7E8 /* Constants.swift */; };
+		02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B9A27147E6F00F3B7E8 /* UIStackView.swift */; };
 		02524322266936C10005FB76 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02524321266936C10005FB76 /* WordListViewController.swift */; };
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
 		025EF86E26A7703800C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */; };
@@ -42,14 +44,17 @@
 		0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A81E2641348B00023D0E /* ResultViewController.swift */; };
 		0289A82126413DA600023D0E /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0289A82026413DA600023D0E /* TimerManager.swift */; };
 		0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0292F2AC26BFDC4D00802867 /* Enemy.swift */; };
-		02BDA6FD266358B900628AA3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constants.swift */; };
+		02BDA6FD266358B900628AA3 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FC266358B900628AA3 /* Constant.swift */; };
 		02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */; };
 		02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDA7002663CB9D00628AA3 /* ImageManager.swift */; };
 		02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3F1E26AF0F99007E4825 /* DataManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
-		02F222452712D03A00A71175 /* Extension-UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* Extension-UIView.swift */; };
+		02F222452712D03A00A71175 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* UIView.swift */; };
 		02F222472712D10B00A71175 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222462712D10B00A71175 /* HomeView.swift */; };
+		02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222492712D43000A71175 /* TopTitleView.swift */; };
+		02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224B2712D45300A71175 /* MiddleButtonView.swift */; };
+		02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224D2712D48C00A71175 /* BottomButtonView.swift */; };
 		02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FC268B56DC00118BD8 /* lose.mp3 */; };
 		02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FD268B56DC00118BD8 /* win.mp3 */; };
 		7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */; };
@@ -69,6 +74,8 @@
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
+		02500B982714762D00F3B7E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		02500B9A27147E6F00F3B7E8 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		02524321266936C10005FB76 /* WordListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
 		025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
@@ -93,14 +100,17 @@
 		0289A81E2641348B00023D0E /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		0289A82026413DA600023D0E /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		0292F2AC26BFDC4D00802867 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
-		02BDA6FC266358B900628AA3 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		02BDA6FC266358B900628AA3 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		02BDA6FE2663906800628AA3 /* SelectGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGameViewController.swift; sourceTree = "<group>"; };
 		02BDA7002663CB9D00628AA3 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		02CA3F1E26AF0F99007E4825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		02F222442712D03A00A71175 /* Extension-UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UIView.swift"; sourceTree = "<group>"; };
+		02F222442712D03A00A71175 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		02F222462712D10B00A71175 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		02F222492712D43000A71175 /* TopTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTitleView.swift; sourceTree = "<group>"; };
+		02F2224B2712D45300A71175 /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
+		02F2224D2712D48C00A71175 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		02FA25FC268B56DC00118BD8 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		02FA25FD268B56DC00118BD8 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.debug.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.debug.xcconfig"; sourceTree = "<group>"; };
@@ -194,12 +204,13 @@
 				0283558E263F935F008B6845 /* Models */,
 				02835590263F9380008B6845 /* Views */,
 				02835591263F938C008B6845 /* Controllers */,
-				02835580263F9306008B6845 /* Main.storyboard */,
-				02835583263F9307008B6845 /* Assets.xcassets */,
-				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 				02F222432712D01300A71175 /* Extensions */,
+				02835583263F9307008B6845 /* Assets.xcassets */,
+				02BDA6FC266358B900628AA3 /* Constant.swift */,
+				02500B982714762D00F3B7E8 /* Constants.swift */,
 				02835588263F9307008B6845 /* Info.plist */,
-				02BDA6FC266358B900628AA3 /* Constants.swift */,
+				02835580263F9306008B6845 /* Main.storyboard */,
+				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 			);
 			path = Shiritori;
 			sourceTree = "<group>";
@@ -257,7 +268,8 @@
 		02F222432712D01300A71175 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				02F222442712D03A00A71175 /* Extension-UIView.swift */,
+				02F222442712D03A00A71175 /* UIView.swift */,
+				02500B9A27147E6F00F3B7E8 /* UIStackView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -266,6 +278,9 @@
 			isa = PBXGroup;
 			children = (
 				02F222462712D10B00A71175 /* HomeView.swift */,
+				02F222492712D43000A71175 /* TopTitleView.swift */,
+				02F2224B2712D45300A71175 /* MiddleButtonView.swift */,
+				02F2224D2712D48C00A71175 /* BottomButtonView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -451,26 +466,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				020B51C426739050005871D2 /* WordListCell.swift in Sources */,
+				02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */,
 				0283557F263F9306008B6845 /* PlayViewController.swift in Sources */,
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
+				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
+				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02F222422712CE3700A71175 /* HomeViewController.swift in Sources */,
+				02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
-				02F222452712D03A00A71175 /* Extension-UIView.swift in Sources */,
+				02F222452712D03A00A71175 /* UIView.swift in Sources */,
 				0289A81D2641347600023D0E /* RuleViewController.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
+				02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
 				0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */,
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
-				02BDA6FD266358B900628AA3 /* Constants.swift in Sources */,
+				02BDA6FD266358B900628AA3 /* Constant.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
 				0276936926A704B30041252D /* Word.swift in Sources */,
