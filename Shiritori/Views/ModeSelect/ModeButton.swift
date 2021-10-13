@@ -14,8 +14,11 @@ class ModeButton: UIButton {
         
         setTitle(mode, for: .normal)
         setImage(UIImage(named: mode), for: .normal)
-        setBackgroundImage(UIImage(named: "frame"), for: .normal)
-        titleLabel?.font = UIFont(name: Const.font, size: 30)
+        setBackgroundImage(UIImage(named: "mode_frame"), for: .normal)
+        titleLabel?.font = UIFont(name: Const.font, size: 50)
+        
+        imageView?.centerY(inView: self)
+        imageView?.anchor(left: leftAnchor, paddingLeft: 20)
         
     }
     

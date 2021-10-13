@@ -11,9 +11,12 @@ class ModeSelectView: UIView {
     
     let backButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .red
         button.setImage(UIImage(named: "brank"), for: .normal)
         button.setTitle("back", for: .normal)
         button.titleLabel?.font = UIFont(name: Const.font, size: 10)
+        button.imageView?.setAspectRatio(ratio: 1)
+        button.imageView?.anchor(width: 25)
         return button
     }()
     
@@ -32,19 +35,24 @@ class ModeSelectView: UIView {
         let bgImageView = UIImageView(image: backgroundImage)
         bgImageView.contentMode = .scaleAspectFill
         
-        let modeButtonView = ModeButtonView()
+        let topSpace = UIView()
+        let bottomSpace = UIView()
+        let mainStack = UIStackView(arrangedSubviews: [topSpace, titleLabel, ModeButtonView(), bottomSpace])
+        mainStack.axis = .vertical
+        mainStack.alignment = .fill
+        mainStack.distribution = .fill
         
         addSubview(bgImageView)
         addSubview(backButton)
-        addSubview(titleLabel)
-        addSubview(modeButtonView)
-        
+        addSubview(mainStack)
+         
         bgImageView.addConstraintsToFillView(self)
-        backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 30, paddingLeft: 30)
-        titleLabel.centerX(inView: self)
-        titleLabel.anchor(top: backButton.bottomAnchor, paddingTop: 20)
-        modeButtonView.anchor(top: titleLabel.bottomAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 40, paddingLeft: 20, paddingBottom: 40, paddingRight: 20)
-        
+        backButton.anchor(width: 50, height: 25)
+        backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 50, paddingLeft: 30)
+        mainStack.addConstraintsToFillView(self)
+        topSpace.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6).isActive = true
+        titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6).isActive = true
+
     }
     
     required init?(coder: NSCoder) {

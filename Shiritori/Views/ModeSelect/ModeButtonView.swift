@@ -24,7 +24,8 @@ class ModeButtonView: UIView {
         
         addSubview(stack)
         
-        stack.addConstraintsToFillView(self)
+        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 30, paddingBottom: 10, paddingRight: 30)
+        easyButton.setAspectRatio(ratio: 12/5)
     }
     
     required init?(coder: NSCoder) {

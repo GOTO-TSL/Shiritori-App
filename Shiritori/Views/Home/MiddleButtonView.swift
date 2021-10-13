@@ -13,14 +13,14 @@ class MiddleButtonView: UIView {
         let button = UIButton()
         button.setTitle("play", for: .normal)
         button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
-        button.setBackgroundImage(UIImage(named: "frame"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "button_frame"), for: .normal)
         return button
     }()
     
     let wordButton: UIButton = {
         let button = UIButton()
         button.setTitle("word", for: .normal)
-        button.setBackgroundImage(UIImage(named: "frame"), for: .normal)
+        button.setBackgroundImage(UIImage(named: "button_frame"), for: .normal)
         button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
         return button
     }()
