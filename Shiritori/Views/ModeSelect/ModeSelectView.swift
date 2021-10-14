@@ -8,15 +8,6 @@
 import UIKit
 
 class ModeSelectView: UIView {
-    // 戻るボタン
-    let backButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(named: "back_icon"), for: .normal)
-        button.setTitle("back", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont(name: Const.font, size: 20)
-        return button
-    }()
     // タイトル
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -30,9 +21,10 @@ class ModeSelectView: UIView {
         super.init(frame: frame)
         
         // 背景画像の設定
-        let backgroundImage = UIImage(named: "background128")
-        let bgImageView = UIImageView(image: backgroundImage)
-        bgImageView.contentMode = .scaleAspectFill
+        let background = Background(frame: frame)
+        
+        // 戻るボタン
+        let backButton = BackButton()
         
         // 上下のスペース
         let topSpace = UIView()
@@ -44,12 +36,12 @@ class ModeSelectView: UIView {
         mainStack.alignment = .fill
         mainStack.distribution = .fill
         
-        addSubview(bgImageView)
+        addSubview(background)
         addSubview(backButton)
         addSubview(mainStack)
          
         // 制約
-        bgImageView.addConstraintsToFillView(self)
+        background.addConstraintsToFillView(self)
         backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 50, paddingLeft: 30)
         mainStack.addConstraintsToFillView(self)
         topSpace.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6.5).isActive = true

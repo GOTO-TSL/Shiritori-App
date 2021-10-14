@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
-        homeView = ModeSelectView()
+        homeView = GameView()
         view.addSubview(homeView)
         homeView.addConstraintsToFillView(view)
     }
