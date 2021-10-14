@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
-        homeView = HomeView()
+        homeView = ModeSelectView()
         view.addSubview(homeView)
         homeView.addConstraintsToFillView(view)
     }

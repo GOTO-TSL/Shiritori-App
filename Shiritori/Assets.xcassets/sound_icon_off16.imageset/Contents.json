@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "sound_icon_off16.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "sound_icon_off16@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "sound_icon_off16@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "sound_icon_off16.pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {
