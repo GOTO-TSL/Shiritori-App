@@ -8,18 +8,16 @@
 import UIKit
 
 class ModeSelectView: UIView {
-    
+    // 戻るボタン
     let backButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .red
-        button.setImage(UIImage(named: "brank"), for: .normal)
+        button.setImage(UIImage(named: "back_icon"), for: .normal)
         button.setTitle("back", for: .normal)
-        button.titleLabel?.font = UIFont(name: Const.font, size: 10)
-        button.imageView?.setAspectRatio(ratio: 1)
-        button.imageView?.anchor(width: 25)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont(name: Const.font, size: 20)
         return button
     }()
-    
+    // タイトル
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = Const.Title.mode
@@ -31,12 +29,16 @@ class ModeSelectView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // 背景画像の設定
         let backgroundImage = UIImage(named: "background128")
         let bgImageView = UIImageView(image: backgroundImage)
         bgImageView.contentMode = .scaleAspectFill
         
+        // 上下のスペース
         let topSpace = UIView()
         let bottomSpace = UIView()
+        
+        // メインのスタック
         let mainStack = UIStackView(arrangedSubviews: [topSpace, titleLabel, ModeButtonView(), bottomSpace])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
@@ -46,11 +48,11 @@ class ModeSelectView: UIView {
         addSubview(backButton)
         addSubview(mainStack)
          
+        // 制約
         bgImageView.addConstraintsToFillView(self)
-        backButton.anchor(width: 50, height: 25)
         backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 50, paddingLeft: 30)
         mainStack.addConstraintsToFillView(self)
-        topSpace.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6).isActive = true
+        topSpace.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6.5).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6).isActive = true
 
     }
