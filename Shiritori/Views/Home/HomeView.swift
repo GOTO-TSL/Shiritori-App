@@ -12,19 +12,17 @@ class HomeView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let backgroundImage = UIImage(named: "background128")
-        let bgImageView = UIImageView(image: backgroundImage)
-        bgImageView.contentMode = .scaleAspectFill
+        let background = Background(frame: frame)
         
         let mainStack = UIStackView(arrangedSubviews: [TopTitleView(), MiddleButtonView(), BottomButtonView()])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
         mainStack.distribution = .fill
         
-        addSubview(bgImageView)
+        addSubview(background)
         addSubview(mainStack)
         
-        bgImageView.addConstraintsToFillView(self)
+        background.addConstraintsToFillView(self)
         mainStack.addConstraintsToFillView(self)
         mainStack.divide(by: [3, 3, 1], baseHeight: heightAnchor)
     }
