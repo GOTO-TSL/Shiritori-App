@@ -14,7 +14,7 @@ class HomeView: UIView {
         
         let background = Background(frame: frame)
         
-        let mainStack = UIStackView(arrangedSubviews: [TopTitleView(), MiddleButtonView(), BottomButtonView()])
+        let mainStack = UIStackView(arrangedSubviews: [HomeTitleView(), MiddleButtonView(frame: frame, upperName: "PLAY", lowerName: "WORD"), BottomButtonView()])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
         mainStack.distribution = .fill
