@@ -7,11 +7,11 @@
 
 import UIKit
 
-class TopTitleView: UIView {
+class HomeTitleView: UIView {
     // MARK: - Properties
     let mainTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "DotGothic16-Regular", size: 40)
+        label.font = UIFont(name: Const.font, size: 40)
         label.text = Const.Title.main
         label.textAlignment = .center
         return label
@@ -19,7 +19,7 @@ class TopTitleView: UIView {
     
     let subTitle: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "DotGothic16-Regular", size: 15)
+        label.font = UIFont(name: Const.font, size: 15)
         label.text = Const.Title.sub
         label.textAlignment = .center
         return label

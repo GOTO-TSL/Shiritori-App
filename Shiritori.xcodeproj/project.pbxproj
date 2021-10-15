@@ -61,9 +61,13 @@
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
 		02F222452712D03A00A71175 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* UIView.swift */; };
 		02F222472712D10B00A71175 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222462712D10B00A71175 /* HomeView.swift */; };
-		02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222492712D43000A71175 /* TopTitleView.swift */; };
+		02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222492712D43000A71175 /* HomeTitleView.swift */; };
 		02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224B2712D45300A71175 /* MiddleButtonView.swift */; };
 		02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224D2712D48C00A71175 /* BottomButtonView.swift */; };
+		02F82A1F2719BEB1005F3F28 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A1E2719BEB1005F3F28 /* ResultView.swift */; };
+		02F82A212719BF7C005F3F28 /* ResultTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A202719BF7C005F3F28 /* ResultTitleView.swift */; };
+		02F82A232719C7B8005F3F28 /* ResultImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A222719C7B8005F3F28 /* ResultImageView.swift */; };
+		02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A242719CBA7005F3F28 /* SelectButton.swift */; };
 		02FA25FE268B56DC00118BD8 /* lose.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FC268B56DC00118BD8 /* lose.mp3 */; };
 		02FA25FF268B56DC00118BD8 /* win.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02FA25FD268B56DC00118BD8 /* win.mp3 */; };
 		7AEEF2D0913785061BEBFE39 /* Pods_Shiritori.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1A81E1F247FC4145C458E7 /* Pods_Shiritori.framework */; };
@@ -126,9 +130,13 @@
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F222442712D03A00A71175 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		02F222462712D10B00A71175 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		02F222492712D43000A71175 /* TopTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTitleView.swift; sourceTree = "<group>"; };
+		02F222492712D43000A71175 /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
 		02F2224B2712D45300A71175 /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
 		02F2224D2712D48C00A71175 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
+		02F82A1E2719BEB1005F3F28 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		02F82A202719BF7C005F3F28 /* ResultTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTitleView.swift; sourceTree = "<group>"; };
+		02F82A222719C7B8005F3F28 /* ResultImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultImageView.swift; sourceTree = "<group>"; };
+		02F82A242719CBA7005F3F28 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		02FA25FC268B56DC00118BD8 /* lose.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lose.mp3; sourceTree = "<group>"; };
 		02FA25FD268B56DC00118BD8 /* win.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = win.mp3; sourceTree = "<group>"; };
 		07A5CE68BF732CF191580B18 /* Pods-Shiritori.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shiritori.debug.xcconfig"; path = "Target Support Files/Pods-Shiritori/Pods-Shiritori.debug.xcconfig"; sourceTree = "<group>"; };
@@ -250,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				02C1417927182EDF00A2868E /* Common */,
+				02F82A1D2719BE8C005F3F28 /* Result */,
 				02C1416E271823DF00A2868E /* Game */,
 				029A763A2715D945000EA6B4 /* ModeSelect */,
 				02F222482712D11500A71175 /* Home */,
@@ -312,6 +321,7 @@
 			children = (
 				02C1417A27182F2300A2868E /* Background.swift */,
 				02C1417C2718655A00A2868E /* BackButton.swift */,
+				02F82A242719CBA7005F3F28 /* SelectButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -329,11 +339,21 @@
 			isa = PBXGroup;
 			children = (
 				02F222462712D10B00A71175 /* HomeView.swift */,
-				02F222492712D43000A71175 /* TopTitleView.swift */,
+				02F222492712D43000A71175 /* HomeTitleView.swift */,
 				02F2224B2712D45300A71175 /* MiddleButtonView.swift */,
 				02F2224D2712D48C00A71175 /* BottomButtonView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		02F82A1D2719BE8C005F3F28 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				02F82A1E2719BEB1005F3F28 /* ResultView.swift */,
+				02F82A202719BF7C005F3F28 /* ResultTitleView.swift */,
+				02F82A222719C7B8005F3F28 /* ResultImageView.swift */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 		02FAB44726FE023F00224779 /* System Files */ = {
@@ -531,8 +551,10 @@
 				02C1417B27182F2300A2868E /* Background.swift in Sources */,
 				02F222422712CE3700A71175 /* HomeViewController.swift in Sources */,
 				029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */,
-				02F2224A2712D43000A71175 /* TopTitleView.swift in Sources */,
+				02F82A212719BF7C005F3F28 /* ResultTitleView.swift in Sources */,
+				02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */,
 				02C14174271826C400A2868E /* HPView.swift in Sources */,
+				02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* MyWordViewController.swift in Sources */,
@@ -550,9 +572,11 @@
 				022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */,
 				02C141782718287500A2868E /* InputView.swift in Sources */,
 				0289A81F2641348B00023D0E /* ResultViewController.swift in Sources */,
+				02F82A232719C7B8005F3F28 /* ResultImageView.swift in Sources */,
 				02BDA6FD266358B900628AA3 /* Constant.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
+				02F82A1F2719BEB1005F3F28 /* ResultView.swift in Sources */,
 				0276936926A704B30041252D /* Word.swift in Sources */,
 				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 			);

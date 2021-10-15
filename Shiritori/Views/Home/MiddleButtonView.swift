@@ -8,25 +8,15 @@
 import UIKit
 
 class MiddleButtonView: UIView {
-    // MARK: - Properties
-    let playButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("play", for: .normal)
-        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
-        button.setBackgroundImage(UIImage(named: "button_frame"), for: .normal)
-        return button
-    }()
     
-    let wordButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("word", for: .normal)
-        button.setBackgroundImage(UIImage(named: "button_frame"), for: .normal)
-        button.titleLabel?.font = UIFont(name: "DotGothic16-Regular", size: 45)
-        return button
-    }()
-    
-    override init(frame: CGRect) {
+    init(frame: CGRect, upperName: String, lowerName: String) {
         super.init(frame: frame)
+        
+        let playButton = SelectButton()
+        playButton.setTitle(upperName, for: .normal)
+        
+        let wordButton = SelectButton()
+        wordButton.setTitle(lowerName, for: .normal)
         
         let stack = UIStackView(arrangedSubviews: [playButton, wordButton])
         stack.axis = .vertical
@@ -38,8 +28,6 @@ class MiddleButtonView: UIView {
         
         stack.center(inView: self)
         stack.anchor(width: 140)
-        playButton.setAspectRatio(ratio: 16/7)
-        wordButton.setAspectRatio(ratio: 16/7)
     }
     
     required init?(coder: NSCoder) {
