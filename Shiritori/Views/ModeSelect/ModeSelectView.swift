@@ -24,7 +24,7 @@ class ModeSelectView: UIView {
         let background = Background(frame: frame)
         
         // 戻るボタン
-        let backButton = BackButton()
+        let backButton = BackButton(frame: frame)
         
         // 上下のスペース
         let topSpace = UIView()

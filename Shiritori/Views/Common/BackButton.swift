@@ -9,14 +9,23 @@ import UIKit
 
 class BackButton: UIButton {
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, isBlack: Bool = true) {
         super.init(frame: frame)
         
-        setImage(UIImage(named: "back_icon"), for: .normal)
         setTitle("back", for: .normal)
-        setTitleColor(.black, for: .normal)
         titleLabel?.font = UIFont(name: Const.font, size: 20)
         
+        if isBlack {
+            setImage(UIImage(named: "back_icon"), for: .normal)
+            setTitleColor(.black, for: .normal)
+        } else {
+            setImage(UIImage(named: "back_icon_white"), for: .normal)
+            setTitleColor(.white, for: .normal)
+        }
+        
+        imageView?.widthAnchor.constraint(equalTo: titleLabel!.widthAnchor, multiplier: 1/2).isActive = true
+        imageView?.setAspectRatio(ratio: 1)
+
     }
     
     required init?(coder: NSCoder) {

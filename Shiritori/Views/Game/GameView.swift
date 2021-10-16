@@ -15,7 +15,7 @@ class GameView: UIView {
         // 背景画像の設定
         let background = Background(frame: frame)
         // 戻るボタン
-        let backButton = BackButton()
+        let backButton = BackButton(frame: frame)
         
         let stack = UIStackView(arrangedSubviews: [UIView(), EnemyView(), InputView()])
         stack.axis = .vertical
