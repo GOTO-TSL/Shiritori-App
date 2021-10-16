@@ -21,6 +21,7 @@
 		022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F9271A8C8D00B064FF /* WordTableViewCell.swift */; };
 		02286800271B096D00B064FF /* UsedWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867FF271B096D00B064FF /* UsedWordViewController.swift */; };
 		02286803271B19CD00B064FF /* RuleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02286802271B19CD00B064FF /* RuleView.swift */; };
+		02286805271B244600B064FF /* RuleBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02286804271B244600B064FF /* RuleBodyView.swift */; };
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
@@ -93,6 +94,7 @@
 		022867F9271A8C8D00B064FF /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
 		022867FF271B096D00B064FF /* UsedWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordViewController.swift; sourceTree = "<group>"; };
 		02286802271B19CD00B064FF /* RuleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleView.swift; sourceTree = "<group>"; };
+		02286804271B244600B064FF /* RuleBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleBodyView.swift; sourceTree = "<group>"; };
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				02286802271B19CD00B064FF /* RuleView.swift */,
+				02286804271B244600B064FF /* RuleBodyView.swift */,
 			);
 			path = Rule;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
+				02286805271B244600B064FF /* RuleBodyView.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
