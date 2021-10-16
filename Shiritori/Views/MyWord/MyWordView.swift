@@ -1,13 +1,13 @@
 //
-//  UsedWordView.swift
+//  MyWordView.swift
 //  Shiritori
 //
-//  Created by 後藤孝輔 on 2021/10/16.
+//  Created by 後藤孝輔 on 2021/10/17.
 //
 
 import UIKit
 
-class UsedWordView: UIView {
+class MyWordView: UIView {
     
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -23,8 +23,8 @@ class UsedWordView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        headerView.titleLabel.text = Const.TitleText.words
-        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: Const.cellID)
+        headerView.titleLabel.text = Const.TitleText.myWords
+        tableView.register(MyWordTableViewCell.self, forCellReuseIdentifier: Const.cellID)
         
         let stack = UIStackView(arrangedSubviews: [headerView, tableView])
         stack.axis = .vertical
@@ -42,3 +42,5 @@ class UsedWordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+

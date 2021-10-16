@@ -9,7 +9,7 @@ import UIKit
 
 class UsedWordViewController: UIViewController {
     
-    var usedWordView: UsedWordView!
+    var usedWordView: MyWordView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -31,7 +31,7 @@ class UsedWordViewController: UIViewController {
     }
     
     private func configureUI() {
-        usedWordView = UsedWordView()
+        usedWordView = MyWordView()
         usedWordView.tableView.dataSource = self
         
         view.addSubview(usedWordView)
@@ -45,7 +45,7 @@ extension UsedWordViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UsedWordCell", for: indexPath) as? WordTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UsedWordCell", for: indexPath) as? MyWordTableViewCell
         guard let safeCell = cell else { fatalError() }
         safeCell.wordLabel.text = "word"
         return safeCell
