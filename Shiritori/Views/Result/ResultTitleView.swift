@@ -11,7 +11,7 @@ class ResultTitleView: UIView {
     
     let title: UILabel = {
         let label = UILabel()
-        label.text = Const.Title.resultWin
+        label.text = Const.TitleText.resultWin
         label.font = UIFont(name: Const.font, size: 45)
         label.textAlignment = .center
         return label

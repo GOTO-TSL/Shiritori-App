@@ -12,14 +12,14 @@ class BackButton: UIButton {
     init(frame: CGRect, isBlack: Bool = true) {
         super.init(frame: frame)
         
-        setTitle("back", for: .normal)
+        setTitle(Const.ButtonText.back, for: .normal)
         titleLabel?.font = UIFont(name: Const.font, size: 20)
         
         if isBlack {
-            setImage(UIImage(named: "back_icon"), for: .normal)
+            setImage(UIImage(named: Const.Image.backB), for: .normal)
             setTitleColor(.black, for: .normal)
         } else {
-            setImage(UIImage(named: "back_icon_white"), for: .normal)
+            setImage(UIImage(named: Const.Image.backW), for: .normal)
             setTitleColor(.white, for: .normal)
         }
         

@@ -11,7 +11,7 @@ class InputView: UIView {
     
     let answerTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "入力してね"
+        textField.placeholder = Const.placeholder
         textField.backgroundColor = .white
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 5.0
@@ -21,7 +21,7 @@ class InputView: UIView {
     
     let answerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("ATK", for: .normal)
+        button.setTitle(Const.ButtonText.atk, for: .normal)
         button.backgroundColor = .red
         return button
     }()

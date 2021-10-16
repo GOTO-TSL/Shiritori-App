@@ -23,7 +23,8 @@ class UsedWordView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: "UsedWordCell")
+        headerView.titleLabel.text = Const.TitleText.rule
+        tableView.register(WordTableViewCell.self, forCellReuseIdentifier: Const.cellID)
         
         let stack = UIStackView(arrangedSubviews: [headerView, tableView])
         stack.axis = .vertical

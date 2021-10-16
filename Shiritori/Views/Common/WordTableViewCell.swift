@@ -16,9 +16,9 @@ class WordTableViewCell: UITableViewCell {
         return label
     }()
     
-    let starImage: UIImageView = {
+    let heartImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "unlike")
+        imageView.image = UIImage(named: Const.Image.unlike)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -30,14 +30,14 @@ class WordTableViewCell: UITableViewCell {
         layer.borderColor = UIColor.white.cgColor
         backgroundColor = .black
         addSubview(wordLabel)
-        addSubview(starImage)
+        addSubview(heartImage)
         
         wordLabel.centerY(inView: self)
         wordLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
-        starImage.centerY(inView: self)
-        starImage.anchor(width: 50)
-        starImage.anchor(right: rightAnchor, paddingRight: 10)
-        starImage.setAspectRatio(ratio: 1)
+        heartImage.centerY(inView: self)
+        heartImage.anchor(width: 50)
+        heartImage.anchor(right: rightAnchor, paddingRight: 10)
+        heartImage.setAspectRatio(ratio: 1)
         
     }
     

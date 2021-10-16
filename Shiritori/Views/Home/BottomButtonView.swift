@@ -12,7 +12,7 @@ class BottomButtonView: UIView {
     let soundButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .blue
-        button.setImage(UIImage(named: "sound_icon16"), for: .normal)
+        button.setImage(UIImage(named: Const.Image.sound), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         return button
@@ -20,7 +20,7 @@ class BottomButtonView: UIView {
     
     let helpButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "help_icon16"), for: .normal)
+        button.setImage(UIImage(named: Const.Image.help), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         return button
@@ -28,7 +28,7 @@ class BottomButtonView: UIView {
     
     let rankingButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "ranking_icon16"), for: .normal)
+        button.setImage(UIImage(named: Const.Image.ranking), for: .normal)
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
         return button

@@ -17,7 +17,7 @@ class EnemyView: UIView {
     
     let speechBalloon: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "speechballoon2")
+        imageView.image = UIImage(named: Const.Image.speechballoon)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

@@ -12,7 +12,7 @@ class Background: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        image = UIImage(named: "background128")
+        image = UIImage(named: Const.Image.background)
         contentMode = .scaleAspectFill
     }
     

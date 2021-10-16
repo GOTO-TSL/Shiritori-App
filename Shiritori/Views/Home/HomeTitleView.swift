@@ -12,7 +12,7 @@ class HomeTitleView: UIView {
     let mainTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Const.font, size: 40)
-        label.text = Const.Title.main
+        label.text = Const.TitleText.main
         label.textAlignment = .center
         return label
     }()
@@ -20,7 +20,7 @@ class HomeTitleView: UIView {
     let subTitle: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Const.font, size: 15)
-        label.text = Const.Title.sub
+        label.text = Const.TitleText.sub
         label.textAlignment = .center
         return label
     }()

@@ -11,7 +11,7 @@ class ModeSelectView: UIView {
     // タイトル
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Const.Title.mode
+        label.text = Const.TitleText.mode
         label.font = UIFont(name: Const.font, size: 45)
         label.textAlignment = .center
         return label

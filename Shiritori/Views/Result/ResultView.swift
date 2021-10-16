@@ -14,7 +14,7 @@ class ResultView: UIView {
         
         let background = Background(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [ResultTitleView(), ResultImageView(), MiddleButtonView(frame: frame, upperName: "WORD", lowerName: "HOME")])
+        let stack = UIStackView(arrangedSubviews: [ResultTitleView(), ResultImageView(), MiddleButtonView(frame: frame, upperName: Const.ButtonText.word, lowerName: Const.ButtonText.home)])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill

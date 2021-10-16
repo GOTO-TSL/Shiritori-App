@@ -13,7 +13,7 @@ class SelectButton: UIButton {
         super.init(frame: frame)
         
         titleLabel?.font = UIFont(name: Const.font, size: 45)
-        setBackgroundImage(UIImage(named: "button_frame"), for: .normal)
+        setBackgroundImage(UIImage(named: Const.Image.buttonFrame), for: .normal)
         setAspectRatio(ratio: 16/7)
         
     }

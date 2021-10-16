@@ -11,7 +11,7 @@ class HPView: UIView {
     
     let hpImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "hp_frame")
+        imageView.image = UIImage(named: Const.Image.hpFrame)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
