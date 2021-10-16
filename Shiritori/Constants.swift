@@ -20,6 +20,7 @@ struct Const {
         static let resultLose = "GAME OVER"
         static let words = "WORDS"
         static let rule = "RULE"
+        static let myWords = "MYWORDS"
     }
     
     enum BodyText {
@@ -46,6 +47,7 @@ struct Const {
         static let buttonFrame = "button_frame"
         static let like = "like"
         static let unlike = "unlike"
+        static let next = "next"
         static let sound = "sound_icon16"
         static let help = "help_icon16"
         static let ranking = "ranking_icon16"
