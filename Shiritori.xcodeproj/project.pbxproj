@@ -33,6 +33,7 @@
 		02324009271BF85000333C7C /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02324008271BF85000333C7C /* WordDetailViewController.swift */; };
 		0232400B271BF86100333C7C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232400A271BF86100333C7C /* RankingViewController.swift */; };
 		0232400D271C002400333C7C /* ResultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232400C271C002400333C7C /* ResultButtonView.swift */; };
+		0232400F271C1B7000333C7C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232400E271C1B7000333C7C /* UIViewController.swift */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02500B992714762D00F3B7E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B982714762D00F3B7E8 /* Constants.swift */; };
 		02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B9A27147E6F00F3B7E8 /* UIStackView.swift */; };
@@ -113,6 +114,7 @@
 		02324008271BF85000333C7C /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		0232400A271BF86100333C7C /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		0232400C271C002400333C7C /* ResultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButtonView.swift; sourceTree = "<group>"; };
+		0232400E271C1B7000333C7C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02500B982714762D00F3B7E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02500B9A27147E6F00F3B7E8 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
@@ -417,6 +419,7 @@
 			children = (
 				02F222442712D03A00A71175 /* UIView.swift */,
 				02500B9A27147E6F00F3B7E8 /* UIStackView.swift */,
+				0232400E271C1B7000333C7C /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -634,6 +637,7 @@
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02286803271B19CD00B064FF /* RuleView.swift in Sources */,
+				0232400F271C1B7000333C7C /* UIViewController.swift in Sources */,
 				02C1417D2718655A00A2868E /* BackButton.swift in Sources */,
 				02324005271BF83300333C7C /* RuleViewController.swift in Sources */,
 				02C1417B27182F2300A2868E /* Background.swift in Sources */,
