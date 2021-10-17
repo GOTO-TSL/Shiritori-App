@@ -15,8 +15,8 @@ class MyWordView: UIView {
         return tableView
     }()
     
-    let headerView: TableHeaderView = {
-        let headerView = TableHeaderView()
+    let headerView: HeaderView = {
+        let headerView = HeaderView()
         return headerView
     }()
     
