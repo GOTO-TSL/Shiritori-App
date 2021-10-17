@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RuleViewController: UIViewController {
+class PreRuleViewController: UIViewController {
     @IBOutlet weak var ruleLabel: UILabel!
     
     override func viewDidLoad() {

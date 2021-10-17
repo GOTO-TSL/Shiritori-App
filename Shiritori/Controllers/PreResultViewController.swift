@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ResultViewController: UIViewController {
+class PreResultViewController: UIViewController {
     var imageManager = ImageManager()
     var pushPlayer = SoundPlayer()
     var edPlayer = SoundPlayer()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyWordViewController: UITableViewController {
+class PreMyWordViewController: UITableViewController {
     var dataManager = DataManager()
 
     override func viewDidLoad() {
