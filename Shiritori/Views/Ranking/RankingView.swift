@@ -8,7 +8,7 @@
 import UIKit
 
 class RankingView: UIView {
-    
+    // MARK: - Properties
     let headerView: HeaderView = {
         let headerView = HeaderView()
         return headerView
@@ -22,6 +22,7 @@ class RankingView: UIView {
         return label
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
