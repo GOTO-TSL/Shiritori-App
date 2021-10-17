@@ -43,10 +43,10 @@ class PreMyWordViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.mywordCell, for: indexPath) as? MyWordCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.mywordCell, for: indexPath) as? WordTableViewCell
         guard let myWordCell = cell else { fatalError() }
         guard let myWord = dataManager.myWords?[indexPath.row] else { fatalError() }
-        myWordCell.myWordLabel.text = myWord.name
+//        myWordCell.myWordLabel.text = myWord.name
         
         return myWordCell
     }

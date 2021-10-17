@@ -8,17 +8,20 @@
 import UIKit
 
 class ModeSelectView: UIView {
-    // タイトル
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = Const.TitleText.mode
-        label.font = UIFont(name: Const.font, size: 45)
-        label.textAlignment = .center
-        return label
+    // MARK: - Properties
+    let modeButtons: ModeButtonView = {
+        let buttons = ModeButtonView()
+        return buttons
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        // タイトル
+        let titleLabel = UILabel()
+        titleLabel.text = Const.TitleText.mode
+        titleLabel.font = UIFont(name: Const.font, size: 45)
+        titleLabel.textAlignment = .center
         
         // 背景画像の設定
         let background = Background(frame: frame)
@@ -31,7 +34,7 @@ class ModeSelectView: UIView {
         let bottomSpace = UIView()
         
         // メインのスタック
-        let mainStack = UIStackView(arrangedSubviews: [topSpace, titleLabel, ModeButtonView(), bottomSpace])
+        let mainStack = UIStackView(arrangedSubviews: [topSpace, titleLabel, modeButtons, bottomSpace])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
         mainStack.distribution = .fill

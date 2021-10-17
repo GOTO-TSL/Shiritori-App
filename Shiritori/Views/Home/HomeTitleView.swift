@@ -8,25 +8,22 @@
 import UIKit
 
 class HomeTitleView: UIView {
-    // MARK: - Properties
-    let mainTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: Const.font, size: 40)
-        label.text = Const.TitleText.main
-        label.textAlignment = .center
-        return label
-    }()
     
-    let subTitle: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: Const.font, size: 15)
-        label.text = Const.TitleText.sub
-        label.textAlignment = .center
-        return label
-    }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        // メインタイトルの設定
+        let mainTitle = UILabel()
+        mainTitle.font = UIFont(name: Const.font, size: 40)
+        mainTitle.text = Const.TitleText.main
+        mainTitle.textAlignment = .center
+        
+        // サブタイトルの設定
+        let subTitle = UILabel()
+        subTitle.font = UIFont(name: Const.font, size: 15)
+        subTitle.text = Const.TitleText.sub
+        subTitle.textAlignment = .center
         
         let stack = UIStackView(arrangedSubviews: [mainTitle, subTitle])
         stack.axis = .vertical

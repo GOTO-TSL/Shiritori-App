@@ -32,6 +32,7 @@
 		02324007271BF84000333C7C /* MyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02324006271BF84000333C7C /* MyWordViewController.swift */; };
 		02324009271BF85000333C7C /* WordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02324008271BF85000333C7C /* WordDetailViewController.swift */; };
 		0232400B271BF86100333C7C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232400A271BF86100333C7C /* RankingViewController.swift */; };
+		0232400D271C002400333C7C /* ResultButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0232400C271C002400333C7C /* ResultButtonView.swift */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
 		02500B992714762D00F3B7E8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B982714762D00F3B7E8 /* Constants.swift */; };
 		02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B9A27147E6F00F3B7E8 /* UIStackView.swift */; };
@@ -74,7 +75,7 @@
 		02F222452712D03A00A71175 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* UIView.swift */; };
 		02F222472712D10B00A71175 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222462712D10B00A71175 /* HomeView.swift */; };
 		02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222492712D43000A71175 /* HomeTitleView.swift */; };
-		02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224B2712D45300A71175 /* MiddleButtonView.swift */; };
+		02F2224C2712D45300A71175 /* HomeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224B2712D45300A71175 /* HomeButtonView.swift */; };
 		02F2224E2712D48C00A71175 /* BottomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2224D2712D48C00A71175 /* BottomButtonView.swift */; };
 		02F82A1F2719BEB1005F3F28 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A1E2719BEB1005F3F28 /* ResultView.swift */; };
 		02F82A212719BF7C005F3F28 /* ResultTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F82A202719BF7C005F3F28 /* ResultTitleView.swift */; };
@@ -111,6 +112,7 @@
 		02324006271BF84000333C7C /* MyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordViewController.swift; sourceTree = "<group>"; };
 		02324008271BF85000333C7C /* WordDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailViewController.swift; sourceTree = "<group>"; };
 		0232400A271BF86100333C7C /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		0232400C271C002400333C7C /* ResultButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultButtonView.swift; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
 		02500B982714762D00F3B7E8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		02500B9A27147E6F00F3B7E8 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
@@ -155,7 +157,7 @@
 		02F222442712D03A00A71175 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		02F222462712D10B00A71175 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		02F222492712D43000A71175 /* HomeTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTitleView.swift; sourceTree = "<group>"; };
-		02F2224B2712D45300A71175 /* MiddleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiddleButtonView.swift; sourceTree = "<group>"; };
+		02F2224B2712D45300A71175 /* HomeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonView.swift; sourceTree = "<group>"; };
 		02F2224D2712D48C00A71175 /* BottomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonView.swift; sourceTree = "<group>"; };
 		02F82A1E2719BEB1005F3F28 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		02F82A202719BF7C005F3F28 /* ResultTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTitleView.swift; sourceTree = "<group>"; };
@@ -424,7 +426,7 @@
 			children = (
 				02F222462712D10B00A71175 /* HomeView.swift */,
 				02F222492712D43000A71175 /* HomeTitleView.swift */,
-				02F2224B2712D45300A71175 /* MiddleButtonView.swift */,
+				02F2224B2712D45300A71175 /* HomeButtonView.swift */,
 				02F2224D2712D48C00A71175 /* BottomButtonView.swift */,
 			);
 			path = Home;
@@ -436,6 +438,7 @@
 				02F82A1E2719BEB1005F3F28 /* ResultView.swift */,
 				02F82A202719BF7C005F3F28 /* ResultTitleView.swift */,
 				02F82A222719C7B8005F3F28 /* ResultImageView.swift */,
+				0232400C271C002400333C7C /* ResultButtonView.swift */,
 			);
 			path = Result;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				02286807271B280700B064FF /* MyWordView.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
+				0232400D271C002400333C7C /* ResultButtonView.swift in Sources */,
 				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
@@ -655,7 +659,7 @@
 				02C14170271823FB00A2868E /* GameView.swift in Sources */,
 				02C14176271826D200A2868E /* EnemyView.swift in Sources */,
 				02323FFC271BF30300333C7C /* RankingView.swift in Sources */,
-				02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */,
+				02F2224C2712D45300A71175 /* HomeButtonView.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
 				0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */,
 				0232400B271BF86100333C7C /* RankingViewController.swift in Sources */,

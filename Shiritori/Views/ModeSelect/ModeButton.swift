@@ -9,11 +9,9 @@ import UIKit
 
 class ModeButton: UIButton {
     
-    init(frame: CGRect, mode: String) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setTitle(mode, for: .normal)
-        setImage(UIImage(named: mode), for: .normal)
         setBackgroundImage(UIImage(named: Const.Image.modeFrame), for: .normal)
         titleLabel?.font = UIFont(name: Const.font, size: 50)
         

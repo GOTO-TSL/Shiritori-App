@@ -8,13 +8,31 @@
 import UIKit
 
 class ModeButtonView: UIView {
+    // MARK: - Properties
+    let easyButton: ModeButton = {
+        let button = ModeButton()
+        button.setTitle(Const.ButtonText.easy, for: .normal)
+        button.setImage(UIImage(named: Const.Image.easy), for: .normal)
+        return button
+    }()
     
+    let normalButton: ModeButton = {
+        let button = ModeButton()
+        button.setTitle(Const.ButtonText.normal, for: .normal)
+        button.setImage(UIImage(named: Const.Image.normal), for: .normal)
+        return button
+    }()
+    
+    let hardButton: ModeButton = {
+        let button = ModeButton()
+        button.setTitle(Const.ButtonText.hard, for: .normal)
+        button.setImage(UIImage(named: Const.Image.hard), for: .normal)
+        return button
+    }()
+    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let easyButton = ModeButton(frame: frame, mode: "EASY0")
-        let normalButton = ModeButton(frame: frame, mode: "NORMAL0")
-        let hardButton = ModeButton(frame: frame, mode: "HARD0")
         
         let stack = UIStackView(arrangedSubviews: [easyButton, normalButton, hardButton])
         stack.axis = .vertical

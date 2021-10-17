@@ -58,6 +58,9 @@ struct Const {
         static let back = "back"
         static let home = "HOME"
         static let atk = "ATK"
+        static let easy = "EASY"
+        static let normal = "NORMAL"
+        static let hard = "HARD"
     }
     
     enum Image {
@@ -74,6 +77,9 @@ struct Const {
         static let modeFrame = "mode_frame"
         static let speechballoon = "speechballoon"
         static let hpFrame = "hp_frame"
+        static let easy = "easy"
+        static let normal = "normal"
+        static let hard = "hard"
     }
 
 }

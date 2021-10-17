@@ -38,13 +38,13 @@ extension WordListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.wordListCell, for: indexPath) as? WordListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constant.CellID.wordListCell, for: indexPath) as? WordTableViewCell
         guard let wordCell = cell else { fatalError() }
         guard let selectedWord = dataManager.words?[indexPath.row] else { fatalError() }
         // セルのテキストを設定，お気に入り登録されると星がつくように画像を変更
-        wordCell.wordLabel.text = selectedWord.name
-        wordCell.starImage.image = selectedWord.isLike ? Constant.Images.stars[1] : Constant.Images.stars[0]
-        
+//        wordCell.wordLabel.text = selectedWord.name
+//        wordCell.starImage.image = selectedWord.isLike ? Constant.Images.stars[1] : Constant.Images.stars[0]
+
         return wordCell
     }
 }

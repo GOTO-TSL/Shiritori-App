@@ -8,13 +8,25 @@
 import UIKit
 
 class HomeView: UIView {
+    // MARK: - Properties
+    let middleButtons: HomeButtonView = {
+        let buttons = HomeButtonView()
+        return buttons
+    }()
     
+    let bottomButtons: BottomButtonView = {
+        let buttons = BottomButtonView()
+        return buttons
+    }()
+    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        // 背景画像の設定
         let background = Background(frame: frame)
         
-        let mainStack = UIStackView(arrangedSubviews: [HomeTitleView(), MiddleButtonView(frame: frame, upperName: Const.ButtonText.play, lowerName: Const.ButtonText.word), BottomButtonView()])
+        let mainStack = UIStackView(arrangedSubviews: [HomeTitleView(), middleButtons, bottomButtons])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
         mainStack.distribution = .fill
@@ -22,6 +34,7 @@ class HomeView: UIView {
         addSubview(background)
         addSubview(mainStack)
         
+        // 制約
         background.addConstraintsToFillView(self)
         mainStack.addConstraintsToFillView(self)
         mainStack.divide(by: [3, 3, 1], baseHeight: heightAnchor)

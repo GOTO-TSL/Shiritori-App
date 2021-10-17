@@ -7,16 +7,22 @@
 
 import UIKit
 
-class MiddleButtonView: UIView {
+class HomeButtonView: UIView {
     
-    init(frame: CGRect, upperName: String, lowerName: String) {
+    let playButton: SelectButton = {
+        let button = SelectButton()
+        button.setTitle(Const.ButtonText.play, for: .normal)
+        return button
+    }()
+    
+    let wordButton: SelectButton = {
+        let button = SelectButton()
+        button.setTitle(Const.ButtonText.word, for: .normal)
+        return button
+    }()
+    
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        let playButton = SelectButton()
-        playButton.setTitle(upperName, for: .normal)
-        
-        let wordButton = SelectButton()
-        wordButton.setTitle(lowerName, for: .normal)
         
         let stack = UIStackView(arrangedSubviews: [playButton, wordButton])
         stack.axis = .vertical

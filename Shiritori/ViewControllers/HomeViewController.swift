@@ -9,7 +9,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var homeView: UIView!
+    var homeView: HomeView!
+    var playButton: UIButton!
+    var wordButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +21,10 @@ class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
-        homeView = RankingView()
+        homeView = HomeView()
+        playButton = homeView.middleButtons.playButton
+        wordButton = homeView.middleButtons.wordButton
+        
         view.addSubview(homeView)
         homeView.addConstraintsToFillView(view)
     }

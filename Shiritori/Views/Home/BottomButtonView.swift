@@ -34,6 +34,7 @@ class BottomButtonView: UIView {
         return button
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
