@@ -8,7 +8,7 @@
 import UIKit
 
 class HPView: UIView {
-    
+    // MARK: - Properties
     let hpImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Const.Image.hpFrame)
@@ -22,6 +22,7 @@ class HPView: UIView {
         return progressView
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

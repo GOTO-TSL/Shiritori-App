@@ -23,7 +23,7 @@ class ResultView: UIView {
         let buttons = ResultButtonView()
         return buttons
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

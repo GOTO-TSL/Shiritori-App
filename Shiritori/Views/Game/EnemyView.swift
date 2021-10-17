@@ -8,7 +8,7 @@
 import UIKit
 
 class EnemyView: UIView {
-    
+    // MARK: - Properties
     let enemyImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "slime2-1")
@@ -29,7 +29,7 @@ class EnemyView: UIView {
         label.font = UIFont(name: Const.font, size: 20)
         return label
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         let hpView = HPView()

@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultImageView: UIView {
-    
+    // MARK: - Properties
     let resultImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "result1-1")
@@ -16,6 +16,7 @@ class ResultImageView: UIView {
         return imageView
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

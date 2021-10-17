@@ -8,7 +8,7 @@
 import UIKit
 
 class InputView: UIView {
-    
+    // MARK: - Properties
     let answerTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Const.placeholder
@@ -26,6 +26,7 @@ class InputView: UIView {
         return button
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

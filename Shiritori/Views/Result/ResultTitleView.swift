@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultTitleView: UIView {
-    
+    // MARK: - Properties
     let title: UILabel = {
         let label = UILabel()
         label.text = Const.TitleText.resultWin
@@ -16,7 +16,7 @@ class ResultTitleView: UIView {
         label.textAlignment = .center
         return label
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

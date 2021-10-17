@@ -8,7 +8,7 @@
 import UIKit
 
 class BodyScrollView: UIView {
-    
+    // MARK: - Properties
     // 本文のラベル
     let bodyLabel: UILabel = {
         let label = UILabel()
@@ -20,12 +20,12 @@ class BodyScrollView: UIView {
         return label
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         // 本文のView
         let bodyView = UIView()
         bodyView.addSubview(bodyLabel)
-        
         
         // ScrollViewに本文を追加し配置
         let scrollView = UIScrollView()

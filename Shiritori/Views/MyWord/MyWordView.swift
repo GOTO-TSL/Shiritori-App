@@ -8,7 +8,7 @@
 import UIKit
 
 class MyWordView: UIView {
-    
+    // MARK: - Properties
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .black
@@ -19,7 +19,7 @@ class MyWordView: UIView {
         let headerView = HeaderView()
         return headerView
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -42,5 +42,3 @@ class MyWordView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-

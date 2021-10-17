@@ -25,7 +25,7 @@ class GameView: UIView {
         let view = InputView()
         return view
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

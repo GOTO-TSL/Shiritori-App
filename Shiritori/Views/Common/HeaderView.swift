@@ -8,7 +8,7 @@
 import UIKit
 
 class HeaderView: UIView {
-    
+    // MARK: - Properties
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Const.font, size: 30)
@@ -24,6 +24,7 @@ class HeaderView: UIView {
         return button
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

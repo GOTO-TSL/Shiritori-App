@@ -8,12 +8,12 @@
 import UIKit
 
 class RuleView: UIView {
-    
+    // MARK: - Properties
     let headerView: HeaderView = {
         let headerView = HeaderView()
         return headerView
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

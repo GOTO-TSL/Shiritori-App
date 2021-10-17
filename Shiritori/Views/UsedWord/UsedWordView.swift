@@ -8,7 +8,7 @@
 import UIKit
 
 class UsedWordView: UIView {
-    
+    // MARK: - Properties
     let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .black
@@ -19,7 +19,7 @@ class UsedWordView: UIView {
         let headerView = HeaderView()
         return headerView
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

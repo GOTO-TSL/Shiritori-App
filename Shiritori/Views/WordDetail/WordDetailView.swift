@@ -8,7 +8,7 @@
 import UIKit
 
 class WordDetailView: UIView {
-    
+    // MARK: - Properties
     let headerView: HeaderView = {
         let headerView = HeaderView()
         return headerView
@@ -28,6 +28,7 @@ class WordDetailView: UIView {
         return bodyView
     }()
     
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         

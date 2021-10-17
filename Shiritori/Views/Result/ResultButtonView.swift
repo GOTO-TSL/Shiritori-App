@@ -8,7 +8,7 @@
 import UIKit
 
 class ResultButtonView: UIView {
-    
+    // MARK: - Properties
     let wordButton: SelectButton = {
         let button = SelectButton()
         button.setTitle(Const.ButtonText.word, for: .normal)
@@ -20,7 +20,7 @@ class ResultButtonView: UIView {
         button.setTitle(Const.ButtonText.home, for: .normal)
         return button
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
