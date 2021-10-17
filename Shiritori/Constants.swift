@@ -22,6 +22,7 @@ struct Const {
         static let rule = "RULE"
         static let myWords = "MYWORDS"
         static let detail = "DETAIL"
+        static let ranking = "RANKING"
     }
     
     enum BodyText {
@@ -31,6 +32,7 @@ struct Const {
         入力する英単語の文字数が与えるダメージになります\n
         制限時間以内に敵の体力を0にするとゲームクリア！
         """
+        static let cms = "COMMING SOON..."
         static let text = """
                               あああああああああああ\n
                               あああああああああああ\n

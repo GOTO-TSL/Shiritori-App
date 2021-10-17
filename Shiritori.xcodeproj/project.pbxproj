@@ -26,6 +26,7 @@
 		022D71932671D84C001AA4B0 /* MeanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022D71922671D84C001AA4B0 /* MeanViewController.swift */; };
 		02323FF4271BC29B00333C7C /* WordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02323FF3271BC29B00333C7C /* WordDetailView.swift */; };
 		02323FF8271BC5EE00333C7C /* BodyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02323FF7271BC5EE00333C7C /* BodyScrollView.swift */; };
+		02323FFC271BF30300333C7C /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02323FFB271BF30300333C7C /* RankingView.swift */; };
 		02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02331E082674B37100FABF0B /* MyWordCell.swift */; };
 		02331E0B2674B37100FABF0B /* MyWordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02331E092674B37100FABF0B /* MyWordCell.xib */; };
 		023375752672407E00C59023 /* WordSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023375742672407E00C59023 /* WordSource.swift */; };
@@ -102,6 +103,7 @@
 		022D71922671D84C001AA4B0 /* MeanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeanViewController.swift; sourceTree = "<group>"; };
 		02323FF3271BC29B00333C7C /* WordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDetailView.swift; sourceTree = "<group>"; };
 		02323FF7271BC5EE00333C7C /* BodyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyScrollView.swift; sourceTree = "<group>"; };
+		02323FFB271BF30300333C7C /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		02331E082674B37100FABF0B /* MyWordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWordCell.swift; sourceTree = "<group>"; };
 		02331E092674B37100FABF0B /* MyWordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyWordCell.xib; sourceTree = "<group>"; };
 		023375742672407E00C59023 /* WordSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordSource.swift; sourceTree = "<group>"; };
@@ -217,6 +219,14 @@
 			path = WordDetail;
 			sourceTree = "<group>";
 		};
+		02323FFA271BF2E900333C7C /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				02323FFB271BF30300333C7C /* RankingView.swift */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
 		025AE9F82680F30E0039DF56 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +328,7 @@
 				02286801271B19AD00B064FF /* Rule */,
 				02286808271B280E00B064FF /* MyWord */,
 				02323FF2271BC27300333C7C /* WordDetail */,
+				02323FFA271BF2E900333C7C /* Ranking */,
 				020B51C226739050005871D2 /* WordListCell.swift */,
 				020B51C326739050005871D2 /* WordListCell.xib */,
 				02331E082674B37100FABF0B /* MyWordCell.swift */,
@@ -631,6 +642,7 @@
 				02C14170271823FB00A2868E /* GameView.swift in Sources */,
 				02331E0A2674B37100FABF0B /* MyWordCell.swift in Sources */,
 				02C14176271826D200A2868E /* EnemyView.swift in Sources */,
+				02323FFC271BF30300333C7C /* RankingView.swift in Sources */,
 				02F2224C2712D45300A71175 /* MiddleButtonView.swift in Sources */,
 				0276936B26A7062E0041252D /* MyWord.swift in Sources */,
 				0292F2AD26BFDC4D00802867 /* Enemy.swift in Sources */,
