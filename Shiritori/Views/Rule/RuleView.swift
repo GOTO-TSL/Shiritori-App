@@ -9,17 +9,20 @@ import UIKit
 
 class RuleView: UIView {
     
-    let headerView: TableHeaderView = {
-        let headerView = TableHeaderView()
+    let headerView: HeaderView = {
+        let headerView = HeaderView()
         return headerView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        let bodyView = BodyScrollView()
+        bodyView.bodyLabel.text = Const.BodyText.rule
+        
         headerView.titleLabel.text = Const.TitleText.rule
         
-        let stack = UIStackView(arrangedSubviews: [headerView, RuleBodyView()])
+        let stack = UIStackView(arrangedSubviews: [headerView, bodyView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill
