@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
-        homeView = RuleView()
+        homeView = RankingView()
         view.addSubview(homeView)
         homeView.addConstraintsToFillView(view)
     }
