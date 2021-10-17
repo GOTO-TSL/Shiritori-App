@@ -14,6 +14,13 @@ class ModeSelectView: UIView {
         return buttons
     }()
     
+    let backButton: BackButton = {
+        let button = BackButton()
+        button.setImage(UIImage(named: Const.Image.backB), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,9 +32,6 @@ class ModeSelectView: UIView {
         
         // 背景画像の設定
         let background = Background(frame: frame)
-        
-        // 戻るボタン
-        let backButton = BackButton(frame: frame)
         
         // 上下のスペース
         let topSpace = UIView()

@@ -8,16 +8,31 @@
 import UIKit
 
 class GameView: UIView {
+    // MARK: - Properties
+    let backButton: BackButton = {
+        let button = BackButton()
+        button.setImage(UIImage(named: Const.Image.backB), for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    
+    let enemyView: EnemyView = {
+        let view = EnemyView()
+        return view
+    }()
+    
+    let userInputView: InputView = {
+        let view = InputView()
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         // 背景画像の設定
         let background = Background(frame: frame)
-        // 戻るボタン
-        let backButton = BackButton(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [UIView(), EnemyView(), InputView()])
+        let stack = UIStackView(arrangedSubviews: [UIView(), enemyView, userInputView])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill

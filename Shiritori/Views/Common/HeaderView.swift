@@ -17,12 +17,17 @@ class HeaderView: UIView {
         return label
     }()
     
+    let backButton: BackButton = {
+        let button = BackButton()
+        button.setImage(UIImage(named: Const.Image.backW), for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .black
-        
-        let backButton = BackButton(frame: frame, isBlack: false)
         
         addSubview(backButton)
         addSubview(titleLabel)

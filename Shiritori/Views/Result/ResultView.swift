@@ -8,13 +8,28 @@
 import UIKit
 
 class ResultView: UIView {
+    // MARK: - Properties
+    let titleView: ResultTitleView = {
+        let view = ResultTitleView()
+        return view
+    }()
+    
+    let imageView: ResultImageView = {
+        let imageView = ResultImageView()
+        return imageView
+    }()
+    
+    let buttons: ResultButtonView = {
+        let buttons = ResultButtonView()
+        return buttons
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         let background = Background(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [ResultTitleView(), ResultImageView(), ResultButtonView()])
+        let stack = UIStackView(arrangedSubviews: [titleView, imageView, buttons])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fill
