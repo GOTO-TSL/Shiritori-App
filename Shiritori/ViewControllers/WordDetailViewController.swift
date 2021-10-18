@@ -12,6 +12,11 @@ class WordDetailViewController: UIViewController {
     // MARK: - Properties
     var wordDetailView: WordDetailView!
     var backButton: UIButton!
+    
+    // ステータスバーの色を白に設定
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
