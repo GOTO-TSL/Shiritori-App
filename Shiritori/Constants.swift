@@ -9,8 +9,12 @@ import Foundation
 
 struct Const {
     static let font = "DotGothic16-Regular"
-    static let cellID = "UsedWordCell"
     static let placeholder = "入力してね"
+    
+    enum CellID {
+        static let used = "UsedWordCell"
+        static let mine = "MyWordCell"
+    }
     
     enum TitleText {
         static let main = "英単語しりとり"

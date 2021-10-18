@@ -24,7 +24,7 @@ class MyWordView: UIView {
         super.init(frame: frame)
         
         headerView.titleLabel.text = Const.TitleText.myWords
-        tableView.register(MyWordTableViewCell.self, forCellReuseIdentifier: Const.cellID)
+        tableView.register(MyWordTableViewCell.self, forCellReuseIdentifier: Const.CellID.mine)
         
         let stack = UIStackView(arrangedSubviews: [headerView, tableView])
         stack.axis = .vertical

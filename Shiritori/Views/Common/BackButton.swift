@@ -15,8 +15,11 @@ class BackButton: UIButton {
         setTitle(Const.ButtonText.back, for: .normal)
         titleLabel?.font = UIFont(name: Const.font, size: 20)
         
-        imageView?.widthAnchor.constraint(equalTo: titleLabel!.widthAnchor, multiplier: 1/2).isActive = true
+        imageView?.anchor(width: 30)
         imageView?.setAspectRatio(ratio: 1)
+        imageView?.anchor(top: topAnchor, left: leftAnchor)
+        
+        setDimensions(width: 75, height: 30)
 
     }
     

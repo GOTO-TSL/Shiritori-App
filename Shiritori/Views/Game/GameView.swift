@@ -38,8 +38,8 @@ class GameView: UIView {
         stack.distribution = .fill
         
         addSubview(background)
-        addSubview(backButton)
         addSubview(stack)
+        addSubview(backButton)
         
         // 制約の追加
         background.addConstraintsToFillView(self)

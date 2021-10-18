@@ -45,7 +45,7 @@ extension UsedWordViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UsedWordCell", for: indexPath) as? MyWordTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.used, for: indexPath) as? WordTableViewCell
         guard let safeCell = cell else { fatalError() }
         safeCell.wordLabel.text = "word"
         return safeCell

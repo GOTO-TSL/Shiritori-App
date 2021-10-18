@@ -44,8 +44,8 @@ class ModeSelectView: UIView {
         mainStack.distribution = .fill
         
         addSubview(background)
-        addSubview(backButton)
         addSubview(mainStack)
+        addSubview(backButton)
          
         // 制約
         background.addConstraintsToFillView(self)
