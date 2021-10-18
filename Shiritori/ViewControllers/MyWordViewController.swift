@@ -14,6 +14,11 @@ class MyWordViewController: UIViewController {
     var tableView: UITableView!
     var backButton: UIButton!
     
+    // ステータスバーの色を白に設定
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +29,7 @@ class MyWordViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+        // headerに枠線を追加
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)

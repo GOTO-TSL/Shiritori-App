@@ -33,9 +33,11 @@ class HeaderView: UIView {
         addSubview(backButton)
         addSubview(titleLabel)
         
+        backButton.anchor(left: leftAnchor, paddingLeft: 10)
+        backButton.imageView?.centerY(inView: self, constant: 10)
+        backButton.imageView?.anchor(left: leftAnchor, paddingLeft: 10)
+        backButton.titleLabel?.anchor(left: backButton.imageView?.rightAnchor)
         backButton.centerY(inView: self, constant: 10)
-        backButton.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/5).isActive = true
-        backButton.anchor(left: leftAnchor)
         titleLabel.centerX(inView: self)
         titleLabel.centerY(inView: self, constant: 10)
     }

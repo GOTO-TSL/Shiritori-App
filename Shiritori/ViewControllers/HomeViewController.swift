@@ -36,6 +36,8 @@ class HomeViewController: UIViewController {
         // 各ボタンにアクションを追加
         playButton.addTarget(self, action: #selector(playPressed(_:)), for: .touchUpInside)
         wordButton.addTarget(self, action: #selector(wordPressed(_:)), for: .touchUpInside)
+        helpButton.addTarget(self, action: #selector(helpPressed(_:)), for: .touchUpInside)
+        rankingButton.addTarget(self, action: #selector(rankingPressed(_:)), for: .touchUpInside)
     }
     
     @objc private func playPressed(_ sender: UIButton) {
@@ -52,6 +54,22 @@ class HomeViewController: UIViewController {
         mywordVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
         present(mywordVC, animated: false, completion: nil)
+    }
+    
+    @objc private func helpPressed(_ sender: UIButton) {
+        // モードセレクト画面に遷移
+        let ruleVC = RuleViewController()
+        ruleVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+        present(ruleVC, animated: false, completion: nil)
+    }
+    
+    @objc private func rankingPressed(_ sender: UIButton) {
+        // モードセレクト画面に遷移
+        let rankingVC = RankingViewController()
+        rankingVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+        present(rankingVC, animated: false, completion: nil)
     }
 
 }

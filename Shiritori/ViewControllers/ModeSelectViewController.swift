@@ -39,7 +39,8 @@ class ModeSelectViewController: UIViewController {
     }
     
     @objc private func backPressed(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        addTransition(duration: 0.2, type: .push, subType: .fromLeft)
+        dismiss(animated: false, completion: nil)
     }
 
 }
