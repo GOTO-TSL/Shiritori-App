@@ -8,22 +8,47 @@
 import UIKit
 
 class ResultViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    var resultView: ResultView!
+    var homeButton: UIButton!
+    var wordButton: UIButton!
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        configureUI()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configureUI() {
+        resultView = ResultView()
+        homeButton = resultView.buttons.homeButton
+        wordButton = resultView.buttons.wordButton
+        
+        // 配置＆制約
+        view.addSubview(resultView)
+        resultView.addConstraintsToFillView(view)
+        
+        // 各ボタンにアクションを追加
+        homeButton.addTarget(self, action: #selector(homePressed(_:)), for: .touchUpInside)
+        wordButton.addTarget(self, action: #selector(wordPressed(_:)), for: .touchUpInside)
     }
-    */
-
+    
+    @objc private func homePressed(_ sender: UIButton) {
+        // ホーム画面に遷移
+        let homeVC = HomeViewController()
+        homeVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+        present(homeVC, animated: false, completion: nil)
+    }
+    
+    @objc private func wordPressed(_ sender: UIButton) {
+        // 使用した単語一覧画面に遷移
+        let usedWordVC = UsedWordViewController()
+        usedWordVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
+        present(usedWordVC, animated: false, completion: nil)
+    }
 }

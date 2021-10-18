@@ -8,22 +8,44 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    var gameView: GameView!
+    var backButton: UIButton!
+    var attackButton: UIButton!
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureUI()
 
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func configureUI() {
+        gameView = GameView()
+        backButton = gameView.backButton
+        attackButton = gameView.userInputView.attackButton
+        
+        // 配置＆制約の追加
+        view.addSubview(gameView)
+        gameView.addConstraintsToFillView(view)
+        
+        // ボタンにアクションを追加
+        backButton.addTarget(self, action: #selector(backPressed(_ :)), for: .touchUpInside)
+        attackButton.addTarget(self, action: #selector(attackPressed(_:)), for: .touchUpInside)
     }
-    */
-
+    
+    @objc private func backPressed(_ sender: UIButton) {
+        addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
+        dismiss(animated: false, completion: nil)
+    }
+    
+    @objc private func attackPressed(_ sender: UIButton) {
+        // 現状仮でここからリザルト画面へ遷移している
+        let resultVC = ResultViewController()
+        resultVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.5, type: .fade, subType: .fromRight)
+        present(resultVC, animated: false, completion: nil)
+    }
 }

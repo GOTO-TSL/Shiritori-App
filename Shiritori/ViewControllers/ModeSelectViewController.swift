@@ -8,6 +8,7 @@
 import UIKit
 
 class ModeSelectViewController: UIViewController {
+    
     // MARK: - Properties
     var modeSelectView: ModeSelectView!
     var backButton: UIButton!
@@ -36,11 +37,21 @@ class ModeSelectViewController: UIViewController {
         
         // 各ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+        easyButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+        normalButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+        hardButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
     }
     
     @objc private func backPressed(_ sender: UIButton) {
-        addTransition(duration: 0.2, type: .push, subType: .fromLeft)
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
         dismiss(animated: false, completion: nil)
+    }
+    
+    @objc private func modeSelected(_ sender: UIButton) {
+        let gameVC = GameViewController()
+        gameVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 1.0, type: .fade, subType: .fromRight)
+        present(gameVC, animated: false, completion: nil)
     }
 
 }

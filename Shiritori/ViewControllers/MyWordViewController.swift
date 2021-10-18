@@ -48,6 +48,7 @@ class MyWordViewController: UIViewController {
         backButton.addTarget(self, action: #selector(backPressed(_ :)), for: .touchUpInside)
         // delegateの設定
         tableView.dataSource = self
+        tableView.delegate = self
     }
     
     @objc private func backPressed(_ sender: UIButton) {
@@ -55,6 +56,7 @@ class MyWordViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource Methods
 extension MyWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -66,5 +68,14 @@ extension MyWordViewController: UITableViewDataSource {
         safeCell.wordLabel.text = "word"
         return safeCell
     }
-    
+}
+
+// MARK: - UITableViewDelegate Methods
+extension MyWordViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = WordDetailViewController()
+        detailVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .push, subType: .fromRight)
+        present(detailVC, animated: false, completion: nil)
+    }
 }

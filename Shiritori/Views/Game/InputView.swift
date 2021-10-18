@@ -19,7 +19,7 @@ class InputView: UIView {
         return textField
     }()
     
-    let answerButton: UIButton = {
+    let attackButton: UIButton = {
         let button = UIButton()
         button.setTitle(Const.ButtonText.atk, for: .normal)
         button.backgroundColor = .red
@@ -30,7 +30,7 @@ class InputView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [answerTextField, answerButton])
+        let stack = UIStackView(arrangedSubviews: [answerTextField, attackButton])
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fill
@@ -40,7 +40,7 @@ class InputView: UIView {
         
         stack.centerX(inView: self)
         stack.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 30, paddingRight: 30)
-        answerButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 1/8).isActive = true
+        attackButton.widthAnchor.constraint(equalTo: stack.widthAnchor, multiplier: 1/8).isActive = true
     }
     
     required init?(coder: NSCoder) {
