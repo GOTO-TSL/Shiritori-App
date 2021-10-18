@@ -10,8 +10,10 @@ import UIKit
 class UsedWordViewController: UIViewController {
     
     // MARK: - Properties
-    var usedWordView: MyWordView!
+    var usedWordView: UsedWordView!
+    var tableView: UITableView!
     
+    // ステータスバーの色を白に設定
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -26,21 +28,26 @@ class UsedWordViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+        // headerに枠線を追加
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)
     }
     
     private func configureUI() {
-        usedWordView = MyWordView()
-        usedWordView.tableView.dataSource = self
+        usedWordView = UsedWordView()
+        tableView = usedWordView.tableView
         
+        // 配置＆制約の追加
         view.addSubview(usedWordView)
         usedWordView.addConstraintsToFillView(view)
+        
+        // delegateの設定
+        tableView.dataSource = self
     }
 }
 
+// MARK: - UITableViewDataSource Methods
 extension UsedWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
