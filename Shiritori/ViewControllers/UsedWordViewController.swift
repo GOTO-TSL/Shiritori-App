@@ -9,12 +9,14 @@ import UIKit
 
 class UsedWordViewController: UIViewController {
     
+    // MARK: - Properties
     var usedWordView: MyWordView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

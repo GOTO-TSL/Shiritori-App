@@ -13,20 +13,25 @@ class RankingViewController: UIViewController {
     var rankingView: RankingView!
     var backButton: UIButton!
     
+    // ステータスバーの色を白に設定
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
+    }
+    
     // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureUI()
+
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // headerに枠線を追加
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .right)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureUI()
-
     }
     
     private func configureUI() {
