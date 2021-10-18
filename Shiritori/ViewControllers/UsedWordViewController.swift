@@ -11,6 +11,7 @@ class UsedWordViewController: UIViewController {
     
     // MARK: - Properties
     var usedWordView: UsedWordView!
+    var backButton: UIButton!
     var tableView: UITableView!
     
     // ステータスバーの色を白に設定
@@ -36,6 +37,7 @@ class UsedWordViewController: UIViewController {
     
     private func configureUI() {
         usedWordView = UsedWordView()
+        backButton = usedWordView.headerView.backButton
         tableView = usedWordView.tableView
         
         // 配置＆制約の追加
@@ -44,6 +46,16 @@ class UsedWordViewController: UIViewController {
         
         // delegateの設定
         tableView.dataSource = self
+        
+        // ボタンにアクションを追加
+        backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+    }
+    
+    @objc private func backPressed(_ sender: UIButton) {
+        let resultVC = ResultViewController()
+        resultVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.2, type: .push, subType: .fromLeft)
+        dismiss(animated: false, completion: nil)
     }
 }
 
