@@ -11,6 +11,12 @@ struct Const {
     static let font = "DotGothic16-Regular"
     static let placeholder = "入力してね"
     
+    enum DBPath {
+        static let fileName = "ejdict.sqlite3"
+        static let ejdict = "ejdict"
+        static let sqlite3 = "sqlite3"
+    }
+    
     enum CellID {
         static let used = "UsedWordCell"
         static let mine = "MyWordCell"

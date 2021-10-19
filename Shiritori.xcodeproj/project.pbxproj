@@ -14,6 +14,7 @@
 		021C3CD426999470001BAADF /* NORMAL1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD226999470001BAADF /* NORMAL1.mp3 */; };
 		021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD5269994DC001BAADF /* HARD0.mp3 */; };
 		021C3CD8269994DC001BAADF /* HARD1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD6269994DC001BAADF /* HARD1.mp3 */; };
+		0227AAD5271E5A7A000C66FA /* DictDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD4271E5A7A000C66FA /* DictDataModel.swift */; };
 		022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F3271A8B3400B064FF /* UsedWordView.swift */; };
 		022867F8271A8BE500B064FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F7271A8BE500B064FF /* HeaderView.swift */; };
 		022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F9271A8C8D00B064FF /* WordTableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		021C3CD226999470001BAADF /* NORMAL1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL1.mp3; sourceTree = "<group>"; };
 		021C3CD5269994DC001BAADF /* HARD0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD0.mp3; sourceTree = "<group>"; };
 		021C3CD6269994DC001BAADF /* HARD1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD1.mp3; sourceTree = "<group>"; };
+		0227AAD4271E5A7A000C66FA /* DictDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictDataModel.swift; sourceTree = "<group>"; };
 		022867F3271A8B3400B064FF /* UsedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordView.swift; sourceTree = "<group>"; };
 		022867F7271A8BE500B064FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		022867F9271A8C8D00B064FF /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,6 +193,14 @@
 				0276936A26A7062E0041252D /* MyWord.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		0227AAD3271E5A57000C66FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0227AAD4271E5A7A000C66FA /* DictDataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		022867F2271A8AE700B064FF /* UsedWord */ = {
@@ -313,7 +323,8 @@
 				025AE9F82680F30E0039DF56 /* fonts */,
 				025EF86C26A76F8F00C6F9C7 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
-				0283558E263F935F008B6845 /* Models */,
+				0283558E263F935F008B6845 /* PreModels */,
+				0227AAD3271E5A57000C66FA /* Models */,
 				02835590263F9380008B6845 /* Views */,
 				02323FFD271BF73100333C7C /* ViewControllers */,
 				02835591263F938C008B6845 /* Controllers */,
@@ -327,7 +338,7 @@
 			path = Shiritori;
 			sourceTree = "<group>";
 		};
-		0283558E263F935F008B6845 /* Models */ = {
+		0283558E263F935F008B6845 /* PreModels */ = {
 			isa = PBXGroup;
 			children = (
 				0292F2AE26C015C600802867 /* GameObjects */,
@@ -337,7 +348,7 @@
 				02818B2A26876E30000A40C2 /* SoundPlayer.swift */,
 				02CA3F1E26AF0F99007E4825 /* DataManager.swift */,
 			);
-			path = Models;
+			path = PreModels;
 			sourceTree = "<group>";
 		};
 		02835590263F9380008B6845 /* Views */ = {
@@ -680,6 +691,7 @@
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
 				02F82A1F2719BEB1005F3F28 /* ResultView.swift in Sources */,
 				02323FFF271BF78D00333C7C /* ModeSelectViewController.swift in Sources */,
+				0227AAD5271E5A7A000C66FA /* DictDataModel.swift in Sources */,
 				0276936926A704B30041252D /* Word.swift in Sources */,
 				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 				02324003271BF7C200333C7C /* ResultViewController.swift in Sources */,

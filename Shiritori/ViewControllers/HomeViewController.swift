@@ -14,12 +14,16 @@ class HomeViewController: UIViewController {
     var wordButton: UIButton!
     var helpButton: UIButton!
     var rankingButton: UIButton!
+    
+    var database: DictDataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         
+        database = DictDataModel()
+        database.openDB()
     }
     
     private func configureUI() {
