@@ -62,6 +62,11 @@ struct Const {
                              """
     }
     
+    enum GameText {
+        static let start = "START!"
+        static let end = "TIME IS UP!"
+    }
+    
     enum ButtonText {
         static let play = "PLAY"
         static let word = "WORDS"
