@@ -11,7 +11,7 @@ class EnemyView: UIView {
     // MARK: - Properties
     let enemyImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "slime2-1")
+        imageView.image = UIImage(named: "slime1-1")
         return imageView
     }()
     
@@ -29,12 +29,22 @@ class EnemyView: UIView {
         label.font = UIFont(name: Const.font, size: 20)
         return label
     }()
+    
+    let timeLimit: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont(name: Const.font, size: 20)
+        label.text = "TIME:60"
+        return label
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         let hpView = HPView()
         
         addSubview(hpView)
+        addSubview(timeLimit)
         addSubview(enemyImageView)
         addSubview(speechBalloon)
         addSubview(wordLabel)
@@ -46,6 +56,7 @@ class EnemyView: UIView {
         speechBalloon.heightAnchor.constraint(equalTo: enemyImageView.heightAnchor).isActive = true
         wordLabel.center(inView: speechBalloon)
         hpView.anchor(top: topAnchor, left: speechBalloon.rightAnchor, bottom: enemyImageView.topAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: -20, paddingRight: 10)
+        timeLimit.anchor(left: leftAnchor, bottom: speechBalloon.topAnchor, paddingLeft: 30, paddingBottom: 5)
         
     }
     

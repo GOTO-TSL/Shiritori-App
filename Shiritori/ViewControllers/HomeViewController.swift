@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
         configureUI()
         
         database = DictDataModel()
-        database.openDB()
     }
     
     private func configureUI() {

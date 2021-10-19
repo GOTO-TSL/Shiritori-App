@@ -10,15 +10,21 @@ import UIKit
 class GameViewController: UIViewController {
     
     // MARK: - Properties
-    var gameView: GameView!
-    var backButton: UIButton!
-    var attackButton: UIButton!
+    private var gameView: GameView!
+    private var backButton: UIButton!
+    private var attackButton: UIButton!
+    private var wordLabel: UILabel!
+    private var timeLimit: UILabel!
+    
+    var presenter: GameViewPresenter!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
+        presenter = GameViewPresenter(view: self)
+        presenter.gameViewDidLoad()
 
     }
     
@@ -26,6 +32,8 @@ class GameViewController: UIViewController {
         gameView = GameView()
         backButton = gameView.backButton
         attackButton = gameView.userInputView.attackButton
+        wordLabel = gameView.enemyView.wordLabel
+        timeLimit = gameView.enemyView.timeLimit
         
         // 配置＆制約の追加
         view.addSubview(gameView)
@@ -47,5 +55,41 @@ class GameViewController: UIViewController {
         resultVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.5, type: .fade, subType: .fromRight)
         present(resultVC, animated: false, completion: nil)
+    }
+}
+// MARK: - GameViewProtocol Methods
+extension GameViewController: GameViewProtocol {
+    
+    func showCount(_ gameViewPresenter: GameViewPresenter, text: String) {
+        DispatchQueue.main.async {
+            self.wordLabel.text = text
+        }
+    }
+    
+    func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String) {
+        DispatchQueue.main.async {
+            self.timeLimit.text = "TIME:\(text)"
+        }
+    }
+    
+    func showStart(_ gameViewPresenter: GameViewPresenter, text: String) {
+        DispatchQueue.main.async {
+            self.wordLabel.text = text
+        }
+        presenter.willGameStart()
+        // TODO: 英単語を取ってくる処理
+    }
+    
+    func goToNextView(_ gameViewPresenter: GameViewPresenter, text: String) {
+        DispatchQueue.main.async {
+            self.wordLabel.text = text
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            let resultVC = ResultViewController()
+            resultVC.modalPresentationStyle = .fullScreen
+            self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
+            self.present(resultVC, animated: false, completion: nil)
+        }
     }
 }
