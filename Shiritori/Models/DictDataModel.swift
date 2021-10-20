@@ -11,6 +11,15 @@ import Foundation
 struct DictDataModel {
     
     var database: Connection?
+    var items: Table
+    var word: Expression<String>
+    var mean: Expression<String>
+    
+    init() {
+        self.items = Table("items")
+        self.word = Expression<String>("word")
+        self.mean = Expression<String>("mean")
+    }
     
     mutating func openDB() {
         
@@ -26,22 +35,28 @@ struct DictDataModel {
     }
     // initialから始まる単語をDBから取得する
     func featchWord(initial: Character) {
-        let word = Expression<String>("word")
+        let table = getSafeWord(initial: initial)
         
         do {
-            let query = try database!.prepare(getSafeWord(initial: initial)
-                                              .limit(1, offset: Int.random(in: 0...count(initial: initial))))
+            let query = try database!.prepare(table
+                                              .limit(1, offset: Int.random(in: 0...count(table))))
             for item in query {
-                print("word: \(item[word])")
+                print("word: \(trim(item[word]))")
             }
         } catch {
             print(error)
         }
     }
+    // 辞書にあるかどうかをチェックする
+    func checkWord(inputs: String) {
+        let queryTable = items.filter(word.like(inputs))
+        let count = count(queryTable)
+        print(count)
+    }
     // 取得した単語の文字数をカウント　ランダムの範囲を指定する際に使用
-    private func count(initial: Character) -> Int {
+    private func count(_ table: Table) -> Int {
         do {
-            let count = try database!.scalar(getSafeWord(initial: initial).count)
+            let count = try database!.scalar(table.count)
             return count
         } catch {
                 print(error)
@@ -50,8 +65,6 @@ struct DictDataModel {
     }
     // しりとりに使用できる単語を取得するクエリ
     private func getSafeWord(initial: Character) -> Table {
-        let items = Table("items")
-        let word = Expression<String>("word")
         // 特殊文字を除外してinitialから始まる単語を取得するクエリ
         let queryTable = items.filter(word.like("\(initial)%") &&
                                       !word.like("%.") &&
