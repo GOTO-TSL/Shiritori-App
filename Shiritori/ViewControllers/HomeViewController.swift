@@ -15,14 +15,15 @@ class HomeViewController: UIViewController {
     var helpButton: UIButton!
     var rankingButton: UIButton!
     
-    var database: DictDataModel!
+    var dictDataModel: DictDataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         
-        database = DictDataModel()
+        dictDataModel = DictDataModel()
+        dictDataModel.openDB()
     }
     
     private func configureUI() {
@@ -45,6 +46,7 @@ class HomeViewController: UIViewController {
     
     @objc private func playPressed(_ sender: UIButton) {
         // モードセレクト画面に遷移
+        dictDataModel.featchWord()
         let modeVC = ModeSelectViewController()
         modeVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)

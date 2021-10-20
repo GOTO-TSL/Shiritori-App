@@ -17,6 +17,7 @@
 		0227AAD5271E5A7A000C66FA /* DictDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD4271E5A7A000C66FA /* DictDataModel.swift */; };
 		0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD6271EF28D000C66FA /* TimeManager.swift */; };
 		0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD9271EF822000C66FA /* GameViewPresenter.swift */; };
+		0227AADC271FEE33000C66FA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADB271FEE33000C66FA /* String.swift */; };
 		022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F3271A8B3400B064FF /* UsedWordView.swift */; };
 		022867F8271A8BE500B064FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F7271A8BE500B064FF /* HeaderView.swift */; };
 		022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F9271A8C8D00B064FF /* WordTableViewCell.swift */; };
@@ -101,6 +102,7 @@
 		0227AAD4271E5A7A000C66FA /* DictDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictDataModel.swift; sourceTree = "<group>"; };
 		0227AAD6271EF28D000C66FA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		0227AAD9271EF822000C66FA /* GameViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewPresenter.swift; sourceTree = "<group>"; };
+		0227AADB271FEE33000C66FA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		022867F3271A8B3400B064FF /* UsedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordView.swift; sourceTree = "<group>"; };
 		022867F7271A8BE500B064FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		022867F9271A8C8D00B064FF /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				02F222442712D03A00A71175 /* UIView.swift */,
 				02500B9A27147E6F00F3B7E8 /* UIStackView.swift */,
 				0232400E271C1B7000333C7C /* UIViewController.swift */,
+				0227AADB271FEE33000C66FA /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -678,6 +681,7 @@
 				0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */,
+				0227AADC271FEE33000C66FA /* String.swift in Sources */,
 				02323FF8271BC5EE00333C7C /* BodyScrollView.swift in Sources */,
 				0228680A271B291600B064FF /* MyWordTableViewCell.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */,
