@@ -31,6 +31,5 @@ final class GameLogic {
         } else {
             self.delegate?.shiritoriFailed(self, message: Const.GameText.blank)
         }
-        
     }
 }

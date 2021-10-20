@@ -16,15 +16,18 @@ class GameViewController: UIViewController {
     private var wordLabel: UILabel!
     private var timeLimit: UILabel!
     private var textField: UITextField!
+    private var hpBar: UIProgressView!
     
     var presenter: GameViewPresenter!
+    var mode: Mode?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        presenter = GameViewPresenter(view: self)
+        guard let safeMode = mode else { return }
+        presenter = GameViewPresenter(view: self, mode: safeMode)
         presenter.gameViewDidLoad()
 
     }
@@ -41,9 +44,12 @@ class GameViewController: UIViewController {
         wordLabel = gameView.enemyView.wordLabel
         timeLimit = gameView.enemyView.timeLimit
         textField = gameView.userInputView.textField
+        hpBar = gameView.enemyView.hpView.hpBar
         // 自動で大文字になる設定, 自動で変換する設定を解除
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
+        // progressBarの端っこを四角に
+        hpBar.progressViewStyle = .bar
         
         // 配置＆制約の追加
         view.addSubview(gameView)
@@ -71,7 +77,24 @@ class GameViewController: UIViewController {
 }
 // MARK: - GameViewProtocol Methods
 extension GameViewController: GameViewProtocol {
-    
+    // HPバーの更新
+    func updateHPBar(_ gameViewPresenter: GameViewPresenter, progress: Float) {
+        // 残りHPに応じて色を変更
+        DispatchQueue.main.async {
+            self.hpBar.progress = progress
+            switch self.hpBar.progress {
+            case 0.6 ... 1.0:
+                self.hpBar.progressTintColor = .green
+            case 0.26 ..< 0.6:
+                self.hpBar.progressTintColor = .systemYellow
+            case 0.0 ..< 0.26:
+                self.hpBar.progressTintColor = .systemRed
+            default:
+                self.hpBar.progressTintColor = .green
+            }
+        }
+    }
+
     func showText(_ gameViewPresenter: GameViewPresenter, text: String, state: TextState) {
         DispatchQueue.main.async {
             self.wordLabel.text = text

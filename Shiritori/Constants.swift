@@ -16,6 +16,12 @@ struct Const {
         static let currentWord = "currentWord"
     }
     
+    enum HP {
+        static let easy = 300
+        static let normal = 500
+        static let hard = 700
+    }
+    
     enum DBPath {
         static let fileName = "ejdict.sqlite3"
         static let ejdict = "ejdict"
@@ -74,6 +80,7 @@ struct Const {
         static let shiritori = "しりとりしてね"
         static let blank = "2文字以上入力してね"
         static let used = "使った単語だよ"
+        static let dead = "やられた〜"
     }
     
     enum ButtonText {

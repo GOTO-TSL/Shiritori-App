@@ -49,4 +49,8 @@ final class TimeManager {
         counter += 1
     }
     
+    func stopTimer() {
+        timer.invalidate()
+    }
+    
 }

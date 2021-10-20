@@ -10,7 +10,7 @@ import Foundation
 
 protocol DictDataManagerDelegate: AnyObject {
     func didFeatchWord(_ dictDataManager: DictDataManager, word: String)
-    func didCheckWord(_ dictDataManager: DictDataManager, target: String, count: Int)
+    func didCheckWord(_ dictDataManager: DictDataManager, word: String, count: Int)
 }
 
 final class DictDataManager {
@@ -58,7 +58,7 @@ final class DictDataManager {
     func checkWord(inputs: String) {
         let queryTable = items.filter(word.like(inputs))
         let count = count(queryTable)
-        self.delegate?.didCheckWord(self, target: inputs, count: count)
+        self.delegate?.didCheckWord(self, word: inputs, count: count)
 
     }
     // 取得した単語の文字数をカウント　ランダムの範囲を指定する際に使用

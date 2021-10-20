@@ -19,6 +19,7 @@
 		0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD9271EF822000C66FA /* GameViewPresenter.swift */; };
 		0227AADC271FEE33000C66FA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADB271FEE33000C66FA /* String.swift */; };
 		0227AADE27201342000C66FA /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADD27201342000C66FA /* GameLogic.swift */; };
+		0227AAE0272055D9000C66FA /* EnemyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADF272055D9000C66FA /* EnemyModel.swift */; };
 		022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F3271A8B3400B064FF /* UsedWordView.swift */; };
 		022867F8271A8BE500B064FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F7271A8BE500B064FF /* HeaderView.swift */; };
 		022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F9271A8C8D00B064FF /* WordTableViewCell.swift */; };
@@ -105,6 +106,7 @@
 		0227AAD9271EF822000C66FA /* GameViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewPresenter.swift; sourceTree = "<group>"; };
 		0227AADB271FEE33000C66FA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		0227AADD27201342000C66FA /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		0227AADF272055D9000C66FA /* EnemyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyModel.swift; sourceTree = "<group>"; };
 		022867F3271A8B3400B064FF /* UsedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordView.swift; sourceTree = "<group>"; };
 		022867F7271A8BE500B064FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		022867F9271A8C8D00B064FF /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				0227AAD4271E5A7A000C66FA /* DictDataManager.swift */,
 				0227AAD6271EF28D000C66FA /* TimeManager.swift */,
 				0227AADD27201342000C66FA /* GameLogic.swift */,
+				0227AADF272055D9000C66FA /* EnemyModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				02BDA6FD266358B900628AA3 /* Constant.swift in Sources */,
 				02324007271BF84000333C7C /* MyWordViewController.swift in Sources */,
 				02323FF4271BC29B00333C7C /* WordDetailView.swift in Sources */,
+				0227AAE0272055D9000C66FA /* EnemyModel.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				022867F8271A8BE500B064FF /* HeaderView.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
