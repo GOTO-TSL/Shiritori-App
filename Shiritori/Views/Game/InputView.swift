@@ -9,7 +9,7 @@ import UIKit
 
 class InputView: UIView {
     // MARK: - Properties
-    let answerTextField: UITextField = {
+    let textField: UITextField = {
         let textField = UITextField()
         textField.placeholder = Const.placeholder
         textField.backgroundColor = .white
@@ -30,7 +30,7 @@ class InputView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        let stack = UIStackView(arrangedSubviews: [answerTextField, attackButton])
+        let stack = UIStackView(arrangedSubviews: [textField, attackButton])
         stack.axis = .horizontal
         stack.alignment = .fill
         stack.distribution = .fill

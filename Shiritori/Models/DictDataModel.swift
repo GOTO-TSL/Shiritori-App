@@ -8,8 +8,13 @@
 import SQLite
 import Foundation
 
-struct DictDataModel {
+protocol DictDataModelDelegate: AnyObject {
+    func didFeatchWord(_ dictDataModel: DictDataModel, word: String)
+}
+
+final class DictDataModel {
     
+    weak var delegate: DictDataModelDelegate?
     var database: Connection?
     var items: Table
     var word: Expression<String>
@@ -21,7 +26,7 @@ struct DictDataModel {
         self.mean = Expression<String>("mean")
     }
     
-    mutating func openDB() {
+    func openDB() {
         
         copyDataBaseFile()
         
@@ -42,6 +47,7 @@ struct DictDataModel {
                                               .limit(1, offset: Int.random(in: 0...count(table))))
             for item in query {
                 print("word: \(trim(item[word]))")
+                self.delegate?.didFeatchWord(self, word: trim(item[word]))
             }
         } catch {
             print(error)
