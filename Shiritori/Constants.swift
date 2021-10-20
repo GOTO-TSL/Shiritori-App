@@ -9,6 +9,7 @@ import Foundation
 
 struct Const {
     static let font = "DotGothic16-Regular"
+    static let alphabet = "abcdefghijklmnopqrstuvwxyz"
     static let placeholder = "入力してね"
     
     enum DBPath {

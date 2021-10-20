@@ -15,14 +15,15 @@ class HomeViewController: UIViewController {
     var helpButton: UIButton!
     var rankingButton: UIButton!
     
-    var database: DictDataModel!
+    var dictDataModel: DictDataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         
-        database = DictDataModel()
+        dictDataModel = DictDataModel()
+        dictDataModel.openDB()
     }
     
     private func configureUI() {
@@ -45,6 +46,7 @@ class HomeViewController: UIViewController {
     
     @objc private func playPressed(_ sender: UIButton) {
         // モードセレクト画面に遷移
+        dictDataModel.featchWord(initial: Const.alphabet.randomElement()!)
         let modeVC = ModeSelectViewController()
         modeVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
@@ -53,6 +55,7 @@ class HomeViewController: UIViewController {
     
     @objc private func wordPressed(_ sender: UIButton) {
         // マイ単語帳画面に遷移
+        dictDataModel.checkWord(inputs: "apple")
         let mywordVC = MyWordViewController()
         mywordVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
