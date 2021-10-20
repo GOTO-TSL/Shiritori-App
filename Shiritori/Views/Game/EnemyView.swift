@@ -38,10 +38,14 @@ class EnemyView: UIView {
         return label
     }()
     
+    let hpView: HPView = {
+        let hpView = HPView()
+        return hpView
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let hpView = HPView()
         
         addSubview(hpView)
         addSubview(timeLimit)

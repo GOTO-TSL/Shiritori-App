@@ -48,10 +48,26 @@ class ModeSelectViewController: UIViewController {
     }
     
     @objc private func modeSelected(_ sender: UIButton) {
+        // ゲーム画面へ遷移
         let gameVC = GameViewController()
+        // 押したボタンに対応するモードオブジェクトを渡す
+        guard let btnTitle = sender.currentTitle else { return }
+        gameVC.mode = convertToMode(btnTitle)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)
     }
-
+    // ボタンタイトルをモードオブジェクトに変換
+    private func convertToMode(_ modeString: String) -> Mode {
+        switch modeString {
+        case Const.ButtonText.easy:
+            return .easy
+        case Const.ButtonText.normal:
+            return .normal
+        case Const.ButtonText.hard:
+            return .hard
+        default:
+            return .easy
+        }
+    }
 }

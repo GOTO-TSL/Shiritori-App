@@ -8,13 +8,14 @@
 import SQLite
 import Foundation
 
-protocol DictDataModelDelegate: AnyObject {
-    func didFeatchWord(_ dictDataModel: DictDataModel, word: String)
+protocol DictDataManagerDelegate: AnyObject {
+    func didFeatchWord(_ dictDataManager: DictDataManager, word: String)
+    func didCheckWord(_ dictDataManager: DictDataManager, word: String, count: Int)
 }
 
-final class DictDataModel {
+final class DictDataManager {
     
-    weak var delegate: DictDataModelDelegate?
+    weak var delegate: DictDataManagerDelegate?
     var database: Connection?
     var items: Table
     var word: Expression<String>
@@ -57,7 +58,8 @@ final class DictDataModel {
     func checkWord(inputs: String) {
         let queryTable = items.filter(word.like(inputs))
         let count = count(queryTable)
-        print(count)
+        self.delegate?.didCheckWord(self, word: inputs, count: count)
+
     }
     // 取得した単語の文字数をカウント　ランダムの範囲を指定する際に使用
     private func count(_ table: Table) -> Int {
