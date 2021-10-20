@@ -41,6 +41,9 @@ class GameViewController: UIViewController {
         wordLabel = gameView.enemyView.wordLabel
         timeLimit = gameView.enemyView.timeLimit
         textField = gameView.userInputView.textField
+        // 自動で大文字になる設定, 自動で変換する設定を解除
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         
         // 配置＆制約の追加
         view.addSubview(gameView)
@@ -60,19 +63,40 @@ class GameViewController: UIViewController {
     }
     
     @objc private func attackPressed(_ sender: UIButton) {
-        // 現状仮でここからリザルト画面へ遷移している
-        let resultVC = ResultViewController()
-        resultVC.modalPresentationStyle = .fullScreen
-        addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-        present(resultVC, animated: false, completion: nil)
+        // 単語が入力されたことをpresenterに通知
+        guard let word = textField.text else { fatalError() }
+        presenter.didInputWord(word: word)
+        textField.text = ""
     }
 }
 // MARK: - GameViewProtocol Methods
 extension GameViewController: GameViewProtocol {
     
-    func showText(_ gameViewPresenter: GameViewPresenter, text: String) {
+    func showText(_ gameViewPresenter: GameViewPresenter, text: String, state: TextState) {
         DispatchQueue.main.async {
             self.wordLabel.text = text
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            switch state {
+            case .error:
+                // エラー分表示の1秒後に現在の単語を再度表示
+                guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { return }
+                self.wordLabel.text = currentWord
+                
+            case .start:
+                // ゲームの開始をpresenterに通知
+                self.presenter.willGameStart()
+                
+            case .end:
+                // リザルト画面へ遷移
+                let resultVC = ResultViewController()
+                resultVC.modalPresentationStyle = .fullScreen
+                self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
+                self.present(resultVC, animated: false, completion: nil)
+                
+            default: break
+            }
         }
     }
     
@@ -81,33 +105,10 @@ extension GameViewController: GameViewProtocol {
             self.timeLimit.text = "TIME:\(text)"
         }
     }
-    
-    func showStart(_ gameViewPresenter: GameViewPresenter, text: String) {
-        DispatchQueue.main.async {
-            self.wordLabel.text = text
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.presenter.willGameStart()
-        }
-    }
-    
-    func goToNextView(_ gameViewPresenter: GameViewPresenter, text: String) {
-        DispatchQueue.main.async {
-            self.wordLabel.text = text
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let resultVC = ResultViewController()
-            resultVC.modalPresentationStyle = .fullScreen
-            self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-            self.present(resultVC, animated: false, completion: nil)
-        }
-    }
 }
 // MARK: - UITextFieldDelegate Methods
 extension GameViewController: UITextFieldDelegate {
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let word = textField.text else { fatalError() }
         presenter.didInputWord(word: word)
