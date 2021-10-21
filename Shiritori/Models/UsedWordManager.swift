@@ -9,16 +9,15 @@ import Foundation
 import SQLite
 
 struct UsedWord {
-    let wordID: Int = 0
-    let word: String
-    let mean: String
-    let isLike: Bool = false
+    var wordID: Int = 0
+    var word: String = ""
+    var mean: String = ""
+    var isLike: Bool = false
 }
 
 protocol UsedWordManagerDelegate: AnyObject {
-    func didCreateDB(_ usedWordManager: UsedWordManager)
-    func didInsertWord(_ usedWordManager: UsedWordManager)
     func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int)
+    func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord])
 }
 
 final class UsedWordManager {
@@ -53,7 +52,18 @@ final class UsedWordManager {
                 table.column(mean)
                 table.column(isLike)
             })
-            self.delegate?.didCreateDB(self)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func openDB() {
+        let path = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory, .userDomainMask, true
+        ).first!
+        
+        do {
+            database = try Connection("\(path)/usedWord.sqlite3")
         } catch {
             print(error)
         }
@@ -62,7 +72,6 @@ final class UsedWordManager {
     func insert(_ usedWord: UsedWord) {
         do {
             try database!.run(usedWords.insert(or: .replace, word <- usedWord.word, mean <- usedWord.mean, isLike <- usedWord.isLike))
-            self.delegate?.didInsertWord(self)
         } catch {
             print(error)
         }
@@ -74,6 +83,22 @@ final class UsedWordManager {
         do {
             let count = try database!.scalar(queryTable.count)
             self.delegate?.didCheckIsUsed(self, word: inputs, count: count)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func getAllWords() {
+        var words = [UsedWord]()
+        do {
+            let query = try database!.prepare(usedWords)
+            for item in query {
+                var usedWord = UsedWord()
+                usedWord.word = item[word]
+                usedWord.mean = item[mean]
+                words.append(usedWord)
+            }
+            self.delegate?.didGetUsedWords(self, words: words)
         } catch {
             print(error)
         }

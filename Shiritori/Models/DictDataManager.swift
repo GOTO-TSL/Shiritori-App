@@ -87,7 +87,8 @@ final class DictDataManager {
                                       !word.like("%\'") &&
                                       !word.like("%)") &&
                                       !word.like("%]") &&
-                                      !word.like("%/"))
+                                      !word.like("%/") &&
+                                      !word.like("%-%"))
         return queryTable
     }
     // 検索結果の単語数をカウント -> ランダムの範囲指定の際に使用
