@@ -52,6 +52,7 @@ class UsedWordViewController: UIViewController {
         
         // delegateの設定
         tableView.dataSource = self
+        tableView.delegate = self
         
         // ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
@@ -76,6 +77,17 @@ extension UsedWordViewController: UITableViewDataSource {
         guard let safeCell = cell else { fatalError() }
         safeCell.wordLabel.text = usedWords[indexPath.row].word
         return safeCell
+    }
+}
+// MARK: - UITableViewDelegate Methods
+extension UsedWordViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detailVC = WordDetailViewController()
+        detailVC.word = usedWords[indexPath.row].word
+        detailVC.mean = usedWords[indexPath.row].mean
+        detailVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .push, subType: .fromRight)
+        present(detailVC, animated: false, completion: nil)
     }
 }
 // MARK: - UsedWordViewProtocol Methods
