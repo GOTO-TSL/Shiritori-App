@@ -39,7 +39,7 @@ final class TimeManager {
     }
     // ゲームの制限時間60秒をカウント
     @objc func countSixty() {
-        if counter <= 60 {
+        if counter <= Const.GameParam.timeLimit {
             self.delegate?.didGameCount(self, count: counter)
         } else {
             timer.invalidate()

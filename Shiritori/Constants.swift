@@ -16,10 +16,11 @@ struct Const {
         static let currentWord = "currentWord"
     }
     
-    enum HP {
+    enum GameParam {
         static let easy = 300
         static let normal = 500
         static let hard = 700
+        static let timeLimit = 60
     }
     
     enum DBPath {

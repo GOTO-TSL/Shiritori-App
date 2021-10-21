@@ -9,10 +9,12 @@ import Foundation
 
 protocol UsedWordViewProtocol {
     func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [UsedWord])
+    func changeCellImage(_ usedWordViewPresenter: UsedWordViewPresenter)
 }
 
 protocol UsedWordViewPresenterProtocol {
     func usedWordViewDidLoad()
+    func didPressedLikeButton(of word: UsedWord)
 }
 
 final class UsedWordViewPresenter {
@@ -30,9 +32,17 @@ final class UsedWordViewPresenter {
     func usedWordViewDidLoad() {
         usedWordManager.getAllWords()
     }
+    
+    func didPressedLikeButton(of word: UsedWord) {
+        usedWordManager.changeLike(for: word)
+    }
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension UsedWordViewPresenter: UsedWordManagerDelegate {
+    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
+        view.changeCellImage(self)
+    }
+    
     func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int) {
         // do nothing
     }

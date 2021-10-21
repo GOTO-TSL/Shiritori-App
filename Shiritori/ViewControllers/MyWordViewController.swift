@@ -65,6 +65,7 @@ extension MyWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.mine, for: indexPath) as? MyWordTableViewCell
         guard let safeCell = cell else { fatalError() }
+        safeCell.selectionStyle = .none
         safeCell.wordLabel.text = "word"
         return safeCell
     }

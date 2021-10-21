@@ -86,9 +86,10 @@ extension GameViewPresenter: TimeManagerDelegate {
     // ゲーム中のカウント時に毎秒呼ばれる
     func didGameCount(_ timeManager: TimeManager, count: Int) {
         switch count {
-        case 0...60:
-            view.showTimeLimit(self, text: "\(60 - count)")
-        case 61:
+        case 0...Const.GameParam.timeLimit:
+            let text = "TIME:\(Const.GameParam.timeLimit - count)"
+            view.showTimeLimit(self, text: text)
+        case Const.GameParam.timeLimit+1:
             view.showText(self, text: Const.GameText.end, state: .end)
         default: break
         }
@@ -163,6 +164,10 @@ extension GameViewPresenter: EnemyModelDelegate {
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension GameViewPresenter: UsedWordManagerDelegate {
+    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
+        // do nothing
+    }
+    
     func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord]) {
         // do nothing
     }

@@ -12,6 +12,7 @@ class UsedWordViewController: UIViewController {
     // MARK: - Properties
     private var usedWordView: UsedWordView!
     private var backButton: UIButton!
+    private var likeButton: UIButton!
     private var tableView: UITableView!
     private var usedWords: [UsedWord]!
     
@@ -64,6 +65,12 @@ class UsedWordViewController: UIViewController {
         addTransition(duration: 0.2, type: .push, subType: .fromLeft)
         dismiss(animated: false, completion: nil)
     }
+    
+    @objc private func likePressed(_ sender: UIButton) {
+        // お気に入りボタンが押されたときの処理
+        let word = usedWords[sender.tag]
+        presenter.didPressedLikeButton(of: word)
+    }
 }
 
 // MARK: - UITableViewDataSource Methods
@@ -73,15 +80,26 @@ extension UsedWordViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // カスタムセルを設定
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.used, for: indexPath) as? WordTableViewCell
         guard let safeCell = cell else { fatalError() }
+        // セル選択時に色が変わらない設定
+        safeCell.selectionStyle = .none
+        // 単語と画像を設定
         safeCell.wordLabel.text = usedWords[indexPath.row].word
+        safeCell.heartButton.imageView?.image = usedWords[indexPath.row].isLike ? UIImage(named: Const.Image.like) : UIImage(named: Const.Image.unlike)
+        // お気に入りボタンの設定
+        likeButton = safeCell.heartButton
+        likeButton.tag = indexPath.row
+        likeButton.addTarget(self, action: #selector(likePressed(_:)), for: .touchUpInside)
+        
         return safeCell
     }
 }
 // MARK: - UITableViewDelegate Methods
 extension UsedWordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 単語詳細画面へ移動
         let detailVC = WordDetailViewController()
         detailVC.word = usedWords[indexPath.row].word
         detailVC.mean = usedWords[indexPath.row].mean
@@ -92,9 +110,16 @@ extension UsedWordViewController: UITableViewDelegate {
 }
 // MARK: - UsedWordViewProtocol Methods
 extension UsedWordViewController: UsedWordViewProtocol {
+    func changeCellImage(_ usedWordViewPresenter: UsedWordViewPresenter) {
+        DispatchQueue.main.async {
+            self.presenter.usedWordViewDidLoad()
+        }
+    }
+    
     func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [UsedWord]) {
         DispatchQueue.main.async {
             self.usedWords = words
+            self.tableView.reloadData()
         }
     }
 }
