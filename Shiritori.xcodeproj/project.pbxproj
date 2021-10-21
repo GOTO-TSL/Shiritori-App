@@ -77,6 +77,7 @@
 		02C1417B27182F2300A2868E /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417A27182F2300A2868E /* Background.swift */; };
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
 		02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */; };
+		02C7C2E227212DAA00FDFE1A /* UsedWordViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */; };
 		02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3F1E26AF0F99007E4825 /* DataManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
@@ -167,6 +168,7 @@
 		02C1417A27182F2300A2868E /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordManager.swift; sourceTree = "<group>"; };
+		02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordViewPresenter.swift; sourceTree = "<group>"; };
 		02CA3F1E26AF0F99007E4825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreMyWordViewController.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				0227AAD9271EF822000C66FA /* GameViewPresenter.swift */,
+				02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -666,6 +669,7 @@
 				0283557B263F9306008B6845 /* AppDelegate.swift in Sources */,
 				022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */,
 				02286807271B280700B064FF /* MyWordView.swift in Sources */,
+				02C7C2E227212DAA00FDFE1A /* UsedWordViewPresenter.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
 				0232400D271C002400333C7C /* ResultButtonView.swift in Sources */,

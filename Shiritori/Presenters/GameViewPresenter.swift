@@ -99,7 +99,9 @@ extension GameViewPresenter: TimeManagerDelegate {
 extension GameViewPresenter: DictDataManagerDelegate {
     func didFeatchMean(_ dictDataManager: DictDataManager, word: String, mean: String) {
         // 単語を保存
-        let usedWord = UsedWord(word: word, mean: mean)
+        var usedWord = UsedWord()
+        usedWord.word = word
+        usedWord.mean = mean
         usedWordManager.insert(usedWord)
     }
     
@@ -118,7 +120,9 @@ extension GameViewPresenter: DictDataManagerDelegate {
         // 現在の敵の単語をUserDefaultに保存
         UserDefaults.standard.set(word, forKey: Const.UDKeys.currentWord)
         // 使用した単語DBに保存
-        let usedWord = UsedWord(word: word, mean: mean)
+        var usedWord = UsedWord()
+        usedWord.word = word
+        usedWord.mean = mean
         usedWordManager.insert(usedWord)
         // 表示を依頼
         var trimedWord = word.lowercased()
@@ -159,6 +163,10 @@ extension GameViewPresenter: EnemyModelDelegate {
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension GameViewPresenter: UsedWordManagerDelegate {
+    func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord]) {
+        // do nothing
+    }
+    
     func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int) {
         // 使用済み単語一覧での検索結果
         // 0件　-> 意味を取得，次の単語を取得，敵にダメージ
@@ -172,13 +180,5 @@ extension GameViewPresenter: UsedWordManagerDelegate {
             view.showText(self, text: Const.GameText.used, state: .error)
             enemyModel.heal()
         }
-    }
-    
-    func didInsertWord(_ usedWordManager: UsedWordManager) {
-        print("saved word!")
-    }
-    
-    func didCreateDB(_ usedWordManager: UsedWordManager) {
-        print("db created!")
     }
 }

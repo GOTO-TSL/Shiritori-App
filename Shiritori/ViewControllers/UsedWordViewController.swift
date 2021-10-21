@@ -10,9 +10,12 @@ import UIKit
 class UsedWordViewController: UIViewController {
     
     // MARK: - Properties
-    var usedWordView: UsedWordView!
-    var backButton: UIButton!
-    var tableView: UITableView!
+    private var usedWordView: UsedWordView!
+    private var backButton: UIButton!
+    private var tableView: UITableView!
+    private var usedWords: [UsedWord]!
+    
+    private var presenter: UsedWordViewPresenter!
     
     // ステータスバーの色を白に設定
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -24,6 +27,9 @@ class UsedWordViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        
+        presenter = UsedWordViewPresenter(view: self)
+        presenter.usedWordViewDidLoad()
         
     }
     
@@ -62,13 +68,21 @@ class UsedWordViewController: UIViewController {
 // MARK: - UITableViewDataSource Methods
 extension UsedWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return usedWords.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.used, for: indexPath) as? WordTableViewCell
         guard let safeCell = cell else { fatalError() }
-        safeCell.wordLabel.text = "word"
+        safeCell.wordLabel.text = usedWords[indexPath.row].word
         return safeCell
+    }
+}
+// MARK: - UsedWordViewProtocol Methods
+extension UsedWordViewController: UsedWordViewProtocol {
+    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [UsedWord]) {
+        DispatchQueue.main.async {
+            self.usedWords = words
+        }
     }
 }
