@@ -16,11 +16,11 @@ class WordTableViewCell: UITableViewCell {
         return label
     }()
     
-    let heartImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Const.Image.unlike)
-        imageView.contentMode = .scaleAspectFit
-        return imageView
+    let heartButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(named: Const.Image.unlike), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        return button
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,15 +29,15 @@ class WordTableViewCell: UITableViewCell {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.white.cgColor
         backgroundColor = .black
-        addSubview(wordLabel)
-        addSubview(heartImage)
+        contentView.addSubview(wordLabel)
+        contentView.addSubview(heartButton)
         
-        wordLabel.centerY(inView: self)
-        wordLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
-        heartImage.centerY(inView: self)
-        heartImage.anchor(width: 50)
-        heartImage.anchor(right: rightAnchor, paddingRight: 10)
-        heartImage.setAspectRatio(ratio: 1)
+        wordLabel.centerY(inView: contentView)
+        wordLabel.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
+        heartButton.centerY(inView: contentView)
+        heartButton.anchor(width: 50)
+        heartButton.anchor(right: contentView.rightAnchor, paddingRight: 10)
+        heartButton.setAspectRatio(ratio: 1)
         
     }
     

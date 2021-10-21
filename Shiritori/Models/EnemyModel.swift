@@ -28,14 +28,14 @@ final class EnemyModel {
         
         switch mode {
         case .easy:
-            self.hpMax = Const.HP.easy
-            self.hitpoint = Const.HP.easy
+            self.hpMax = Const.GameParam.easy
+            self.hitpoint = Const.GameParam.easy
         case .normal:
-            self.hpMax = Const.HP.normal
-            self.hitpoint = Const.HP.normal
+            self.hpMax = Const.GameParam.normal
+            self.hitpoint = Const.GameParam.normal
         case .hard:
-            self.hpMax = Const.HP.hard
-            self.hitpoint = Const.HP.hard
+            self.hpMax = Const.GameParam.hard
+            self.hitpoint = Const.GameParam.hard
         }
     }
     // 単語の文字数かける10ダメージHPをへらす

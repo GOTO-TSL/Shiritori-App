@@ -125,7 +125,7 @@ extension GameViewController: GameViewProtocol {
     
     func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String) {
         DispatchQueue.main.async {
-            self.timeLimit.text = "TIME:\(text)"
+            self.timeLimit.text = text
         }
     }
 }
