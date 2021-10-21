@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol GameLogicDelegate: AnyObject {
-    func shiritoriSucessed(_ gameLogic: GameLogic)
-    func shiritoriFailed(_ gameLogic: GameLogic, comment: String)
-    func updateHitPoint(_ gameLogic: GameLogic, hitpoint: Int, scoreLimit: Int)
-    func updateDamage(_ gameLogic: GameLogic, damage: Int)
-    func gotoResultView(_ gameLogic: GameLogic)
+protocol PreGameLogicDelegate: AnyObject {
+    func shiritoriSucessed(_ gameLogic: PreGameLogic)
+    func shiritoriFailed(_ gameLogic: PreGameLogic, comment: String)
+    func updateHitPoint(_ gameLogic: PreGameLogic, hitpoint: Int, scoreLimit: Int)
+    func updateDamage(_ gameLogic: PreGameLogic, damage: Int)
+    func gotoResultView(_ gameLogic: PreGameLogic)
 }
 
 /// しりとりのゲームロジックを担当するモデル
-final class GameLogic {
+final class PreGameLogic {
     var dataManager = DataManager()
-    weak var delegate: GameLogicDelegate?
+    weak var delegate: PreGameLogicDelegate?
     let defaults = UserDefaults.standard
     
     /// しりとりのルールに則っているか判定し，結果に応じて処理を分ける

@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		020E7F09265D2C600090F761 /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* GameLogic.swift */; };
+		020E7F09265D2C600090F761 /* PreGameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* PreGameLogic.swift */; };
 		021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCD269992CD001BAADF /* EASY0.mp3 */; };
 		021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCF26999379001BAADF /* EASY1.mp3 */; };
 		021C3CD326999470001BAADF /* NORMAL0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD126999470001BAADF /* NORMAL0.mp3 */; };
 		021C3CD426999470001BAADF /* NORMAL1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD226999470001BAADF /* NORMAL1.mp3 */; };
 		021C3CD7269994DC001BAADF /* HARD0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD5269994DC001BAADF /* HARD0.mp3 */; };
 		021C3CD8269994DC001BAADF /* HARD1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CD6269994DC001BAADF /* HARD1.mp3 */; };
+		0227AAD5271E5A7A000C66FA /* DictDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD4271E5A7A000C66FA /* DictDataManager.swift */; };
+		0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD6271EF28D000C66FA /* TimeManager.swift */; };
+		0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD9271EF822000C66FA /* GameViewPresenter.swift */; };
+		0227AADC271FEE33000C66FA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADB271FEE33000C66FA /* String.swift */; };
+		0227AADE27201342000C66FA /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADD27201342000C66FA /* GameLogic.swift */; };
+		0227AAE0272055D9000C66FA /* EnemyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADF272055D9000C66FA /* EnemyModel.swift */; };
 		022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F3271A8B3400B064FF /* UsedWordView.swift */; };
 		022867F8271A8BE500B064FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F7271A8BE500B064FF /* HeaderView.swift */; };
 		022867FA271A8C8D00B064FF /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F9271A8C8D00B064FF /* WordTableViewCell.swift */; };
@@ -70,6 +76,7 @@
 		02C141782718287500A2868E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C141772718287500A2868E /* InputView.swift */; };
 		02C1417B27182F2300A2868E /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417A27182F2300A2868E /* Background.swift */; };
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
+		02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */; };
 		02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3F1E26AF0F99007E4825 /* DataManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
@@ -88,13 +95,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		020E7F08265D2C600090F761 /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		020E7F08265D2C600090F761 /* PreGameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGameLogic.swift; sourceTree = "<group>"; };
 		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY0.mp3; sourceTree = "<group>"; };
 		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY1.mp3; sourceTree = "<group>"; };
 		021C3CD126999470001BAADF /* NORMAL0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL0.mp3; sourceTree = "<group>"; };
 		021C3CD226999470001BAADF /* NORMAL1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NORMAL1.mp3; sourceTree = "<group>"; };
 		021C3CD5269994DC001BAADF /* HARD0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD0.mp3; sourceTree = "<group>"; };
 		021C3CD6269994DC001BAADF /* HARD1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = HARD1.mp3; sourceTree = "<group>"; };
+		0227AAD4271E5A7A000C66FA /* DictDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictDataManager.swift; sourceTree = "<group>"; };
+		0227AAD6271EF28D000C66FA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
+		0227AAD9271EF822000C66FA /* GameViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewPresenter.swift; sourceTree = "<group>"; };
+		0227AADB271FEE33000C66FA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		0227AADD27201342000C66FA /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		0227AADF272055D9000C66FA /* EnemyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyModel.swift; sourceTree = "<group>"; };
 		022867F3271A8B3400B064FF /* UsedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordView.swift; sourceTree = "<group>"; };
 		022867F7271A8BE500B064FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		022867F9271A8C8D00B064FF /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
@@ -153,6 +166,7 @@
 		02C141772718287500A2868E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		02C1417A27182F2300A2868E /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordManager.swift; sourceTree = "<group>"; };
 		02CA3F1E26AF0F99007E4825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreMyWordViewController.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -191,6 +205,26 @@
 				0276936A26A7062E0041252D /* MyWord.swift */,
 			);
 			path = DataModel;
+			sourceTree = "<group>";
+		};
+		0227AAD3271E5A57000C66FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0227AAD4271E5A7A000C66FA /* DictDataManager.swift */,
+				0227AAD6271EF28D000C66FA /* TimeManager.swift */,
+				0227AADD27201342000C66FA /* GameLogic.swift */,
+				0227AADF272055D9000C66FA /* EnemyModel.swift */,
+				02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0227AAD8271EF808000C66FA /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				0227AAD9271EF822000C66FA /* GameViewPresenter.swift */,
+			);
+			path = Presenters;
 			sourceTree = "<group>";
 		};
 		022867F2271A8AE700B064FF /* UsedWord */ = {
@@ -313,9 +347,11 @@
 				025AE9F82680F30E0039DF56 /* fonts */,
 				025EF86C26A76F8F00C6F9C7 /* Data */,
 				02193A89266FB6AA003E459E /* DataModel */,
-				0283558E263F935F008B6845 /* Models */,
+				0283558E263F935F008B6845 /* PreModels */,
+				0227AAD3271E5A57000C66FA /* Models */,
 				02835590263F9380008B6845 /* Views */,
 				02323FFD271BF73100333C7C /* ViewControllers */,
+				0227AAD8271EF808000C66FA /* Presenters */,
 				02835591263F938C008B6845 /* Controllers */,
 				02F222432712D01300A71175 /* Extensions */,
 				02835583263F9307008B6845 /* Assets.xcassets */,
@@ -327,17 +363,17 @@
 			path = Shiritori;
 			sourceTree = "<group>";
 		};
-		0283558E263F935F008B6845 /* Models */ = {
+		0283558E263F935F008B6845 /* PreModels */ = {
 			isa = PBXGroup;
 			children = (
 				0292F2AE26C015C600802867 /* GameObjects */,
-				0289A82026413DA600023D0E /* TimerManager.swift */,
 				02BDA7002663CB9D00628AA3 /* ImageManager.swift */,
 				023375742672407E00C59023 /* WordSource.swift */,
 				02818B2A26876E30000A40C2 /* SoundPlayer.swift */,
 				02CA3F1E26AF0F99007E4825 /* DataManager.swift */,
+				0289A82026413DA600023D0E /* TimerManager.swift */,
 			);
-			path = Models;
+			path = PreModels;
 			sourceTree = "<group>";
 		};
 		02835590263F9380008B6845 /* Views */ = {
@@ -375,7 +411,7 @@
 		0292F2AE26C015C600802867 /* GameObjects */ = {
 			isa = PBXGroup;
 			children = (
-				020E7F08265D2C600090F761 /* GameLogic.swift */,
+				020E7F08265D2C600090F761 /* PreGameLogic.swift */,
 				0292F2AC26BFDC4D00802867 /* Enemy.swift */,
 			);
 			path = GameObjects;
@@ -420,6 +456,7 @@
 				02F222442712D03A00A71175 /* UIView.swift */,
 				02500B9A27147E6F00F3B7E8 /* UIStackView.swift */,
 				0232400E271C1B7000333C7C /* UIViewController.swift */,
+				0227AADB271FEE33000C66FA /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -632,7 +669,7 @@
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
 				0232400D271C002400333C7C /* ResultButtonView.swift in Sources */,
-				020E7F09265D2C600090F761 /* GameLogic.swift in Sources */,
+				020E7F09265D2C600090F761 /* PreGameLogic.swift in Sources */,
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				02524322266936C10005FB76 /* WordListViewController.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
@@ -646,21 +683,26 @@
 				02F82A212719BF7C005F3F28 /* ResultTitleView.swift in Sources */,
 				02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */,
 				02324009271BF85000333C7C /* WordDetailViewController.swift in Sources */,
+				0227AADE27201342000C66FA /* GameLogic.swift in Sources */,
 				02C14174271826C400A2868E /* HPView.swift in Sources */,
 				02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */,
 				02818B2B26876E30000A40C2 /* SoundPlayer.swift in Sources */,
 				02324001271BF7B200333C7C /* GameViewController.swift in Sources */,
+				0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */,
 				0289A81B2641343E00023D0E /* StartViewController.swift in Sources */,
 				022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */,
+				0227AADC271FEE33000C66FA /* String.swift in Sources */,
 				02323FF8271BC5EE00333C7C /* BodyScrollView.swift in Sources */,
 				0228680A271B291600B064FF /* MyWordTableViewCell.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
+				02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */,
 				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
 				02F222452712D03A00A71175 /* UIView.swift in Sources */,
 				029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */,
 				0289A81D2641347600023D0E /* PreRuleViewController.swift in Sources */,
 				02C14170271823FB00A2868E /* GameView.swift in Sources */,
+				0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */,
 				02C14176271826D200A2868E /* EnemyView.swift in Sources */,
 				02323FFC271BF30300333C7C /* RankingView.swift in Sources */,
 				02F2224C2712D45300A71175 /* HomeButtonView.swift in Sources */,
@@ -675,11 +717,13 @@
 				02BDA6FD266358B900628AA3 /* Constant.swift in Sources */,
 				02324007271BF84000333C7C /* MyWordViewController.swift in Sources */,
 				02323FF4271BC29B00333C7C /* WordDetailView.swift in Sources */,
+				0227AAE0272055D9000C66FA /* EnemyModel.swift in Sources */,
 				0289A82126413DA600023D0E /* TimerManager.swift in Sources */,
 				022867F8271A8BE500B064FF /* HeaderView.swift in Sources */,
 				02BDA6FF2663906800628AA3 /* SelectGameViewController.swift in Sources */,
 				02F82A1F2719BEB1005F3F28 /* ResultView.swift in Sources */,
 				02323FFF271BF78D00333C7C /* ModeSelectViewController.swift in Sources */,
+				0227AAD5271E5A7A000C66FA /* DictDataManager.swift in Sources */,
 				0276936926A704B30041252D /* Word.swift in Sources */,
 				02BDA7012663CB9D00628AA3 /* ImageManager.swift in Sources */,
 				02324003271BF7C200333C7C /* ResultViewController.swift in Sources */,

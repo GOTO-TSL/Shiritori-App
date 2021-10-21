@@ -9,7 +9,24 @@ import Foundation
 
 struct Const {
     static let font = "DotGothic16-Regular"
+    static let alphabet = "abcdefghijklmnopqrstuvwxyz"
     static let placeholder = "入力してね"
+    
+    enum UDKeys {
+        static let currentWord = "currentWord"
+    }
+    
+    enum HP {
+        static let easy = 300
+        static let normal = 500
+        static let hard = 700
+    }
+    
+    enum DBPath {
+        static let fileName = "ejdict.sqlite3"
+        static let ejdict = "ejdict"
+        static let sqlite3 = "sqlite3"
+    }
     
     enum CellID {
         static let used = "UsedWordCell"
@@ -54,6 +71,16 @@ struct Const {
                               あああああああああああ\n
                               あああああああああああ\n
                              """
+    }
+    
+    enum GameText {
+        static let start = "START!"
+        static let end = "TIME IS UP!"
+        static let notInDict = "辞書にないよ"
+        static let shiritori = "しりとりしてね"
+        static let blank = "2文字以上入力してね"
+        static let used = "使った単語だよ"
+        static let dead = "やられた〜"
     }
     
     enum ButtonText {

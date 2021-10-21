@@ -9,6 +9,7 @@ target 'Shiritori' do
   pod 'GRDB.swift'
   pod 'RealmSwift'
   pod 'Hero'
+  pod 'SQLite.swift', '~> 0.13.0'
 
   # Pods for Shiritori
 

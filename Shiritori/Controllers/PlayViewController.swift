@@ -21,7 +21,7 @@ class PlayViewController: UIViewController {
     @IBOutlet weak var damageLabel: UILabel!
     
     var currentMode: String?
-    var gameLogic = GameLogic()
+    var gameLogic = PreGameLogic()
     var imageManager = ImageManager()
     var timerManager = TimerManager()
     var wordSource = WordSource()
@@ -200,13 +200,13 @@ extension PlayViewController: WordSourceDelegate {
 
 // MARK: - GameLogicDelegate
 
-extension PlayViewController: GameLogicDelegate {
+extension PlayViewController: PreGameLogicDelegate {
     
     /// ダメージラベルの更新
     /// - Parameters:
     ///   - gameLogic: gameLogic Model
     ///   - damage: ダメージ（入力した単語の文字数）
-    func updateDamage(_ gameLogic: GameLogic, damage: Int) {
+    func updateDamage(_ gameLogic: PreGameLogic, damage: Int) {
         DispatchQueue.main.async {
             self.damageLabel.isHidden = false
             if damage < 100 {
@@ -225,7 +225,7 @@ extension PlayViewController: GameLogicDelegate {
     ///   - gameLogic: gameLogic Model
     ///   - hitpoint: 敵の現在のHPの値
     ///   - scoreLimit: 敵のHP満タン時の値
-    func updateHitPoint(_ gameLogic: GameLogic, hitpoint: Int, scoreLimit: Int) {
+    func updateHitPoint(_ gameLogic: PreGameLogic, hitpoint: Int, scoreLimit: Int) {
         DispatchQueue.main.async {
             let progress = Float(hitpoint) / Float(scoreLimit)
             self.hitPointBar.progress = progress
@@ -243,7 +243,7 @@ extension PlayViewController: GameLogicDelegate {
     }
 
     /// しりとりのルールに当てはまった場合の処理
-    func shiritoriSucessed(_ gameLogic: GameLogic) {
+    func shiritoriSucessed(_ gameLogic: PreGameLogic) {
         DispatchQueue.main.async {
             // ダメージを受ける効果音を再生
             self.actionPlayer.playSound(name: Constant.Sounds.damage, isMute: self.isMute)
@@ -269,7 +269,7 @@ extension PlayViewController: GameLogicDelegate {
     /// - Parameters:
     ///   - gameLogic: gameLogic Model
     ///   - comment: どのルールに当てはまらなかったのか知らせるコメント
-    func shiritoriFailed(_ gameLogic: GameLogic, comment: String) {
+    func shiritoriFailed(_ gameLogic: PreGameLogic, comment: String) {
         DispatchQueue.main.async {
             // 回復する効果音を再生
             self.actionPlayer.playSound(name: Constant.Sounds.heal, isMute: self.isMute)
@@ -297,7 +297,7 @@ extension PlayViewController: GameLogicDelegate {
     }
     
     /// 敵を倒したときに呼ばれる処理
-    func gotoResultView(_ gameLogic: GameLogic) {
+    func gotoResultView(_ gameLogic: PreGameLogic) {
         DispatchQueue.main.async {
             self.imageManager.imageAnimation(for: self.enemyImage,
                                              mode: self.enemy.mode,
