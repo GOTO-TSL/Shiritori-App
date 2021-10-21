@@ -9,8 +9,9 @@ import SQLite
 import Foundation
 
 protocol DictDataManagerDelegate: AnyObject {
-    func didFeatchWord(_ dictDataManager: DictDataManager, word: String)
-    func didCheckWord(_ dictDataManager: DictDataManager, word: String, count: Int)
+    func didFeatchWord(_ dictDataManager: DictDataManager, word: String, mean: String)
+    func didFeatchMean(_ dictDataManager: DictDataManager, word: String, mean: String)
+    func didCheckIsInDict(_ dictDataManager: DictDataManager, word: String, count: Int)
 }
 
 final class DictDataManager {
@@ -47,28 +48,34 @@ final class DictDataManager {
             let query = try database!.prepare(table
                                               .limit(1, offset: Int.random(in: 0...count(table))))
             for item in query {
-                print("word: \(trim(item[word]))")
-                self.delegate?.didFeatchWord(self, word: trim(item[word]))
+                print("word: \(item[word])")
+                self.delegate?.didFeatchWord(self, word: item[word], mean: item[mean])
             }
         } catch {
             print(error)
         }
     }
     // 辞書にあるかどうかをチェックする
-    func checkWord(inputs: String) {
+    func checkIsInDict(inputs: String) {
         let queryTable = items.filter(word.like(inputs))
-        let count = count(queryTable)
-        self.delegate?.didCheckWord(self, word: inputs, count: count)
-
-    }
-    // 取得した単語の文字数をカウント　ランダムの範囲を指定する際に使用
-    private func count(_ table: Table) -> Int {
+        
         do {
-            let count = try database!.scalar(table.count)
-            return count
+            let count = try database!.scalar(queryTable.count)
+            self.delegate?.didCheckIsInDict(self, word: inputs, count: count)
         } catch {
-                print(error)
-            return 0
+            print(error)
+        }
+    }
+    // 単語の意味を取得
+    func featchMean(of inputs: String) {
+        let queryTable = items.filter(word.like(inputs))
+        do {
+            let query = try database!.prepare(queryTable)
+            for item in query {
+                self.delegate?.didFeatchMean(self, word: item[word], mean: item[mean])
+            }
+        } catch {
+            print(error)
         }
     }
     // しりとりに使用できる単語を取得するクエリ
@@ -83,15 +90,16 @@ final class DictDataManager {
                                       !word.like("%/"))
         return queryTable
     }
-    // 単語をきれいな形にする
-    private func trim(_ word: String) -> String {
-        // すべて小文字にする
-        var trimTarget = word.lowercased()
-        // 数字を除外する
-        trimTarget = trimTarget.remove(characterSet: .decimalDigits)
-        return trimTarget
+    // 検索結果の単語数をカウント -> ランダムの範囲指定の際に使用
+    private func count(_ table: Table) -> Int {
+        do {
+            let count = try database!.scalar(table.count)
+            return count
+        } catch {
+            print(error)
+        }
+        return 0
     }
-    
     // DBファイルを実行ディレクトリにコピー
     private func copyDataBaseFile() {
         let fileManager = FileManager.default

@@ -76,6 +76,7 @@
 		02C141782718287500A2868E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C141772718287500A2868E /* InputView.swift */; };
 		02C1417B27182F2300A2868E /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417A27182F2300A2868E /* Background.swift */; };
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
+		02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */; };
 		02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02CA3F1E26AF0F99007E4825 /* DataManager.swift */; };
 		02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
@@ -165,6 +166,7 @@
 		02C141772718287500A2868E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		02C1417A27182F2300A2868E /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
+		02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordManager.swift; sourceTree = "<group>"; };
 		02CA3F1E26AF0F99007E4825 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02DD4BC42670F7FD00F231DC /* PreMyWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreMyWordViewController.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				0227AAD6271EF28D000C66FA /* TimeManager.swift */,
 				0227AADD27201342000C66FA /* GameLogic.swift */,
 				0227AADF272055D9000C66FA /* EnemyModel.swift */,
+				02C7C2DF2720FE5400FDFE1A /* UsedWordManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				0228680A271B291600B064FF /* MyWordTableViewCell.swift in Sources */,
 				02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
+				02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */,
 				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
 				02F222452712D03A00A71175 /* UIView.swift in Sources */,
 				029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */,
