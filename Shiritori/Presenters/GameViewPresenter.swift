@@ -57,6 +57,7 @@ final class GameViewPresenter {
         dictDataManager.openDB()
         // 使用した単語を保存するDBを作成
         wordDataManager.createDB(name: Const.DBName.usedWords)
+        wordDataManager.delete(option: .all)
     }
     
     func willGameStart() {

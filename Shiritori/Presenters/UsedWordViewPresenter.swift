@@ -13,7 +13,6 @@ protocol UsedWordViewProtocol {
 
 protocol UsedWordViewPresenterProtocol {
     func usedWordViewDidLoad()
-    func didPressedBackButton()
     func didPressedLikeButton(of word: Word)
 }
 
@@ -35,10 +34,6 @@ final class UsedWordViewPresenter {
     
     func didPressedLikeButton(of word: Word) {
         wordDataManager.changeLike(for: word)
-    }
-    
-    func didPressedBackButton() {
-        wordDataManager.delete()
     }
 }
 // MARK: - UsedWordManagerDelegate Methods

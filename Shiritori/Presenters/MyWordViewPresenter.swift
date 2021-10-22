@@ -22,24 +22,11 @@ final class MyWordViewPresenter {
     init(view: MyWordViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
-        wordDataManager.delegate = self
-        
         wordDataManager.openDB(name: Const.DBName.myWords)
     }
     
     func myWordViewDidLoad() {
         view.showWords(self, words: wordDataManager.currentWords)
-    }
-    
-}
-// MARK: - UsedWordManagerDelegate Methods
-extension MyWordViewPresenter: WordDataManagerDelegate {
-    func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
-        // do nothing
-    }
-    
-    func didUpdateDB(_ wordDataManager: WordDataManager) {
-        // do nothing
     }
     
 }

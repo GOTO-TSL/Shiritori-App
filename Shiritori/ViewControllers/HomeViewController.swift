@@ -9,11 +9,11 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    var homeView: HomeView!
-    var playButton: UIButton!
-    var wordButton: UIButton!
-    var helpButton: UIButton!
-    var rankingButton: UIButton!
+    private var homeView: HomeView!
+    private var playButton: UIButton!
+    private var wordButton: UIButton!
+    private var helpButton: UIButton!
+    private var rankingButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()

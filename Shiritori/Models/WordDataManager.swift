@@ -7,12 +7,19 @@
 
 import Foundation
 import SQLite
+import FileProvider
 
 struct Word {
     var wordID: Int = 0
     var word: String = ""
     var mean: String = ""
     var isLike: Bool = false
+}
+
+enum DeleteOption {
+    case all
+    case isntLike
+    case selected
 }
 
 protocol WordDataManagerDelegate: AnyObject {
@@ -33,7 +40,7 @@ final class WordDataManager {
     weak var delegate: WordDataManagerDelegate?
     
     init() {
-        self.words = Table("usedWords")
+        self.words = Table("words")
         self.wordID = Expression<Int>("id")
         self.word = Expression<String>("word")
         self.mean = Expression<String>("mean")
@@ -55,25 +62,24 @@ final class WordDataManager {
                 table.column(mean)
                 table.column(isLike)
             })
-            print("\(name) created!")
         } catch {
             print(error)
         }
     }
     
-    func openDB(name: String) {
+    func openDB(name: String, isLoad: Bool = true) {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
         ).first!
         
         do {
             database = try Connection("\(path)/\(name)")
-            print("\(name) opened!")
         } catch {
             print(error)
         }
-        
-        loadWords()
+        if isLoad {
+            loadWords()
+        }
     }
     
     func insert(_ usedWord: Word) {
@@ -107,15 +113,24 @@ final class WordDataManager {
         }
     }
     
-    func delete() {
-        let tagWords = words.filter(isLike == false)
-        
+    func delete(option: DeleteOption, selectedWord: String = "") {
+        var tagWords = Table("words")
+        switch option {
+        case .all:
+            tagWords = words
+        case .isntLike:
+            tagWords = words.filter(isLike == false)
+        case .selected:
+            tagWords = words.filter(word.like(selectedWord))
+        }
         do {
             try database!.run(tagWords.delete())
             self.delegate?.didUpdateDB(self)
         } catch {
             print(error)
         }
+        
+        loadWords()
     }
     
     func copyWord() {

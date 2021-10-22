@@ -22,22 +22,20 @@ final class ResultViewPresenter {
     init(view: ResultViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
-        
         wordDataManager.delegate = self
+        wordDataManager.createDB(name: Const.DBName.myWords)
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
     func didPressedHome() {
-        wordDataManager.delete()
+        wordDataManager.delete(option: .isntLike)
+        wordDataManager.openDB(name: Const.DBName.myWords, isLoad: false)
+        wordDataManager.copyWord()
     }
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension ResultViewPresenter: WordDataManagerDelegate {
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
-        // do nothing
-    }
-    
-    func didFeatchWords(_ wordDataManager: WordDataManager, words: [Word]) {
         // do nothing
     }
     
