@@ -16,7 +16,7 @@ class MyWordTableViewCell: UITableViewCell {
         return label
     }()
     
-    let heartImage: UIImageView = {
+    let nextImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Const.Image.next)
         imageView.contentMode = .scaleAspectFit
@@ -29,15 +29,15 @@ class MyWordTableViewCell: UITableViewCell {
         layer.borderWidth = 1.0
         layer.borderColor = UIColor.white.cgColor
         backgroundColor = .black
-        addSubview(wordLabel)
-        addSubview(heartImage)
+        contentView.addSubview(wordLabel)
+        contentView.addSubview(nextImage)
         
-        wordLabel.centerY(inView: self)
-        wordLabel.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
-        heartImage.centerY(inView: self)
-        heartImage.anchor(width: 40)
-        heartImage.anchor(right: rightAnchor, paddingRight: 10)
-        heartImage.setAspectRatio(ratio: 1)
+        wordLabel.centerY(inView: contentView)
+        wordLabel.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, paddingTop: 10, paddingLeft: 20, paddingBottom: 10)
+        nextImage.centerY(inView: contentView)
+        nextImage.anchor(width: 40)
+        nextImage.anchor(right: contentView.rightAnchor, paddingRight: 10)
+        nextImage.setAspectRatio(ratio: 1)
         
     }
     

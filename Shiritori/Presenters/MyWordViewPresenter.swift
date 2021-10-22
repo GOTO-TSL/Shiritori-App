@@ -13,6 +13,7 @@ protocol MyWordViewProtocol {
 
 protocol MyWordViewPresenterProtocol {
     func myWordViewDidLoad()
+    func deleted(word: Word)
 }
 
 final class MyWordViewPresenter {
@@ -27,6 +28,10 @@ final class MyWordViewPresenter {
     
     func myWordViewDidLoad() {
         view.showWords(self, words: wordDataManager.currentWords)
+    }
+    
+    func deleted(word: Word) {
+        wordDataManager.delete(option: .selected, selectedWord: word.word)
     }
     
 }
