@@ -17,31 +17,31 @@ protocol ResultViewPresenterProtocol {
 
 final class ResultViewPresenter {
     private let view: ResultViewProtocol
-    var usedWordManager: UsedWordManager!
+    var wordDataManager: WordDataManager!
     
     init(view: ResultViewProtocol) {
         self.view = view
-        self.usedWordManager = UsedWordManager()
+        self.wordDataManager = WordDataManager()
         
-        usedWordManager.delegate = self
-        usedWordManager.openDB()
+        wordDataManager.delegate = self
+        wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
     func didPressedHome() {
-        usedWordManager.delete()
+        wordDataManager.delete()
     }
 }
 // MARK: - UsedWordManagerDelegate Methods
-extension ResultViewPresenter: UsedWordManagerDelegate {
-    func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int) {
+extension ResultViewPresenter: WordDataManagerDelegate {
+    func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
     }
     
-    func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord]) {
+    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word]) {
         // do nothing
     }
     
-    func didUpdateDB(_ usedWordManager: UsedWordManager) {
+    func didUpdateDB(_ wordDataManager: WordDataManager) {
         view.goToNextView(self)
     }
 }

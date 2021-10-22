@@ -10,10 +10,11 @@ import UIKit
 class MyWordViewController: UIViewController {
     
     // MARK: - Properties
-    var myWordView: MyWordView!
-    var tableView: UITableView!
-    var backButton: UIButton!
-    
+    private var myWordView: MyWordView!
+    private var tableView: UITableView!
+    private var backButton: UIButton!
+    private var myWords: [Word]!
+    private var presenter: MyWordViewPresenter!
     // ステータスバーの色を白に設定
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
@@ -24,6 +25,8 @@ class MyWordViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        presenter = MyWordViewPresenter(view: self)
+        presenter.myWordViewDidLoad()
         
     }
     
@@ -59,14 +62,14 @@ class MyWordViewController: UIViewController {
 // MARK: - UITableViewDataSource Methods
 extension MyWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return myWords.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.mine, for: indexPath) as? MyWordTableViewCell
         guard let safeCell = cell else { fatalError() }
         safeCell.selectionStyle = .none
-        safeCell.wordLabel.text = "word"
+        safeCell.wordLabel.text = myWords[indexPath.row].word
         return safeCell
     }
 }
@@ -76,7 +79,18 @@ extension MyWordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = WordDetailViewController()
         detailVC.modalPresentationStyle = .fullScreen
+        detailVC.word = myWords[indexPath.row].word
+        detailVC.mean = myWords[indexPath.row].mean
         addTransition(duration: 0.3, type: .push, subType: .fromRight)
         present(detailVC, animated: false, completion: nil)
+    }
+}
+// MARK: - MyWordViewProtocol Methods
+extension MyWordViewController: MyWordViewProtocol {
+    func showWords(_ myWordViewPresenter: MyWordViewPresenter, words: [Word]) {
+        DispatchQueue.main.async {
+            self.myWords = words
+            self.tableView.reloadData()
+        }
     }
 }

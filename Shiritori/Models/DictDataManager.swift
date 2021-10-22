@@ -48,7 +48,6 @@ final class DictDataManager {
             let query = try database!.prepare(table
                                               .limit(1, offset: Int.random(in: 0...count(table))))
             for item in query {
-                print("word: \(item[word])")
                 self.delegate?.didFeatchWord(self, word: item[word], mean: item[mean])
             }
         } catch {

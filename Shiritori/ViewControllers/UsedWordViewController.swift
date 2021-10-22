@@ -14,7 +14,7 @@ class UsedWordViewController: UIViewController {
     private var backButton: UIButton!
     private var likeButton: UIButton!
     private var tableView: UITableView!
-    private var usedWords: [UsedWord]!
+    private var usedWords: [Word]!
     
     private var presenter: UsedWordViewPresenter!
     
@@ -116,7 +116,7 @@ extension UsedWordViewController: UsedWordViewProtocol {
         }
     }
     
-    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [UsedWord]) {
+    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word]) {
         DispatchQueue.main.async {
             self.usedWords = words
             self.tableView.reloadData()
