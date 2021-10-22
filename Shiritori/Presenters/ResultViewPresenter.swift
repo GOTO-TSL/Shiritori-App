@@ -37,7 +37,7 @@ extension ResultViewPresenter: WordDataManagerDelegate {
         // do nothing
     }
     
-    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word]) {
+    func didFeatchWords(_ wordDataManager: WordDataManager, words: [Word]) {
         // do nothing
     }
     

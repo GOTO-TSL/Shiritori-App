@@ -168,10 +168,6 @@ extension GameViewPresenter: WordDataManagerDelegate {
         // do nothing
     }
     
-    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word]) {
-        // do nothing
-    }
-    
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // 使用済み単語一覧での検索結果
         // 0件　-> 意味を取得，次の単語を取得，敵にダメージ

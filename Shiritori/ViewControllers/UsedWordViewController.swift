@@ -60,6 +60,7 @@ class UsedWordViewController: UIViewController {
     }
     
     @objc private func backPressed(_ sender: UIButton) {
+        // リザルト画面に戻る
         let resultVC = ResultViewController()
         resultVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.2, type: .push, subType: .fromLeft)
@@ -110,15 +111,12 @@ extension UsedWordViewController: UITableViewDelegate {
 }
 // MARK: - UsedWordViewProtocol Methods
 extension UsedWordViewController: UsedWordViewProtocol {
-    func changeCellImage(_ usedWordViewPresenter: UsedWordViewPresenter) {
-        DispatchQueue.main.async {
-            self.presenter.usedWordViewDidLoad()
-        }
-    }
-    
     func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word]) {
         DispatchQueue.main.async {
             self.usedWords = words
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }
     }

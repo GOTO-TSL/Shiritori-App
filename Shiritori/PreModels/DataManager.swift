@@ -11,7 +11,7 @@ import RealmSwift
 struct DataManager {
     let realm = try? Realm()
     
-    var words: Results<Word>?
+    var words: Results<PreWord>?
     var myWords: Results<MyWord>?
     
     /// オブジェクトの変更を保存
@@ -30,7 +30,7 @@ struct DataManager {
     /// Wordモデルの読み込み
     mutating func loadWords() {
         guard let real = realm else { fatalError() }
-        words = real.objects(Word.self)
+        words = real.objects(PreWord.self)
     }
     
     /// MyWordモデルの読み込み
@@ -55,7 +55,7 @@ struct DataManager {
     /// 新しい単語をWordオブジェクトに保存
     /// - Parameter word: 保存したい単語
     func save(word: String) {
-        let newWord = Word()
+        let newWord = PreWord()
         newWord.name = word
         newWord.isLike = false
         
@@ -72,7 +72,7 @@ struct DataManager {
     
     /// WordオブジェクトのisLike変数の値を変更し保存
     /// - Parameter word: 対象のWordオブジェクト
-    func changeisLikeValue(for word: Word) {
+    func changeisLikeValue(for word: PreWord) {
         guard let real = realm else { fatalError() }
         do {
             try real.write {
@@ -88,7 +88,7 @@ struct DataManager {
     /// - Returns: 結果
     func isUsed(word: String) -> Bool {
         guard let real = realm else { fatalError() }
-        let results = real.objects(Word.self).filter("name LIKE %@", word)
+        let results = real.objects(PreWord.self).filter("name LIKE %@", word)
         if results.count == 0 {
             return false
         } else {

@@ -9,11 +9,11 @@ import Foundation
 
 protocol UsedWordViewProtocol {
     func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word])
-    func changeCellImage(_ usedWordViewPresenter: UsedWordViewPresenter)
 }
 
 protocol UsedWordViewPresenterProtocol {
     func usedWordViewDidLoad()
+    func didPressedBackButton()
     func didPressedLikeButton(of word: Word)
 }
 
@@ -30,25 +30,24 @@ final class UsedWordViewPresenter {
     }
     
     func usedWordViewDidLoad() {
-        wordDataManager.getAllWords()
+        view.showWords(self, wordDataManager.currentWords)
     }
     
     func didPressedLikeButton(of word: Word) {
         wordDataManager.changeLike(for: word)
     }
+    
+    func didPressedBackButton() {
+        wordDataManager.delete()
+    }
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension UsedWordViewPresenter: WordDataManagerDelegate {
     func didUpdateDB(_ wordDataManager: WordDataManager) {
-        view.changeCellImage(self)
+        view.showWords(self, wordDataManager.currentWords)
     }
     
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
-    }
-    
-    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word]) {
-        // 使用した単語一覧を表示
-        view.showWords(self, words)
     }
 }

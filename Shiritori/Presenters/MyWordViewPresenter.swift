@@ -28,7 +28,7 @@ final class MyWordViewPresenter {
     }
     
     func myWordViewDidLoad() {
-        wordDataManager.getAllWords()
+        view.showWords(self, words: wordDataManager.currentWords)
     }
     
 }
@@ -36,10 +36,6 @@ final class MyWordViewPresenter {
 extension MyWordViewPresenter: WordDataManagerDelegate {
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
-    }
-    
-    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word]) {
-        view.showWords(self, words: words)
     }
     
     func didUpdateDB(_ wordDataManager: WordDataManager) {

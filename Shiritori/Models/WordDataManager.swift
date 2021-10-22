@@ -17,26 +17,28 @@ struct Word {
 
 protocol WordDataManagerDelegate: AnyObject {
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int)
-    func didGetUsedWords(_ wordDataManager: WordDataManager, words: [Word])
     func didUpdateDB(_ wordDataManager: WordDataManager)
 }
 
 final class WordDataManager {
     
     private var database: Connection?
-    weak var delegate: WordDataManagerDelegate?
-    private var usedWords: Table
+    var currentWords: [Word]!
+    
+    private var words: Table
     private var wordID: Expression<Int>
     private var word: Expression<String>
     private var mean: Expression<String>
     private var isLike: Expression<Bool>
+    weak var delegate: WordDataManagerDelegate?
     
     init() {
-        self.usedWords = Table("usedWords")
+        self.words = Table("usedWords")
         self.wordID = Expression<Int>("id")
         self.word = Expression<String>("word")
         self.mean = Expression<String>("mean")
         self.isLike = Expression<Bool>("isLike")
+        self.currentWords = [Word]()
     }
     
     func createDB(name: String) {
@@ -47,12 +49,13 @@ final class WordDataManager {
         do {
             database = try Connection("\(path)/\(name)")
             guard let safeDB = database else { return }
-            try safeDB.run(usedWords.create(ifNotExists: true) { table in
+            try safeDB.run(words.create(ifNotExists: true) { table in
                 table.column(wordID, primaryKey: true)
                 table.column(word)
                 table.column(mean)
                 table.column(isLike)
             })
+            print("\(name) created!")
         } catch {
             print(error)
         }
@@ -65,21 +68,24 @@ final class WordDataManager {
         
         do {
             database = try Connection("\(path)/\(name)")
+            print("\(name) opened!")
         } catch {
             print(error)
         }
+        
+        loadWords()
     }
     
     func insert(_ usedWord: Word) {
         do {
-            try database!.run(usedWords.insert(or: .replace, word <- usedWord.word, mean <- usedWord.mean, isLike <- usedWord.isLike))
+            try database!.run(words.insert(or: .replace, word <- usedWord.word, mean <- usedWord.mean, isLike <- usedWord.isLike))
         } catch {
             print(error)
         }
     }
     
     func checkIsUsed(_ inputs: String) {
-        let queryTable = usedWords.filter(word.like(inputs))
+        let queryTable = words.filter(word.like(inputs))
         
         do {
             let count = try database!.scalar(queryTable.count)
@@ -89,29 +95,12 @@ final class WordDataManager {
         }
     }
     
-    func getAllWords() {
-        var words = [Word]()
-        do {
-            let query = try database!.prepare(usedWords)
-            for item in query {
-                var usedWord = Word()
-                usedWord.wordID = item[wordID]
-                usedWord.word = item[word]
-                usedWord.mean = item[mean]
-                usedWord.isLike = item[isLike]
-                words.append(usedWord)
-            }
-            self.delegate?.didGetUsedWords(self, words: words)
-        } catch {
-            print(error)
-        }
-    }
-    
     func changeLike(for target: Word) {
-        let tagWords = usedWords.filter(wordID == target.wordID)
+        let tagWords = words.filter(wordID == target.wordID)
         
         do {
             try database!.run(tagWords.update(isLike <- !target.isLike))
+            loadWords()
             self.delegate?.didUpdateDB(self)
         } catch {
             print(error)
@@ -119,11 +108,38 @@ final class WordDataManager {
     }
     
     func delete() {
-        let tagWords = usedWords.filter(isLike == false)
+        let tagWords = words.filter(isLike == false)
         
         do {
             try database!.run(tagWords.delete())
             self.delegate?.didUpdateDB(self)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func copyWord() {
+        do {
+            for myWord in currentWords {
+                try database!.run(words.insert(or: .replace, word <- myWord.word, mean <- myWord.mean, isLike <- myWord.isLike))
+            }
+        } catch {
+            print(error)
+        }
+    }
+    // DBをcurrentWordsにコピーする
+    private func loadWords() {
+        currentWords = [Word]()
+        do {
+            let query = try database!.prepare(words)
+            for item in query {
+                var wordobj = Word()
+                wordobj.wordID = item[wordID]
+                wordobj.word = item[word]
+                wordobj.mean = item[mean]
+                wordobj.isLike = item[isLike]
+                currentWords.append(wordobj)
+            }
         } catch {
             print(error)
         }
