@@ -10,15 +10,18 @@ import UIKit
 class ResultViewController: UIViewController {
     
     // MARK: - Properties
-    var resultView: ResultView!
-    var homeButton: UIButton!
-    var wordButton: UIButton!
+    private var resultView: ResultView!
+    private var homeButton: UIButton!
+    private var wordButton: UIButton!
+    
+    private var presenter: ResultViewPresenter!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureUI()
+        presenter = ResultViewPresenter(view: self)
         
     }
     
@@ -37,11 +40,8 @@ class ResultViewController: UIViewController {
     }
     
     @objc private func homePressed(_ sender: UIButton) {
-        // ホーム画面に遷移
-        let homeVC = HomeViewController()
-        homeVC.modalPresentationStyle = .fullScreen
-        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-        present(homeVC, animated: false, completion: nil)
+        // お気に入り以外の単語を削除
+        presenter.didPressedHome()
     }
     
     @objc private func wordPressed(_ sender: UIButton) {
@@ -50,5 +50,17 @@ class ResultViewController: UIViewController {
         usedWordVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
         present(usedWordVC, animated: false, completion: nil)
+    }
+}
+// MARK: - ResultViewProtocol Methods
+extension ResultViewController: ResultViewProtocol {
+    func goToNextView(_ resultViewPresenter: ResultViewPresenter) {
+        DispatchQueue.main.async {
+            // ホーム画面に遷移
+            let homeVC = HomeViewController()
+            homeVC.modalPresentationStyle = .fullScreen
+            self.addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+            self.present(homeVC, animated: false, completion: nil)
+        }
     }
 }

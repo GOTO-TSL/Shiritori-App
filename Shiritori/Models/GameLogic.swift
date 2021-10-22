@@ -23,7 +23,6 @@ final class GameLogic {
         let endChar = currentWord[currentWord.index(before: currentWord.endIndex)]
         if word.count >= 2 {
             if word[word.startIndex] == endChar {
-                // TODO: 使った単語かどうか判定
                 self.delegate?.shiritoriSucceeded(self, safeWord: word)
             } else {
                 self.delegate?.shiritoriFailed(self, message: Const.GameText.shiritori)

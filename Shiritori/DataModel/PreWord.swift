@@ -6,7 +6,7 @@
 //
 import RealmSwift
 
-class Word: Object {
+class PreWord: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var isLike: Bool = false
 }

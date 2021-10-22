@@ -33,7 +33,7 @@ final class GameViewPresenter {
     var dictDataManager: DictDataManager!
     var gameLogic: GameLogic!
     var enemyModel: EnemyModel!
-    var usedWordManager: UsedWordManager!
+    var wordDataManager: WordDataManager!
     
     init(view: GameViewProtocol, mode: Mode) {
         self.view = view
@@ -41,13 +41,13 @@ final class GameViewPresenter {
         self.dictDataManager = DictDataManager()
         self.gameLogic = GameLogic()
         self.enemyModel = EnemyModel(mode: mode)
-        self.usedWordManager = UsedWordManager()
+        self.wordDataManager = WordDataManager()
         
         timeManager.delegate = self
         dictDataManager.delegate = self
         gameLogic.delegate = self
         enemyModel.delegete = self
-        usedWordManager.delegate = self
+        wordDataManager.delegate = self
     }
     
     func gameViewDidLoad() {
@@ -56,7 +56,8 @@ final class GameViewPresenter {
         // 英単語DBを読み込む
         dictDataManager.openDB()
         // 使用した単語を保存するDBを作成
-        usedWordManager.createDB()
+        wordDataManager.createDB(name: Const.DBName.usedWords)
+        wordDataManager.delete(option: .all)
     }
     
     func willGameStart() {
@@ -100,17 +101,17 @@ extension GameViewPresenter: TimeManagerDelegate {
 extension GameViewPresenter: DictDataManagerDelegate {
     func didFeatchMean(_ dictDataManager: DictDataManager, word: String, mean: String) {
         // 単語を保存
-        var usedWord = UsedWord()
+        var usedWord = Word()
         usedWord.word = word
         usedWord.mean = mean
-        usedWordManager.insert(usedWord)
+        wordDataManager.insert(usedWord)
     }
     
     func didCheckIsInDict(_ dictDataManager: DictDataManager, word: String, count: Int) {
         // 辞書を検索して0件 -> エラー表示を依頼
         // 1件以上ヒット -> 使用した単語かどうかをチェック
         if count != 0 {
-            usedWordManager.checkIsUsed(word)
+            wordDataManager.checkIsUsed(word)
         } else {
             view.showText(self, text: Const.GameText.notInDict, state: .error)
             enemyModel.heal()
@@ -121,10 +122,10 @@ extension GameViewPresenter: DictDataManagerDelegate {
         // 現在の敵の単語をUserDefaultに保存
         UserDefaults.standard.set(word, forKey: Const.UDKeys.currentWord)
         // 使用した単語DBに保存
-        var usedWord = UsedWord()
+        var usedWord = Word()
         usedWord.word = word
         usedWord.mean = mean
-        usedWordManager.insert(usedWord)
+        wordDataManager.insert(usedWord)
         // 表示を依頼
         var trimedWord = word.lowercased()
         trimedWord = word.remove(characterSet: .decimalDigits)
@@ -163,16 +164,12 @@ extension GameViewPresenter: EnemyModelDelegate {
     }
 }
 // MARK: - UsedWordManagerDelegate Methods
-extension GameViewPresenter: UsedWordManagerDelegate {
-    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
+extension GameViewPresenter: WordDataManagerDelegate {
+    func didUpdateDB(_ wordDataManager: WordDataManager) {
         // do nothing
     }
     
-    func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord]) {
-        // do nothing
-    }
-    
-    func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int) {
+    func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // 使用済み単語一覧での検索結果
         // 0件　-> 意味を取得，次の単語を取得，敵にダメージ
         // 1件以上 -> エラー分表示，敵を回復

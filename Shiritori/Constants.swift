@@ -23,6 +23,12 @@ struct Const {
         static let timeLimit = 60
     }
     
+    enum DBName {
+        static let ejdict = "ejdict.sqlite3"
+        static let usedWords = "usedWords.sqlite3"
+        static let myWords = "myWords.sqlite3"
+    }
+    
     enum DBPath {
         static let fileName = "ejdict.sqlite3"
         static let ejdict = "ejdict"

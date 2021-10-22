@@ -8,47 +8,41 @@
 import Foundation
 
 protocol UsedWordViewProtocol {
-    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [UsedWord])
-    func changeCellImage(_ usedWordViewPresenter: UsedWordViewPresenter)
+    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word])
 }
 
 protocol UsedWordViewPresenterProtocol {
     func usedWordViewDidLoad()
-    func didPressedLikeButton(of word: UsedWord)
+    func didPressedLikeButton(of word: Word)
 }
 
 final class UsedWordViewPresenter {
     
     private let view: UsedWordViewProtocol!
-    var usedWordManager: UsedWordManager!
+    var wordDataManager: WordDataManager!
     
     init(view: UsedWordViewProtocol) {
         self.view = view
-        self.usedWordManager = UsedWordManager()
-        usedWordManager.delegate = self
-        usedWordManager.openDB()
+        self.wordDataManager = WordDataManager()
+        wordDataManager.delegate = self
+        wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
     func usedWordViewDidLoad() {
-        usedWordManager.getAllWords()
+        view.showWords(self, wordDataManager.currentWords)
     }
     
-    func didPressedLikeButton(of word: UsedWord) {
-        usedWordManager.changeLike(for: word)
+    func didPressedLikeButton(of word: Word) {
+        wordDataManager.changeLike(for: word)
     }
 }
 // MARK: - UsedWordManagerDelegate Methods
-extension UsedWordViewPresenter: UsedWordManagerDelegate {
-    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
-        view.changeCellImage(self)
+extension UsedWordViewPresenter: WordDataManagerDelegate {
+    func didUpdateDB(_ wordDataManager: WordDataManager) {
+        view.showWords(self, wordDataManager.currentWords)
     }
     
-    func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int) {
+    func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
-    }
-    
-    func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord]) {
-        // 使用した単語一覧を表示
-        view.showWords(self, words)
     }
 }

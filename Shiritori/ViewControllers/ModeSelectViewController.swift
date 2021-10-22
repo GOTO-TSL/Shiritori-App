@@ -10,11 +10,11 @@ import UIKit
 class ModeSelectViewController: UIViewController {
     
     // MARK: - Properties
-    var modeSelectView: ModeSelectView!
-    var backButton: UIButton!
-    var easyButton: UIButton!
-    var normalButton: UIButton!
-    var hardButton: UIButton!
+    private var modeSelectView: ModeSelectView!
+    private var backButton: UIButton!
+    private var easyButton: UIButton!
+    private var normalButton: UIButton!
+    private var hardButton: UIButton!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
