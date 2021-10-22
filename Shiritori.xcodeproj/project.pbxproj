@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		020AC84D27224C68000561C5 /* ResultViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020AC84C27224C68000561C5 /* ResultViewPresenter.swift */; };
 		020E7F09265D2C600090F761 /* PreGameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 020E7F08265D2C600090F761 /* PreGameLogic.swift */; };
 		021C3CCE269992CD001BAADF /* EASY0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCD269992CD001BAADF /* EASY0.mp3 */; };
 		021C3CD02699937A001BAADF /* EASY1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 021C3CCF26999379001BAADF /* EASY1.mp3 */; };
@@ -96,6 +97,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		020AC84C27224C68000561C5 /* ResultViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewPresenter.swift; sourceTree = "<group>"; };
 		020E7F08265D2C600090F761 /* PreGameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreGameLogic.swift; sourceTree = "<group>"; };
 		021C3CCD269992CD001BAADF /* EASY0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY0.mp3; sourceTree = "<group>"; };
 		021C3CCF26999379001BAADF /* EASY1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EASY1.mp3; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				0227AAD9271EF822000C66FA /* GameViewPresenter.swift */,
 				02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */,
+				020AC84C27224C68000561C5 /* ResultViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -701,6 +704,7 @@
 				02DD4BC52670F7FD00F231DC /* PreMyWordViewController.swift in Sources */,
 				023375752672407E00C59023 /* WordSource.swift in Sources */,
 				02C7C2E02720FE5400FDFE1A /* UsedWordManager.swift in Sources */,
+				020AC84D27224C68000561C5 /* ResultViewPresenter.swift in Sources */,
 				02CA3F1F26AF0F99007E4825 /* DataManager.swift in Sources */,
 				02F222452712D03A00A71175 /* UIView.swift in Sources */,
 				029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */,

@@ -39,7 +39,7 @@ final class UsedWordViewPresenter {
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension UsedWordViewPresenter: UsedWordManagerDelegate {
-    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
+    func didUpdateDB(_ usedWordManager: UsedWordManager) {
         view.changeCellImage(self)
     }
     

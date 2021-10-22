@@ -164,7 +164,7 @@ extension GameViewPresenter: EnemyModelDelegate {
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension GameViewPresenter: UsedWordManagerDelegate {
-    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int) {
+    func didUpdateDB(_ usedWordManager: UsedWordManager) {
         // do nothing
     }
     

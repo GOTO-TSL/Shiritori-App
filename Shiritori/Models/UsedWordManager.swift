@@ -18,7 +18,7 @@ struct UsedWord {
 protocol UsedWordManagerDelegate: AnyObject {
     func didCheckIsUsed(_ usedWordManager: UsedWordManager, word: String, count: Int)
     func didGetUsedWords(_ usedWordManager: UsedWordManager, words: [UsedWord])
-    func didChangeIsLike(_ usedWordManager: UsedWordManager, wordID: Int)
+    func didUpdateDB(_ usedWordManager: UsedWordManager)
 }
 
 final class UsedWordManager {
@@ -108,11 +108,22 @@ final class UsedWordManager {
     }
     
     func changeLike(for target: UsedWord) {
-        let tagWord = usedWords.filter(wordID == target.wordID)
+        let tagWords = usedWords.filter(wordID == target.wordID)
         
         do {
-            try database!.run(tagWord.update(isLike <- !target.isLike))
-            self.delegate?.didChangeIsLike(self, wordID: target.wordID)
+            try database!.run(tagWords.update(isLike <- !target.isLike))
+            self.delegate?.didUpdateDB(self)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func delete() {
+        let tagWords = usedWords.filter(isLike == false)
+        
+        do {
+            try database!.run(tagWords.delete())
+            self.delegate?.didUpdateDB(self)
         } catch {
             print(error)
         }
