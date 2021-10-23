@@ -14,6 +14,7 @@ struct Const {
     
     enum UDKeys {
         static let currentWord = "currentWord"
+        static let isMute = "isMute"
     }
     
     enum GameParam {
@@ -61,23 +62,6 @@ struct Const {
         制限時間以内に敵の体力を0にするとゲームクリア！
         """
         static let cms = "COMMING SOON..."
-        static let text = """
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                              あああああああああああ\n
-                             """
     }
     
     enum GameText {
@@ -110,14 +94,25 @@ struct Const {
         static let unlike = "unlike"
         static let next = "next"
         static let sound = "sound_icon16"
+        static let mute = "sound_icon_off16"
         static let help = "help_icon16"
         static let ranking = "ranking_icon16"
         static let modeFrame = "mode_frame"
         static let speechballoon = "speechballoon"
         static let hpFrame = "hp_frame"
-        static let easy = "easy"
-        static let normal = "normal"
-        static let hard = "hard"
+        static let easy = "EASY"
+        static let normal = "NORMAL"
+        static let hard = "HARD"
+    }
+    
+    enum Sound {
+        static let opening = "opening"
+        static let battle = "battle"
+        static let push = "push"
+        static let damage = "damage"
+        static let heal = "heal"
+        static let win = "win"
+        static let lose = "lose"
     }
 
 }

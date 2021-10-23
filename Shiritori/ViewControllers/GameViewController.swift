@@ -69,6 +69,7 @@ class GameViewController: UIViewController {
     }
     
     @objc private func backPressed(_ sender: UIButton) {
+        opening(operation: .play)
         presenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
         dismiss(animated: false, completion: nil)

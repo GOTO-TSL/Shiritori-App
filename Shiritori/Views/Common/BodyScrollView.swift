@@ -13,7 +13,6 @@ class BodyScrollView: UIView {
     let bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Const.font, size: 20)
-        label.text = Const.BodyText.text
         label.textAlignment = .center
         label.textColor = .white
         label.numberOfLines = 0
