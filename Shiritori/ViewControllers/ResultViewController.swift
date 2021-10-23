@@ -26,7 +26,8 @@ class ResultViewController: UIViewController {
 
         configureUI()
         presenter = ResultViewPresenter(view: self)
-        
+        guard let iswin = isWin else { return }
+        presenter.resultViewDidLoad(isWin: iswin)
     }
     
     private func configureUI() {
@@ -65,6 +66,7 @@ class ResultViewController: UIViewController {
     }
     
     @objc private func wordPressed(_ sender: UIButton) {
+        presenter.didPressedWord()
         // 使用した単語一覧画面に遷移
         let usedWordVC = UsedWordViewController()
         usedWordVC.modalPresentationStyle = .fullScreen
@@ -76,6 +78,7 @@ class ResultViewController: UIViewController {
 extension ResultViewController: ResultViewProtocol {
     func goToNextView(_ resultViewPresenter: ResultViewPresenter) {
         DispatchQueue.main.async {
+            self.opening(operation: .play)
             // ホーム画面に遷移
             let homeVC = HomeViewController()
             homeVC.modalPresentationStyle = .fullScreen

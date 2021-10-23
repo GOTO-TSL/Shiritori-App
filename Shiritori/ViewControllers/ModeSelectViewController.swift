@@ -48,6 +48,8 @@ class ModeSelectViewController: UIViewController {
     }
     
     @objc private func modeSelected(_ sender: UIButton) {
+        // オープニングを停止
+        opening(operation: .stop)
         // ゲーム画面へ遷移
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す

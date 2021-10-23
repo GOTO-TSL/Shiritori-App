@@ -33,11 +33,13 @@ protocol GameViewPresenterProtocol {
 final class GameViewPresenter {
     
     private let view: GameViewProtocol!
-    var timeManager: TimeManager!
-    var dictDataManager: DictDataManager!
-    var gameLogic: GameLogic!
-    var enemyModel: EnemyModel!
-    var wordDataManager: WordDataManager!
+    private var timeManager: TimeManager!
+    private var dictDataManager: DictDataManager!
+    private var gameLogic: GameLogic!
+    private var enemyModel: EnemyModel!
+    private var wordDataManager: WordDataManager!
+    private var bgmPlayer: SoundPlayer!
+    private var actionPlayer: SoundPlayer!
     
     init(view: GameViewProtocol, mode: Mode) {
         self.view = view
@@ -46,6 +48,8 @@ final class GameViewPresenter {
         self.gameLogic = GameLogic()
         self.enemyModel = EnemyModel(mode: mode)
         self.wordDataManager = WordDataManager()
+        self.bgmPlayer = SoundPlayer()
+        self.actionPlayer = SoundPlayer()
         
         timeManager.delegate = self
         dictDataManager.delegate = self
@@ -55,6 +59,8 @@ final class GameViewPresenter {
     }
     
     func gameViewDidLoad() {
+        // bgm再生
+        bgmPlayer.playSound(name: Const.Sound.battle, loop: -1)
         // カウントダウンスタート
         timeManager.firstCount()
         // 英単語DBを読み込む
@@ -77,8 +83,9 @@ final class GameViewPresenter {
     }
     
     func backPressed() {
-        // タイマーを止めて使用済み単語をリセットする
+        // タイマーを止める，BGMを止める，使用済み単語をリセットする
         timeManager.stopTimer()
+        bgmPlayer.stop()
         wordDataManager.delete(option: .all)
     }
 }
@@ -101,6 +108,7 @@ extension GameViewPresenter: TimeManagerDelegate {
             let text = "TIME:\(Const.GameParam.timeLimit - count)"
             view.showTimeLimit(self, text: text)
         case Const.GameParam.timeLimit+1:
+            bgmPlayer.stop()
             view.showText(self, text: Const.GameText.end, state: .end)
         default: break
         }
@@ -125,6 +133,7 @@ extension GameViewPresenter: DictDataManagerDelegate {
         } else {
             view.showText(self, text: Const.GameText.notInDict, state: .error)
             enemyModel.heal()
+            actionPlayer.playSound(name: Const.Sound.heal)
         }
     }
     
@@ -141,6 +150,7 @@ extension GameViewPresenter: DictDataManagerDelegate {
         trimedWord = word.remove(characterSet: .decimalDigits)
         if !isFirst {
             view.showText(self, text: trimedWord, state: .word)
+            actionPlayer.playSound(name: Const.Sound.damage)
         } else {
             view.showText(self, text: trimedWord, state: .firstWord)
         }
@@ -159,6 +169,7 @@ extension GameViewPresenter: GameLogicDelegate {
         // エラー表示を依頼
         view.showText(self, text: message, state: .error)
         enemyModel.heal()
+        actionPlayer.playSound(name: Const.Sound.heal)
     }
     
 }
@@ -173,6 +184,7 @@ extension GameViewPresenter: EnemyModelDelegate {
         } else {
             view.updateHPBar(self, progress: progress)
             view.showText(self, text: Const.GameText.dead, state: .lose)
+            bgmPlayer.stop()
             timeManager.stopTimer()
         }
     }
