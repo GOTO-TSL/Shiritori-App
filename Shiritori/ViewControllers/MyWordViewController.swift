@@ -88,7 +88,7 @@ extension MyWordViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate Methods
 extension MyWordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        // 詳細画面へ移動
         let detailVC = WordDetailViewController()
         detailVC.modalPresentationStyle = .fullScreen
         detailVC.word = myWords[indexPath.row].word

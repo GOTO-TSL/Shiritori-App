@@ -1,46 +1,26 @@
 PODS:
-  - GRDB.swift (5.8.0):
-    - GRDB.swift/standard (= 5.8.0)
-  - GRDB.swift/standard (5.8.0)
-  - Hero (1.6.1)
-  - Realm (10.12.0):
-    - Realm/Headers (= 10.12.0)
-  - Realm/Headers (10.12.0)
-  - RealmSwift (10.12.0):
-    - Realm (= 10.12.0)
   - SQLite.swift (0.13.0):
     - SQLite.swift/standard (= 0.13.0)
   - SQLite.swift/standard (0.13.0)
-  - SwiftFormat/CLI (0.48.11)
-  - SwiftLint (0.43.1)
+  - SwiftFormat/CLI (0.48.17)
+  - SwiftLint (0.45.0)
 
 DEPENDENCIES:
-  - GRDB.swift
-  - Hero
-  - RealmSwift
   - SQLite.swift (~> 0.13.0)
   - SwiftFormat/CLI
   - SwiftLint
 
 SPEC REPOS:
   trunk:
-    - GRDB.swift
-    - Hero
-    - Realm
-    - RealmSwift
     - SQLite.swift
     - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
-  GRDB.swift: 9b9beec114435e1d852ad68c136cff4c71134627
-  Hero: 215865ba3ae41dd9bb08cd6c60a645529c6fc94b
-  Realm: 32488213acb44660539c619d620cec1bac046166
-  RealmSwift: 0abdca6231d5ff8a4f84cef9c1121ef95a483faf
   SQLite.swift: 8add701609fd0ef78d097dcc75d20a9782e6f5fc
-  SwiftFormat: 938e5865a118c49d63c7a290ddad86335f9e585f
-  SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
+  SwiftFormat: 0a9044eb365d74d4a0a2cefa5fe44a4cbef382a7
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: 1375d688067b933105fce82ae29e349c40903ccf
+PODFILE CHECKSUM: a9b460a72d303e29181cf3f768101a8f907f9422
 
 COCOAPODS: 1.10.1

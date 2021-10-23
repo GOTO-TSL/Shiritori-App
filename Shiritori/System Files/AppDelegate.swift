@@ -11,16 +11,16 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let defaults = UserDefaults.standard
-    var opPlayer = SoundPlayer()
+    // var opPlayer = SoundPlayer()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        defaults.set(false, forKey: Constant.UserDefaultKeys.isMute)
+        //defaults.set(false, forKey: Constant.UserDefaultKeys.isMute)
         //opPlayer.playSound(name: Constant.Sounds.opening, isMute: false, loop: -1)
         
         return true
     }
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        defaults.set(true, forKey: Constant.UserDefaultKeys.firstLaunch)
+        //defaults.set(true, forKey: Constant.UserDefaultKeys.firstLaunch)
     }
 }
