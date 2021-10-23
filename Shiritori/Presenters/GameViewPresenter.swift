@@ -77,7 +77,9 @@ final class GameViewPresenter {
     }
     
     func backPressed() {
+        // タイマーを止めて使用済み単語をリセットする
         timeManager.stopTimer()
+        wordDataManager.delete(option: .all)
     }
 }
 // MARK: - TimeManagerDelegate Methods

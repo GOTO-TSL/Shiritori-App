@@ -131,9 +131,20 @@ extension GameViewController: GameViewProtocol {
                 self.presenter.willGameStart()
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
-            case .end, .lose:
+            case .end:
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
+                resultVC.isWin = false
+                resultVC.mode = self.mode!
+                resultVC.modalPresentationStyle = .fullScreen
+                self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
+                self.present(resultVC, animated: false, completion: nil)
+                
+            case .lose:
+                // リザルト画面へ遷移
+                let resultVC = ResultViewController()
+                resultVC.isWin = true
+                resultVC.mode = self.mode!
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
                 self.present(resultVC, animated: false, completion: nil)
