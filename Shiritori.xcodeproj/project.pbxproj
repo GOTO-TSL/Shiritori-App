@@ -44,6 +44,7 @@
 		02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02500B9A27147E6F00F3B7E8 /* UIStackView.swift */; };
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
 		025EF86E26A7703800C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */; };
+		026923682723C0B30085341E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026923672723C0B30085341E /* UIImageView.swift */; };
 		02818B2126876983000A40C2 /* damage.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2026876983000A40C2 /* damage.mp3 */; };
 		02818B2326876D2E000A40C2 /* heal.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2226876D2E000A40C2 /* heal.mp3 */; };
 		02818B2726876D48000A40C2 /* opening.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 02818B2426876D47000A40C2 /* opening.mp3 */; };
@@ -117,6 +118,7 @@
 		02500B9A27147E6F00F3B7E8 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
 		025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
+		026923672723C0B30085341E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		02818B2026876983000A40C2 /* damage.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = damage.mp3; sourceTree = "<group>"; };
 		02818B2226876D2E000A40C2 /* heal.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = heal.mp3; sourceTree = "<group>"; };
 		02818B2426876D47000A40C2 /* opening.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = opening.mp3; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 				02500B9A27147E6F00F3B7E8 /* UIStackView.swift */,
 				0232400E271C1B7000333C7C /* UIViewController.swift */,
 				0227AADB271FEE33000C66FA /* String.swift */,
+				026923672723C0B30085341E /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */,
 				02C14176271826D200A2868E /* EnemyView.swift in Sources */,
 				02323FFC271BF30300333C7C /* RankingView.swift in Sources */,
+				026923682723C0B30085341E /* UIImageView.swift in Sources */,
 				02F2224C2712D45300A71175 /* HomeButtonView.swift in Sources */,
 				0232400B271BF86100333C7C /* RankingViewController.swift in Sources */,
 				02286800271B096D00B064FF /* UsedWordViewController.swift in Sources */,

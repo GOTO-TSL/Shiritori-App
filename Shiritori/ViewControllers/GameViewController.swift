@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     private var timeLimit: UILabel!
     private var textField: UITextField!
     private var hpBar: UIProgressView!
+    private var enemyImageView: UIImageView!
     
     var presenter: GameViewPresenter!
     var mode: Mode?
@@ -45,6 +46,10 @@ class GameViewController: UIViewController {
         timeLimit = gameView.enemyView.timeLimit
         textField = gameView.userInputView.textField
         hpBar = gameView.enemyView.hpView.hpBar
+        enemyImageView = gameView.enemyView.enemyImageView
+        
+        // 敵の画像を設定
+        enemyImageView.image = UIImage(named: "\(mode!)/move0")
         // 自動で大文字になる設定, 自動で変換する設定を解除
         textField.autocapitalizationType = .none
         textField.autocorrectionType = .no
@@ -64,6 +69,7 @@ class GameViewController: UIViewController {
     }
     
     @objc private func backPressed(_ sender: UIButton) {
+        presenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
         dismiss(animated: false, completion: nil)
     }
@@ -98,20 +104,34 @@ extension GameViewController: GameViewProtocol {
     func showText(_ gameViewPresenter: GameViewPresenter, text: String, state: TextState) {
         DispatchQueue.main.async {
             self.wordLabel.text = text
+            switch state {
+            case .word:
+                self.enemyImageView.animation(mode: self.mode!, action: "damage", duration: 0.2)
+            case .error:
+                self.enemyImageView.animation(mode: self.mode!, action: "heal", duration: 0.4)
+            case .lose:
+                self.enemyImageView.animation(mode: self.mode!, action: "lose", duration: 0.9)
+            default:
+                self.enemyImageView.image = UIImage(named: "\(self.mode!)/move0")
+            }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             switch state {
+            case .word:
+                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
             case .error:
                 // エラー分表示の1秒後に現在の単語を再度表示
                 guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { return }
                 self.wordLabel.text = currentWord
+                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
             case .start:
                 // ゲームの開始をpresenterに通知
                 self.presenter.willGameStart()
+                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
-            case .end:
+            case .end, .lose:
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
@@ -124,6 +144,7 @@ extension GameViewController: GameViewProtocol {
     }
     
     func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String) {
+        // 制限時間を更新
         DispatchQueue.main.async {
             self.timeLimit.text = text
         }

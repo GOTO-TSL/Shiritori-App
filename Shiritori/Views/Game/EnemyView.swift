@@ -11,7 +11,6 @@ class EnemyView: UIView {
     // MARK: - Properties
     let enemyImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "slime1-1")
         return imageView
     }()
     

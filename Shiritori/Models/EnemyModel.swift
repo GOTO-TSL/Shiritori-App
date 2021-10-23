@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum Mode {
-    case easy
-    case normal
-    case hard
+enum Mode: String {
+    case easy = "easy"
+    case normal = "normal"
+    case hard = "hard"
 }
 
 protocol EnemyModelDelegate: AnyObject {

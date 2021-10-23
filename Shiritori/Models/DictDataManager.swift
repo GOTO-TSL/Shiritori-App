@@ -9,7 +9,7 @@ import SQLite
 import Foundation
 
 protocol DictDataManagerDelegate: AnyObject {
-    func didFeatchWord(_ dictDataManager: DictDataManager, word: String, mean: String)
+    func didFeatchWord(_ dictDataManager: DictDataManager, word: String, mean: String, isFirst: Bool)
     func didFeatchMean(_ dictDataManager: DictDataManager, word: String, mean: String)
     func didCheckIsInDict(_ dictDataManager: DictDataManager, word: String, count: Int)
 }
@@ -41,14 +41,14 @@ final class DictDataManager {
         }
     }
     // initialから始まる単語をDBから取得する
-    func featchWord(initial: Character) {
+    func featchWord(initial: Character, isFirst: Bool = false) {
         let table = getSafeWord(initial: initial)
         
         do {
             let query = try database!.prepare(table
                                               .limit(1, offset: Int.random(in: 0...count(table))))
             for item in query {
-                self.delegate?.didFeatchWord(self, word: item[word], mean: item[mean])
+                self.delegate?.didFeatchWord(self, word: item[word], mean: item[mean], isFirst: isFirst)
             }
         } catch {
             print(error)

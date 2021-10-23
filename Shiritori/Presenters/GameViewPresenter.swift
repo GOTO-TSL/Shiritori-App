@@ -8,8 +8,11 @@
 import Foundation
 
 enum TextState {
-    case normal
+    case count
+    case firstWord
+    case word
     case error
+    case lose
     case start
     case end
 }
@@ -22,6 +25,7 @@ protocol GameViewProtocol {
 
 protocol GameViewPresenterProtocol {
     func gameViewDidLoad()
+    func backPressed()
     func willGameStart()
     func didInputWord(word: String)
 }
@@ -64,12 +68,16 @@ final class GameViewPresenter {
         // ゲームの制限時間カウントスタート
         timeManager.gameCount()
         // 最初の単語取得を依頼
-        dictDataManager.featchWord(initial: Const.alphabet.randomElement()!)
+        dictDataManager.featchWord(initial: Const.alphabet.randomElement()!, isFirst: true)
     }
     
     func didInputWord(word: String) {
         // しりとりのルールを適用する処理を依頼
         gameLogic.applyShiritoriRule(for: word)
+    }
+    
+    func backPressed() {
+        timeManager.stopTimer()
     }
 }
 // MARK: - TimeManagerDelegate Methods
@@ -78,7 +86,7 @@ extension GameViewPresenter: TimeManagerDelegate {
     func didFirstCount(_ timeManager: TimeManager, count: Int) {
         switch count {
         case 0...2:
-            view.showText(self, text: "\(3 - count)", state: .normal)
+            view.showText(self, text: "\(3 - count)", state: .count)
         case 3:
             view.showText(self, text: Const.GameText.start, state: .start)
         default: break
@@ -118,7 +126,7 @@ extension GameViewPresenter: DictDataManagerDelegate {
         }
     }
     
-    func didFeatchWord(_ dictDataModel: DictDataManager, word: String, mean: String) {
+    func didFeatchWord(_ dictDataModel: DictDataManager, word: String, mean: String, isFirst: Bool) {
         // 現在の敵の単語をUserDefaultに保存
         UserDefaults.standard.set(word, forKey: Const.UDKeys.currentWord)
         // 使用した単語DBに保存
@@ -129,7 +137,11 @@ extension GameViewPresenter: DictDataManagerDelegate {
         // 表示を依頼
         var trimedWord = word.lowercased()
         trimedWord = word.remove(characterSet: .decimalDigits)
-        view.showText(self, text: trimedWord, state: .normal)
+        if !isFirst {
+            view.showText(self, text: trimedWord, state: .word)
+        } else {
+            view.showText(self, text: trimedWord, state: .firstWord)
+        }
     }
 }
 
@@ -158,7 +170,7 @@ extension GameViewPresenter: EnemyModelDelegate {
             view.updateHPBar(self, progress: progress)
         } else {
             view.updateHPBar(self, progress: progress)
-            view.showText(self, text: Const.GameText.dead, state: .end)
+            view.showText(self, text: Const.GameText.dead, state: .lose)
             timeManager.stopTimer()
         }
     }
