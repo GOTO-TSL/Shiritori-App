@@ -7,13 +7,19 @@
 
 import Foundation
 
-protocol GameLogicDelegate: AnyObject {
-    func shiritoriSucceeded(_ gameLogic: GameLogic, safeWord: String)
-    func shiritoriFailed(_ gameLogic: GameLogic, message: String)
+enum ResultState {
+    case winEasy
+    case winNormal
+    case winHard
 }
 
-final class GameLogic {
-    
+protocol GameLogicDelegate: AnyObject {
+    func shiritoriSucceeded(_ gameLogic: GameModel, safeWord: String)
+    func shiritoriFailed(_ gameLogic: GameModel, message: String)
+}
+
+final class GameModel {
+
     weak var delegate: GameLogicDelegate?
     
     func applyShiritoriRule(for word: String) {

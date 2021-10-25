@@ -19,16 +19,15 @@ class GameViewController: UIViewController {
     private var hpBar: UIProgressView!
     private var enemyImageView: UIImageView!
     
-    var presenter: GameViewPresenter!
-    var mode: Mode?
+    private var presenter: GameViewPresenter!
+    private let mode: Mode? = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        guard let safeMode = mode else { return }
-        presenter = GameViewPresenter(view: self, mode: safeMode)
+        presenter = GameViewPresenter(view: self, mode: mode!)
         presenter.gameViewDidLoad()
 
     }
@@ -133,19 +132,17 @@ extension GameViewController: GameViewProtocol {
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
             case .end:
+                UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
-                resultVC.isWin = false
-                resultVC.mode = self.mode!
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
                 self.present(resultVC, animated: false, completion: nil)
                 
             case .lose:
+                UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
-                resultVC.isWin = true
-                resultVC.mode = self.mode!
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
                 self.present(resultVC, animated: false, completion: nil)

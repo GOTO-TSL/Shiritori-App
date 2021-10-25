@@ -19,7 +19,7 @@
 		0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD6271EF28D000C66FA /* TimeManager.swift */; };
 		0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AAD9271EF822000C66FA /* GameViewPresenter.swift */; };
 		0227AADC271FEE33000C66FA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADB271FEE33000C66FA /* String.swift */; };
-		0227AADE27201342000C66FA /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADD27201342000C66FA /* GameLogic.swift */; };
+		0227AADE27201342000C66FA /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADD27201342000C66FA /* GameModel.swift */; };
 		0227AAE0272055D9000C66FA /* EnemyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0227AADF272055D9000C66FA /* EnemyModel.swift */; };
 		022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F3271A8B3400B064FF /* UsedWordView.swift */; };
 		022867F8271A8BE500B064FF /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022867F7271A8BE500B064FF /* HeaderView.swift */; };
@@ -59,6 +59,7 @@
 		029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763B2715D96C000EA6B4 /* ModeSelectView.swift */; };
 		029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763D2715DB22000EA6B4 /* ModeButtonView.swift */; };
 		029A76402715DC92000EA6B4 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763F2715DC92000EA6B4 /* ModeButton.swift */; };
+		02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDBF4227271268002342D5 /* UserDefaults.swift */; };
 		02C14170271823FB00A2868E /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1416F271823FB00A2868E /* GameView.swift */; };
 		02C14174271826C400A2868E /* HPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14173271826C400A2868E /* HPView.swift */; };
 		02C14176271826D200A2868E /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14175271826D200A2868E /* EnemyView.swift */; };
@@ -95,7 +96,7 @@
 		0227AAD6271EF28D000C66FA /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 		0227AAD9271EF822000C66FA /* GameViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewPresenter.swift; sourceTree = "<group>"; };
 		0227AADB271FEE33000C66FA /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		0227AADD27201342000C66FA /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		0227AADD27201342000C66FA /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		0227AADF272055D9000C66FA /* EnemyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyModel.swift; sourceTree = "<group>"; };
 		022867F3271A8B3400B064FF /* UsedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordView.swift; sourceTree = "<group>"; };
 		022867F7271A8BE500B064FF /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -137,6 +138,7 @@
 		029A763B2715D96C000EA6B4 /* ModeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectView.swift; sourceTree = "<group>"; };
 		029A763D2715DB22000EA6B4 /* ModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButtonView.swift; sourceTree = "<group>"; };
 		029A763F2715DC92000EA6B4 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
+		02BDBF4227271268002342D5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		02C1416F271823FB00A2868E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		02C14173271826C400A2868E /* HPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPView.swift; sourceTree = "<group>"; };
 		02C14175271826D200A2868E /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
@@ -180,7 +182,7 @@
 				0227AAD4271E5A7A000C66FA /* DictDataManager.swift */,
 				02C7C2DF2720FE5400FDFE1A /* WordDataManager.swift */,
 				0227AAD6271EF28D000C66FA /* TimeManager.swift */,
-				0227AADD27201342000C66FA /* GameLogic.swift */,
+				0227AADD27201342000C66FA /* GameModel.swift */,
 				0227AADF272055D9000C66FA /* EnemyModel.swift */,
 				026923692723E8C10085341E /* SoundPlayer.swift */,
 			);
@@ -389,6 +391,7 @@
 				0232400E271C1B7000333C7C /* UIViewController.swift */,
 				0227AADB271FEE33000C66FA /* String.swift */,
 				026923672723C0B30085341E /* UIImageView.swift */,
+				02BDBF4227271268002342D5 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02286803271B19CD00B064FF /* RuleView.swift in Sources */,
+				02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */,
 				020AC84F27225408000561C5 /* MyWordViewPresenter.swift in Sources */,
 				0232400F271C1B7000333C7C /* UIViewController.swift in Sources */,
 				02C1417D2718655A00A2868E /* BackButton.swift in Sources */,
@@ -615,7 +619,7 @@
 				02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */,
 				02324009271BF85000333C7C /* WordDetailViewController.swift in Sources */,
 				0269236A2723E8C10085341E /* SoundPlayer.swift in Sources */,
-				0227AADE27201342000C66FA /* GameLogic.swift in Sources */,
+				0227AADE27201342000C66FA /* GameModel.swift in Sources */,
 				02C14174271826C400A2868E /* HPView.swift in Sources */,
 				02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */,
 				02324001271BF7B200333C7C /* GameViewController.swift in Sources */,

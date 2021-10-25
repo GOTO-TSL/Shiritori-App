@@ -14,7 +14,12 @@ struct Const {
     
     enum UDKeys {
         static let currentWord = "currentWord"
+        static let currentMode = "currentMode"
+        static let isWin = "isWin"
         static let isMute = "isMute"
+        static let isWinEasy = "winEasy"
+        static let isWinNormal = "winNormal"
+        static let isWinHard = "winHard"
     }
     
     enum GameParam {
@@ -52,6 +57,14 @@ struct Const {
         static let myWords = "MYWORDS"
         static let detail = "DETAIL"
         static let ranking = "RANKING"
+    }
+    
+    enum AlertText {
+        static let open = "モード解放"
+        static let clear = "ゲームクリア！"
+        static let messageNormal = "NORMALモードが解放されました"
+        static let messageHard = "HARDモードが解放されました"
+        static let messageClear = "遊んでくれてありがとう！"
     }
     
     enum BodyText {

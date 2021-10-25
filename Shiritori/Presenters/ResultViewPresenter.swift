@@ -12,8 +12,7 @@ protocol ResultViewProtocol {
 }
 
 protocol ResultViewPresenterProtocol {
-    func resultViewDidLoad()
-    
+    func resultViewDidLoad(isWin: Bool, mode: Mode)
     func didPressedHome()
 }
 

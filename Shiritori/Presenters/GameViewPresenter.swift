@@ -35,7 +35,7 @@ final class GameViewPresenter {
     private let view: GameViewProtocol!
     private var timeManager: TimeManager!
     private var dictDataManager: DictDataManager!
-    private var gameLogic: GameLogic!
+    private var gameLogic: GameModel!
     private var enemyModel: EnemyModel!
     private var wordDataManager: WordDataManager!
     private var bgmPlayer: SoundPlayer!
@@ -45,7 +45,7 @@ final class GameViewPresenter {
         self.view = view
         self.timeManager = TimeManager()
         self.dictDataManager = DictDataManager()
-        self.gameLogic = GameLogic()
+        self.gameLogic = GameModel()
         self.enemyModel = EnemyModel(mode: mode)
         self.wordDataManager = WordDataManager()
         self.bgmPlayer = SoundPlayer()
@@ -160,12 +160,12 @@ extension GameViewPresenter: DictDataManagerDelegate {
 // MARK: - GameLogicDelegate Methods
 extension GameViewPresenter: GameLogicDelegate {
     // しりとり成立
-    func shiritoriSucceeded(_ gameLogic: GameLogic, safeWord: String) {
+    func shiritoriSucceeded(_ gameLogic: GameModel, safeWord: String) {
         // 辞書にある単語かどうかを調べる処理を依頼
         dictDataManager.checkIsInDict(inputs: safeWord)
     }
     // しりとり不成立
-    func shiritoriFailed(_ gameLogic: GameLogic, message: String) {
+    func shiritoriFailed(_ gameLogic: GameModel, message: String) {
         // エラー表示を依頼
         view.showText(self, text: message, state: .error)
         enemyModel.heal()
