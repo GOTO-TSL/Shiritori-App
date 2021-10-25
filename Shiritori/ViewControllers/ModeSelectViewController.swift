@@ -16,6 +16,8 @@ class ModeSelectViewController: UIViewController {
     private var normalButton: UIButton!
     private var hardButton: UIButton!
     
+    private let defaults = UserDefaults.standard
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,9 +47,9 @@ class ModeSelectViewController: UIViewController {
     }
     
     private func configureModeButton() {
-        let isWinEasy = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinEasy)
-        let isWinNormal = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinNormal)
-        let isWinHard = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinHard)
+        let isWinEasy = defaults.bool(forKey: Const.UDKeys.isWinEasy)
+        let isWinNormal = defaults.bool(forKey: Const.UDKeys.isWinNormal)
+        let isWinHard = defaults.bool(forKey: Const.UDKeys.isWinHard)
         
         if isWinEasy {
             addClearLabel(for: easyButton)
@@ -93,7 +95,7 @@ class ModeSelectViewController: UIViewController {
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す
         guard let btnTitle = sender.currentTitle else { return }
-        gameVC.mode = convertToMode(btnTitle)
+        defaults.setEnum(convertToMode(btnTitle), forKey: Const.UDKeys.currentMode)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)

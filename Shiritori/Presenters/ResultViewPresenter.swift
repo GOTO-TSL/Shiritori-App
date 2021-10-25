@@ -33,9 +33,8 @@ final class ResultViewPresenter {
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
-    func resultViewDidLoad(isWin: Bool, mode: Mode) {
+    func resultViewDidLoad(isWin: Bool) {
         if isWin {
-            changeState(of: mode)
             resultPlayer.playSound(name: Const.Sound.win)
         } else {
             resultPlayer.playSound(name: Const.Sound.lose)
@@ -51,17 +50,6 @@ final class ResultViewPresenter {
         wordDataManager.delete(option: .isntLike)
         wordDataManager.openDB(name: Const.DBName.myWords, isLoad: false)
         wordDataManager.copyWord()
-    }
-    
-    private func changeState(of mode: Mode) {
-        switch mode {
-        case .easy:
-            UserDefaults.standard.set(true, forKey: Const.UDKeys.isWinEasy)
-        case .normal:
-            UserDefaults.standard.set(true, forKey: Const.UDKeys.isWinNormal)
-        case .hard:
-            UserDefaults.standard.set(true, forKey: Const.UDKeys.isWinHard)
-        }
     }
 }
 // MARK: - UsedWordManagerDelegate Methods

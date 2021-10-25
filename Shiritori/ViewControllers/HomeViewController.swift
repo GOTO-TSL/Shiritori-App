@@ -17,6 +17,7 @@ class HomeViewController: UIViewController {
     private var soundButton: UIButton!
     
     private var presenter: HomeViewPresenter!
+    private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         soundButton.imageView?.image = isMute ? UIImage(named: Const.Image.mute) : UIImage(named: Const.Image.sound)
+        changeClearState()
     }
     
     private func configureUI() {
@@ -50,6 +52,41 @@ class HomeViewController: UIViewController {
         helpButton.addTarget(self, action: #selector(helpPressed(_:)), for: .touchUpInside)
         rankingButton.addTarget(self, action: #selector(rankingPressed(_:)), for: .touchUpInside)
         soundButton.addTarget(self, action: #selector(soundPressed(_:)), for: .touchUpInside)
+    }
+    
+    private func changeClearState() {
+        let mode: Mode? = defaults.getEnum(forKey: Const.UDKeys.currentMode)
+        let isWin = defaults.bool(forKey: Const.UDKeys.isWin)
+        let isWinEasy = defaults.bool(forKey: Const.UDKeys.isWinEasy)
+        let isWinNormal = defaults.bool(forKey: Const.UDKeys.isWinNormal)
+        let isWinHard = defaults.bool(forKey: Const.UDKeys.isWinHard)
+        
+        if isWin {
+            switch mode! {
+            case .easy:
+                if !isWinEasy {
+                    showAlert(title: Const.AlertText.open, message: Const.AlertText.messageNormal)
+                    defaults.set(true, forKey: Const.UDKeys.isWinEasy)
+                }
+            case .normal:
+                if !isWinNormal {
+                    showAlert(title: Const.AlertText.open, message: Const.AlertText.messageHard)
+                    defaults.set(true, forKey: Const.UDKeys.isWinNormal)
+                }
+            case .hard:
+                if !isWinHard {
+                    showAlert(title: Const.AlertText.clear, message: Const.AlertText.messageClear)
+                    defaults.set(true, forKey: Const.UDKeys.isWinHard)
+                }
+            }
+        }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(dialog, animated: true, completion: nil)
     }
     
     @objc private func playPressed(_ sender: UIButton) {

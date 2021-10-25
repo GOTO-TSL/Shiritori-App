@@ -17,8 +17,8 @@ class ResultViewController: UIViewController {
     private var resultImageView: UIImageView!
     
     private var presenter: ResultViewPresenter!
-    var isWin: Bool?
-    var mode: Mode?
+    private var isWin = UserDefaults.standard.bool(forKey: Const.UDKeys.isWin)
+    private let mode: Mode? = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -26,9 +26,7 @@ class ResultViewController: UIViewController {
 
         configureUI()
         presenter = ResultViewPresenter(view: self)
-        guard let safeIsWin = isWin else { return }
-        guard let safeMode = mode else { return }
-        presenter.resultViewDidLoad(isWin: safeIsWin, mode: safeMode)
+        presenter.resultViewDidLoad(isWin: isWin)
     }
     
     private func configureUI() {
@@ -50,14 +48,12 @@ class ResultViewController: UIViewController {
     }
     
     private func setResult() {
-        guard let safeIsWin = isWin else { return }
-        guard let safeMode = mode else { return }
-        if safeIsWin {
+        if isWin {
             resultLabel.text = Const.TitleText.resultWin
-            resultImageView.animation(mode: safeMode, action: "result", duration: 0.7)
+            resultImageView.animation(mode: mode!, action: "result", duration: 0.7)
         } else {
             resultLabel.text = Const.TitleText.resultLose
-            resultImageView.animation(mode: safeMode, action: "result", duration: 0.7)
+            resultImageView.animation(mode: mode!, action: "result", duration: 0.7)
         }
     }
     

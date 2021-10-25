@@ -59,6 +59,7 @@
 		029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763B2715D96C000EA6B4 /* ModeSelectView.swift */; };
 		029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763D2715DB22000EA6B4 /* ModeButtonView.swift */; };
 		029A76402715DC92000EA6B4 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763F2715DC92000EA6B4 /* ModeButton.swift */; };
+		02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDBF4227271268002342D5 /* UserDefaults.swift */; };
 		02C14170271823FB00A2868E /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1416F271823FB00A2868E /* GameView.swift */; };
 		02C14174271826C400A2868E /* HPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14173271826C400A2868E /* HPView.swift */; };
 		02C14176271826D200A2868E /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14175271826D200A2868E /* EnemyView.swift */; };
@@ -137,6 +138,7 @@
 		029A763B2715D96C000EA6B4 /* ModeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectView.swift; sourceTree = "<group>"; };
 		029A763D2715DB22000EA6B4 /* ModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButtonView.swift; sourceTree = "<group>"; };
 		029A763F2715DC92000EA6B4 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
+		02BDBF4227271268002342D5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		02C1416F271823FB00A2868E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		02C14173271826C400A2868E /* HPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPView.swift; sourceTree = "<group>"; };
 		02C14175271826D200A2868E /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 				0232400E271C1B7000333C7C /* UIViewController.swift */,
 				0227AADB271FEE33000C66FA /* String.swift */,
 				026923672723C0B30085341E /* UIImageView.swift */,
+				02BDBF4227271268002342D5 /* UserDefaults.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -604,6 +607,7 @@
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
 				02286803271B19CD00B064FF /* RuleView.swift in Sources */,
+				02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */,
 				020AC84F27225408000561C5 /* MyWordViewPresenter.swift in Sources */,
 				0232400F271C1B7000333C7C /* UIViewController.swift in Sources */,
 				02C1417D2718655A00A2868E /* BackButton.swift in Sources */,
