@@ -31,6 +31,8 @@ class ModeSelectViewController: UIViewController {
         normalButton = modeSelectView.modeButtons.normalButton
         hardButton = modeSelectView.modeButtons.hardButton
         
+        configureModeButton()
+        
         // 配置＆制約の追加
         view.addSubview(modeSelectView)
         modeSelectView.addConstraintsToFillView(view)
@@ -40,6 +42,43 @@ class ModeSelectViewController: UIViewController {
         easyButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
         normalButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
         hardButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+    }
+    
+    private func configureModeButton() {
+        let isWinEasy = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinEasy)
+        let isWinNormal = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinNormal)
+        let isWinHard = UserDefaults.standard.bool(forKey: Const.UDKeys.isWinHard)
+        
+        if isWinEasy {
+            addClearLabel(for: easyButton)
+            if isWinNormal {
+                addClearLabel(for: normalButton)
+                if isWinHard {
+                    addClearLabel(for: hardButton)
+                }
+            } else {
+                addModeLockView(for: hardButton)
+            }
+        } else {
+            addModeLockView(for: normalButton)
+            addModeLockView(for: hardButton)
+        }
+    }
+    
+    private func addModeLockView(for button: UIButton) {
+        let lockView = UIView()
+        lockView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.6)
+        button.addSubview(lockView)
+        lockView.addConstraintsToFillView(button)
+    }
+    
+    private func addClearLabel(for button: UIButton) {
+        let clearLabel = UILabel()
+        clearLabel.text = "CLEAR!"
+        clearLabel.font = UIFont(name: Const.font, size: 20)
+        clearLabel.textColor = .white
+        button.addSubview(clearLabel)
+        clearLabel.anchor(top: button.topAnchor, left: button.leftAnchor, paddingTop: 10, paddingLeft: 20)
     }
     
     @objc private func backPressed(_ sender: UIButton) {

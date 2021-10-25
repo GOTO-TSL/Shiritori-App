@@ -26,8 +26,9 @@ class ResultViewController: UIViewController {
 
         configureUI()
         presenter = ResultViewPresenter(view: self)
-        guard let iswin = isWin else { return }
-        presenter.resultViewDidLoad(isWin: iswin)
+        guard let safeIsWin = isWin else { return }
+        guard let safeMode = mode else { return }
+        presenter.resultViewDidLoad(isWin: safeIsWin, mode: safeMode)
     }
     
     private func configureUI() {

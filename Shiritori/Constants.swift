@@ -15,6 +15,9 @@ struct Const {
     enum UDKeys {
         static let currentWord = "currentWord"
         static let isMute = "isMute"
+        static let isWinEasy = "winEasy"
+        static let isWinNormal = "winNormal"
+        static let isWinHard = "winHard"
     }
     
     enum GameParam {
