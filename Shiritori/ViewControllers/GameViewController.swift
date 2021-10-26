@@ -20,7 +20,7 @@ class GameViewController: UIViewController {
     private var enemyImageView: UIImageView!
     
     private var presenter: GameViewPresenter!
-    private let mode: Mode? = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)
+    var mode: Mode?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -133,6 +133,7 @@ extension GameViewController: GameViewProtocol {
                 
             case .end:
                 UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
+                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
@@ -141,6 +142,7 @@ extension GameViewController: GameViewProtocol {
                 
             case .lose:
                 UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
+                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen

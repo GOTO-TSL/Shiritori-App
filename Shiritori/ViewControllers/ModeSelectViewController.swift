@@ -95,7 +95,7 @@ class ModeSelectViewController: UIViewController {
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す
         guard let btnTitle = sender.currentTitle else { return }
-        defaults.setEnum(convertToMode(btnTitle), forKey: Const.UDKeys.currentMode)
+        gameVC.mode = convertToMode(btnTitle)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)
