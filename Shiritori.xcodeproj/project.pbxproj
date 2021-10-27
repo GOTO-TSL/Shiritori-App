@@ -325,8 +325,8 @@
 				02323FFD271BF73100333C7C /* ViewControllers */,
 				0227AAD8271EF808000C66FA /* Presenters */,
 				02F222432712D01300A71175 /* Extensions */,
+				02BDBF46272862B6002342D5 /* Utils */,
 				02835583263F9307008B6845 /* Assets.xcassets */,
-				02500B982714762D00F3B7E8 /* Constants.swift */,
 				02835588263F9307008B6845 /* Info.plist */,
 				02835585263F9307008B6845 /* LaunchScreen.storyboard */,
 			);
@@ -358,6 +358,14 @@
 				029A763F2715DC92000EA6B4 /* ModeButton.swift */,
 			);
 			path = ModeSelect;
+			sourceTree = "<group>";
+		};
+		02BDBF46272862B6002342D5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				02500B982714762D00F3B7E8 /* Constants.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		02C1416E271823DF00A2868E /* Game */ = {

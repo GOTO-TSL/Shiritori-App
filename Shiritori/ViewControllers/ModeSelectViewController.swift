@@ -85,7 +85,9 @@ class ModeSelectViewController: UIViewController {
     
     @objc private func backPressed(_ sender: UIButton) {
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-        dismiss(animated: false, completion: nil)
+        let homeVC = HomeViewController()
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+        self.navigationController?.pushViewController(homeVC, animated: false)
     }
     
     @objc private func modeSelected(_ sender: UIButton) {
@@ -98,7 +100,7 @@ class ModeSelectViewController: UIViewController {
         gameVC.mode = convertToMode(btnTitle)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
-        present(gameVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(gameVC, animated: false)
     }
     // ボタンタイトルをモードオブジェクトに変換
     private func convertToMode(_ modeString: String) -> Mode {

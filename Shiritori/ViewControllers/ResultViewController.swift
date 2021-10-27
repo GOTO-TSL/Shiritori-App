@@ -80,7 +80,7 @@ extension ResultViewController: ResultViewProtocol {
             let homeVC = HomeViewController()
             homeVC.modalPresentationStyle = .fullScreen
             self.addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-            self.present(homeVC, animated: false, completion: nil)
+            self.navigationController?.pushViewController(homeVC, animated: false)
         }
     }
 }

@@ -32,6 +32,7 @@ class HomeViewController: UIViewController {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         soundButton.imageView?.image = isMute ? UIImage(named: Const.Image.mute) : UIImage(named: Const.Image.sound)
         changeClearState()
+        navigationController?.navigationBar.isHidden = true
     }
     
     private func configureUI() {
@@ -95,7 +96,7 @@ class HomeViewController: UIViewController {
         let modeVC = ModeSelectViewController()
         modeVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-        present(modeVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(modeVC, animated: false)
     }
     
     @objc private func wordPressed(_ sender: UIButton) {

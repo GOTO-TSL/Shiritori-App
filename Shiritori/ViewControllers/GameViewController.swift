@@ -71,7 +71,8 @@ class GameViewController: UIViewController {
         opening(operation: .play)
         presenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
-        dismiss(animated: false, completion: nil)
+        let modeVC = ModeSelectViewController()
+        self.navigationController?.pushViewController(modeVC, animated: false)
     }
     
     @objc private func attackPressed(_ sender: UIButton) {
@@ -138,7 +139,7 @@ extension GameViewController: GameViewProtocol {
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.present(resultVC, animated: false, completion: nil)
+                self.navigationController?.pushViewController(resultVC, animated: false)
                 
             case .lose:
                 UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
@@ -147,7 +148,7 @@ extension GameViewController: GameViewProtocol {
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.present(resultVC, animated: false, completion: nil)
+                self.navigationController?.pushViewController(resultVC, animated: false)
                 
             default: break
             }
