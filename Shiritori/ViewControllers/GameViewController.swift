@@ -10,7 +10,6 @@ import UIKit
 class GameViewController: UIViewController {
     
     // MARK: - Properties
-    private var gameView: GameView!
     private var backButton: UIButton!
     private var attackButton: UIButton!
     private var wordLabel: UILabel!
@@ -20,9 +19,13 @@ class GameViewController: UIViewController {
     private var enemyImageView: UIImageView!
     
     private var presenter: GameViewPresenter!
-    private let mode: Mode? = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)
+    var mode: Mode?
     
     // MARK: - Lifecycle
+    deinit {
+        print("game deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +41,7 @@ class GameViewController: UIViewController {
     }
     // MARK: - Helpers
     private func configureUI() {
-        gameView = GameView()
+        let gameView = GameView()
         backButton = gameView.backButton
         attackButton = gameView.userInputView.attackButton
         wordLabel = gameView.enemyView.wordLabel
@@ -71,7 +74,8 @@ class GameViewController: UIViewController {
         opening(operation: .play)
         presenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
-        dismiss(animated: false, completion: nil)
+        let modeVC = ModeSelectViewController()
+        self.navigationController?.pushViewController(modeVC, animated: false)
     }
     
     @objc private func attackPressed(_ sender: UIButton) {
@@ -133,19 +137,21 @@ extension GameViewController: GameViewProtocol {
                 
             case .end:
                 UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
+                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.present(resultVC, animated: false, completion: nil)
+                self.navigationController?.pushViewController(resultVC, animated: false)
                 
             case .lose:
                 UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
+                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
                 // リザルト画面へ遷移
                 let resultVC = ResultViewController()
                 resultVC.modalPresentationStyle = .fullScreen
                 self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.present(resultVC, animated: false, completion: nil)
+                self.navigationController?.pushViewController(resultVC, animated: false)
                 
             default: break
             }

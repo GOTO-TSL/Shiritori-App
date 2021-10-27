@@ -10,7 +10,6 @@ import UIKit
 class ResultViewController: UIViewController {
     
     // MARK: - Properties
-    private var resultView: ResultView!
     private var homeButton: UIButton!
     private var wordButton: UIButton!
     private var resultLabel: UILabel!
@@ -21,6 +20,10 @@ class ResultViewController: UIViewController {
     private let mode: Mode? = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)
     
     // MARK: - Lifecycle
+    deinit {
+        print("result deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,7 +33,7 @@ class ResultViewController: UIViewController {
     }
     
     private func configureUI() {
-        resultView = ResultView()
+        let resultView = ResultView()
         homeButton = resultView.buttons.homeButton
         wordButton = resultView.buttons.wordButton
         resultLabel = resultView.titleView.title
@@ -78,9 +81,8 @@ extension ResultViewController: ResultViewProtocol {
             self.opening(operation: .play)
             // ホーム画面に遷移
             let homeVC = HomeViewController()
-            homeVC.modalPresentationStyle = .fullScreen
             self.addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-            self.present(homeVC, animated: false, completion: nil)
+            self.navigationController?.pushViewController(homeVC, animated: false)
         }
     }
 }

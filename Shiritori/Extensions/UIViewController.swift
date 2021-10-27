@@ -25,14 +25,21 @@ extension UIViewController {
     
     func opening(operation: Operation) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
+
         switch operation {
         case .play:
-            appDelegate.opPlayer.playSound(name: Const.Sound.opening, loop: -1)
+            appDelegate.opening.playSound(loop: -1)
         case .stop:
-            appDelegate.opPlayer.stop()
+            appDelegate.opening.stop()
         case .mute:
-            appDelegate.opPlayer.changeVolume()
+            appDelegate.opening.changeVolume()
+        }
+    }
+    
+    func removeSubViews() {
+        let subviews = self.view.subviews
+        for subview in subviews {
+            subview.removeFromSuperview()
         }
     }
 }

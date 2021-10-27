@@ -10,7 +10,6 @@ import UIKit
 class RankingViewController: UIViewController {
     
     // MARK: - Properties
-    var rankingView: RankingView!
     var backButton: UIButton!
     
     // ステータスバーの色を白に設定
@@ -19,6 +18,10 @@ class RankingViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    deinit {
+        print("ranking deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,13 +32,14 @@ class RankingViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // headerに枠線を追加
+        let rankingView = RankingView()
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         rankingView.headerView.addBorder(width: 1.0, color: .white, position: .right)
     }
     
     private func configureUI() {
-        rankingView = RankingView()
+        let rankingView = RankingView()
         backButton = rankingView.headerView.backButton
         
         // 配置＆制約の追加

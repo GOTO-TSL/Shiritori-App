@@ -10,7 +10,6 @@ import UIKit
 class ModeSelectViewController: UIViewController {
     
     // MARK: - Properties
-    private var modeSelectView: ModeSelectView!
     private var backButton: UIButton!
     private var easyButton: UIButton!
     private var normalButton: UIButton!
@@ -19,6 +18,10 @@ class ModeSelectViewController: UIViewController {
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
+    deinit {
+        print("mode deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +30,7 @@ class ModeSelectViewController: UIViewController {
     }
     
     private func configureUI() {
-        modeSelectView = ModeSelectView()
+        let modeSelectView = ModeSelectView()
         backButton = modeSelectView.backButton
         easyButton = modeSelectView.modeButtons.easyButton
         normalButton = modeSelectView.modeButtons.normalButton
@@ -85,7 +88,9 @@ class ModeSelectViewController: UIViewController {
     
     @objc private func backPressed(_ sender: UIButton) {
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-        dismiss(animated: false, completion: nil)
+        let homeVC = HomeViewController()
+        addTransition(duration: 0.3, type: .fade, subType: .fromRight)
+        self.navigationController?.pushViewController(homeVC, animated: false)
     }
     
     @objc private func modeSelected(_ sender: UIButton) {
@@ -95,10 +100,10 @@ class ModeSelectViewController: UIViewController {
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す
         guard let btnTitle = sender.currentTitle else { return }
-        defaults.setEnum(convertToMode(btnTitle), forKey: Const.UDKeys.currentMode)
+        gameVC.mode = convertToMode(btnTitle)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
-        present(gameVC, animated: false, completion: nil)
+        self.navigationController?.pushViewController(gameVC, animated: false)
     }
     // ボタンタイトルをモードオブジェクトに変換
     private func convertToMode(_ modeString: String) -> Mode {

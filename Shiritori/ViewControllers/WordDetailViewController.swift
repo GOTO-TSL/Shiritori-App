@@ -10,7 +10,6 @@ import UIKit
 class WordDetailViewController: UIViewController {
     
     // MARK: - Properties
-    private var wordDetailView: WordDetailView!
     private var wordLabel: UILabel!
     private var meanLabel: UILabel!
     private var backButton: UIButton!
@@ -18,6 +17,10 @@ class WordDetailViewController: UIViewController {
     var mean: String?
     
     // ステータスバーの色を白に設定
+    deinit {
+        print("wordDetail deinit")
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -32,13 +35,14 @@ class WordDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // headerに枠線を追加
+        let wordDetailView = WordDetailView()
         wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .right)
     }
     
     private func configureUI() {
-        wordDetailView = WordDetailView()
+        let wordDetailView = WordDetailView()
         wordLabel = wordDetailView.wordLabel
         meanLabel = wordDetailView.bodyView.bodyLabel
         backButton = wordDetailView.headerView.backButton

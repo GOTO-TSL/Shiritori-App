@@ -9,15 +9,18 @@ import Foundation
 
 final class HomeViewPresenter {
     
-    private var pushPlayer: SoundPlayer!
+    private var pushSound: SoundPlayer!
     
     init() {
-        self.pushPlayer = SoundPlayer()
+        self.pushSound = SoundPlayer(name: Const.Sound.push)
         
+    }
+    deinit {
+        print("home Presenter deinit")
     }
     
     func didPushButton() {
         // 効果音を再生
-        pushPlayer.playSound(name: Const.Sound.push)
+        pushSound.playSound()
     }
 }
