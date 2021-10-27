@@ -9,17 +9,20 @@ import UIKit
 
 class HomeViewController: UIViewController {
     // MARK: - Properties
-    private var homeView: HomeView!
-    private var playButton: UIButton!
-    private var wordButton: UIButton!
-    private var helpButton: UIButton!
-    private var rankingButton: UIButton!
-    private var soundButton: UIButton!
+    private weak var playButton: UIButton!
+    private weak var wordButton: UIButton!
+    private weak var helpButton: UIButton!
+    private weak var rankingButton: UIButton!
+    private weak var soundButton: UIButton!
     
     private var presenter: HomeViewPresenter!
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
+    deinit {
+        print("home deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,7 +39,7 @@ class HomeViewController: UIViewController {
     }
     
     private func configureUI() {
-        homeView = HomeView()
+        let homeView = HomeView()
         playButton = homeView.middleButtons.playButton
         wordButton = homeView.middleButtons.wordButton
         helpButton = homeView.bottomButtons.helpButton
@@ -87,7 +90,7 @@ class HomeViewController: UIViewController {
         let dialog = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         dialog.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(dialog, animated: true, completion: nil)
+        present(dialog, animated: true, completion: nil)
     }
     
     @objc private func playPressed(_ sender: UIButton) {
@@ -96,7 +99,7 @@ class HomeViewController: UIViewController {
         let modeVC = ModeSelectViewController()
         modeVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
-        self.navigationController?.pushViewController(modeVC, animated: false)
+        navigationController?.pushViewController(modeVC, animated: false)
     }
     
     @objc private func wordPressed(_ sender: UIButton) {
@@ -110,7 +113,7 @@ class HomeViewController: UIViewController {
     
     @objc private func helpPressed(_ sender: UIButton) {
         presenter.didPushButton()
-        // モードセレクト画面に遷移
+        // ルール画面に遷移
         let ruleVC = RuleViewController()
         ruleVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
@@ -119,7 +122,7 @@ class HomeViewController: UIViewController {
     
     @objc private func rankingPressed(_ sender: UIButton) {
         presenter.didPushButton()
-        // モードセレクト画面に遷移
+        // ランキング画面に遷移
         let rankingVC = RankingViewController()
         rankingVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)

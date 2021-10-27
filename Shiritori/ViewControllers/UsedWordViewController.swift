@@ -10,7 +10,6 @@ import UIKit
 class UsedWordViewController: UIViewController {
     
     // MARK: - Properties
-    private var usedWordView: UsedWordView!
     private var backButton: UIButton!
     private var likeButton: UIButton!
     private var tableView: UITableView!
@@ -24,6 +23,10 @@ class UsedWordViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    deinit {
+        print("usedword deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,13 +40,14 @@ class UsedWordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // headerに枠線を追加
+        let usedWordView = UsedWordView()
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)
     }
     
     private func configureUI() {
-        usedWordView = UsedWordView()
+        let usedWordView = UsedWordView()
         backButton = usedWordView.headerView.backButton
         tableView = usedWordView.tableView
         

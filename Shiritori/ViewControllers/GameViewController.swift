@@ -10,7 +10,6 @@ import UIKit
 class GameViewController: UIViewController {
     
     // MARK: - Properties
-    private var gameView: GameView!
     private var backButton: UIButton!
     private var attackButton: UIButton!
     private var wordLabel: UILabel!
@@ -23,6 +22,10 @@ class GameViewController: UIViewController {
     var mode: Mode?
     
     // MARK: - Lifecycle
+    deinit {
+        print("game deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +41,7 @@ class GameViewController: UIViewController {
     }
     // MARK: - Helpers
     private func configureUI() {
-        gameView = GameView()
+        let gameView = GameView()
         backButton = gameView.backButton
         attackButton = gameView.userInputView.attackButton
         wordLabel = gameView.enemyView.wordLabel

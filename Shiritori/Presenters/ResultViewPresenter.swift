@@ -19,14 +19,16 @@ protocol ResultViewPresenterProtocol {
 final class ResultViewPresenter {
     private let view: ResultViewProtocol
     var wordDataManager: WordDataManager!
-    var resultPlayer: SoundPlayer!
-    var pushPlayer: SoundPlayer!
+    var winSound: SoundPlayer!
+    var loseSound: SoundPlayer!
+    var pushSound: SoundPlayer!
     
     init(view: ResultViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
-        self.resultPlayer = SoundPlayer()
-        self.pushPlayer = SoundPlayer()
+        self.winSound = SoundPlayer(name: Const.Sound.win)
+        self.loseSound = SoundPlayer(name: Const.Sound.lose)
+        self.pushSound = SoundPlayer(name: Const.Sound.push)
         
         wordDataManager.delegate = self
         wordDataManager.createDB(name: Const.DBName.myWords)
@@ -35,18 +37,18 @@ final class ResultViewPresenter {
     
     func resultViewDidLoad(isWin: Bool) {
         if isWin {
-            resultPlayer.playSound(name: Const.Sound.win)
+            winSound.playSound()
         } else {
-            resultPlayer.playSound(name: Const.Sound.lose)
+            loseSound.playSound()
         }
     }
     
     func didPressedWord() {
-        pushPlayer.playSound(name: Const.Sound.push)
+        pushSound.playSound()
     }
     
     func didPressedHome() {
-        pushPlayer.playSound(name: Const.Sound.push)
+        pushSound.playSound()
         wordDataManager.delete(option: .isntLike)
         wordDataManager.openDB(name: Const.DBName.myWords, isLoad: false)
         wordDataManager.copyWord()

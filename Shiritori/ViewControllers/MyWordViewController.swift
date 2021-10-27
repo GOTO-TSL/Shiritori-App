@@ -10,7 +10,6 @@ import UIKit
 class MyWordViewController: UIViewController {
     
     // MARK: - Properties
-    private var myWordView: MyWordView!
     private var tableView: UITableView!
     private var backButton: UIButton!
     private var editButton: UIButton!
@@ -22,6 +21,10 @@ class MyWordViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
+    deinit {
+        print("myword deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,13 +37,14 @@ class MyWordViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         // headerに枠線を追加
+        let myWordView = MyWordView()
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
         myWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)
     }
     
     private func configureUI() {
-        myWordView = MyWordView()
+        let myWordView = MyWordView()
         tableView = myWordView.tableView
         backButton = myWordView.headerView.backButton
         editButton = myWordView.editButton

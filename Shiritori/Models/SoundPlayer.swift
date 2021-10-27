@@ -10,8 +10,7 @@ import AVFoundation
 final class SoundPlayer {
     var audioPlayer: AVAudioPlayer!
     
-    func playSound(name: String, loop: Int = 0) {
-        let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
+    init(name: String) {
         
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
             print("音楽ファイルが見つかりません")
@@ -20,19 +19,27 @@ final class SoundPlayer {
         
         do {
             // AVAudioPlayerのインスタンス化
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             // AVAudioPlayerのデリゲートをセット
             audioPlayer.delegate = self as? AVAudioPlayerDelegate
-            // ループ数の指定
-            audioPlayer.numberOfLoops = loop
-            // 音量設定
-            audioPlayer.volume = isMute ? 0.0 : 0.5
-            // 音楽の再生
-            audioPlayer.play()
             
         } catch {
-            print("Error\(error)")
+            print(error)
         }
+    }
+    
+    deinit {
+        print("soundPlayer deinit")
+    }
+    
+    func playSound(loop: Int = 0) {
+        let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
+        // ループ数の指定
+        audioPlayer.numberOfLoops = loop
+        // 音量設定
+        audioPlayer.volume = isMute ? 0.0 : 0.5
+        // 音楽の再生
+        audioPlayer.play()
     }
     
     // サウンドの再生を停止

@@ -10,7 +10,6 @@ import UIKit
 class ModeSelectViewController: UIViewController {
     
     // MARK: - Properties
-    private var modeSelectView: ModeSelectView!
     private var backButton: UIButton!
     private var easyButton: UIButton!
     private var normalButton: UIButton!
@@ -19,6 +18,10 @@ class ModeSelectViewController: UIViewController {
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
+    deinit {
+        print("mode deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +30,7 @@ class ModeSelectViewController: UIViewController {
     }
     
     private func configureUI() {
-        modeSelectView = ModeSelectView()
+        let modeSelectView = ModeSelectView()
         backButton = modeSelectView.backButton
         easyButton = modeSelectView.modeButtons.easyButton
         normalButton = modeSelectView.modeButtons.normalButton
