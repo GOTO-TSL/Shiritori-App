@@ -7,17 +7,17 @@
 
 import Foundation
 
-protocol ResultViewProtocol {
+protocol ResultViewProtocol: AnyObject {
     func goToNextView(_ resultViewPresenter: ResultViewPresenter)
 }
 
-protocol ResultViewPresenterProtocol {
+protocol ResultViewPresenterProtocol: AnyObject {
     func resultViewDidLoad(isWin: Bool, mode: Mode)
     func didPressedHome()
 }
 
 final class ResultViewPresenter {
-    private let view: ResultViewProtocol
+    private weak var view: ResultViewProtocol!
     var wordDataManager: WordDataManager!
     var winSound: SoundPlayer!
     var loseSound: SoundPlayer!

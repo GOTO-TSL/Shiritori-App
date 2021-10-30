@@ -7,17 +7,17 @@
 
 import Foundation
 
-protocol MyWordViewProtocol {
+protocol MyWordViewProtocol: AnyObject {
     func showWords(_ myWordViewPresenter: MyWordViewPresenter, words: [Word])
 }
 
-protocol MyWordViewPresenterProtocol {
+protocol MyWordViewPresenterProtocol: AnyObject {
     func myWordViewDidLoad()
     func deleted(word: Word)
 }
 
 final class MyWordViewPresenter {
-    private let view: MyWordViewProtocol
+    private weak var view: MyWordViewProtocol!
     private var wordDataManager: WordDataManager!
     
     init(view: MyWordViewProtocol) {
