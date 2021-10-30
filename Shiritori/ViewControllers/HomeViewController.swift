@@ -97,7 +97,6 @@ class HomeViewController: UIViewController {
         presenter.didPushButton()
         // モードセレクト画面に遷移
         let modeVC = ModeSelectViewController()
-        modeVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
         navigationController?.pushViewController(modeVC, animated: false)
     }

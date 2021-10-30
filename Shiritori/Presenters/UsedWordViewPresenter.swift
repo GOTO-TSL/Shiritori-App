@@ -7,18 +7,18 @@
 
 import Foundation
 
-protocol UsedWordViewProtocol {
+protocol UsedWordViewProtocol: AnyObject {
     func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word])
 }
 
-protocol UsedWordViewPresenterProtocol {
+protocol UsedWordViewPresenterProtocol: AnyObject {
     func usedWordViewDidLoad()
     func didPressedLikeButton(of word: Word)
 }
 
 final class UsedWordViewPresenter {
     
-    private let view: UsedWordViewProtocol!
+    private weak var view: UsedWordViewProtocol!
     var wordDataManager: WordDataManager!
     
     init(view: UsedWordViewProtocol) {
