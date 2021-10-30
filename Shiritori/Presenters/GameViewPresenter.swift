@@ -128,7 +128,7 @@ extension GameViewPresenter: DictDataManagerDelegate {
         wordDataManager.insert(usedWord)
     }
     
-    func didCheckIsInDict(_ dictDataManager: DictDataManager, word: String, count: Int) {
+    func didSearch(_ dictDataManager: DictDataManager, word: String, count: Int) {
         // 辞書を検索して0件 -> エラー表示を依頼
         // 1件以上ヒット -> 使用した単語かどうかをチェック
         if count != 0 {

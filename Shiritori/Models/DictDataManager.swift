@@ -11,7 +11,7 @@ import Foundation
 protocol DictDataManagerDelegate: AnyObject {
     func didFeatchWord(_ dictDataManager: DictDataManager, word: String, mean: String, isFirst: Bool)
     func didFeatchMean(_ dictDataManager: DictDataManager, word: String, mean: String)
-    func didCheckIsInDict(_ dictDataManager: DictDataManager, word: String, count: Int)
+    func didSearch(_ dictDataManager: DictDataManager, word: String, count: Int)
 }
 
 final class DictDataManager {
@@ -26,6 +26,10 @@ final class DictDataManager {
         self.items = Table("items")
         self.word = Expression<String>("word")
         self.mean = Expression<String>("mean")
+    }
+    
+    deinit {
+        print(String(describing: type(of: self)))
     }
     
     func openDB() {
@@ -60,7 +64,7 @@ final class DictDataManager {
         
         do {
             let count = try database!.scalar(queryTable.count)
-            self.delegate?.didCheckIsInDict(self, word: inputs, count: count)
+            self.delegate?.didSearch(self, word: inputs, count: count)
         } catch {
             print(error)
         }

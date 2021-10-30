@@ -29,7 +29,7 @@ final class SoundPlayer {
     }
     
     deinit {
-        print("soundPlayer deinit")
+        print(String(describing: type(of: self)))
     }
     
     func playSound(loop: Int = 0) {

@@ -65,8 +65,6 @@ class UsedWordViewController: UIViewController {
     
     @objc private func backPressed(_ sender: UIButton) {
         // リザルト画面に戻る
-        let resultVC = ResultViewController()
-        resultVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.2, type: .push, subType: .fromLeft)
         dismiss(animated: false, completion: nil)
     }

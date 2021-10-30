@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ResultViewProtocol: AnyObject {
-    func goToNextView(_ resultViewPresenter: ResultViewPresenter)
+    func goHomeView(_ resultViewPresenter: ResultViewPresenter)
 }
 
 protocol ResultViewPresenterProtocol: AnyObject {
@@ -61,6 +61,6 @@ extension ResultViewPresenter: WordDataManagerDelegate {
     }
     
     func didUpdateDB(_ wordDataManager: WordDataManager) {
-        view.goToNextView(self)
+        view.goHomeView(self)
     }
 }

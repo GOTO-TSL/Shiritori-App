@@ -17,8 +17,11 @@ class GameViewController: UIViewController {
     private var textField: UITextField!
     private var hpBar: UIProgressView!
     private var enemyImageView: UIImageView!
+    private var resultView: ResultView?
     
-    private var presenter: GameViewPresenter!
+    private var gameViewPresenter: GameViewPresenter!
+    private var resultViewPresenter: ResultViewPresenter!
+    
     var mode: Mode?
     
     // MARK: - Lifecycle
@@ -29,9 +32,10 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
-        presenter = GameViewPresenter(view: self, mode: mode!)
-        presenter.gameViewDidLoad()
+        configureGameUI()
+        gameViewPresenter = GameViewPresenter(view: self, mode: mode!)
+        resultViewPresenter = ResultViewPresenter(view: self)
+        gameViewPresenter.gameViewDidLoad()
 
     }
     
@@ -40,7 +44,7 @@ class GameViewController: UIViewController {
         textField.becomeFirstResponder()
     }
     // MARK: - Helpers
-    private func configureUI() {
+    private func configureGameUI() {
         let gameView = GameView()
         backButton = gameView.backButton
         attackButton = gameView.userInputView.attackButton
@@ -70,18 +74,47 @@ class GameViewController: UIViewController {
         textField.delegate = self
     }
     
+    private func configureResultUI(isWin: Bool, mode: Mode) {
+        resultViewPresenter.resultViewDidLoad(isWin: isWin)
+        // UserDefaultに勝利したかどうかと現在のモードを設定
+        UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
+        UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
+        // リザルト画面を表示
+        resultView = ResultView(frame: view.frame, isWin: isWin, mode: mode)
+        view.addSubview(resultView!)
+        resultView?.addConstraintsToFillView(view)
+        
+        resultView?.buttons.homeButton.addTarget(self, action: #selector(homePressed(_ :)), for: .touchUpInside)
+        resultView?.buttons.wordButton.addTarget(self, action: #selector(wordPressed(_ :)), for: .touchUpInside)
+    }
+    // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         opening(operation: .play)
-        presenter.backPressed()
+        gameViewPresenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
         dismiss(animated: false, completion: nil)
     }
     
+    // アタックボタンが押されたときの処理
     @objc private func attackPressed(_ sender: UIButton) {
         // 単語が入力されたことをpresenterに通知
         guard let word = textField.text else { fatalError() }
-        presenter.didInputWord(word: word)
+        gameViewPresenter.didInputWord(word: word)
         textField.text = ""
+    }
+    // ホームボタンが押されたときの処理
+    @objc private func homePressed(_ sender: UIButton) {
+        resultViewPresenter.didPressedHome()
+    }
+    
+    // wordボタンが押されたときの処理
+    @objc private func wordPressed(_ sender: UIButton) {
+        resultViewPresenter.didPressedWord()
+        // 使用した単語一覧画面に遷移
+        let usedWordVC = UsedWordViewController()
+        usedWordVC.modalPresentationStyle = .fullScreen
+        addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
+        present(usedWordVC, animated: false, completion: nil)
     }
 }
 // MARK: - GameViewProtocol Methods
@@ -131,26 +164,13 @@ extension GameViewController: GameViewProtocol {
                 
             case .start:
                 // ゲームの開始をpresenterに通知
-                self.presenter.willGameStart()
+                self.gameViewPresenter.willGameStart()
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
             case .end:
-                UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
-                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
-                // リザルト画面へ遷移
-                let resultVC = ResultViewController()
-                resultVC.modalPresentationStyle = .fullScreen
-                self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.navigationController?.pushViewController(resultVC, animated: false)
-                
+                self.configureResultUI(isWin: false, mode: self.mode!)
             case .lose:
-                UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
-                UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
-                // リザルト画面へ遷移
-                let resultVC = ResultViewController()
-                resultVC.modalPresentationStyle = .fullScreen
-                self.addTransition(duration: 0.5, type: .fade, subType: .fromRight)
-                self.navigationController?.pushViewController(resultVC, animated: false)
+                self.configureResultUI(isWin: true, mode: self.mode!)
                 
             default: break
             }
@@ -169,8 +189,18 @@ extension GameViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let word = textField.text else { fatalError() }
-        presenter.didInputWord(word: word)
+        gameViewPresenter.didInputWord(word: word)
         textField.text = ""
         return true
+    }
+}
+
+// MARK: - ResultViewProtocol Methods
+extension GameViewController: ResultViewProtocol {
+    func goHomeView(_ resultViewPresenter: ResultViewPresenter) {
+        opening(operation: .play)
+        // viewを閉じる
+        addTransition(duration: 0.5, type: .fade, subType: .fromRight)
+        dismiss(animated: false, completion: nil)
     }
 }

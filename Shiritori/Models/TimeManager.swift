@@ -18,6 +18,10 @@ final class TimeManager {
     var timer: Timer = Timer()
     var counter: Int = 0
     
+    deinit {
+        print(String(describing: type(of: self)))
+    }
+    
     // カウントダウン用タイマーメソッド
     func firstCount() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countThree), userInfo: nil, repeats: true)
