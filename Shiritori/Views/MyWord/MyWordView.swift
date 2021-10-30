@@ -23,7 +23,7 @@ class MyWordView: UIView {
     
     let editButton: UIButton = {
         let editButton = UIButton()
-        editButton.setImage(UIImage(named: Const.Image.like), for: .normal)
+        editButton.setImage(UIImage(named: Const.Image.trash), for: .normal)
         editButton.imageView?.contentMode = .scaleAspectFit
         return editButton
     }()

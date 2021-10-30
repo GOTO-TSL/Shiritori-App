@@ -21,9 +21,9 @@ class ModeSelectView: UIView {
         let title = UILabel()
         title.text = Const.TitleText.mode
         title.font = UIFont(name: Const.font, size: 45)
-        title.textColor = .white
+        title.textColor = .black
         
-        backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
+        backgroundColor = UIColor(red: 120/255, green: 120/255, blue: 120/255, alpha: 0.7)
         
         addSubview(modeButtons)
         addSubview(title)
