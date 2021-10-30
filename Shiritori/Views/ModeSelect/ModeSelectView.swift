@@ -14,45 +14,25 @@ class ModeSelectView: UIView {
         return buttons
     }()
     
-    let backButton: BackButton = {
-        let button = BackButton()
-        button.setImage(UIImage(named: Const.Image.backB), for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
-    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        // タイトル
-        let titleLabel = UILabel()
-        titleLabel.text = Const.TitleText.mode
-        titleLabel.font = UIFont(name: Const.font, size: 45)
-        titleLabel.textAlignment = .center
         
-        // 背景画像の設定
-        let background = Background(frame: frame)
+        let title = UILabel()
+        title.text = Const.TitleText.mode
+        title.font = UIFont(name: Const.font, size: 45)
+        title.textColor = .white
         
-        // 上下のスペース
-        let topSpace = UIView()
-        let bottomSpace = UIView()
+        backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.6)
         
-        // メインのスタック
-        let mainStack = UIStackView(arrangedSubviews: [topSpace, titleLabel, modeButtons, bottomSpace])
-        mainStack.axis = .vertical
-        mainStack.alignment = .fill
-        mainStack.distribution = .fill
+        addSubview(modeButtons)
+        addSubview(title)
         
-        addSubview(background)
-        addSubview(mainStack)
-        addSubview(backButton)
-         
-        // 制約
-        background.addConstraintsToFillView(self)
-        backButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 50, paddingLeft: 30)
-        mainStack.addConstraintsToFillView(self)
-        topSpace.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6.5).isActive = true
-        titleLabel.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1/6).isActive = true
+        title.centerX(inView: self)
+        title.anchor(bottom: modeButtons.topAnchor, paddingBottom: 30)
+        modeButtons.centerX(inView: self)
+        modeButtons.centerY(inView: self, constant: 20)
+        modeButtons.anchor(left: leftAnchor, right: rightAnchor, paddingTop: 30, paddingLeft: 30, paddingRight: 30)
 
     }
     
