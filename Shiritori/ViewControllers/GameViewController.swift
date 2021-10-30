@@ -74,8 +74,7 @@ class GameViewController: UIViewController {
         opening(operation: .play)
         presenter.backPressed()
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
-        let modeVC = ModeSelectViewController()
-        self.navigationController?.pushViewController(modeVC, animated: false)
+        dismiss(animated: false, completion: nil)
     }
     
     @objc private func attackPressed(_ sender: UIButton) {
