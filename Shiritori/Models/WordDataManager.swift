@@ -48,6 +48,10 @@ final class WordDataManager {
         self.currentWords = [Word]()
     }
     
+    deinit {
+        print(String(describing: type(of: self)))
+    }
+    
     func createDB(name: String) {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true

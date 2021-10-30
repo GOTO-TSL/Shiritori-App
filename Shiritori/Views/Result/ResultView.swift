@@ -24,10 +24,13 @@ class ResultView: UIView {
         return buttons
     }()
     // MARK: - Lifecycle
-    override init(frame: CGRect) {
+    init(frame: CGRect, isWin: Bool, mode: Mode) {
         super.init(frame: frame)
         
+        // 背景画像の設定
         let background = Background(frame: frame)
+        
+        configureResultUI(isWin: isWin, mode: mode)
         
         let stack = UIStackView(arrangedSubviews: [titleView, imageView, buttons])
         stack.axis = .vertical
@@ -40,6 +43,17 @@ class ResultView: UIView {
         background.addConstraintsToFillView(self)
         stack.addConstraintsToFillView(self)
         stack.divide(by: [32, 23, 73], baseHeight: heightAnchor)
+    }
+    
+    private func configureResultUI(isWin: Bool, mode: Mode) {
+        // TODO: 結果画像ができ次第変更
+        if isWin {
+            titleView.title.text = Const.TitleText.resultWin
+            imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)
+        } else {
+            titleView.title.text = Const.TitleText.resultLose
+            imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)
+        }
     }
     
     required init?(coder: NSCoder) {
