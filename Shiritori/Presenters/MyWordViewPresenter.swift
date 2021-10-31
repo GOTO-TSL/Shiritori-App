@@ -15,7 +15,7 @@ protocol MyWordViewPresenterProtocol: AnyObject {
     var numberOfWords: Int { get }
     func myWord(forRow row: Int) -> Word?
     func myWordViewDidLoad()
-    func deleted(word: Word)
+    func deleted(wordID: Int)
 }
 
 final class MyWordViewPresenter {
@@ -46,8 +46,8 @@ final class MyWordViewPresenter {
         wordDataManager.loadWords()
     }
     
-    func deleted(word: Word) {
-        wordDataManager.delete(option: .selected, selectedWord: word.word)
+    func deleted(wordID: Int) {
+        wordDataManager.delete(option: .selected, selectedID: wordID)
     }
     
 }

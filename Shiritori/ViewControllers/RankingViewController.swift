@@ -25,15 +25,6 @@ class RankingViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        // headerに枠線を追加
-        let rankingView = RankingView()
-        rankingView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
-        rankingView.headerView.addBorder(width: 1.0, color: .white, position: .left)
-        rankingView.headerView.addBorder(width: 1.0, color: .white, position: .right)
-    }
-    
     private func configureUI() {
         let rankingView = RankingView()
         backButton = rankingView.headerView.backButton

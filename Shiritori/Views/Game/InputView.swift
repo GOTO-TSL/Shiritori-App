@@ -16,12 +16,18 @@ class InputView: UIView {
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 5.0
         textField.layer.borderColor = UIColor.black.cgColor
+        // 自動で大文字になる設定, 自動で変換する設定を解除
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
         return textField
     }()
     
     let attackButton: UIButton = {
         let button = UIButton()
         button.setTitle(Const.ButtonText.atk, for: .normal)
+        button.titleLabel?.font = UIFont(name: Const.font, size: 20)
+        button.layer.borderWidth = 2.0
+        button.layer.borderColor = UIColor.black.cgColor
         button.backgroundColor = .red
         return button
     }()
