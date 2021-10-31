@@ -18,10 +18,11 @@ protocol ResultViewPresenterProtocol: AnyObject {
 
 final class ResultViewPresenter {
     private weak var view: ResultViewProtocol!
-    var wordDataManager: WordDataManager!
-    var winSound: SoundPlayer!
-    var loseSound: SoundPlayer!
-    var pushSound: SoundPlayer!
+    private var wordDataManager: WordDataManager!
+    private var winSound: SoundPlayer!
+    private var loseSound: SoundPlayer!
+    private var pushSound: SoundPlayer!
+    private(set) var usedWords = [Word]()
     
     init(view: ResultViewProtocol) {
         self.view = view
@@ -31,6 +32,7 @@ final class ResultViewPresenter {
         self.pushSound = SoundPlayer(name: Const.Sound.push)
         
         wordDataManager.delegate = self
+        
         wordDataManager.createDB(name: Const.DBName.myWords)
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
@@ -50,17 +52,21 @@ final class ResultViewPresenter {
     func didPressedHome() {
         pushSound.playSound()
         wordDataManager.delete(option: .isntLike)
-        wordDataManager.openDB(name: Const.DBName.myWords, isLoad: false)
-        wordDataManager.copyWord()
+        wordDataManager.copyWord(currentWords: usedWords, to: Const.DBName.myWords)
     }
 }
-// MARK: - UsedWordManagerDelegate Methods
+// MARK: - WordDataManagerDelegate Methods
 extension ResultViewPresenter: WordDataManagerDelegate {
+    func didCopyWord(_ wordDataManager: WordDataManager) {
+        view.goHomeView(self)
+    }
+    
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
     }
     
-    func didUpdateDB(_ wordDataManager: WordDataManager) {
-        view.goHomeView(self)
+    func didLoadWord(_ wordDataManager: WordDataManager, words: [Word]) {
+        usedWords = words
     }
+    
 }

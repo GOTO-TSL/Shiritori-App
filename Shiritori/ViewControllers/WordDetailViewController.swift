@@ -17,10 +17,6 @@ class WordDetailViewController: UIViewController {
     var mean: String?
     
     // ステータスバーの色を白に設定
-    deinit {
-        print("wordDetail deinit")
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }

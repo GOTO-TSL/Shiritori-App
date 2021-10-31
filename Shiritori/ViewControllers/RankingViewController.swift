@@ -18,10 +18,6 @@ class RankingViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    deinit {
-        print("ranking deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

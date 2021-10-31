@@ -42,6 +42,7 @@ final class GameViewPresenter {
     private var battleSound: SoundPlayer!
     private var damageSound: SoundPlayer!
     private var healSound: SoundPlayer!
+    private(set) var currentWords = [Word]()
     
     init(view: GameViewProtocol, mode: Mode) {
         self.view = view
@@ -194,7 +195,11 @@ extension GameViewPresenter: EnemyModelDelegate {
 }
 // MARK: - UsedWordManagerDelegate Methods
 extension GameViewPresenter: WordDataManagerDelegate {
-    func didUpdateDB(_ wordDataManager: WordDataManager) {
+    func didCopyWord(_ wordDataManager: WordDataManager) {
+        // do nothing
+    }
+    
+    func didLoadWord(_ wordDataManager: WordDataManager, words: [Word]) {
         // do nothing
     }
     

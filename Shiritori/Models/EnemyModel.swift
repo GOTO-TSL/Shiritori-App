@@ -38,10 +38,6 @@ final class EnemyModel {
             self.hitpoint = Const.GameParam.hard
         }
     }
-    
-    deinit {
-        print(String(describing: type(of: self)))
-    }
     // 単語の文字数かける10ダメージHPをへらす
     func getDamage(word: String) {
         let damage = word.count * 10

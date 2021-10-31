@@ -28,10 +28,6 @@ final class SoundPlayer {
         }
     }
     
-    deinit {
-        print(String(describing: type(of: self)))
-    }
-    
     func playSound(loop: Int = 0) {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         // ループ数の指定

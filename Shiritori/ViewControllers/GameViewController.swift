@@ -25,10 +25,6 @@ class GameViewController: UIViewController {
     var mode: Mode?
     
     // MARK: - Lifecycle
-    deinit {
-        print("game deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

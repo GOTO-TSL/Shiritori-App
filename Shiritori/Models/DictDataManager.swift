@@ -28,10 +28,6 @@ final class DictDataManager {
         self.mean = Expression<String>("mean")
     }
     
-    deinit {
-        print(String(describing: type(of: self)))
-    }
-    
     func openDB() {
         
         copyDataBaseFile()
@@ -109,7 +105,6 @@ final class DictDataManager {
         let fileManager = FileManager.default
         guard let documentsUrl = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         let finalDatabaseURL = documentsUrl.appendingPathComponent(Const.DBPath.fileName)
-        print(finalDatabaseURL)
         do {
             if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
                 //print("DB does not exist in documents folder")

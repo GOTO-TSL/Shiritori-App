@@ -8,10 +8,12 @@
 import Foundation
 
 protocol UsedWordViewProtocol: AnyObject {
-    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word])
+    func didFeatchWord(_ usedWordViewPresenter: UsedWordViewPresenter)
 }
 
 protocol UsedWordViewPresenterProtocol: AnyObject {
+    var numberOfWords: Int { get }
+    func usedWord(forRow row: Int) -> Word?
     func usedWordViewDidLoad()
     func didPressedLikeButton(of word: Word)
 }
@@ -19,7 +21,8 @@ protocol UsedWordViewPresenterProtocol: AnyObject {
 final class UsedWordViewPresenter {
     
     private weak var view: UsedWordViewProtocol!
-    var wordDataManager: WordDataManager!
+    private var wordDataManager: WordDataManager!
+    private(set) var usedWords = [Word]()
     
     init(view: UsedWordViewProtocol) {
         self.view = view
@@ -28,21 +31,39 @@ final class UsedWordViewPresenter {
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
+    var numberOfWords: Int {
+        return usedWords.count
+    }
+    
+    func usedWord(forRow row: Int) -> Word? {
+        if row >= usedWords.count {
+            return nil
+        } else {
+            return usedWords[row]
+        }
+    }
+    
     func usedWordViewDidLoad() {
-        view.showWords(self, wordDataManager.currentWords)
+        wordDataManager.loadWords()
     }
     
     func didPressedLikeButton(of word: Word) {
         wordDataManager.changeLike(for: word)
     }
 }
-// MARK: - UsedWordManagerDelegate Methods
+// MARK: - WordDataManagerDelegate Methods
 extension UsedWordViewPresenter: WordDataManagerDelegate {
-    func didUpdateDB(_ wordDataManager: WordDataManager) {
-        view.showWords(self, wordDataManager.currentWords)
+    func didCopyWord(_ wordDataManager: WordDataManager) {
+        // do nothing
     }
     
     func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
         // do nothing
     }
+    
+    func didLoadWord(_ wordDataManager: WordDataManager, words: [Word]) {
+        usedWords = words
+        view.didFeatchWord(self)
+    }
+    
 }

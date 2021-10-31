@@ -23,10 +23,6 @@ class HomeViewController: UIViewController {
     private let defaults = UserDefaults.standard
     
     // MARK: - Lifecycle
-    deinit {
-        print("home deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

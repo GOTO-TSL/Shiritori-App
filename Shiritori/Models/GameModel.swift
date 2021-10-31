@@ -22,10 +22,6 @@ final class GameModel {
 
     weak var delegate: GameLogicDelegate?
     
-    deinit {
-        print(String(describing: type(of: self)))
-    }
-    
     func applyShiritoriRule(for word: String) {
         
         guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { fatalError() }

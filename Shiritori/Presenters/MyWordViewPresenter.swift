@@ -8,10 +8,12 @@
 import Foundation
 
 protocol MyWordViewProtocol: AnyObject {
-    func showWords(_ myWordViewPresenter: MyWordViewPresenter, words: [Word])
+    func didUpdateWord(_ myWordViewPresenter: MyWordViewPresenter)
 }
 
 protocol MyWordViewPresenterProtocol: AnyObject {
+    var numberOfWords: Int { get }
+    func myWord(forRow row: Int) -> Word?
     func myWordViewDidLoad()
     func deleted(word: Word)
 }
@@ -19,19 +21,49 @@ protocol MyWordViewPresenterProtocol: AnyObject {
 final class MyWordViewPresenter {
     private weak var view: MyWordViewProtocol!
     private var wordDataManager: WordDataManager!
+    private(set) var myWords = [Word]()
     
     init(view: MyWordViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
+        wordDataManager.delegate = self
         wordDataManager.openDB(name: Const.DBName.myWords)
     }
     
+    var numberOfWords: Int {
+        return myWords.count
+    }
+    
+    func myWord(forRow row: Int) -> Word? {
+        if row >= myWords.count {
+            return nil
+        } else {
+            return myWords[row]
+        }
+    }
+    
     func myWordViewDidLoad() {
-        view.showWords(self, words: wordDataManager.currentWords)
+        wordDataManager.loadWords()
     }
     
     func deleted(word: Word) {
         wordDataManager.delete(option: .selected, selectedWord: word.word)
+    }
+    
+}
+// MARK: - WordDataManagerDelegate Methods
+extension MyWordViewPresenter: WordDataManagerDelegate {
+    func didCopyWord(_ wordDataManager: WordDataManager) {
+        // do nothing
+    }
+    
+    func didCheckIsUsed(_ wordDataManager: WordDataManager, word: String, count: Int) {
+        // do nothing
+    }
+    
+    func didLoadWord(_ wordDataManager: WordDataManager, words: [Word]) {
+        myWords = words
+        view.didUpdateWord(self)
     }
     
 }

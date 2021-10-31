@@ -18,10 +18,6 @@ class RuleViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    deinit {
-        print("rule deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

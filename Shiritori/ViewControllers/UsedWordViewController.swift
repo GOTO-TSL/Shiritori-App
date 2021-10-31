@@ -13,7 +13,6 @@ class UsedWordViewController: UIViewController {
     private var backButton: UIButton!
     private var likeButton: UIButton!
     private var tableView: UITableView!
-    private var usedWords: [Word]!
     
     private var presenter: UsedWordViewPresenter!
     
@@ -23,10 +22,6 @@ class UsedWordViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    deinit {
-        print("usedword deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,7 +66,7 @@ class UsedWordViewController: UIViewController {
     
     @objc private func likePressed(_ sender: UIButton) {
         // お気に入りボタンが押されたときの処理
-        let word = usedWords[sender.tag]
+        guard let word = presenter.usedWord(forRow: sender.tag) else { fatalError() }
         presenter.didPressedLikeButton(of: word)
     }
 }
@@ -79,7 +74,7 @@ class UsedWordViewController: UIViewController {
 // MARK: - UITableViewDataSource Methods
 extension UsedWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usedWords.count
+        return presenter.numberOfWords
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,8 +84,9 @@ extension UsedWordViewController: UITableViewDataSource {
         // セル選択時に色が変わらない設定
         safeCell.selectionStyle = .none
         // 単語と画像を設定
-        safeCell.wordLabel.text = usedWords[indexPath.row].word
-        safeCell.heartButton.imageView?.image = usedWords[indexPath.row].isLike ? UIImage(named: Const.Image.like) : UIImage(named: Const.Image.unlike)
+        guard let usedWord = presenter.usedWord(forRow: indexPath.row) else { fatalError() }
+        safeCell.wordLabel.text = usedWord.word
+        safeCell.heartButton.imageView?.image = usedWord.isLike ? UIImage(named: Const.Image.like) : UIImage(named: Const.Image.unlike)
         // お気に入りボタンの設定
         likeButton = safeCell.heartButton
         likeButton.tag = indexPath.row
@@ -102,10 +98,11 @@ extension UsedWordViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate Methods
 extension UsedWordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let usedWord = presenter.usedWord(forRow: indexPath.row) else { fatalError() }
         // 単語詳細画面へ移動
         let detailVC = WordDetailViewController()
-        detailVC.word = usedWords[indexPath.row].word
-        detailVC.mean = usedWords[indexPath.row].mean
+        detailVC.word = usedWord.word
+        detailVC.mean = usedWord.mean
         detailVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 0.3, type: .push, subType: .fromRight)
         present(detailVC, animated: false, completion: nil)
@@ -113,11 +110,7 @@ extension UsedWordViewController: UITableViewDelegate {
 }
 // MARK: - UsedWordViewProtocol Methods
 extension UsedWordViewController: UsedWordViewProtocol {
-    func showWords(_ usedWordViewPresenter: UsedWordViewPresenter, _ words: [Word]) {
-        DispatchQueue.main.async {
-            self.usedWords = words
-        }
-        
+    func didFeatchWord(_ usedWordViewPresenter: UsedWordViewPresenter) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }

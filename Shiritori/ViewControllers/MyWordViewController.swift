@@ -13,7 +13,6 @@ class MyWordViewController: UIViewController {
     private var tableView: UITableView!
     private var backButton: UIButton!
     private var editButton: UIButton!
-    private var myWords: [Word]!
     private var presenter: MyWordViewPresenter!
     // ステータスバーの色を白に設定
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -21,10 +20,6 @@ class MyWordViewController: UIViewController {
     }
     
     // MARK: - Lifecycle
-    deinit {
-        print("myword deinit")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -77,14 +72,16 @@ class MyWordViewController: UIViewController {
 // MARK: - UITableViewDataSource Methods
 extension MyWordViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myWords.count
+        return presenter.numberOfWords
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Const.CellID.mine, for: indexPath) as? MyWordTableViewCell
         guard let safeCell = cell else { fatalError() }
         safeCell.selectionStyle = .none
-        safeCell.wordLabel.text = myWords[indexPath.row].word
+        
+        guard let myWord = presenter.myWord(forRow: indexPath.row) else { fatalError() }
+        safeCell.wordLabel.text = myWord.word
         return safeCell
     }
 }
@@ -92,26 +89,26 @@ extension MyWordViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate Methods
 extension MyWordViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let myWord = presenter.myWord(forRow: indexPath.row) else { fatalError() }
         // 詳細画面へ移動
         let detailVC = WordDetailViewController()
         detailVC.modalPresentationStyle = .fullScreen
-        detailVC.word = myWords[indexPath.row].word
-        detailVC.mean = myWords[indexPath.row].mean
+        detailVC.word = myWord.word
+        detailVC.mean = myWord.mean
         addTransition(duration: 0.3, type: .push, subType: .fromRight)
         present(detailVC, animated: false, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        presenter.deleted(word: myWords[indexPath.row])
-        self.myWords.remove(at: indexPath.row)
+        guard let myWord = presenter.myWord(forRow: indexPath.row) else { fatalError() }
+        presenter.deleted(word: myWord)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }
 // MARK: - MyWordViewProtocol Methods
 extension MyWordViewController: MyWordViewProtocol {
-    func showWords(_ myWordViewPresenter: MyWordViewPresenter, words: [Word]) {
-        DispatchQueue.main.async {
-            self.myWords = words
+    func didUpdateWord(_ myWordViewPresenter: MyWordViewPresenter) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.tableView.reloadData()
         }
     }
