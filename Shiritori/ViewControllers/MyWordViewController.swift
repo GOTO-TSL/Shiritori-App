@@ -29,15 +29,6 @@ class MyWordViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        // headerに枠線を追加
-        let myWordView = MyWordView()
-        myWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
-        myWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
-        myWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)
-    }
-    
     private func configureUI() {
         let myWordView = MyWordView()
         tableView = myWordView.tableView
@@ -101,7 +92,7 @@ extension MyWordViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let myWord = presenter.myWord(forRow: indexPath.row) else { fatalError() }
-        presenter.deleted(word: myWord)
+        presenter.deleted(wordID: myWord.wordID)
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 }

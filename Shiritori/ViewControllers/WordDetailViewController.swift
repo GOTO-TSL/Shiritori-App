@@ -28,15 +28,6 @@ class WordDetailViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        // headerに枠線を追加
-        let wordDetailView = WordDetailView()
-        wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
-        wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .left)
-        wordDetailView.headerView.addBorder(width: 1.0, color: .white, position: .right)
-    }
-    
     private func configureUI() {
         let wordDetailView = WordDetailView()
         wordLabel = wordDetailView.wordLabel

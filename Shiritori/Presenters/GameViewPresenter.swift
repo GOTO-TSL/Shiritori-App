@@ -22,6 +22,7 @@ protocol GameViewProtocol: AnyObject {
     func showText(_ gameViewPresenter: GameViewPresenter, text: String, state: TextState)
     func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String)
     func updateHPBar(_ gameViewPresenter: GameViewPresenter, progress: Float)
+    func updateDamageLabel(_ gameViewPresenter: GameViewPresenter, damage: Int)
 }
 
 protocol GameViewPresenterProtocol: AnyObject {
@@ -212,6 +213,7 @@ extension GameViewPresenter: WordDataManagerDelegate {
             let initial = word[word.index(before: word.endIndex)]
             dictDataManager.featchWord(initial: initial)
             enemyModel.getDamage(word: word)
+            view.updateDamageLabel(self, damage: word.count*10)
         } else {
             view.showText(self, text: Const.GameText.used, state: .error)
             enemyModel.heal()

@@ -19,6 +19,8 @@ class HPView: UIView {
     let hpBar: UIProgressView = {
         let progressView = UIProgressView()
         progressView.progressTintColor = .green
+        // progressBarの端っこを四角に
+        progressView.progressViewStyle = .bar
         return progressView
     }()
     

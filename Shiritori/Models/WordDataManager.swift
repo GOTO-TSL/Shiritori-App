@@ -108,7 +108,7 @@ final class WordDataManager {
         loadWords()
     }
     
-    func delete(option: DeleteOption, selectedWord: String = "") {
+    func delete(option: DeleteOption, selectedID: Int = 0) {
         var tagWords = Table("words")
         switch option {
         case .all:
@@ -116,7 +116,7 @@ final class WordDataManager {
         case .isntLike:
             tagWords = words.filter(isLike == false)
         case .selected:
-            tagWords = words.filter(word.like(selectedWord))
+            tagWords = words.filter(wordID == selectedID)
         }
         do {
             try database!.run(tagWords.delete())

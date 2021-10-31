@@ -32,15 +32,6 @@ class UsedWordViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        // headerに枠線を追加
-        let usedWordView = UsedWordView()
-        usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .bottom)
-        usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .left)
-        usedWordView.headerView.addBorder(width: 1.0, color: .white, position: .right)
-    }
-    
     private func configureUI() {
         let usedWordView = UsedWordView()
         backButton = usedWordView.headerView.backButton

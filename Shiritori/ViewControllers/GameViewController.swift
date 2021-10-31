@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     private var textField: UITextField!
     private var hpBar: UIProgressView!
     private var enemyImageView: UIImageView!
+    private var damageLabel: UILabel!
     private var resultView: ResultView?
     
     private var gameViewPresenter: GameViewPresenter!
@@ -49,14 +50,10 @@ class GameViewController: UIViewController {
         textField = gameView.userInputView.textField
         hpBar = gameView.enemyView.hpView.hpBar
         enemyImageView = gameView.enemyView.enemyImageView
+        damageLabel = gameView.enemyView.damageLabel
         
         // 敵の画像を設定
         enemyImageView.image = UIImage(named: "\(mode!)/move0")
-        // 自動で大文字になる設定, 自動で変換する設定を解除
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
-        // progressBarの端っこを四角に
-        hpBar.progressViewStyle = .bar
         
         // 配置＆制約の追加
         view.addSubview(gameView)
@@ -115,6 +112,23 @@ class GameViewController: UIViewController {
 }
 // MARK: - GameViewProtocol Methods
 extension GameViewController: GameViewProtocol {
+    // ダメージラベルの更新
+    func updateDamageLabel(_ gameViewPresenter: GameViewPresenter, damage: Int) {
+        if damage < 100 {
+            damageLabel.textColor = .black
+            damageLabel.font = UIFont(name: Const.font, size: 20)
+        } else {
+            damageLabel.textColor = .red
+            damageLabel.font = UIFont(name: Const.font, size: 35)
+        }
+        damageLabel.text = "\(damage)"
+        damageLabel.alpha = 1.0
+        UIView.animate(withDuration: 1.0) {
+            self.damageLabel.center.y -= 30
+            self.damageLabel.alpha = 0.0
+        }
+    }
+    
     // HPバーの更新
     func updateHPBar(_ gameViewPresenter: GameViewPresenter, progress: Float) {
         // 残りHPに応じて色を変更
