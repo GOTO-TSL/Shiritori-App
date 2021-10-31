@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "speechballoon.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "speechballoon@2x.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "speechballoon@3x.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "speechballoon2 (2).pdf",
+      "idiom" : "universal"
     }
   ],
   "info" : {

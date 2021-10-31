@@ -6,9 +6,7 @@ target 'Shiritori' do
   use_frameworks!
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
-  pod 'GRDB.swift'
-  pod 'RealmSwift'
-  pod 'Hero'
+  pod 'SQLite.swift', '~> 0.13.0'
 
   # Pods for Shiritori
 
