@@ -46,6 +46,10 @@ struct Const {
         static let mine = "MyWordCell"
     }
     
+    enum TutorialText {
+        static let home = ["モードを選択後にしりとりゲームが始まるよ！", "ゲーム終了後に使った単語を登録すると，\nここで確認できるよ！", "音楽のON/OFFを切り替えれるよ！", "しりとりゲームのルールを確認できるよ！", "現在開発中だよ！"]
+    }
+    
     enum TitleText {
         static let main = "英単語しりとり"
         static let sub = "~Let's defeat the monster with Shiritori~"

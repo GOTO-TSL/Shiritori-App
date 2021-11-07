@@ -7,6 +7,7 @@ target 'Shiritori' do
   pod 'SwiftFormat/CLI'
   pod 'SwiftLint'
   pod 'SQLite.swift', '~> 0.13.0'
+  pod 'Gecco'
 
   # Pods for Shiritori
 

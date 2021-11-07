@@ -19,6 +19,14 @@ class HomeView: UIView {
         return buttons
     }()
     
+    let tutorialButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .black
+        button.setTitle("tutorial", for: .normal)
+        button.titleLabel?.textColor = .white
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,11 +41,13 @@ class HomeView: UIView {
         
         addSubview(background)
         addSubview(mainStack)
+        addSubview(tutorialButton)
         
         // 制約
         background.addConstraintsToFillView(self)
         mainStack.addConstraintsToFillView(self)
         mainStack.divide(by: [3, 3, 1], baseHeight: heightAnchor)
+        tutorialButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 30, paddingLeft: 40)
     }
     
     required init?(coder: NSCoder) {

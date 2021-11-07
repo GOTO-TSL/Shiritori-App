@@ -1,26 +1,30 @@
 PODS:
+  - Gecco (2.0.0)
   - SQLite.swift (0.13.0):
     - SQLite.swift/standard (= 0.13.0)
   - SQLite.swift/standard (0.13.0)
-  - SwiftFormat/CLI (0.48.17)
+  - SwiftFormat/CLI (0.48.18)
   - SwiftLint (0.45.0)
 
 DEPENDENCIES:
+  - Gecco
   - SQLite.swift (~> 0.13.0)
   - SwiftFormat/CLI
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - Gecco
     - SQLite.swift
     - SwiftFormat
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Gecco: 6d4225d0b58f6cf952d198a831904d50e646ec3f
   SQLite.swift: 8add701609fd0ef78d097dcc75d20a9782e6f5fc
-  SwiftFormat: 0a9044eb365d74d4a0a2cefa5fe44a4cbef382a7
+  SwiftFormat: 7dd2b33a0a3d61095b61c911b6d89ff962ae695c
   SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
 
-PODFILE CHECKSUM: a9b460a72d303e29181cf3f768101a8f907f9422
+PODFILE CHECKSUM: 2baf06c366370acd1f156d2d001c330448500150
 
 COCOAPODS: 1.10.1
