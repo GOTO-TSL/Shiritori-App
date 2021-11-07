@@ -46,10 +46,10 @@ class ResultView: UIView {
     }
     
     private func configureResultUI(isWin: Bool, mode: Mode) {
-        // TODO: 結果画像ができ次第変更
+        // ゲームの結果に応じて画像を変更
         if isWin {
             titleView.title.text = Const.TitleText.resultWin
-            imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)
+            imageView.resultImageView.animation(mode: mode, action: "result_win", duration: 0.7)
         } else {
             titleView.title.text = Const.TitleText.resultLose
             imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)

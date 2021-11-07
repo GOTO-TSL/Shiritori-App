@@ -7,12 +7,6 @@
 
 import Foundation
 
-enum ResultState {
-    case winEasy
-    case winNormal
-    case winHard
-}
-
 protocol GameLogicDelegate: AnyObject {
     func shiritoriSucceeded(_ gameLogic: GameModel, safeWord: String)
     func shiritoriFailed(_ gameLogic: GameModel, message: String)
