@@ -40,6 +40,7 @@ class GameViewController: UIViewController {
         // キーボードが自動で表示される設定
         textField.becomeFirstResponder()
     }
+    
     // MARK: - Helpers
     private func configureGameUI() {
         let gameView = GameView()
@@ -80,6 +81,23 @@ class GameViewController: UIViewController {
         resultView?.buttons.homeButton.addTarget(self, action: #selector(homePressed(_ :)), for: .touchUpInside)
         resultView?.buttons.wordButton.addTarget(self, action: #selector(wordPressed(_ :)), for: .touchUpInside)
     }
+    // チュートリアルを表示
+    private func showTutorial() {
+        var positions: [CGPoint] = []
+        let views: [UIView] = [wordLabel, textField, attackButton, hpBar, timeLimit]
+        views.forEach { view in
+            // 座標系を変換し，配列に代入
+            let center = view.convert(CGPoint(x: view.frame.width/2, y: view.frame.height/2), to: self.view)
+            positions.append(center)
+        }
+        
+        if UserDefaults.standard.integer(forKey: Const.UDKeys.first) == 0 {
+            UserDefaults.standard.set(1, forKey: Const.UDKeys.first)
+            let gameTutorialVC = GameAnnotationViewController(positions: positions)
+            present(gameTutorialVC, animated: true, completion: nil)
+        }
+    }
+    
     // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         opening(operation: .play)
@@ -173,6 +191,7 @@ extension GameViewController: GameViewProtocol {
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
             case .start:
+                self.showTutorial()
                 // ゲームの開始をpresenterに通知
                 self.gameViewPresenter.willGameStart()
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)

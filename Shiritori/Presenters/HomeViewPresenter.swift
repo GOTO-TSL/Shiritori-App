@@ -15,9 +15,6 @@ final class HomeViewPresenter {
         self.pushSound = SoundPlayer(name: Const.Sound.push)
         
     }
-    deinit {
-        print("home Presenter deinit")
-    }
     
     func didPushButton() {
         // 効果音を再生

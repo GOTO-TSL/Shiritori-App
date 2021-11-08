@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Gecco
 
 class HomeViewController: UIViewController {
     // MARK: - Properties
@@ -18,6 +19,7 @@ class HomeViewController: UIViewController {
     private var easyButton: UIButton!
     private var normalButton: UIButton!
     private var hardButton: UIButton!
+    private var tutorialButton: UIButton!
     
     private var presenter: HomeViewPresenter!
     private let defaults = UserDefaults.standard
@@ -46,6 +48,7 @@ class HomeViewController: UIViewController {
         helpButton = homeView.bottomButtons.helpButton
         rankingButton = homeView.bottomButtons.rankingButton
         soundButton = homeView.bottomButtons.soundButton
+        tutorialButton = homeView.tutorialButton
         
         // 配置＆制約
         view.addSubview(homeView)
@@ -57,6 +60,20 @@ class HomeViewController: UIViewController {
         helpButton.addTarget(self, action: #selector(helpPressed(_:)), for: .touchUpInside)
         rankingButton.addTarget(self, action: #selector(rankingPressed(_:)), for: .touchUpInside)
         soundButton.addTarget(self, action: #selector(soundPressed(_:)), for: .touchUpInside)
+        tutorialButton.addTarget(self, action: #selector(showTutorial(_ :)), for: .touchUpInside)
+    }
+    // チュートリアルを表示
+    @objc private func showTutorial(_ sender: UIButton) {
+        var positions: [CGPoint] = []
+        let buttons: [UIButton] = [playButton, wordButton, soundButton, helpButton, rankingButton]
+        buttons.forEach { button in
+            // 座標系を変換し，配列に代入
+            let center = button.convert(CGPoint(x: button.frame.width/2, y: button.frame.height/2), to: view)
+            positions.append(center)
+        }
+        
+        let homeTutorialVC = HomeAnnotationViewController(positions: positions)
+        present(homeTutorialVC, animated: true, completion: nil)
     }
     // クリア状況に応じて行う処理
     private func changeClearState() {
