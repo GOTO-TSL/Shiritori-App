@@ -62,7 +62,7 @@ class HomeViewController: UIViewController {
         soundButton.addTarget(self, action: #selector(soundPressed(_:)), for: .touchUpInside)
         tutorialButton.addTarget(self, action: #selector(showTutorial(_ :)), for: .touchUpInside)
     }
-    
+    // チュートリアルを表示
     @objc private func showTutorial(_ sender: UIButton) {
         var positions: [CGPoint] = []
         let buttons: [UIButton] = [playButton, wordButton, soundButton, helpButton, rankingButton]

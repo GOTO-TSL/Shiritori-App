@@ -16,20 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // set UserDefaults
-        defaults.set(false, forKey: Const.UDKeys.isWinEasy)
-        defaults.set(false, forKey: Const.UDKeys.isWinNormal)
-        defaults.set(false, forKey: Const.UDKeys.isWinHard)
-        
-        defaults.set(false, forKey: Const.UDKeys.isWin)
-        defaults.setEnum(Mode.easy, forKey: Const.UDKeys.currentMode)
-        
-        defaults.set(false, forKey: Const.UDKeys.isMute)
-        opening.playSound(loop: -1)
-        
+        let visit = defaults.integer(forKey: Const.UDKeys.first)
+        if visit == 0 {
+            defaults.set(false, forKey: Const.UDKeys.isWinEasy)
+            defaults.set(false, forKey: Const.UDKeys.isWinNormal)
+            defaults.set(false, forKey: Const.UDKeys.isWinHard)
+            
+            defaults.set(false, forKey: Const.UDKeys.isWin)
+            defaults.setEnum(Mode.easy, forKey: Const.UDKeys.currentMode)
+            
+            defaults.set(true, forKey: Const.UDKeys.isMute)
+            opening.playSound(loop: -1)
+        }
         return true
-    }
-    
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        //defaults.set(true, forKey: Constant.UserDefaultKeys.firstLaunch)
     }
 }

@@ -43,6 +43,7 @@
 		025AE9FB2680F3270039DF56 /* DotGothic16-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */; };
 		025EF86E26A7703800C6F9C7 /* ejdict.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */; };
 		02688EA32737BB7000A14E4F /* HomeAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02688EA22737BB7000A14E4F /* HomeAnnotationViewController.swift */; };
+		02688EA62738082200A14E4F /* GameAnnotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02688EA52738082200A14E4F /* GameAnnotationViewController.swift */; };
 		026923682723C0B30085341E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026923672723C0B30085341E /* UIImageView.swift */; };
 		0269236A2723E8C10085341E /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026923692723E8C10085341E /* SoundPlayer.swift */; };
 		0269236C2723ECA90085341E /* HomeViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269236B2723ECA90085341E /* HomeViewPresenter.swift */; };
@@ -119,6 +120,7 @@
 		025AE9F92680F3260039DF56 /* DotGothic16-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DotGothic16-Regular.ttf"; sourceTree = "<group>"; };
 		025EF86D26A7703800C6F9C7 /* ejdict.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = ejdict.sqlite3; sourceTree = "<group>"; };
 		02688EA22737BB7000A14E4F /* HomeAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAnnotationViewController.swift; sourceTree = "<group>"; };
+		02688EA52738082200A14E4F /* GameAnnotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAnnotationViewController.swift; sourceTree = "<group>"; };
 		026923672723C0B30085341E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		026923692723E8C10085341E /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		0269236B2723ECA90085341E /* HomeViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewPresenter.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				02688EA22737BB7000A14E4F /* HomeAnnotationViewController.swift */,
+				02688EA52738082200A14E4F /* GameAnnotationViewController.swift */,
 			);
 			path = Annotation;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */,
 				02324001271BF7B200333C7C /* GameViewController.swift in Sources */,
 				0227AADA271EF822000C66FA /* GameViewPresenter.swift in Sources */,
+				02688EA62738082200A14E4F /* GameAnnotationViewController.swift in Sources */,
 				022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */,
 				0227AADC271FEE33000C66FA /* String.swift in Sources */,
 				02323FF8271BC5EE00333C7C /* BodyScrollView.swift in Sources */,

@@ -20,6 +20,7 @@ struct Const {
         static let isWinEasy = "winEasy"
         static let isWinNormal = "winNormal"
         static let isWinHard = "winHard"
+        static let first = "firstLaunch"
     }
     
     enum GameParam {
@@ -47,7 +48,16 @@ struct Const {
     }
     
     enum TutorialText {
-        static let home = ["モードを選択後にしりとりゲームが始まるよ！", "ゲーム終了後に使った単語を登録すると，\nここで確認できるよ！", "音楽のON/OFFを切り替えれるよ！", "しりとりゲームのルールを確認できるよ！", "現在開発中だよ！"]
+        static let home = ["モードを選択後にしりとりゲームが始まるよ！",
+                           "ゲーム終了後に使った単語を登録すると，\nここで確認できるよ！",
+                           "音楽のON/OFFを切り替えれるよ！",
+                           "しりとりゲームのルールを確認できるよ！",
+                           "現在開発中だよ！"]
+        static let game = ["敵が英単語をくりだして来るよ！",
+                           "しりとりになる英単語を入力しよう！",
+                           "ATTACKボタンで攻撃しよう！",
+                           "しりとりが成功するとダメージが与えられるよ！",
+                           "制限時間以内に敵をたおそう！"]
     }
     
     enum TitleText {
