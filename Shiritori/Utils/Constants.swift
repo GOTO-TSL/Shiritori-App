@@ -131,6 +131,7 @@ struct Const {
         static let normal = "NORMAL"
         static let hard = "HARD"
         static let trash = "trash"
+        static let tutorial = "tutorial"
     }
     
     enum Sound {

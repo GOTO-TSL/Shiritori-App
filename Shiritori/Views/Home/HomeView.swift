@@ -21,9 +21,7 @@ class HomeView: UIView {
     
     let tutorialButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .black
-        button.setTitle("tutorial", for: .normal)
-        button.titleLabel?.textColor = .white
+        button.setImage(UIImage(named: Const.Image.tutorial), for: .normal)
         return button
     }()
     
@@ -47,7 +45,9 @@ class HomeView: UIView {
         background.addConstraintsToFillView(self)
         mainStack.addConstraintsToFillView(self)
         mainStack.divide(by: [3, 3, 1], baseHeight: heightAnchor)
-        tutorialButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 30, paddingLeft: 40)
+        tutorialButton.anchor(top: topAnchor, left: leftAnchor, paddingTop: 30, paddingLeft: 30)
+        tutorialButton.setAspectRatio(ratio: 1)
+        tutorialButton.anchor(width: 40)
     }
     
     required init?(coder: NSCoder) {
