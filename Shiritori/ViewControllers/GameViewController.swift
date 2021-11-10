@@ -69,10 +69,7 @@ class GameViewController: UIViewController {
     }
     
     private func configureResultUI(isWin: Bool, mode: Mode) {
-        resultViewPresenter.resultViewDidLoad(isWin: isWin)
-        // UserDefaultに勝利したかどうかと現在のモードを設定
-        UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
-        UserDefaults.standard.setEnum(self.mode!, forKey: Const.UDKeys.currentMode)
+        resultViewPresenter.resultViewDidLoad(isWin: isWin, mode: mode)
         // リザルト画面を表示
         resultView = ResultView(frame: view.frame, isWin: isWin, mode: mode)
         view.addSubview(resultView!)

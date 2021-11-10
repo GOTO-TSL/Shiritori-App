@@ -37,7 +37,11 @@ final class ResultViewPresenter {
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
-    func resultViewDidLoad(isWin: Bool) {
+    func resultViewDidLoad(isWin: Bool, mode: Mode) {
+        // UserDefaultに勝利したかどうかと現在のモードを設定
+        UserDefaults.standard.set(isWin, forKey: Const.UDKeys.isWin)
+        UserDefaults.standard.setEnum(mode, forKey: Const.UDKeys.currentMode)
+        
         if isWin {
             winSound.playSound()
         } else {

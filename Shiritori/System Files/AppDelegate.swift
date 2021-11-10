@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var opening = SoundPlayer(name: Const.Sound.opening)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        opening.playSound(loop: -1)
         // set UserDefaults
         let visit = defaults.integer(forKey: Const.UDKeys.first)
         if visit == 0 {
@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setEnum(Mode.easy, forKey: Const.UDKeys.currentMode)
             
             defaults.set(true, forKey: Const.UDKeys.isMute)
-            opening.playSound(loop: -1)
         }
         return true
     }

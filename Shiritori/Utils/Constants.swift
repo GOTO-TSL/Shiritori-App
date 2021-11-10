@@ -24,9 +24,9 @@ struct Const {
     }
     
     enum GameParam {
-        static let easy = 300
+        static let easy = 250
         static let normal = 500
-        static let hard = 700
+        static let hard = 1000
         static let timeLimit = 60
     }
     
