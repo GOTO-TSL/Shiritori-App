@@ -25,6 +25,11 @@ class HomeView: UIView {
         return button
     }()
     
+    let titleView: HomeTitleView = {
+        let view = HomeTitleView()
+        return view
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -32,7 +37,7 @@ class HomeView: UIView {
         // 背景画像の設定
         let background = Background(frame: frame)
         
-        let mainStack = UIStackView(arrangedSubviews: [HomeTitleView(), middleButtons, bottomButtons])
+        let mainStack = UIStackView(arrangedSubviews: [titleView, middleButtons, bottomButtons])
         mainStack.axis = .vertical
         mainStack.alignment = .fill
         mainStack.distribution = .fill

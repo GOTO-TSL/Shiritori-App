@@ -38,12 +38,19 @@ final class ResultViewPresenter {
     }
     
     func resultViewDidLoad(isWin: Bool, mode: Mode) {
-        // UserDefaultに勝利したかどうかと現在のモードを設定
-        UserDefaults.standard.set(isWin, forKey: Const.UDKeys.isWin)
-        UserDefaults.standard.setEnum(mode, forKey: Const.UDKeys.currentMode)
-        
+        // UserDefaultに勝利判定と現在のモードを設定
+        let defaults = UserDefaults.standard
+        defaults.set(isWin, forKey: Const.UDKeys.isWin)
+        defaults.setEnum(mode, forKey: Const.UDKeys.currentMode)
+        // 結果に応じてサウンドを再生し，勝利の場合，勝数をカウント(319勝まで)
         if isWin {
             winSound.playSound()
+            let winCount = defaults.integer(forKey: Const.UDKeys.winCount)
+            if winCount < 320 {
+                defaults.set(winCount+1, forKey: Const.UDKeys.winCount)
+            } else {
+                defaults.set(winCount, forKey: Const.UDKeys.winCount)
+            }
         } else {
             loseSound.playSound()
         }

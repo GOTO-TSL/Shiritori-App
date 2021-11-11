@@ -194,8 +194,10 @@ extension GameViewController: GameViewProtocol {
                 self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
                 
             case .end:
+                self.textField.endEditing(true)
                 self.configureResultUI(isWin: false, mode: self.mode!)
             case .lose:
+                self.textField.endEditing(true)
                 self.configureResultUI(isWin: true, mode: self.mode!)
                 
             default: break

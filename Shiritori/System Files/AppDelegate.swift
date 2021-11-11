@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.set(false, forKey: Const.UDKeys.isWinHard)
             
             defaults.set(false, forKey: Const.UDKeys.isWin)
+            defaults.set(0, forKey: Const.UDKeys.winCount)
             defaults.setEnum(Mode.easy, forKey: Const.UDKeys.currentMode)
             
             defaults.set(true, forKey: Const.UDKeys.isMute)
