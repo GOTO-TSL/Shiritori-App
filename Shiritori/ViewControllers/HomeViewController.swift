@@ -36,6 +36,7 @@ class HomeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         soundButton.imageView?.image = isMute ? UIImage(named: Const.Image.mute) : UIImage(named: Const.Image.sound)
+        showReward()
         changeClearState()
         guard let modeSelectView = modeView else { return }
         modeSelectView.removeFromSuperview()
@@ -74,6 +75,18 @@ class HomeViewController: UIViewController {
         
         let homeTutorialVC = HomeAnnotationViewController(positions: positions)
         present(homeTutorialVC, animated: true, completion: nil)
+    }
+    // 敵を倒した数に応じてリワードを表示
+    private func showReward() {
+        guard let homeView = view.subviews[0] as? HomeView else { fatalError() }
+        let win: CGFloat = CGFloat(UserDefaults.standard.integer(forKey: Const.UDKeys.winCount))
+        let width: CGFloat = UIScreen.main.bounds.width/20
+        // 各リワードをviewに追加し，制約を追加
+        for index in 0..<Int(win) {
+            let reward = RewardButton()
+            homeView.titleView.addSubview(reward)
+            reward.anchor(left: homeView.leftAnchor, bottom: homeView.titleView.bottomAnchor, paddingLeft: CGFloat(index%20)*width, paddingBottom: CGFloat(index/20)*width, width: width)
+        }
     }
     // クリア状況に応じて行う処理
     private func changeClearState() {

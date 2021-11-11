@@ -49,7 +49,7 @@ class ResultView: UIView {
         // ゲームの結果に応じて画像を変更
         if isWin {
             titleView.title.text = Const.TitleText.resultWin
-            imageView.resultImageView.animation(mode: mode, action: "result_win", duration: 0.7)
+            imageView.resultImageView.animation(mode: mode, action: "reward", duration: 0.7)
         } else {
             titleView.title.text = Const.TitleText.resultLose
             imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)

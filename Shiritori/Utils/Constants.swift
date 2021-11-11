@@ -21,6 +21,7 @@ struct Const {
         static let isWinNormal = "winNormal"
         static let isWinHard = "winHard"
         static let first = "firstLaunch"
+        static let winCount = "winCount"
     }
     
     enum GameParam {
@@ -132,6 +133,9 @@ struct Const {
         static let hard = "HARD"
         static let trash = "trash"
         static let tutorial = "tutorial"
+        static let reward0 = "easy/reward1"
+        static let reward1 = "normal/reward1"
+        static let reward2 = "hard/reward1"
     }
     
     enum Sound {

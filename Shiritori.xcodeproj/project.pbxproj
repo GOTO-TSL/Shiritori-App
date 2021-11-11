@@ -68,6 +68,7 @@
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
 		02C7C2E02720FE5400FDFE1A /* WordDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2DF2720FE5400FDFE1A /* WordDataManager.swift */; };
 		02C7C2E227212DAA00FDFE1A /* UsedWordViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */; };
+		02EF8505273D567F007F6B5D /* RewardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF8504273D567F007F6B5D /* RewardButton.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
 		02F222452712D03A00A71175 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* UIView.swift */; };
 		02F222472712D10B00A71175 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222462712D10B00A71175 /* HomeView.swift */; };
@@ -147,6 +148,7 @@
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		02C7C2DF2720FE5400FDFE1A /* WordDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDataManager.swift; sourceTree = "<group>"; };
 		02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordViewPresenter.swift; sourceTree = "<group>"; };
+		02EF8504273D567F007F6B5D /* RewardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardButton.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F222442712D03A00A71175 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		02F222462712D10B00A71175 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -419,6 +421,7 @@
 				02F222492712D43000A71175 /* HomeTitleView.swift */,
 				02F2224B2712D45300A71175 /* HomeButtonView.swift */,
 				02F2224D2712D48C00A71175 /* BottomButtonView.swift */,
+				02EF8504273D567F007F6B5D /* RewardButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */,
 				020AC84F27225408000561C5 /* MyWordViewPresenter.swift in Sources */,
 				0232400F271C1B7000333C7C /* UIViewController.swift in Sources */,
+				02EF8505273D567F007F6B5D /* RewardButton.swift in Sources */,
 				02C1417D2718655A00A2868E /* BackButton.swift in Sources */,
 				02324005271BF83300333C7C /* RuleViewController.swift in Sources */,
 				02C1417B27182F2300A2868E /* Background.swift in Sources */,

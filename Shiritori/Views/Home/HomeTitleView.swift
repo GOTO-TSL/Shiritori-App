@@ -33,6 +33,16 @@ class HomeTitleView: UIView {
         addSubview(stack)
         
         stack.center(inView: self)
+        
+        // 敵を倒した数に応じてリワードを表示
+        let win: CGFloat = CGFloat(UserDefaults.standard.integer(forKey: Const.UDKeys.winCount))
+        let width: CGFloat = UIScreen.main.bounds.width/20
+        // 各リワードに制約を追加
+        for index in 0..<Int(win) {
+            let reward = RewardButton()
+            addSubview(reward)
+            reward.anchor(left: leftAnchor, bottom: bottomAnchor, paddingLeft: CGFloat(index%20)*width, paddingBottom: CGFloat(index/20)*width, width: width)
+        }
     }
     
     required init?(coder: NSCoder) {
