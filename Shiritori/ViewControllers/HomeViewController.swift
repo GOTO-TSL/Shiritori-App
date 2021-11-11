@@ -204,7 +204,7 @@ class HomeViewController: UIViewController {
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す
         guard let btnTitle = sender.currentTitle else { return }
-        gameVC.mode = convertToMode(btnTitle)
+        UserDefaults.standard.setEnum(convertToMode(btnTitle), forKey: Const.UDKeys.currentMode)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)

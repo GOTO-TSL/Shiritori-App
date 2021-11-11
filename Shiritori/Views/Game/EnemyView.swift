@@ -55,6 +55,9 @@ class EnemyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        let mode: Mode = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)!
+        enemyImageView.image = UIImage(named: "\(mode)/move0")
+        
         addSubview(hpView)
         addSubview(timeLimit)
         addSubview(enemyImageView)

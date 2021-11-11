@@ -24,13 +24,13 @@ class ResultView: UIView {
         return buttons
     }()
     // MARK: - Lifecycle
-    init(frame: CGRect, isWin: Bool, mode: Mode) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         
         // 背景画像の設定
         let background = Background(frame: frame)
         
-        configureResultUI(isWin: isWin, mode: mode)
+        configureResultUI()
         
         let stack = UIStackView(arrangedSubviews: [titleView, imageView, buttons])
         stack.axis = .vertical
@@ -45,14 +45,15 @@ class ResultView: UIView {
         stack.divide(by: [32, 23, 73], baseHeight: heightAnchor)
     }
     
-    private func configureResultUI(isWin: Bool, mode: Mode) {
+    private func configureResultUI() {
+        let isWin = UserDefaults.standard.bool(forKey: Const.UDKeys.isWin)
         // ゲームの結果に応じて画像を変更
         if isWin {
             titleView.title.text = Const.TitleText.resultWin
-            imageView.resultImageView.animation(mode: mode, action: "reward", duration: 0.7)
+            imageView.resultImageView.animation(action: "reward", duration: 0.7)
         } else {
             titleView.title.text = Const.TitleText.resultLose
-            imageView.resultImageView.animation(mode: mode, action: "result", duration: 0.7)
+            imageView.resultImageView.animation(action: "result", duration: 0.7)
         }
     }
     

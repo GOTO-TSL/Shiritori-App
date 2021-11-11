@@ -18,19 +18,16 @@ class GameViewController: UIViewController {
     private var hpBar: UIProgressView!
     private var enemyImageView: UIImageView!
     private var damageLabel: UILabel!
-    private var resultView: ResultView?
     
     private var gameViewPresenter: GameViewPresenter!
     private var resultViewPresenter: ResultViewPresenter!
-    
-    var mode: Mode?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureGameUI()
-        gameViewPresenter = GameViewPresenter(view: self, mode: mode!)
+        gameViewPresenter = GameViewPresenter(view: self)
         resultViewPresenter = ResultViewPresenter(view: self)
         gameViewPresenter.gameViewDidLoad()
 
@@ -53,9 +50,6 @@ class GameViewController: UIViewController {
         enemyImageView = gameView.enemyView.enemyImageView
         damageLabel = gameView.enemyView.damageLabel
         
-        // 敵の画像を設定
-        enemyImageView.image = UIImage(named: "\(mode!)/move0")
-        
         // 配置＆制約の追加
         view.addSubview(gameView)
         gameView.addConstraintsToFillView(view)
@@ -68,15 +62,15 @@ class GameViewController: UIViewController {
         textField.delegate = self
     }
     
-    private func configureResultUI(isWin: Bool, mode: Mode) {
-        resultViewPresenter.resultViewDidLoad(isWin: isWin, mode: mode)
+    private func configureResultUI() {
+        resultViewPresenter.resultViewDidLoad()
         // リザルト画面を表示
-        resultView = ResultView(frame: view.frame, isWin: isWin, mode: mode)
-        view.addSubview(resultView!)
-        resultView?.addConstraintsToFillView(view)
+        let resultView = ResultView()
+        view.addSubview(resultView)
+        resultView.addConstraintsToFillView(view)
         
-        resultView?.buttons.homeButton.addTarget(self, action: #selector(homePressed(_ :)), for: .touchUpInside)
-        resultView?.buttons.wordButton.addTarget(self, action: #selector(wordPressed(_ :)), for: .touchUpInside)
+        resultView.buttons.homeButton.addTarget(self, action: #selector(homePressed(_ :)), for: .touchUpInside)
+        resultView.buttons.wordButton.addTarget(self, action: #selector(wordPressed(_ :)), for: .touchUpInside)
     }
     // チュートリアルを表示
     private func showTutorial() {
@@ -167,38 +161,38 @@ extension GameViewController: GameViewProtocol {
             self.wordLabel.text = text
             switch state {
             case .word:
-                self.enemyImageView.animation(mode: self.mode!, action: "damage", duration: 0.2)
+                self.enemyImageView.animation(action: "damage", duration: 0.2)
             case .error:
-                self.enemyImageView.animation(mode: self.mode!, action: "heal", duration: 0.4)
+                self.enemyImageView.animation(action: "heal", duration: 0.4)
             case .lose:
-                self.enemyImageView.animation(mode: self.mode!, action: "lose", duration: 0.9)
+                self.enemyImageView.animation(action: "lose", duration: 0.9)
             default:
-                self.enemyImageView.image = UIImage(named: "\(self.mode!)/move0")
+                break
             }
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             switch state {
             case .word:
-                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
+                self.enemyImageView.animation(action: "move", duration: 1.0)
             case .error:
                 // エラー分表示の1秒後に現在の単語を再度表示
                 guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { return }
                 self.wordLabel.text = currentWord
-                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
+                self.enemyImageView.animation(action: "move", duration: 1.0)
                 
             case .start:
                 self.showTutorial()
                 // ゲームの開始をpresenterに通知
                 self.gameViewPresenter.willGameStart()
-                self.enemyImageView.animation(mode: self.mode!, action: "move", duration: 1.0)
+                self.enemyImageView.animation(action: "move", duration: 1.0)
                 
             case .end:
                 self.textField.endEditing(true)
-                self.configureResultUI(isWin: false, mode: self.mode!)
+                self.configureResultUI()
             case .lose:
                 self.textField.endEditing(true)
-                self.configureResultUI(isWin: true, mode: self.mode!)
+                self.configureResultUI()
                 
             default: break
             }

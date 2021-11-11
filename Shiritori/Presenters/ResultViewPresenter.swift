@@ -12,7 +12,7 @@ protocol ResultViewProtocol: AnyObject {
 }
 
 protocol ResultViewPresenterProtocol: AnyObject {
-    func resultViewDidLoad(isWin: Bool, mode: Mode)
+    func resultViewDidLoad()
     func didPressedHome()
 }
 
@@ -37,11 +37,10 @@ final class ResultViewPresenter {
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
-    func resultViewDidLoad(isWin: Bool, mode: Mode) {
+    func resultViewDidLoad() {
         // UserDefaultに勝利判定と現在のモードを設定
         let defaults = UserDefaults.standard
-        defaults.set(isWin, forKey: Const.UDKeys.isWin)
-        defaults.setEnum(mode, forKey: Const.UDKeys.currentMode)
+        let isWin = defaults.bool(forKey: Const.UDKeys.isWin)
         // 結果に応じてサウンドを再生し，勝利の場合，勝数をカウント(319勝まで)
         if isWin {
             winSound.playSound()

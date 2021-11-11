@@ -8,9 +8,9 @@
 import Foundation
 
 enum Mode: String {
-    case easy = "easy"
-    case normal = "normal"
-    case hard = "hard"
+    case easy
+    case normal
+    case hard
 }
 
 protocol EnemyModelDelegate: AnyObject {
@@ -23,8 +23,8 @@ final class EnemyModel {
     var hitpoint: Int
     weak var delegete: EnemyModelDelegate?
     
-    init(mode: Mode) {
-        self.mode = mode
+    init() {
+        self.mode = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)!
         
         switch mode {
         case .easy:
