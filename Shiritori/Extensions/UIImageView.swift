@@ -8,7 +8,8 @@
 import UIKit
 
 extension UIImageView {
-    func animation(mode: Mode, action: String, duration: Double) {
+    func animation(action: String, duration: Double) {
+        let mode: Mode = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)!
         animationImages = animationImages(for: "\(mode)/\(action)")
         animationDuration = duration
         animationRepeatCount = 0

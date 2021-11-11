@@ -45,12 +45,12 @@ final class GameViewPresenter {
     private var healSound: SoundPlayer!
     private(set) var currentWords = [Word]()
     
-    init(view: GameViewProtocol, mode: Mode) {
+    init(view: GameViewProtocol) {
         self.view = view
         self.timeManager = TimeManager()
         self.dictDataManager = DictDataManager()
         self.gameLogic = GameModel()
-        self.enemyModel = EnemyModel(mode: mode)
+        self.enemyModel = EnemyModel()
         self.wordDataManager = WordDataManager()
         self.battleSound = SoundPlayer(name: Const.Sound.battle)
         self.damageSound = SoundPlayer(name: Const.Sound.damage)
@@ -115,6 +115,7 @@ extension GameViewPresenter: TimeManagerDelegate {
         case Const.GameParam.timeLimit+1:
             battleSound.stop()
             view.showText(self, text: Const.GameText.end, state: .end)
+            UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
         default: break
         }
     }
@@ -189,6 +190,7 @@ extension GameViewPresenter: EnemyModelDelegate {
         } else {
             view.updateHPBar(self, progress: progress)
             view.showText(self, text: Const.GameText.dead, state: .lose)
+            UserDefaults.standard.set(true, forKey: Const.UDKeys.isWin)
             battleSound.stop()
             timeManager.stopTimer()
         }
