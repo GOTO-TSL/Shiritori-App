@@ -41,14 +41,26 @@ final class ResultViewPresenter {
         // UserDefaultに勝利判定と現在のモードを設定
         let defaults = UserDefaults.standard
         let isWin = defaults.bool(forKey: Const.UDKeys.isWin)
+        let mode: Mode = defaults.getEnum(forKey: Const.UDKeys.currentMode)!
         // 結果に応じてサウンドを再生し，勝利の場合，勝数をカウント(319勝まで)
         if isWin {
             winSound.playSound()
             let winCount = defaults.integer(forKey: Const.UDKeys.winCount)
-            if winCount < 320 {
-                defaults.set(winCount+1, forKey: Const.UDKeys.winCount)
+            var newWinCount = winCount
+            // 難易度に応じてリワードの数を変更
+            switch mode {
+            case .easy:
+                newWinCount += 1
+            case .normal:
+                newWinCount += 3
+            case .hard:
+                newWinCount += 6
+            }
+            // UserDefaultsの更新
+            if newWinCount < 320 {
+                defaults.set(newWinCount, forKey: Const.UDKeys.winCount)
             } else {
-                defaults.set(winCount, forKey: Const.UDKeys.winCount)
+                defaults.set(320, forKey: Const.UDKeys.winCount)
             }
         } else {
             loseSound.playSound()

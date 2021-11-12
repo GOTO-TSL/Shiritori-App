@@ -8,17 +8,18 @@
 import UIKit
 
 class ResultTitleView: UIView {
-    // MARK: - Properties
-    let title: UILabel = {
-        let label = UILabel()
-        label.text = Const.TitleText.resultWin
-        label.font = UIFont(name: Const.font, size: 45)
-        label.textAlignment = .center
-        return label
-    }()
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        let title = UILabel()
+        title.text = Const.TitleText.resultWin
+        title.font = UIFont(name: Const.font, size: 45)
+        title.textAlignment = .center
+        
+        // ゲーム結果に応じてテキストを変更
+        let isWin = UserDefaults.standard.bool(forKey: Const.UDKeys.isWin)
+        title.text = isWin ? Const.TitleText.resultWin : Const.TitleText.resultLose
         
         addSubview(title)
         

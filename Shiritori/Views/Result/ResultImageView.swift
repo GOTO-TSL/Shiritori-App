@@ -8,24 +8,28 @@
 import UIKit
 
 class ResultImageView: UIView {
-    // MARK: - Properties
-    let resultImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: "result1-1")
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(resultImageView)
+        let isWin = UserDefaults.standard.bool(forKey: Const.UDKeys.isWin)
         
-        resultImageView.centerX(inView: self)
-        resultImageView.anchor(bottom: bottomAnchor)
-        resultImageView.setAspectRatio(ratio: 1)
-        resultImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/3).isActive = true
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        
+        if isWin {
+            imageView.animation(action: "reward", duration: 0.5)
+        } else {
+            imageView.animation(action: "result", duration: 0.7)
+        }
+        
+        addSubview(imageView)
+        
+        imageView.centerX(inView: self)
+        imageView.anchor(bottom: bottomAnchor)
+        imageView.setAspectRatio(ratio: 1)
+        imageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/3).isActive = true
+
     }
     
     required init?(coder: NSCoder) {

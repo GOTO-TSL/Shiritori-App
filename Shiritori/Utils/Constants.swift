@@ -133,9 +133,9 @@ struct Const {
         static let hard = "HARD"
         static let trash = "trash"
         static let tutorial = "tutorial"
-        static let reward0 = "easy/reward1"
-        static let reward1 = "normal/reward1"
-        static let reward2 = "hard/reward1"
+        static let reward0 = "easy/reward"
+        static let reward1 = "normal/reward"
+        static let reward2 = "hard/reward"
     }
     
     enum Sound {
