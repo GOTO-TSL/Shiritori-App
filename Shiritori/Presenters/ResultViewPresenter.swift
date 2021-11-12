@@ -17,6 +17,7 @@ protocol ResultViewPresenterProtocol: AnyObject {
 }
 
 final class ResultViewPresenter {
+    // MARK: - Properties
     private weak var view: ResultViewProtocol!
     private var wordDataManager: WordDataManager!
     private var winSound: SoundPlayer!
@@ -24,6 +25,7 @@ final class ResultViewPresenter {
     private var pushSound: SoundPlayer!
     private(set) var usedWords = [Word]()
     
+    // MARK: - Lifecycle
     init(view: ResultViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
@@ -37,6 +39,7 @@ final class ResultViewPresenter {
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
     
+    // MARK: - ResultViewPresenterProtocol Methods
     func resultViewDidLoad() {
         // UserDefaultに勝利判定と現在のモードを設定
         let defaults = UserDefaults.standard

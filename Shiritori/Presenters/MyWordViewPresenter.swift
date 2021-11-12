@@ -19,10 +19,12 @@ protocol MyWordViewPresenterProtocol: AnyObject {
 }
 
 final class MyWordViewPresenter {
+    // MARK: - Properties
     private weak var view: MyWordViewProtocol!
     private var wordDataManager: WordDataManager!
     private(set) var myWords = [Word]()
     
+    // MARK: - Lifecycle
     init(view: MyWordViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
@@ -30,6 +32,7 @@ final class MyWordViewPresenter {
         wordDataManager.openDB(name: Const.DBName.myWords)
     }
     
+    // MARK: - MyWordViewPresenterProtocol Methods
     var numberOfWords: Int {
         return myWords.count
     }

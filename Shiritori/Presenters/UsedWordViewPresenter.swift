@@ -19,18 +19,19 @@ protocol UsedWordViewPresenterProtocol: AnyObject {
 }
 
 final class UsedWordViewPresenter {
-    
+    // MARK: - Properties
     private weak var view: UsedWordViewProtocol!
     private var wordDataManager: WordDataManager!
     private(set) var usedWords = [Word]()
     
+    // MARK: - Lifecycle
     init(view: UsedWordViewProtocol) {
         self.view = view
         self.wordDataManager = WordDataManager()
         wordDataManager.delegate = self
         wordDataManager.openDB(name: Const.DBName.usedWords)
     }
-    
+    // MARK: - UsedWordViewPresenterProtocol Methods
     var numberOfWords: Int {
         return usedWords.count
     }

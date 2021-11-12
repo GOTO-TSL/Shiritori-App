@@ -33,7 +33,7 @@ protocol GameViewPresenterProtocol: AnyObject {
 }
 
 final class GameViewPresenter {
-    
+    // MARK: - Properties
     private weak var view: GameViewProtocol!
     private var timeManager: TimeManager!
     private var dictDataManager: DictDataManager!
@@ -45,6 +45,7 @@ final class GameViewPresenter {
     private var healSound: SoundPlayer!
     private(set) var currentWords = [Word]()
     
+    // MARK: - Lifecycle
     init(view: GameViewProtocol) {
         self.view = view
         self.timeManager = TimeManager()
@@ -62,7 +63,7 @@ final class GameViewPresenter {
         enemyModel.delegete = self
         wordDataManager.delegate = self
     }
-    
+    // MARK: - GameViewPresenterProtocol Methods
     func gameViewDidLoad() {
         // bgm再生
         battleSound.playSound(loop: -1)
