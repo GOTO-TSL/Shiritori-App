@@ -32,11 +32,6 @@ class GameViewController: UIViewController {
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        // キーボードが自動で表示される設定
-        textField.becomeFirstResponder()
-    }
-    
     // MARK: - UI Setting Methods
     // ゲーム画面のViewを表示
     private func configureGameUI() {
@@ -53,6 +48,9 @@ class GameViewController: UIViewController {
         // 配置＆制約の追加
         view.addSubview(gameView)
         gameView.addConstraintsToFillView(view)
+        
+        // キーボードが自動で表示される設定
+        textField.becomeFirstResponder()
         
         // ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_ :)), for: .touchUpInside)
