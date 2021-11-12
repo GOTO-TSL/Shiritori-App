@@ -15,19 +15,22 @@ protocol DictDataManagerDelegate: AnyObject {
 }
 
 final class DictDataManager {
-    
+    // MARK: - Properties
     weak var delegate: DictDataManagerDelegate?
     var database: Connection?
     var items: Table
     var word: Expression<String>
     var mean: Expression<String>
     
+    // MARK: - Lifecycle
     init() {
         self.items = Table("items")
         self.word = Expression<String>("word")
         self.mean = Expression<String>("mean")
     }
     
+    // MARK: - DB Setting Methods
+    // データベースを開く
     func openDB() {
         
         copyDataBaseFile()
@@ -40,6 +43,8 @@ final class DictDataManager {
             print(error)
         }
     }
+    
+    // MARK: - Featch From DB Methods
     // initialから始まる単語をDBから取得する
     func featchWord(initial: Character, isFirst: Bool = false) {
         let table = getSafeWord(initial: initial)
@@ -90,6 +95,7 @@ final class DictDataManager {
                                       !word.like("%-%"))
         return queryTable
     }
+    // MARK: - Helpers
     // 検索結果の単語数をカウント -> ランダムの範囲指定の際に使用
     private func count(_ table: Table) -> Int {
         do {
@@ -107,17 +113,12 @@ final class DictDataManager {
         let finalDatabaseURL = documentsUrl.appendingPathComponent(Const.DBPath.fileName)
         do {
             if !fileManager.fileExists(atPath: finalDatabaseURL.path) {
-                //print("DB does not exist in documents folder")
                 if let dbFilePath = Bundle.main.path(forResource: Const.DBPath.ejdict, ofType: Const.DBPath.sqlite3) {
                     try fileManager.copyItem(atPath: dbFilePath, toPath: finalDatabaseURL.path)
-                } else {
-                    //print("Uh oh - foo.db is not in the app bundle")
                 }
-            } else {
-                //print("Database file found at path: \(finalDatabaseURL.path)")
             }
         } catch {
-            //print("Unable to copy foo.db: \(error)")
+            print(error)
         }
     }
 }

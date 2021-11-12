@@ -13,11 +13,12 @@ protocol TimeManagerDelegate: AnyObject {
 }
 
 final class TimeManager {
-    
+    // MARK: - Properties
     weak var delegate: TimeManagerDelegate?
     var timer: Timer = Timer()
     var counter: Int = 0
     
+    // MARK: - Timer Setting Methods
     // カウントダウン用タイマーメソッド
     func firstCount() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countThree), userInfo: nil, repeats: true)
@@ -26,6 +27,8 @@ final class TimeManager {
     func gameCount() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countSixty), userInfo: nil, repeats: true)
     }
+    
+    // MARK: - Timer Methods
     // ゲームスタート前の３秒のカウントダウン
     @objc func countThree() {
         if counter <= 2 {
@@ -48,7 +51,7 @@ final class TimeManager {
         }
         counter += 1
     }
-    
+    // MARK: - Helpers
     func stopTimer() {
         timer.invalidate()
     }

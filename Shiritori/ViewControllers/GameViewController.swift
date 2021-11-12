@@ -81,8 +81,8 @@ class GameViewController: UIViewController {
             positions.append(center)
         }
         
-        if UserDefaults.standard.integer(forKey: Const.UDKeys.first) == 0 {
-            UserDefaults.standard.set(1, forKey: Const.UDKeys.first)
+        if !UserDefaults.standard.bool(forKey: Const.UDKeys.first) {
+            UserDefaults.standard.set(true, forKey: Const.UDKeys.first)
             let gameTutorialVC = GameAnnotationViewController(positions: positions)
             present(gameTutorialVC, animated: true, completion: nil)
         }

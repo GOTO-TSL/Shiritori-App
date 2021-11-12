@@ -13,9 +13,10 @@ protocol GameLogicDelegate: AnyObject {
 }
 
 final class GameModel {
-
+    // MARK: - Properties
     weak var delegate: GameLogicDelegate?
     
+    // MARK: - GameModel Methods
     func applyShiritoriRule(for word: String) {
         
         guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { fatalError() }

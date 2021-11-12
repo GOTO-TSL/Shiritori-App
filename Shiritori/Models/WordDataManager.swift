@@ -29,7 +29,7 @@ protocol WordDataManagerDelegate: AnyObject {
 }
 
 final class WordDataManager {
-    
+    // MARK: - Properties
     private var database: Connection?
     
     private var words: Table
@@ -39,6 +39,7 @@ final class WordDataManager {
     private var isLike: Expression<Bool>
     weak var delegate: WordDataManagerDelegate?
     
+    // MARK: - Lifecycle
     init() {
         self.words = Table("words")
         self.wordID = Expression<Int>("id")
@@ -46,7 +47,8 @@ final class WordDataManager {
         self.mean = Expression<String>("mean")
         self.isLike = Expression<Bool>("isLike")
     }
-    
+    // MARK: - DB Setting Methods
+    // データベースを作成
     func createDB(name: String) {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
@@ -65,7 +67,7 @@ final class WordDataManager {
             print(error)
         }
     }
-    
+    // データベースを開く
     func openDB(name: String) {
         let path = NSSearchPathForDirectoriesInDomains(
             .documentDirectory, .userDomainMask, true
@@ -77,7 +79,8 @@ final class WordDataManager {
             print(error)
         }
     }
-    
+    // MARK: - DB Operation Methods
+    // データベースに単語を登録
     func insert(_ usedWord: Word) {
         do {
             try database!.run(words.insert(or: .replace, word <- usedWord.word, mean <- usedWord.mean, isLike <- usedWord.isLike))
@@ -85,29 +88,7 @@ final class WordDataManager {
             print(error)
         }
     }
-    
-    func checkIsUsed(_ inputs: String) {
-        let queryTable = words.filter(word.like(inputs))
-        
-        do {
-            let count = try database!.scalar(queryTable.count)
-            self.delegate?.didCheckIsUsed(self, word: inputs, count: count)
-        } catch {
-            print(error)
-        }
-    }
-    
-    func changeLike(for target: Word) {
-        let tagWords = words.filter(wordID == target.wordID)
-        
-        do {
-            try database!.run(tagWords.update(isLike <- !target.isLike))
-        } catch {
-            print(error)
-        }
-        loadWords()
-    }
-    
+    // 単語の削除(全削除, お気に入り以外を削除, 選択した単語を削除)
     func delete(option: DeleteOption, selectedID: Int = 0) {
         var tagWords = Table("words")
         switch option {
@@ -125,7 +106,30 @@ final class WordDataManager {
         }
         loadWords()
     }
-    
+    // MARK: - Helpers
+    // 単語がデータベースにあるかどうかをチェックする
+    func checkIsUsed(_ inputs: String) {
+        let queryTable = words.filter(word.like(inputs))
+        
+        do {
+            let count = try database!.scalar(queryTable.count)
+            self.delegate?.didCheckIsUsed(self, word: inputs, count: count)
+        } catch {
+            print(error)
+        }
+    }
+    // 単語のisLikeプロパティを更新する
+    func changeLike(for target: Word) {
+        let tagWords = words.filter(wordID == target.wordID)
+        
+        do {
+            try database!.run(tagWords.update(isLike <- !target.isLike))
+        } catch {
+            print(error)
+        }
+        loadWords()
+    }
+    // データベースをコピーする
     func copyWord(currentWords: [Word], to dbname: String) {
         openDB(name: dbname)
         do {
@@ -137,7 +141,7 @@ final class WordDataManager {
             print(error)
         }
     }
-    // DBをcurrentWordsにコピーする
+    // データベースを読み込んで返す，更新された時に使う
     func loadWords() {
         var currentWords = [Word]()
         do {
@@ -154,6 +158,5 @@ final class WordDataManager {
         } catch {
             print(error)
         }
-        
     }
 }

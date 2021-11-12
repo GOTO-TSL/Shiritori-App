@@ -18,11 +18,13 @@ protocol EnemyModelDelegate: AnyObject {
 }
 
 final class EnemyModel {
+    // MARK: - Properties
     let mode: Mode
     let hpMax: Int
     var hitpoint: Int
     weak var delegete: EnemyModelDelegate?
     
+    // MARK: - Lifecycle
     init() {
         self.mode = UserDefaults.standard.getEnum(forKey: Const.UDKeys.currentMode)!
         
@@ -38,6 +40,8 @@ final class EnemyModel {
             self.hitpoint = Const.GameParam.hard
         }
     }
+    
+    // MARK: - EnemyModel Methods
     // 単語の文字数かける10ダメージHPをへらす
     func getDamage(word: String) {
         let damage = word.count * 10
@@ -45,7 +49,6 @@ final class EnemyModel {
         self.delegete?.didChangeHP(self, currentHP: hitpoint, maxHP: hpMax)
         
     }
-    
     // HPを30回復する
     func heal() {
         hitpoint += 30

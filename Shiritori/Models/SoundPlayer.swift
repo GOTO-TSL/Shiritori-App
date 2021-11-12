@@ -8,8 +8,10 @@
 import AVFoundation
 
 final class SoundPlayer {
+    // MARK: - Properties
     var audioPlayer: AVAudioPlayer!
     
+    // MARK: - Lifecycle
     init(name: String) {
         
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
@@ -28,6 +30,7 @@ final class SoundPlayer {
         }
     }
     
+    // MARK: - SoundPlayer Methods
     func playSound(loop: Int = 0) {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         // ループ数の指定
