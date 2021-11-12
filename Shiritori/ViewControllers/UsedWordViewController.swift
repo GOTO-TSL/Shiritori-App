@@ -8,7 +8,6 @@
 import UIKit
 
 class UsedWordViewController: UIViewController {
-    
     // MARK: - Properties
     private var backButton: UIButton!
     private var likeButton: UIButton!
@@ -31,7 +30,7 @@ class UsedWordViewController: UIViewController {
         presenter.usedWordViewDidLoad()
         
     }
-    
+    // MARK: - UI Setting Methods
     private func configureUI() {
         let usedWordView = UsedWordView()
         backButton = usedWordView.headerView.backButton
@@ -48,15 +47,15 @@ class UsedWordViewController: UIViewController {
         // ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
     }
-    
+    // MARK: - Button Tapped Methods
+    // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         // リザルト画面に戻る
         addTransition(duration: 0.2, type: .push, subType: .fromLeft)
         dismiss(animated: false, completion: nil)
     }
-    
+    // お気に入りボタンが押されたときの処理
     @objc private func likePressed(_ sender: UIButton) {
-        // お気に入りボタンが押されたときの処理
         guard let word = presenter.usedWord(forRow: sender.tag) else { fatalError() }
         presenter.didPressedLikeButton(of: word)
     }

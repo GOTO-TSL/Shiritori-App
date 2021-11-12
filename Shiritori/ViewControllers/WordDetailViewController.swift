@@ -8,7 +8,6 @@
 import UIKit
 
 class WordDetailViewController: UIViewController {
-    
     // MARK: - Properties
     private var wordLabel: UILabel!
     private var meanLabel: UILabel!
@@ -20,14 +19,15 @@ class WordDetailViewController: UIViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
-
+    
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
 
     }
-    
+    // MARK: - UI Setting Methods
     private func configureUI() {
         let wordDetailView = WordDetailView()
         wordLabel = wordDetailView.wordLabel
@@ -45,7 +45,8 @@ class WordDetailViewController: UIViewController {
         wordLabel.text = word
         meanLabel.text = mean
     }
-    
+    // MARK: - Button Tapped Methods
+    // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         addTransition(duration: 0.2, type: .push, subType: .fromLeft)
         dismiss(animated: false, completion: nil)

@@ -8,7 +8,6 @@
 import UIKit
 
 class GameViewController: UIViewController {
-    
     // MARK: - Properties
     private var backButton: UIButton!
     private var attackButton: UIButton!
@@ -38,7 +37,8 @@ class GameViewController: UIViewController {
         textField.becomeFirstResponder()
     }
     
-    // MARK: - Helpers
+    // MARK: - UI Setting Methods
+    // ゲーム画面のViewを表示
     private func configureGameUI() {
         let gameView = GameView()
         backButton = gameView.backButton
@@ -61,10 +61,9 @@ class GameViewController: UIViewController {
         // delegateの設定
         textField.delegate = self
     }
-    
+    // リザルト画面のViewを表示
     private func configureResultUI() {
         resultViewPresenter.resultViewDidLoad()
-        // リザルト画面を表示
         let resultView = ResultView()
         view.addSubview(resultView)
         resultView.addConstraintsToFillView(view)
@@ -88,7 +87,7 @@ class GameViewController: UIViewController {
             present(gameTutorialVC, animated: true, completion: nil)
         }
     }
-    
+    // MARK: - Button tapped Methods
     // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         opening(operation: .play)
@@ -155,7 +154,7 @@ extension GameViewController: GameViewProtocol {
             }
         }
     }
-
+    // 吹き出しにテキストを表示
     func showText(_ gameViewPresenter: GameViewPresenter, text: String, state: TextState) {
         DispatchQueue.main.async {
             self.wordLabel.text = text
@@ -170,11 +169,11 @@ extension GameViewController: GameViewProtocol {
                 break
             }
         }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             switch state {
             case .word:
                 self.enemyImageView.animation(action: "move", duration: 1.0)
+                
             case .error:
                 // エラー分表示の1秒後に現在の単語を再度表示
                 guard let currentWord = UserDefaults.standard.string(forKey: Const.UDKeys.currentWord) else { return }
@@ -190,6 +189,7 @@ extension GameViewController: GameViewProtocol {
             case .end:
                 self.textField.endEditing(true)
                 self.configureResultUI()
+                
             case .lose:
                 self.textField.endEditing(true)
                 self.configureResultUI()
@@ -198,9 +198,8 @@ extension GameViewController: GameViewProtocol {
             }
         }
     }
-    
+    // 制限時間を更新
     func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String) {
-        // 制限時間を更新
         DispatchQueue.main.async {
             self.timeLimit.text = text
         }
@@ -208,7 +207,6 @@ extension GameViewController: GameViewProtocol {
 }
 // MARK: - UITextFieldDelegate Methods
 extension GameViewController: UITextFieldDelegate {
-
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         guard let word = textField.text else { fatalError() }
         gameViewPresenter.didInputWord(word: word)

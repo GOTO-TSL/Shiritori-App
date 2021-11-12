@@ -8,7 +8,6 @@
 import UIKit
 
 class MyWordViewController: UIViewController {
-    
     // MARK: - Properties
     private var tableView: UITableView!
     private var backButton: UIButton!
@@ -28,7 +27,7 @@ class MyWordViewController: UIViewController {
         presenter.myWordViewDidLoad()
         
     }
-    
+    // MARK: - UI Setting Methods
     private func configureUI() {
         let myWordView = MyWordView()
         tableView = myWordView.tableView
@@ -46,11 +45,12 @@ class MyWordViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+    // MARK: - Button Tapped Methods
+    // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+    // 削除ボタンが押されたときの処理
     @objc private func editPressed(_ sender: UIButton) {
         if tableView.isEditing {
             tableView.setEditing(false, animated: true)

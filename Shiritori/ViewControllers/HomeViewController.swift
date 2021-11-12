@@ -28,7 +28,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        configureHomeUI()
         presenter = HomeViewPresenter()
         
     }
@@ -42,7 +42,9 @@ class HomeViewController: UIViewController {
         modeSelectView.removeFromSuperview()
     }
     
-    private func configureUI() {
+    // MARK: - UI Setting Methods
+    // ホーム画面を表示
+    private func configureHomeUI() {
         let homeView = HomeView()
         playButton = homeView.middleButtons.playButton
         wordButton = homeView.middleButtons.wordButton
@@ -63,6 +65,26 @@ class HomeViewController: UIViewController {
         soundButton.addTarget(self, action: #selector(soundPressed(_:)), for: .touchUpInside)
         tutorialButton.addTarget(self, action: #selector(showTutorial(_ :)), for: .touchUpInside)
     }
+    // モード選択画面を表示
+    private func configureModeView() {
+        modeView = ModeSelectView()
+        modeView!.alpha = 0.0
+        easyButton = modeView!.modeButtons.easyButton
+        normalButton = modeView!.modeButtons.normalButton
+        hardButton = modeView!.modeButtons.hardButton
+        
+        view.addSubview(modeView!)
+        modeView!.addConstraintsToFillView(view)
+        // アニメーションを追加
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseIn]) {
+            self.modeView?.alpha = 1.0
+        }
+
+        easyButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+        normalButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+        hardButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+    }
+    
     // チュートリアルを表示
     @objc private func showTutorial(_ sender: UIButton) {
         var positions: [CGPoint] = []
@@ -76,7 +98,7 @@ class HomeViewController: UIViewController {
         let homeTutorialVC = HomeAnnotationViewController(positions: positions)
         present(homeTutorialVC, animated: true, completion: nil)
     }
-    // 敵を倒した数に応じてリワードを表示
+    // リワードを表示
     private func showReward() {
         guard let homeView = view.subviews[0] as? HomeView else { fatalError() }
         let win: CGFloat = CGFloat(UserDefaults.standard.integer(forKey: Const.UDKeys.winCount))
@@ -88,7 +110,7 @@ class HomeViewController: UIViewController {
             reward.anchor(left: homeView.leftAnchor, bottom: homeView.titleView.bottomAnchor, paddingLeft: CGFloat(index%20)*width, paddingBottom: CGFloat(index/20)*width, width: width)
         }
     }
-    // クリア状況に応じて行う処理
+    // アラートの表示
     private func changeClearState() {
         let mode: Mode? = defaults.getEnum(forKey: Const.UDKeys.currentMode)
         let isWin = defaults.bool(forKey: Const.UDKeys.isWin)
@@ -133,25 +155,7 @@ class HomeViewController: UIViewController {
         configureModeView()
         
     }
-    
-    private func configureModeView() {
-        modeView = ModeSelectView()
-        modeView!.alpha = 0.0
-        easyButton = modeView!.modeButtons.easyButton
-        normalButton = modeView!.modeButtons.normalButton
-        hardButton = modeView!.modeButtons.hardButton
-        
-        view.addSubview(modeView!)
-        modeView!.addConstraintsToFillView(view)
-        // アニメーションを追加
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseIn]) {
-            self.modeView?.alpha = 1.0
-        }
-
-        easyButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
-        normalButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
-        hardButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
-    }
+    // MARK: - Button and View tapped Methods
     // モード選択でボタン以外の場所がタップされたときの処理
     @objc func modeViewTapped(_ sender: UITapGestureRecognizer) {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseIn]) {
@@ -160,7 +164,7 @@ class HomeViewController: UIViewController {
             self.modeView?.removeFromSuperview()
         }
     }
-    
+    // Wordsボタンが押されたときの処理
     @objc private func wordPressed(_ sender: UIButton) {
         presenter.didPushButton()
         // マイ単語帳画面に遷移
@@ -169,7 +173,7 @@ class HomeViewController: UIViewController {
         addTransition(duration: 0.3, type: .moveIn, subType: .fromBottom)
         present(mywordVC, animated: false, completion: nil)
     }
-    
+    // helpボタンが押されたときの処理
     @objc private func helpPressed(_ sender: UIButton) {
         presenter.didPushButton()
         // ルール画面に遷移
@@ -178,7 +182,7 @@ class HomeViewController: UIViewController {
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
         present(ruleVC, animated: false, completion: nil)
     }
-    
+    // ランキングボタンが押されたときの処理
     @objc private func rankingPressed(_ sender: UIButton) {
         presenter.didPushButton()
         // ランキング画面に遷移
@@ -187,7 +191,7 @@ class HomeViewController: UIViewController {
         addTransition(duration: 0.3, type: .fade, subType: .fromRight)
         present(rankingVC, animated: false, completion: nil)
     }
-    
+    // soundボタンが押されたときの処理
     @objc private func soundPressed(_ sender: UIButton) {
         let isMute = UserDefaults.standard.bool(forKey: Const.UDKeys.isMute)
         DispatchQueue.main.async {
@@ -196,7 +200,7 @@ class HomeViewController: UIViewController {
         UserDefaults.standard.set(!isMute, forKey: Const.UDKeys.isMute)
         opening(operation: .mute)
     }
-    
+    // 各モードボタンが押されたときの処理
     @objc private func modeSelected(_ sender: UIButton) {
         // オープニングを停止
         opening(operation: .stop)
@@ -209,6 +213,7 @@ class HomeViewController: UIViewController {
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)
     }
+    // MARK: - Helpers
     // ボタンタイトルをモードオブジェクトに変換
     private func convertToMode(_ modeString: String) -> Mode {
         switch modeString {
@@ -222,5 +227,4 @@ class HomeViewController: UIViewController {
             return .easy
         }
     }
-
 }

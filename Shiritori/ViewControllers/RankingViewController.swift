@@ -8,7 +8,6 @@
 import UIKit
 
 class RankingViewController: UIViewController {
-    
     // MARK: - Properties
     var backButton: UIButton!
     
@@ -24,7 +23,7 @@ class RankingViewController: UIViewController {
         configureUI()
 
     }
-    
+    // MARK: - UI Setting Methods
     private func configureUI() {
         let rankingView = RankingView()
         backButton = rankingView.headerView.backButton
@@ -36,7 +35,8 @@ class RankingViewController: UIViewController {
         // ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_ :)), for: .touchUpInside)
     }
-    
+    // MARK: - Button Tapped Methods
+    // 戻るボタンが押されたときの処理
     @objc private func backPressed(_ sender: UIButton) {
         addTransition(duration: 0.3, type: .fade, subType: .fromLeft)
         dismiss(animated: false, completion: nil)

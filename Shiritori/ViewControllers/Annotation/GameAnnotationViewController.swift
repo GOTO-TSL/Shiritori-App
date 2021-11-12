@@ -9,12 +9,13 @@ import UIKit
 import Gecco
 
 class GameAnnotationViewController: SpotlightViewController {
+    // MARK: - Properties
+    private var annotationViews: [UIView] = []
+    private var stepIndex: Int = 0
+    private var positions: [CGPoint]
+    private let messages = Const.TutorialText.game
     
-    var annotationViews: [UIView] = []
-    var stepIndex: Int = 0
-    var positions: [CGPoint]
-    let messages = Const.TutorialText.game
-    
+    // MARK: - Lifecycle
     init(positions: [CGPoint]) {
         self.positions = positions
         super.init(nibName: nil, bundle: nil)
@@ -31,8 +32,8 @@ class GameAnnotationViewController: SpotlightViewController {
         }
         delegate = self
     }
-    
-    func addMessage(messageText: String) {
+    // MARK: - Helpers
+    private func addMessage(messageText: String) {
         let message = UILabel()
         message.text = messageText
         message.textColor = .white
@@ -48,7 +49,7 @@ class GameAnnotationViewController: SpotlightViewController {
         annotationViews.append(message)
     }
     
-    func next(_ labelAnimated: Bool) {
+    private func next(_ labelAnimated: Bool) {
         updateAnnotationView(labelAnimated)
         
         switch stepIndex {
@@ -71,7 +72,7 @@ class GameAnnotationViewController: SpotlightViewController {
         stepIndex += 1
     }
     
-    func updateAnnotationView(_ animated: Bool) {
+    private func updateAnnotationView(_ animated: Bool) {
         annotationViews.enumerated().forEach { index, view in
             UIView.animate(withDuration: animated ? 0.25 : 0) {
                 view.alpha = index == self.stepIndex ? 1 : 0
@@ -79,7 +80,7 @@ class GameAnnotationViewController: SpotlightViewController {
         }
     }
 }
-
+// MARK: - SpotlightViewControllerDelegate Methods
 extension GameAnnotationViewController: SpotlightViewControllerDelegate {
     func spotlightViewControllerWillPresent(_ viewController: SpotlightViewController, animated: Bool) {
         next(false)
