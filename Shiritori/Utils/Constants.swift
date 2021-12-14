@@ -108,10 +108,11 @@ struct Const {
         static let back = "back"
         static let home = "HOME"
         static let atk = "ATK"
-        static let easy = "EASY"
-        static let normal = "NORMAL"
-        static let hard = "HARD"
-        static let challenge = "CHALLENGE"
+        static let btnTitles = ["EASY", "NORMAL", "HARD", "CHALLENGE"]
+//        static let easy = "EASY"
+//        static let normal = "NORMAL"
+//        static let hard = "HARD"
+//        static let challenge = "CHALLENGE"
     }
     
     enum Image {

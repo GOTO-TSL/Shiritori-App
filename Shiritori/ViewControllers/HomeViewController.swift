@@ -15,10 +15,8 @@ class HomeViewController: UIViewController {
     private var helpButton: UIButton!
     private var rankingButton: UIButton!
     private var soundButton: UIButton!
-    private var modeView: ModeSelectView?
-    private var easyButton: UIButton!
-    private var normalButton: UIButton!
-    private var hardButton: UIButton!
+    private var modeView: ModeSelectView!
+    private var modeButtons: [UIButton]!
     private var tutorialButton: UIButton!
     
     private var presenter: HomeViewPresenter!
@@ -68,10 +66,8 @@ class HomeViewController: UIViewController {
     // モード選択画面を表示
     private func configureModeView() {
         modeView = ModeSelectView()
-        modeView!.alpha = 0.0
-        easyButton = modeView!.modeButtons.easyButton
-        normalButton = modeView!.modeButtons.normalButton
-        hardButton = modeView!.modeButtons.hardButton
+        modeButtons = modeView.modeButtonView.buttons
+        modeView.alpha = 0.0
         
         view.addSubview(modeView!)
         modeView!.addConstraintsToFillView(view)
@@ -79,10 +75,9 @@ class HomeViewController: UIViewController {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [.curveEaseIn]) {
             self.modeView?.alpha = 1.0
         }
-
-        easyButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
-        normalButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
-        hardButton.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside)
+        
+        // 各モードのボタンにアクションを追加
+        modeButtons.forEach { $0.addTarget(self, action: #selector(modeSelected(_:)), for: .touchUpInside) }
     }
     
     // チュートリアルを表示
@@ -217,11 +212,11 @@ class HomeViewController: UIViewController {
     // ボタンタイトルをモードオブジェクトに変換
     private func convertToMode(_ modeString: String) -> Mode {
         switch modeString {
-        case Const.ButtonText.easy:
+        case Const.ButtonText.btnTitles[0]:
             return .easy
-        case Const.ButtonText.normal:
+        case Const.ButtonText.btnTitles[1]:
             return .normal
-        case Const.ButtonText.hard:
+        case Const.ButtonText.btnTitles[2]:
             return .hard
         default:
             return .easy

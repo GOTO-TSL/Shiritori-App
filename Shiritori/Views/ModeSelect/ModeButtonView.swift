@@ -9,31 +9,14 @@ import UIKit
 
 class ModeButtonView: UIView {
     // MARK: - Properties
-    let easyButton: ModeButton = {
-        let button = ModeButton()
-        button.setTitle(Const.ButtonText.easy, for: .normal)
-        button.setImage(UIImage(named: Const.Image.easy), for: .normal)
-        return button
-    }()
-    
-    let normalButton: ModeButton = {
-        let button = ModeButton()
-        button.setTitle(Const.ButtonText.normal, for: .normal)
-        button.setImage(UIImage(named: Const.Image.normal), for: .normal)
-        return button
-    }()
-    
-    let hardButton: ModeButton = {
-        let button = ModeButton()
-        button.setTitle(Const.ButtonText.hard, for: .normal)
-        button.setImage(UIImage(named: Const.Image.hard), for: .normal)
-        return button
-    }()
-    
-    let challengeButton: ModeButton = {
-        let button = ModeButton()
-        button.setTitle(Const.ButtonText.challenge, for: .normal)
-        return button
+    let buttons: [UIButton] = {
+        var buttons = [UIButton]()
+        for btnTitle in Const.ButtonText.btnTitles {
+            let button = ModeButton()
+            button.setTitle(btnTitle, for: .normal)
+            buttons.append(button)
+        }
+        return buttons
     }()
     
     // MARK: - Lifecycle
@@ -42,7 +25,7 @@ class ModeButtonView: UIView {
         
         configureModeButton()
         
-        let stack = UIStackView(arrangedSubviews: [easyButton, normalButton, hardButton, challengeButton])
+        let stack = UIStackView(arrangedSubviews: buttons)
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -51,7 +34,7 @@ class ModeButtonView: UIView {
         addSubview(stack)
         
         stack.addConstraintsToFillView(self)
-        easyButton.setAspectRatio(ratio: 18/6)
+        buttons[0].setAspectRatio(ratio: 18/6)
     }
     // 勝利状況に応じてボタンにラベルを付与
     private func configureModeButton() {
@@ -59,20 +42,20 @@ class ModeButtonView: UIView {
         let isWinEasy = defaults.bool(forKey: Const.UDKeys.isWinEasy)
         let isWinNormal = defaults.bool(forKey: Const.UDKeys.isWinNormal)
         let isWinHard = defaults.bool(forKey: Const.UDKeys.isWinHard)
-        
+        // TODO: ネストが深くなってる＋可読性が悪いのでなんとかしたい
         if isWinEasy {
-            addClearLabel(for: easyButton)
+            addClearLabel(for: buttons[0])
             if isWinNormal {
-                addClearLabel(for: normalButton)
+                addClearLabel(for: buttons[1])
                 if isWinHard {
-                    addClearLabel(for: hardButton)
+                    addClearLabel(for: buttons[2])
                 }
             } else {
-                addModeLockView(for: hardButton)
+                addModeLockView(for: buttons[2])
             }
         } else {
-            addModeLockView(for: normalButton)
-            addModeLockView(for: hardButton)
+            addModeLockView(for: buttons[1])
+            addModeLockView(for: buttons[2])
         }
     }
     // クリアしていないモードを選択できないようにするためのView

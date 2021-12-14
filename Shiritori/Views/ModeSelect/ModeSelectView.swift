@@ -9,9 +9,9 @@ import UIKit
 
 class ModeSelectView: UIView {
     // MARK: - Properties
-    let modeButtons: ModeButtonView = {
-        let buttons = ModeButtonView()
-        return buttons
+    let modeButtonView: ModeButtonView = {
+        let view = ModeButtonView()
+        return view
     }()
     
     // MARK: - Lifecycle
@@ -25,14 +25,14 @@ class ModeSelectView: UIView {
         
         backgroundColor = UIColor(red: 120/255, green: 120/255, blue: 120/255, alpha: 0.7)
         
-        addSubview(modeButtons)
+        addSubview(modeButtonView)
         addSubview(title)
         
         title.centerX(inView: self)
-        title.anchor(bottom: modeButtons.topAnchor, paddingBottom: 30)
-        modeButtons.centerX(inView: self)
-        modeButtons.centerY(inView: self, constant: 20)
-        modeButtons.anchor(left: leftAnchor, right: rightAnchor, paddingTop: 30, paddingLeft: 30, paddingRight: 30)
+        title.anchor(bottom: modeButtonView.topAnchor, paddingBottom: 30)
+        modeButtonView.centerX(inView: self)
+        modeButtonView.centerY(inView: self, constant: 20)
+        modeButtonView.anchor(left: leftAnchor, right: rightAnchor, paddingTop: 30, paddingLeft: 30, paddingRight: 30)
 
     }
     
