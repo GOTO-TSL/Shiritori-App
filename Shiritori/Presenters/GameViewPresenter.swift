@@ -65,6 +65,8 @@ final class GameViewPresenter {
     }
     // MARK: - GameViewPresenterProtocol Methods
     func gameViewDidLoad() {
+        // 勝利状態をリセット
+        UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)
         // bgm再生
         battleSound.playSound(loop: -1)
         // カウントダウンスタート
