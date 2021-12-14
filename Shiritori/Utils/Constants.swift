@@ -111,6 +111,7 @@ struct Const {
         static let easy = "EASY"
         static let normal = "NORMAL"
         static let hard = "HARD"
+        static let challenge = "CHALLENGE"
     }
     
     enum Image {

@@ -30,13 +30,19 @@ class ModeButtonView: UIView {
         return button
     }()
     
+    let challengeButton: ModeButton = {
+        let button = ModeButton()
+        button.setTitle(Const.ButtonText.challenge, for: .normal)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         configureModeButton()
         
-        let stack = UIStackView(arrangedSubviews: [easyButton, normalButton, hardButton])
+        let stack = UIStackView(arrangedSubviews: [easyButton, normalButton, hardButton, challengeButton])
         stack.axis = .vertical
         stack.alignment = .fill
         stack.distribution = .fillEqually
@@ -44,11 +50,10 @@ class ModeButtonView: UIView {
         
         addSubview(stack)
         
-//        stack.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingLeft: 30, paddingBottom: 10, paddingRight: 30)
         stack.addConstraintsToFillView(self)
-        easyButton.setAspectRatio(ratio: 12/5)
+        easyButton.setAspectRatio(ratio: 18/6)
     }
-    
+    // 勝利状況に応じてボタンにラベルを付与
     private func configureModeButton() {
         let defaults = UserDefaults.standard
         let isWinEasy = defaults.bool(forKey: Const.UDKeys.isWinEasy)
@@ -70,7 +75,7 @@ class ModeButtonView: UIView {
             addModeLockView(for: hardButton)
         }
     }
-    
+    // クリアしていないモードを選択できないようにするためのView
     private func addModeLockView(for button: UIButton) {
         let lockView = UIView()
         lockView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.6)
