@@ -59,10 +59,11 @@
 		029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763B2715D96C000EA6B4 /* ModeSelectView.swift */; };
 		029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763D2715DB22000EA6B4 /* ModeButtonView.swift */; };
 		029A76402715DC92000EA6B4 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029A763F2715DC92000EA6B4 /* ModeButton.swift */; };
+		029DCAB1276F17C200DEB1CD /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DCAB0276F17C200DEB1CD /* GameView.swift */; };
+		029DCAB3276F192E00DEB1CD /* SpeechView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DCAB2276F192E00DEB1CD /* SpeechView.swift */; };
+		029DCAB5276F1B9000DEB1CD /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 029DCAB4276F1B9000DEB1CD /* EnemyView.swift */; };
 		02BDBF4327271268002342D5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02BDBF4227271268002342D5 /* UserDefaults.swift */; };
-		02C14170271823FB00A2868E /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1416F271823FB00A2868E /* GameView.swift */; };
 		02C14174271826C400A2868E /* HPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14173271826C400A2868E /* HPView.swift */; };
-		02C14176271826D200A2868E /* EnemyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C14175271826D200A2868E /* EnemyView.swift */; };
 		02C141782718287500A2868E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C141772718287500A2868E /* InputView.swift */; };
 		02C1417B27182F2300A2868E /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417A27182F2300A2868E /* Background.swift */; };
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
@@ -139,10 +140,11 @@
 		029A763B2715D96C000EA6B4 /* ModeSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectView.swift; sourceTree = "<group>"; };
 		029A763D2715DB22000EA6B4 /* ModeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButtonView.swift; sourceTree = "<group>"; };
 		029A763F2715DC92000EA6B4 /* ModeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
+		029DCAB0276F17C200DEB1CD /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		029DCAB2276F192E00DEB1CD /* SpeechView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechView.swift; sourceTree = "<group>"; };
+		029DCAB4276F1B9000DEB1CD /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
 		02BDBF4227271268002342D5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
-		02C1416F271823FB00A2868E /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		02C14173271826C400A2868E /* HPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPView.swift; sourceTree = "<group>"; };
-		02C14175271826D200A2868E /* EnemyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyView.swift; sourceTree = "<group>"; };
 		02C141772718287500A2868E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		02C1417A27182F2300A2868E /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
@@ -381,10 +383,11 @@
 		02C1416E271823DF00A2868E /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				02C1416F271823FB00A2868E /* GameView.swift */,
-				02C14175271826D200A2868E /* EnemyView.swift */,
 				02C14173271826C400A2868E /* HPView.swift */,
 				02C141772718287500A2868E /* InputView.swift */,
+				029DCAB0276F17C200DEB1CD /* GameView.swift */,
+				029DCAB2276F192E00DEB1CD /* SpeechView.swift */,
+				029DCAB4276F1B9000DEB1CD /* EnemyView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				02C7C2E227212DAA00FDFE1A /* UsedWordViewPresenter.swift in Sources */,
 				02F222472712D10B00A71175 /* HomeView.swift in Sources */,
 				02500B992714762D00F3B7E8 /* Constants.swift in Sources */,
+				029DCAB3276F192E00DEB1CD /* SpeechView.swift in Sources */,
 				0232400D271C002400333C7C /* ResultButtonView.swift in Sources */,
 				02500B9B27147E6F00F3B7E8 /* UIStackView.swift in Sources */,
 				0283557D263F9306008B6845 /* SceneDelegate.swift in Sources */,
@@ -632,6 +636,7 @@
 				02EF8505273D567F007F6B5D /* RewardButton.swift in Sources */,
 				02C1417D2718655A00A2868E /* BackButton.swift in Sources */,
 				02324005271BF83300333C7C /* RuleViewController.swift in Sources */,
+				029DCAB1276F17C200DEB1CD /* GameView.swift in Sources */,
 				02C1417B27182F2300A2868E /* Background.swift in Sources */,
 				02F222422712CE3700A71175 /* HomeViewController.swift in Sources */,
 				029A763E2715DB22000EA6B4 /* ModeButtonView.swift in Sources */,
@@ -647,15 +652,14 @@
 				02688EA62738082200A14E4F /* GameAnnotationViewController.swift in Sources */,
 				022867F4271A8B3400B064FF /* UsedWordView.swift in Sources */,
 				0227AADC271FEE33000C66FA /* String.swift in Sources */,
+				029DCAB5276F1B9000DEB1CD /* EnemyView.swift in Sources */,
 				02323FF8271BC5EE00333C7C /* BodyScrollView.swift in Sources */,
 				0228680A271B291600B064FF /* MyWordTableViewCell.swift in Sources */,
 				02C7C2E02720FE5400FDFE1A /* WordDataManager.swift in Sources */,
 				020AC84D27224C68000561C5 /* ResultViewPresenter.swift in Sources */,
 				02F222452712D03A00A71175 /* UIView.swift in Sources */,
 				029A763C2715D96C000EA6B4 /* ModeSelectView.swift in Sources */,
-				02C14170271823FB00A2868E /* GameView.swift in Sources */,
 				0227AAD7271EF28D000C66FA /* TimeManager.swift in Sources */,
-				02C14176271826D200A2868E /* EnemyView.swift in Sources */,
 				0269236C2723ECA90085341E /* HomeViewPresenter.swift in Sources */,
 				02323FFC271BF30300333C7C /* RankingView.swift in Sources */,
 				026923682723C0B30085341E /* UIImageView.swift in Sources */,
