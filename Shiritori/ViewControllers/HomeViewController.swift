@@ -203,23 +203,10 @@ class HomeViewController: UIViewController {
         let gameVC = GameViewController()
         // 押したボタンに対応するモードオブジェクトを渡す
         guard let btnTitle = sender.currentTitle else { return }
-        UserDefaults.standard.setEnum(convertToMode(btnTitle), forKey: Const.UDKeys.currentMode)
+        UserDefaults.standard.setEnum(Mode(modeString: btnTitle), forKey: Const.UDKeys.currentMode)
         gameVC.modalPresentationStyle = .fullScreen
         addTransition(duration: 1.0, type: .fade, subType: .fromRight)
         present(gameVC, animated: false, completion: nil)
     }
-    // MARK: - Helpers
-    // ボタンタイトルをモードオブジェクトに変換
-    private func convertToMode(_ modeString: String) -> Mode {
-        switch modeString {
-        case Const.ButtonText.btnTitles[0]:
-            return .easy
-        case Const.ButtonText.btnTitles[1]:
-            return .normal
-        case Const.ButtonText.btnTitles[2]:
-            return .hard
-        default:
-            return .easy
-        }
-    }
+    
 }

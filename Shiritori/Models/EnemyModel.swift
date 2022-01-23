@@ -11,6 +11,16 @@ enum Mode: String {
     case easy
     case normal
     case hard
+    //case challenge
+    
+    init?(modeString: String) {
+        switch modeString {
+        case "EASY": self = .easy
+        case "NORMAL": self = .normal
+        case "HARD": self = .hard
+        default: return nil
+        }
+    }
 }
 
 protocol EnemyModelDelegate: AnyObject {
