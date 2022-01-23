@@ -69,6 +69,7 @@
 		02C1417D2718655A00A2868E /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C1417C2718655A00A2868E /* BackButton.swift */; };
 		02C7C2E02720FE5400FDFE1A /* WordDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2DF2720FE5400FDFE1A /* WordDataManager.swift */; };
 		02C7C2E227212DAA00FDFE1A /* UsedWordViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */; };
+		02E6433F27702181009D47A0 /* GeneralGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02E6433E27702181009D47A0 /* GeneralGameView.swift */; };
 		02EF8505273D567F007F6B5D /* RewardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02EF8504273D567F007F6B5D /* RewardButton.swift */; };
 		02F222422712CE3700A71175 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222412712CE3700A71175 /* HomeViewController.swift */; };
 		02F222452712D03A00A71175 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F222442712D03A00A71175 /* UIView.swift */; };
@@ -150,6 +151,7 @@
 		02C1417C2718655A00A2868E /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		02C7C2DF2720FE5400FDFE1A /* WordDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDataManager.swift; sourceTree = "<group>"; };
 		02C7C2E127212DAA00FDFE1A /* UsedWordViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedWordViewPresenter.swift; sourceTree = "<group>"; };
+		02E6433E27702181009D47A0 /* GeneralGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralGameView.swift; sourceTree = "<group>"; };
 		02EF8504273D567F007F6B5D /* RewardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardButton.swift; sourceTree = "<group>"; };
 		02F222412712CE3700A71175 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		02F222442712D03A00A71175 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				029DCAB0276F17C200DEB1CD /* GameView.swift */,
 				029DCAB2276F192E00DEB1CD /* SpeechView.swift */,
 				029DCAB4276F1B9000DEB1CD /* EnemyView.swift */,
+				02E6433E27702181009D47A0 /* GeneralGameView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				02F2224A2712D43000A71175 /* HomeTitleView.swift in Sources */,
 				02324009271BF85000333C7C /* WordDetailViewController.swift in Sources */,
 				0269236A2723E8C10085341E /* SoundPlayer.swift in Sources */,
+				02E6433F27702181009D47A0 /* GeneralGameView.swift in Sources */,
 				0227AADE27201342000C66FA /* GameModel.swift in Sources */,
 				02C14174271826C400A2868E /* HPView.swift in Sources */,
 				02F82A252719CBA7005F3F28 /* SelectButton.swift in Sources */,

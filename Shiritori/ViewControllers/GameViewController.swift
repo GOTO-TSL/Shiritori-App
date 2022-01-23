@@ -35,13 +35,13 @@ class GameViewController: UIViewController {
     // MARK: - UI Setting Methods
     // ゲーム画面のViewを表示
     private func configureGameUI() {
-        let gameView = GameView()
+        let gameView = GeneralGameView()
         backButton = gameView.backButton
         attackButton = gameView.userInputView.attackButton
-        wordLabel = gameView.enemyView.wordLabel
-        timeLimit = gameView.enemyView.timeLimit
+        wordLabel = gameView.speechView.wordLabel
+        timeLimit = gameView.timeLimit
         textField = gameView.userInputView.textField
-        hpBar = gameView.enemyView.hpView.hpBar
+        hpBar = gameView.hpView.hpBar
         enemyImageView = gameView.enemyView.enemyImageView
         damageLabel = gameView.enemyView.damageLabel
         
@@ -132,7 +132,10 @@ extension GameViewController: GameViewProtocol {
         UIView.animate(withDuration: 1.0) {
             self.damageLabel.center.y -= 30
             self.damageLabel.alpha = 0.0
+        } completion: { _ in
+            self.damageLabel.center.y += 30
         }
+
     }
     
     // HPバーの更新

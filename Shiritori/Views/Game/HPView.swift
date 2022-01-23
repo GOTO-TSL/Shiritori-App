@@ -37,6 +37,7 @@ class HPView: UIView {
         hpImageView.addConstraintsToFillView(self)
         hpBar.centerY(inView: hpImageView)
         hpBar.anchor(left: hpImageView.leftAnchor, right: hpImageView.rightAnchor, height: 15)
+        self.setAspectRatio(ratio: 2)
         
     }
     

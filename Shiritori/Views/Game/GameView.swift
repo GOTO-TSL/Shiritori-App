@@ -38,29 +38,32 @@ class GameView: UIView {
         let view = InputView()
         return view
     }()
-    
+    // MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         // 背景画像の設定
         let background = Background(frame: frame)
         
+        // 上半分のviewの配置
         let topView = UIView()
-        topView.backgroundColor = .red
         topView.addSubview(enemyView)
         topView.addSubview(speechView)
         topView.addSubview(timeLimit)
         
+        // 制約を追加
         enemyView.anchor(bottom: topView.bottomAnchor, right: topView.rightAnchor, paddingRight: 10)
         enemyView.widthAnchor.constraint(equalTo: topView.widthAnchor, multiplier: 1/3).isActive = true
         speechView.anchor(left: topView.leftAnchor, bottom: topView.bottomAnchor, right: enemyView.leftAnchor, paddingLeft: 10, paddingBottom: 10)
         speechView.heightAnchor.constraint(equalTo: enemyView.heightAnchor).isActive = true
-        timeLimit.anchor(left: topView.leftAnchor, bottom: speechView.topAnchor, paddingLeft: 30, paddingBottom: 5)
+        timeLimit.anchor(top: topView.topAnchor, left: topView.leftAnchor, bottom: speechView.topAnchor, paddingLeft: 30, paddingBottom: 10)
         
+        // 下半分のviewの配置
         let bottomView = UIView()
         bottomView.addSubview(userInputView)
         userInputView.addConstraintsToFillView(bottomView)
         
+        // メインのstackView
         let mainStack = UIStackView(arrangedSubviews: [UIView(), topView, bottomView])
         mainStack.alignment = .fill
         mainStack.distribution = .fill
