@@ -32,6 +32,7 @@ final class EnemyModel {
     // MARK: - Properties
     let mode: Mode
     let hpMax: Int
+    var shiritoriCount: Int = 0
     var hitpoint: Int
     weak var delegete: EnemyModelDelegate?
     
@@ -51,8 +52,8 @@ final class EnemyModel {
             self.hitpoint = Const.GameParam.hard
         case .challenge:
             // TODO: challengeモードでは必要ないのであとでなんとかする
-            self.hpMax = 0
-            self.hitpoint = 0
+            self.hpMax = 100
+            self.hitpoint = 100
         }
     }
     

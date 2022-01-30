@@ -23,6 +23,7 @@ protocol GameViewProtocol: AnyObject {
     func showTimeLimit(_ gameViewPresenter: GameViewPresenter, text: String)
     func updateHPBar(_ gameViewPresenter: GameViewPresenter, progress: Float)
     func updateDamageLabel(_ gameViewPresenter: GameViewPresenter, damage: Int)
+    func updateCountLabel(_ gameViewPresenter: GameViewPresenter, count: Int)
 }
 
 protocol GameViewPresenterProtocol: AnyObject {
@@ -215,8 +216,15 @@ extension GameViewPresenter: WordDataManagerDelegate {
             dictDataManager.featchMean(of: word)
             let initial = word[word.index(before: word.endIndex)]
             dictDataManager.featchWord(initial: initial)
-            enemyModel.getDamage(word: word)
-            view.updateDamageLabel(self, damage: word.count*10)
+            // チャレンジモードのときはしりとり回数を更新してカウントラベルを変更
+            // 通常モードのときはHPを更新してダメージラベルを更新
+            if enemyModel.mode == .challenge {
+                enemyModel.shiritoriCount += 1
+                view.updateCountLabel(self, count: enemyModel.shiritoriCount)
+            } else {
+                enemyModel.getDamage(word: word)
+                view.updateDamageLabel(self, damage: word.count*10)
+            }
         } else {
             view.showText(self, text: Const.GameText.used, state: .error)
             enemyModel.heal()

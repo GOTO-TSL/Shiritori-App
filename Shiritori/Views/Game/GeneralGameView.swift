@@ -20,7 +20,7 @@ class GeneralGameView: GameView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont(name: Const.font, size: 20)
-        label.text = "\(10) COMBO"
+        label.text = "\(0) COMBO"
         return label
     }()
     

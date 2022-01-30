@@ -17,6 +17,7 @@ class GameViewController: UIViewController {
     private var hpBar: UIProgressView!
     private var enemyImageView: UIImageView!
     private var damageLabel: UILabel!
+    private var shiritoriCountLabel: UILabel!
     
     private var gameViewPresenter: GameViewPresenter!
     private var resultViewPresenter: ResultViewPresenter!
@@ -44,6 +45,7 @@ class GameViewController: UIViewController {
         hpBar = gameView.hpView.hpBar
         enemyImageView = gameView.enemyView.enemyImageView
         damageLabel = gameView.enemyView.damageLabel
+        shiritoriCountLabel = gameView.shiritoriCountLabel
         
         // 配置＆制約の追加
         view.addSubview(gameView)
@@ -118,6 +120,13 @@ class GameViewController: UIViewController {
 }
 // MARK: - GameViewProtocol Methods
 extension GameViewController: GameViewProtocol {
+    // しりとり回数をカウントするラベルを更新
+    func updateCountLabel(_ gameViewPresenter: GameViewPresenter, count: Int) {
+        DispatchQueue.main.async {
+            self.shiritoriCountLabel.text = "\(count) COMBO"
+        }
+    }
+    
     // ダメージラベルの更新
     func updateDamageLabel(_ gameViewPresenter: GameViewPresenter, damage: Int) {
         if damage < 100 {
