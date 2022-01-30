@@ -58,6 +58,9 @@ final class ResultViewPresenter {
                 newWinCount += 3
             case .hard:
                 newWinCount += 6
+            case .challenge:
+                // TODO: challengeモードのところあとで考える
+                newWinCount += 0
             }
             // UserDefaultsの更新
             if newWinCount < 320 {

@@ -11,13 +11,14 @@ enum Mode: String {
     case easy
     case normal
     case hard
-    //case challenge
+    case challenge
     
     init?(modeString: String) {
         switch modeString {
         case "EASY": self = .easy
         case "NORMAL": self = .normal
         case "HARD": self = .hard
+        case "CHALLENGE": self = .challenge
         default: return nil
         }
     }
@@ -48,6 +49,10 @@ final class EnemyModel {
         case .hard:
             self.hpMax = Const.GameParam.hard
             self.hitpoint = Const.GameParam.hard
+        case .challenge:
+            // TODO: challengeモードでは必要ないのであとでなんとかする
+            self.hpMax = 0
+            self.hitpoint = 0
         }
     }
     
