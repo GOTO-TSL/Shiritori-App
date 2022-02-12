@@ -112,10 +112,10 @@ extension GameViewPresenter: TimeManagerDelegate {
     // ゲーム中のカウント時に毎秒呼ばれる
     func didGameCount(_ timeManager: TimeManager, count: Int) {
         switch count {
-        case 0...Const.GameParam.timeLimit:
-            let text = "TIME:\(Const.GameParam.timeLimit - count)"
+        case 0...Const.timeLimit:
+            let text = "TIME:\(Const.timeLimit - count)"
             view.showTimeLimit(self, text: text)
-        case Const.GameParam.timeLimit+1:
+        case Const.timeLimit+1:
             battleSound.stop()
             view.showText(self, text: Const.GameText.end, state: .end)
             UserDefaults.standard.set(false, forKey: Const.UDKeys.isWin)

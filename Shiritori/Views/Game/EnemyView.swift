@@ -33,7 +33,7 @@ class EnemyView: UIView {
         let label = UILabel()
         label.textColor = .black
         label.font = UIFont(name: Const.font, size: 20)
-        label.text = "TIME:\(Const.GameParam.timeLimit)"
+        label.text = "TIME:\(Const.timeLimit)"
         return label
     }()
     

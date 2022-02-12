@@ -30,14 +30,14 @@ final class EnemyModel {
         
         switch mode {
         case .easy:
-            self.hpMax = Const.GameParam.easy
-            self.hitpoint = Const.GameParam.easy
+            self.hpMax = Const.Hitpoint.easy
+            self.hitpoint = Const.Hitpoint.easy
         case .normal:
-            self.hpMax = Const.GameParam.normal
-            self.hitpoint = Const.GameParam.normal
+            self.hpMax = Const.Hitpoint.normal
+            self.hitpoint = Const.Hitpoint.normal
         case .hard:
-            self.hpMax = Const.GameParam.hard
-            self.hitpoint = Const.GameParam.hard
+            self.hpMax = Const.Hitpoint.hard
+            self.hitpoint = Const.Hitpoint.hard
         }
     }
     

@@ -11,6 +11,7 @@ struct Const {
     static let font = "DotGothic16-Regular"
     static let alphabet = "abcdefghijklmnopqrstuvwxyz"
     static let placeholder = "入力してね"
+    static let timeLimit = 60
     
     enum UDKeys {
         static let currentWord = "currentWord"
@@ -24,11 +25,10 @@ struct Const {
         static let winCount = "winCount"
     }
     
-    enum GameParam {
+    enum Hitpoint {
         static let easy = 250
-        static let normal = 500
-        static let hard = 1100
-        static let timeLimit = 60
+        static let normal = 400
+        static let hard = 700
     }
     
     enum DBName {
