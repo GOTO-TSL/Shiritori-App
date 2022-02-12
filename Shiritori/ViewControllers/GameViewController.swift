@@ -49,8 +49,11 @@ class GameViewController: UIViewController {
         view.addSubview(gameView)
         gameView.addConstraintsToFillView(view)
         
-        // キーボードが自動で表示される設定
+        // キーボードの設定
         textField.becomeFirstResponder()
+        textField.autocapitalizationType = .none
+        textField.autocorrectionType = .no
+        textField.keyboardType = .alphabet
         
         // ボタンにアクションを追加
         backButton.addTarget(self, action: #selector(backPressed(_ :)), for: .touchUpInside)

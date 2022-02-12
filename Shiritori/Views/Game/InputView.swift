@@ -16,9 +16,6 @@ class InputView: UIView {
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 5.0
         textField.layer.borderColor = UIColor.black.cgColor
-        // 自動で大文字になる設定, 自動で変換する設定を解除
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
         return textField
     }()
     
