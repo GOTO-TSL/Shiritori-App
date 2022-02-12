@@ -112,14 +112,14 @@ class HomeViewController: UIViewController {
     }
     // アラートの表示
     private func changeClearState() {
-        let mode: Mode? = defaults.getEnum(forKey: Const.UDKeys.currentMode)
+        guard let mode: Mode = defaults.getEnum(forKey: Const.UDKeys.currentMode) else { return }
         let isWin = defaults.bool(forKey: Const.UDKeys.isWin)
         let isWinEasy = defaults.bool(forKey: Const.UDKeys.isWinEasy)
         let isWinNormal = defaults.bool(forKey: Const.UDKeys.isWinNormal)
         let isWinHard = defaults.bool(forKey: Const.UDKeys.isWinHard)
         
         if isWin {
-            switch mode! {
+            switch mode {
             case .easy:
                 if !isWinEasy {
                     showAlert(title: Const.AlertText.open, message: Const.AlertText.messageNormal)
